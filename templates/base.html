@@ -14,7 +14,7 @@
             <link rel="stylesheet" href="{{ __base_uri }}/css/layout.css">
             <link rel="stylesheet" href="{{ __color_css_uri }}">
             
-            <title>{% block title %}{% endblock %} - WOODparts Finland</title>
+            <title>{% block title %}{% endblock %} - Länsiuudenmaan PuuApu</title>
             
             <script>
                 // all AJAX shall actually be asynchronous (duh)
@@ -26,19 +26,10 @@
     </head>
     <body>
         <div class="container">
+            <header>
+                {% include "nav.html" %}
+            </header>
             <div class="row">
-                <div class="col-xs-12" id="header">
-                    <img class="img-responsive" alt='WOODparts Finland' src="{{ __header_img_uri }}" id="header-img">
-                </div>
-            </div>
-            <div class="row">
-               <div class="col-xs-4 col-md-12">
-                   <div class="row">
-                       <div class="col-xs-12">
-                           {{ __widgets.nav.get_html|raw }}
-                       </div>
-                   </div>
-               </div>
                <div class="col-xs-8 col-md-12">
                 {% block content %}{% endblock %}
                </div>

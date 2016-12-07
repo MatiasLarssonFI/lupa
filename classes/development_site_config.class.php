@@ -22,9 +22,9 @@ class DevelopmentSiteConfig implements ISiteConfig {
     public function db_login_params() {
         return array(
             "host" => "localhost",
-            "dbname" => "woodparts_16",
-            "user" => "woodparts_16",
-            "pass" => "mtxv9uyqamehLeZm"
+            "dbname" => "lupa",
+            "user" => "lupa",
+            "pass" => "nXXYDIoPTgnjrtWF"
         );
     }
 }
