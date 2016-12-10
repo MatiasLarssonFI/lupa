@@ -13,11 +13,6 @@ main {
 }
 
 
-.woodparts-nav > li > a {
-    border-radius: 0px;
-}
-
-
 .lang.downsize > li + li {
     margin-left: .5em;
 }
@@ -90,9 +85,29 @@ img.lang-flag {
 }
 
 
+.front-page-carousel-container {
+    position: relative;
+    top: -100px;
+    z-index: 1;
+}
+
+.lupa-navbar {
+    position: relative;
+    top: 20px;
+    z-index: 2;
+    height: 100px;
+    border-radius: 0px;
+    margin-bottom: 0px;
+}
+
+
 @media (max-width: 768px) {
     .lupa-nav-links {
         padding-top: 0;
+    }
+    
+    .lupa-navbar {
+        height: auto;
     }
 }
 

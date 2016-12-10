@@ -5,8 +5,6 @@
             <meta name="viewport" content="initial-scale=1, maximum-scale=1">
             <link rel="stylesheet" href="{{ __base_uri }}/lib/bootstrap-3.3.6/css/bootstrap.min.css">
             
-            <script src="{{ __base_uri }}/lib/jquery-1.12.1/jquery-1.12.1.min.js"></script>
-            <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
             <script src="{{ __base_uri }}/js/wp.js"></script>
             
             {% block head_extra %}{% endblock %}
@@ -15,13 +13,6 @@
             <link rel="stylesheet" href="{{ __color_css_uri }}">
             
             <title>{% block title %}{% endblock %} - Länsiuudenmaan PuuApu</title>
-            
-            <script>
-                // all AJAX shall actually be asynchronous (duh)
-                $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
-                    options.async = true;
-                });
-            </script>
         {% endblock %}
     </head>
     <body>
@@ -45,5 +36,14 @@
                 </div>
             </div>
         </div>
+        
+        <script src="{{ __base_uri }}/lib/jquery-1.12.1/jquery-1.12.1.min.js"></script>
+        <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+        <script>
+            // all AJAX shall actually be asynchronous (duh)
+            $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+                options.async = true;
+            });
+        </script>
     </body>
 </html>

@@ -3,6 +3,12 @@ main {
 }
 
 
+.lupa-navbar {
+    background-color: rgba(255,255,255,0.7);
+    border: none;
+}
+
+
 .img-bar-img, .gallery-img {
     border: 2px solid #C0C0C0;
     box-shadow: 2px 0px 5px #C0C0C0;
