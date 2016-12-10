@@ -12,25 +12,29 @@ require_once(dirname(__FILE__) . "/classes/nav_link_factory.class.php");
 
 try {
     $request = array_merge(
-                    array(
-                        "action" => "", 
-                        "params" => "",
-                        "language" => SiteConfigFactory::get()->get_site_config()->default_language()
-                    ),
-                $_GET
-            );
-    $request["params"] = array_filter(explode("/", $request["params"]), "strlen"); // :<
-    
-    $actions = [
-        "contact", "services"
-    ];
-    
-    $nlf = new NavLinkFactory($request["action"], $request["params"], $actions, $request["language"]);
-    
-    UITextStorage::get()->try_change_language($request["language"]);
-    Views\ViewFactory::get()->get_view($request["action"], $request["params"], $request["language"], $nlf)->render();
+                        array(
+                            "action" => "", 
+                            "params" => "",
+                            "language" => SiteConfigFactory::get()->get_site_config()->default_language()
+                        ),
+                    $_GET
+                );
+        $request["params"] = array_filter(explode("/", $request["params"]), "strlen"); // :<
+        
+        $actions = [
+            "contact", "services"
+        ];
+        
+        $nlf = new NavLinkFactory($request["action"], $request["params"], $actions, $request["language"]);
+    try {
+        UITextStorage::get()->try_change_language($request["language"]);
+        Views\ViewFactory::get()->get_view($request["action"], $request["params"], $request["language"], $nlf)->render();
+    } catch (Exception $e) {
+        $is_ajax = (isset($_REQUEST["is_ajax"]) ? $_REQUEST["is_ajax"] : false);
+        $view = new Views\ExceptionView(array("exception" => $e, "is_ajax" => $is_ajax), $nlf);
+        $view->render();
+    }
 } catch (Exception $e) {
-    $is_ajax = (isset($_REQUEST["is_ajax"]) ? $_REQUEST["is_ajax"] : false);
-    $view = new Views\ExceptionView(array("exception" => $e, "is_ajax" => $is_ajax), $widgets);
-    $view->render();
+    echo "Something went wrong. Sorry. Here, have this: " . base64_encode($params["exception"]->getMessage());
 }
+    
