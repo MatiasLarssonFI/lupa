@@ -36,7 +36,11 @@
             </div>
             <div class="row">
                 <div class="col-xs-12" id="footer">
-                    <img class="img-responsive" alt='solutions for wood design' src="{{ __footer_img_uri }}" id="footer-img">
+                    <ul class="nav nav-pills lang downsize">
+                    {% for link in __lang_links %}
+                        <li><a title="{{ link.get_language }}" href='{{ __base_uri }}/{{ link.get_language }}/{{ link.get_action }}'><img class="lang-flag" alt="{{ link.get_language }}" src="{{ __base_uri }}/data/img/flag-{{ link.get_language }}.png"></a></li>
+                    {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>

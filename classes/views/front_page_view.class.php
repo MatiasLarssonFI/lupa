@@ -25,7 +25,6 @@ class FrontPageView extends AbstractView {
                 "page_title" => $text_storage->text("FRONT_PAGE_TITLE"),
                 "promo_text" => $text_storage->text("FRONT_PAGE_PROMO")
             ),
-            "bar_imgs" => \GalleryImageFactory::get()->get_img_bar_images(),
             "logo_url" => \SiteConfigFactory::get()->get_site_config()->base_uri() . 
                             "/data/img/front-logo.png",
             "lang" => $text_storage->get_language()

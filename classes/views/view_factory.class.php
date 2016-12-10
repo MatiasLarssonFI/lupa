@@ -5,7 +5,7 @@ namespace Views;
 require_once(dirname(__FILE__) . "/front_page_view.class.php");
 require_once(dirname(__FILE__) . "/service_view.class.php");
 require_once(dirname(__FILE__) . "/contact_view.class.php");
-require_once(dirname(__FILE__) . "/nav_link_factory.class.php");
+require_once(dirname(__FILE__) . "/../nav_link_factory.class.php");
 
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
 
@@ -39,7 +39,7 @@ class ViewFactory {
      * @param NavLinkFactory $nlf
      * @return IView
      */
-    public function get_view($action, array $params, $language, NavLinkFactory $nlf) {
+    public function get_view($action, array $params, $language, \NavLinkFactory $nlf) {
         if ($action === "") {
             return new FrontPageView(array(), $nlf);
         } else if ($action === "contact") {

@@ -51,7 +51,6 @@ abstract class AbstractView implements IView {
         $data["__base_uri"] = $base_uri;
         $data["__contact_info"] = $this->make_contact_info($text_storage);
         $data["__header_logo_uri"] = $base_uri . $dbif->get_header_logo_uri();
-        $data["__header_slogan_uri"] = $base_uri . $dbif->get_slogan_uri();
         $data["__header_promo_text"] = $text_storage->text("HEADER_PROMO");
         $data["__str_up"] = $text_storage->text("UP");
         $data["__color_css_uri"] = $base_uri . $dbif->get_color_css_uri();

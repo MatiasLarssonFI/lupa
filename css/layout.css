@@ -34,6 +34,11 @@ main {
 }
 
 
+img.lang-flag {
+    width: 30px;
+}
+
+
 #ajax-spinner {
     opacity : 0;
 }
@@ -68,6 +73,15 @@ main {
 
 .video-container h2 {
     font-size: 24px;
+}
+
+
+.img-brand {
+    width: 200px;
+}
+
+.navbar-brand-lg {
+    height:auto;
 }
 
 

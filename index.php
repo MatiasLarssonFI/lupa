@@ -1,5 +1,9 @@
 <?php
 
+ini_set("display_errors", 1);
+ini_set("error_reporting", E_ALL | E_STRICT);
+
+
 require_once(dirname(__FILE__) . "/classes/views/view_factory.class.php");
 require_once(dirname(__FILE__) . "/classes/ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/classes/site_config_factory.class.php");
@@ -18,7 +22,7 @@ try {
     $request["params"] = array_filter(explode("/", $request["params"]), "strlen"); // :<
     
     $actions = [
-        "contact", "service"
+        "contact", "services"
     ];
     
     $nlf = new NavLinkFactory($request["action"], $request["params"], $actions, $request["language"]);

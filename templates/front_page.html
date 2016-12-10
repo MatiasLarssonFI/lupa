@@ -4,29 +4,6 @@
 {% block content %}
 <main>
     <div class="row">
-        <div class="col-xs-12 col-md-5">
-            <div class="row">
-                <div class="col-xs-12">
-                    {{ strings.promo_text }}
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                {% for image in bar_imgs %}
-                    <div class="col-xs-5 col-sm-4">
-                        <a href="{{ __base_uri }}/{{ lang }}/gallery/#{{ image.get_id }}" title="{{ image.get_name }}">
-                            <img class="img-bar-img img-responsive" src="{{ __base_uri }}{{ image.get_thumb_url }}" alt="{{ image.get_name }}">
-                        </a>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="col-xs-12 col-md-4 logo-img">
-            <img class="img-responsive" alt='WOODparts Finland' src="{{ logo_url }}">
-        </div>
-        <div class="col-xs-12 col-md-3 logo-img">
-            <img class="img-responsive" alt='Länsiuudenmaan Puuapu' src="{{ base_url }}/data/img/lu-pa5.gif">
-        </div>
     </div>
 </main>
 {% endblock %}
