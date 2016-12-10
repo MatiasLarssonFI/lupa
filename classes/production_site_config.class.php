@@ -25,6 +25,11 @@ class ProductionSiteConfig implements ISiteConfig {
     }
     
     
+    public function db_table_prefix() {
+        return "lupa_";
+    }
+    
+    
     public function db_login_params() {
         $creds_fname = dirname(__FILE__) . "/../../db_creds.json";
         if (is_readable($creds_fname)) {
