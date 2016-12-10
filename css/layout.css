@@ -85,6 +85,18 @@ img.lang-flag {
 }
 
 
+.lupa-nav-links {
+    padding-top: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .lupa-nav-links {
+        padding-top: 0;
+    }
+}
+
+
 @media (max-width: 992px) {
     .logo-img {
         padding-bottom: 20px;
