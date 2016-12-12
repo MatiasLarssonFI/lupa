@@ -5,6 +5,7 @@ namespace Views;
 require_once(dirname(__FILE__) . "/front_page_view.class.php");
 require_once(dirname(__FILE__) . "/service_view.class.php");
 require_once(dirname(__FILE__) . "/contact_view.class.php");
+require_once(dirname(__FILE__) . "/contact_submit_view.class.php");
 require_once(dirname(__FILE__) . "/../nav_link_factory.class.php");
 
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
@@ -44,6 +45,8 @@ class ViewFactory {
             return new FrontPageView(array(), $nlf);
         } else if ($action === "contact") {
             return new ContactView(array(), $nlf);
+        } else if ($action === "contact_submit") {
+            return new ContactSubmitView($_POST, $nlf);
         } else if ($action === "services") {
             return new ServiceView(array(), $nlf);
         }

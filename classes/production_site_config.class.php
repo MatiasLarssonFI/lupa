@@ -10,13 +10,7 @@ class ProductionSiteConfig implements ISiteConfig {
     
     
     public function host() {
-        if (strpos($_SERVER["HTTP_HOST"], "martinlarsson.fi") !== false) {
-            // if the request header "Host" is "martinlarsson.fi",
-            // then use that
-            return "martinlarsson.fi";
-        }
-        
-        return "woodparts.fi";
+        return "lu-pa.fi";
     }
     
     
