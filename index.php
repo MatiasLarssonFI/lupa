@@ -22,7 +22,7 @@ try {
         $request["params"] = array_filter(explode("/", $request["params"]), "strlen"); // :<
         
         $actions = [
-            "contact", "services"
+            "", "contact",
         ];
         
         $nlf = new NavLinkFactory($request["action"], $request["params"], $actions, $request["language"]);

@@ -47,8 +47,6 @@ class ViewFactory {
             return new ContactView(array(), $nlf);
         } else if ($action === "contact_submit") {
             return new ContactSubmitView($_POST, $nlf);
-        } else if ($action === "services") {
-            return new ServiceView(array(), $nlf);
         }
         
         // Bad request: redirect to front page
