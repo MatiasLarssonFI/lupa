@@ -6,25 +6,18 @@
     <div class="carousel slide" data-ride="carousel" id="frontPageCarousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#frontPageCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#frontPageCarousel" data-slide-to="1"></li>
+        {% for slide in slides %}
+            <li data-target="#frontPageCarousel" data-slide-to="{{ slide.get_id }}" {{ loop.first ? 'class="active"' : '' }}></li>
+        {% endfor %}
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="/data/img/slides/JR-sivu.png" alt="">
-                <div class="carousel-caption">
-                    Sivulta
-                </div>
+        {% for slide in slides %}
+            <div class="item {{ loop.first ? 'active' : '' }}">
+                {{ slide.get_html|raw }}
             </div>
-            
-            <div class="item">
-                <img src="/data/img/slides/JR-paalta.png" alt="">
-                <div class="carousel-caption">
-                    Päältä
-                </div>
-            </div>
+        {% endfor %}
         </div>
 
         <!-- Controls -->

@@ -79,12 +79,18 @@ class DBIF {
     
     
     /**
-     * Get the image bar images.
+     * Get the front page slides.
      * 
      * Calls cb_store_row on each row.
      */
-    public function get_img_bar_images($cb_store_row) {
-        $stm = $this->_pdo->prepare("SELECT thumb_url, name, id FROM {$this->_table_prefix}gallery_image WHERE is_bar_img and is_published");
+    public function get_front_page_slides($cb_store_row, $lang) {
+        $stm = $this->_pdo->prepare(
+            "SELECT html, id
+            FROM {$this->_table_prefix}slide
+                WHERE language = :lang
+                and content_target = 'front_page'
+                and is_published");
+        $stm->bindParam(":lang", $lang, PDO::PARAM_STR);
         $stm->execute();
         
         while ($row = $stm->fetch()) {
