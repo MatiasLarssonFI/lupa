@@ -101,6 +101,23 @@ img.lang-flag {
 }
 
 
+.lupa-slide {
+    height: 450px;
+}
+
+
+.lupa-slide-content > hr {
+    width: 20em;
+}
+
+
+.lupa-slide-content {
+    position: relative;
+    top: -250px;
+    padding: 10px 15px;
+}
+
+
 @media (max-width: 768px) {
     .lupa-nav-links {
         padding-top: 0;

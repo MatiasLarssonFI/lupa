@@ -14,7 +14,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
         {% for slide in slides %}
-            <div class="item {{ loop.first ? 'active' : '' }}">
+            <div class="item {{ loop.first ? 'active' : '' }} lupa-slide">
                 {{ slide.get_html|raw }}
             </div>
         {% endfor %}
