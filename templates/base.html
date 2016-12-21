@@ -5,8 +5,6 @@
             <meta name="viewport" content="initial-scale=1, maximum-scale=1">
             <link rel="stylesheet" href="{{ __base_uri }}/lib/bootstrap-3.3.6/css/bootstrap.min.css">
             
-            <script src="{{ __base_uri }}/lib/jquery-1.12.1/jquery-1.12.1.min.js"></script>
-            <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
             <script src="{{ __base_uri }}/js/wp.js"></script>
             
             {% block head_extra %}{% endblock %}
@@ -14,40 +12,39 @@
             <link rel="stylesheet" href="{{ __base_uri }}/css/layout.css">
             <link rel="stylesheet" href="{{ __color_css_uri }}">
             
-            <title>{% block title %}{% endblock %} - WOODparts Finland</title>
+            <title>{% block title %}{% endblock %} - Länsiuudenmaan PuuApu</title>
             
-            <script>
-                // all AJAX shall actually be asynchronous (duh)
-                $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
-                    options.async = true;
-                });
-            </script>
+            <script src="{{ __base_uri }}/lib/jquery-1.12.1/jquery-1.12.1.min.js"></script>
         {% endblock %}
     </head>
     <body>
         <div class="container">
+            <header>
+                {% include "nav.html" %}
+                {% block header_content %}{% endblock %}
+            </header>
             <div class="row">
-                <div class="col-xs-12" id="header">
-                    <img class="img-responsive" alt='WOODparts Finland' src="{{ __header_img_uri }}" id="header-img">
-                </div>
-            </div>
-            <div class="row">
-               <div class="col-xs-4 col-md-12">
-                   <div class="row">
-                       <div class="col-xs-12">
-                           {{ __widgets.nav.get_html|raw }}
-                       </div>
-                   </div>
-               </div>
-               <div class="col-xs-8 col-md-12">
+               <div class="col-xs-12">
                 {% block content %}{% endblock %}
                </div>
             </div>
             <div class="row">
                 <div class="col-xs-12" id="footer">
-                    <img class="img-responsive" alt='solutions for wood design' src="{{ __footer_img_uri }}" id="footer-img">
+                    <ul class="nav nav-pills lang downsize">
+                    {% for link in __lang_links %}
+                        <li><a title="{{ link.get_language }}" href='{{ __base_uri }}/{{ link.get_language }}/{{ link.get_action }}'><img class="lang-flag" alt="{{ link.get_language }}" src="{{ __base_uri }}/data/img/flag-{{ link.get_language }}.png"></a></li>
+                    {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
+        
+        <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+        <script>
+            // all AJAX shall actually be asynchronous (duh)
+            $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+                options.async = true;
+            });
+        </script>
     </body>
 </html>

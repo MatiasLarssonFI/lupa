@@ -13,11 +13,6 @@ main {
 }
 
 
-.woodparts-nav > li > a {
-    border-radius: 0px;
-}
-
-
 .lang.downsize > li + li {
     margin-left: .5em;
 }
@@ -31,6 +26,11 @@ main {
 .lang.downsize > li > a {
     padding-bottom: .2em;
     padding-top: .2em;
+}
+
+
+img.lang-flag {
+    width: 30px;
 }
 
 
@@ -68,6 +68,47 @@ main {
 
 .video-container h2 {
     font-size: 24px;
+}
+
+
+.img-brand {
+    width: 200px;
+}
+
+.navbar-brand-lg {
+    height:auto;
+}
+
+
+.lupa-nav-links {
+    padding-top: 20px;
+}
+
+
+.front-page-carousel-container {
+    position: relative;
+    top: -100px;
+    z-index: 1;
+}
+
+.lupa-navbar {
+    position: relative;
+    top: 20px;
+    z-index: 2;
+    height: 100px;
+    border-radius: 0px;
+    margin-bottom: 0px;
+}
+
+
+@media (max-width: 768px) {
+    .lupa-nav-links {
+        padding-top: 0;
+    }
+    
+    .lupa-navbar {
+        height: auto;
+    }
 }
 
 

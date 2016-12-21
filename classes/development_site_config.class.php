@@ -19,6 +19,11 @@ class DevelopmentSiteConfig implements ISiteConfig {
     }
     
     
+    public function db_table_prefix() {
+        return "lupa_";
+    }
+    
+    
     public function db_login_params() {
         return array(
             "host" => "localhost",

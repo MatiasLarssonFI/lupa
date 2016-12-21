@@ -1,5 +1,6 @@
-main {
-    border-top: 1px solid #C0C0C0;
+.lupa-navbar {
+    background-color: rgba(255,255,255,0.7);
+    border: none;
 }
 
 
@@ -9,42 +10,13 @@ main {
 }
 
 
-.lang a {
-    border: 1px solid #dfdfdf;
-    color: #000080;
-    background-color: #eee;
-}
-
-
-.lang li > a:hover {
-    border-color: #000080;
-}
-
-
-.woodparts-nav > li > a,
-.woodparts-nav > li > a:hover,
-.woodparts-nav > li > a:visited {
-    color: #000080;
-    font-family: monospace;
-}
-
-
-.woodparts-nav > li.active > a,
-.woodparts-nav > li.active > a:focus,
-.woodparts-nav > li.active > a:hover {
-    background-color: #fff;
-    color: #000080;
-    border-bottom: 1px solid #000080;
-}
-
-
 .btn-primary {
-    background-color: #000080;
-    border-color: #000;
+    background-color: #484848;
+    border-color: #ffffff;
 }
 
 .btn-primary:hover {
-    background-color: #000080;
+    background-color: #484848;
 }
 
 
