@@ -6,8 +6,8 @@
     <div class="carousel slide" data-ride="carousel" id="frontPageCarousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-        {% for slide in slides %}
-            <li data-target="#frontPageCarousel" data-slide-to="{{ slide.get_id }}" {{ loop.first ? 'class="active"' : '' }}></li>
+        {% for ix, slide in slides %}
+            <li data-target="#frontPageCarousel" data-slide-to="{{ ix }}" class="lupa-carousel-indicator {{ loop.first ? 'active' : '' }}"></li>
         {% endfor %}
         </ol>
 

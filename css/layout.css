@@ -81,7 +81,7 @@ img.lang-flag {
 
 
 .lupa-nav-links {
-    padding-top: 20px;
+    margin-top: 30px;
 }
 
 
@@ -113,8 +113,9 @@ img.lang-flag {
 
 .lupa-slide-content {
     position: relative;
-    top: -250px;
-    padding: 10px 15px;
+    top: -300px;
+    padding: 15px 15px;
+    margin: 0 180px;
 }
 
 

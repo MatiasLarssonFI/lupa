@@ -9,14 +9,31 @@
     color: #fff;
 }
 
+.lupa-slide-content > hr {
+    border: 1px solid #87563b;
+}
+
+
+.lupa-carousel-indicator.active {
+    background-color: #c0f47a;
+}
+
+
+.lupa-bold {
+    color: #c0f47a;
+}
+
 
 .btn-primary {
     background-color: #484848;
-    border-color: #ffffff;
+    border-color: #fff;
+    color: #c0f47a;
 }
 
 .btn-primary:hover {
-    background-color: #484848;
+    background-color: #585858;
+    border-color: #fff;
+    color: #c0f47a;
 }
 
 
@@ -56,9 +73,14 @@
 }
 
 
+.navbar-default .navbar-nav > li + li a {
+    border-left: 2px solid #87563b;
+}
+
+
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li > a:hover {
-    border-bottom: 1px solid #484848;
+    text-decoration: underline;
 }
 
 
@@ -68,4 +90,9 @@
     background-color: #484848;
     color: #fff;
     border: none;
+}
+
+
+.btn-bold {
+    font-weight: bold;
 }
