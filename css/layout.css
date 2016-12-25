@@ -39,37 +39,15 @@ img.lang-flag {
 }
 
 
+/* Hidden captcha */
 .contact-url {
-    display: none;
+    height: 1px;
+    width: 1px;
+    opacity: 0;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
 }
-
-
-.videos-list-container h3 {
-    padding: 0 0 .5em 0;
-    margin-bottom: 1em;
-    margin-top: 0;
-}
-
-
-.videos-list-container {
-    padding: 1em;
-}
-
-
-.videos-list-container .row-video {
-    margin-bottom: 1em;
-}
-
-
-.video-container {
-    margin-bottom: 2em;
-}
-
-
-.video-container h2 {
-    font-size: 24px;
-}
-
 
 .img-brand {
     width: 200px;
@@ -99,6 +77,7 @@ img.lang-flag {
 
 .lupa-slide-content {
     margin-bottom: 50px;
+    padding: 15px 10px;
 }
 
 
