@@ -35,6 +35,6 @@ try {
         $view->render();
     }
 } catch (Exception $e) {
-    echo "Something went wrong. Sorry. Here, have this: " . base64_encode($params["exception"]->getMessage());
+    echo "Something went wrong. Sorry. Here, have this: " . base64_encode($e->getMessage());
 }
     

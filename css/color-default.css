@@ -73,11 +73,6 @@
 }
 
 
-.navbar-default .navbar-nav > li + li a {
-    border-left: 2px solid #87563b;
-}
-
-
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li > a:hover {
     text-decoration: underline;
