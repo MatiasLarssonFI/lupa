@@ -18,6 +18,10 @@
                 {{ slide.get_html|raw }}
             </div>
         {% endfor %}
+            <div class="carousel-caption lupa-slide-content">
+            <h3>{{ strings.slideshow_caption_title }}</h3>
+            <p>{{ strings.slideshow_caption_paragraph|nl2br }}</p>
+        </div>
         </div>
 
         <!-- Controls -->

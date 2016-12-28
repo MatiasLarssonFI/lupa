@@ -76,8 +76,9 @@ img.lang-flag {
 
 
 .lupa-slide-content {
-    margin-bottom: 50px;
+    bottom: 30%;
     padding: 15px 10px;
+    font-size: 16px;
 }
 
 
@@ -91,6 +92,13 @@ img.lang-flag {
 }
 
 
+@media (max-width: 1200px) {
+    .lupa-slide-content {
+        padding: 10px;
+        bottom: 20%;
+    }
+}
+
 @media (max-width: 992px) {
     .logo-img {
         padding-bottom: 20px;
@@ -102,7 +110,7 @@ img.lang-flag {
     
     .lupa-slide-content {
         padding: 10px;
-        margin-bottom: 35px;
+        bottom: 20%;
     }
 }
 
@@ -118,13 +126,14 @@ img.lang-flag {
     }
     
     .lupa-slide-content {
-        padding: 4px;
+        padding: 0px 4px;
         font-size: 11px;
-        margin-bottom: 0px;
+        bottom: 10%;
     }
     
     
     .lupa-slide-content h3 {
         font-size: 14px;
+        margin-top: 4px;
     }
 }

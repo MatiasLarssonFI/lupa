@@ -20,10 +20,18 @@ INSERT INTO `lupa_config` (`id`, `key`, `value`, `time_edited`, `time_created`) 
 (10, 'css_src_version', '20160716', NULL, '2016-07-15 18:00:00');
 
 INSERT INTO `lupa_slide` (`id`, `language`, `html`, `content_target`, `is_published`, `time_created`, `time_edited`) VALUES
-(1, 'fi', '<img src="/data/img/slides/skog5B.jpg" alt="" class="lupa-slide-image">\n<div class="carousel-caption lupa-slide-content">\n    <h3>Vailla <b class="lupa-bold text-uppercase">kaatoa</b>?</h3>\n    <p>Me Länsiuudenmaan PuuApu:ssa suoritamme puutyöt Miehekkäästi. Meillä on parhaat puutyöt, osaamme puutyöt kaikista parhaiten.</p>\n<hr class="hidden-xs">\n<a class="hidden-xs btn btn-primary btn-bold text-uppercase" href="/fi/contact">Ota yhteyttä</a>\n</div>', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-25 12:38:35'),
-(2, 'fi', '<img src="/data/img/slides/skog6B.jpg" alt="" class="lupa-slide-image">\n<div class="carousel-caption lupa-slide-content">\n    <h3>Vailla <b class="lupa-bold text-uppercase">raatoa</b>?</h3>\n    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien.</p>\n</div>', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-25 12:38:55'),
-(3, 'fi', '<img src="/data/img/slides/skog3B.jpg" alt="" class="lupa-slide-image">\n<div class="carousel-caption lupa-slide-content">\n    <h3>Hirven<b class="lupa-bold text-uppercase">kaatoa</b>?</h3>\n    <p>Stylized implementation of HTML\'s &lt;abbr&gt; element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a title attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover and to users of assistive technologies.</p>\n</div>', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-25 12:39:11'),
-(4, 'fi', '<img src="/data/img/slides/skog1leikattu.jpg" alt="" class="lupa-slide-image">\n<div class="carousel-caption lupa-slide-content">\n    <h3>Hirven<b class="lupa-bold text-uppercase">kaatoa</b>?</h3>\n    <p>Stylized implementation of HTML\'s &lt;abbr&gt; element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a title attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover and to users of assistive technologies.</p>\n</div>', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-25 13:05:01');
+(1, 'fi', '<img src="/data/img/slides/skog5B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:17'),
+(2, 'fi', '<img src="/data/img/slides/skog6B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:23'),
+(3, 'fi', '<img src="/data/img/slides/skog3B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:28'),
+(4, 'fi', '<img src="/data/img/slides/skog1leikattu.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:34'),
+(5, 'en', '<img src="/data/img/slides/skog5B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:17'),
+(6, 'en', '<img src="/data/img/slides/skog6B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:23'),
+(7, 'en', '<img src="/data/img/slides/skog3B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:28'),
+(8, 'en', '<img src="/data/img/slides/skog1leikattu.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:34'),
+(9, 'se', '<img src="/data/img/slides/skog5B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:17'),
+(10, 'se', '<img src="/data/img/slides/skog6B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:23'),
+(11, 'se', '<img src="/data/img/slides/skog3B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:28'),
+(12, 'se', '<img src="/data/img/slides/skog1leikattu.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:34');
 
 INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, `time_created`) VALUES
 (1, 'fi', 'FRONT_PAGE_PROMO', 'Kehitämme ja valmistamme prototyypejä ja sisustusosia puusta. Hyödynnämme mm. cnc-tekniikkaa ja puun muotopuristusta.', '2016-05-15 18:35:20', '2016-03-05 22:00:00'),
@@ -100,7 +108,13 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (72, 'en', 'VIDEOS_LIST_CAPTION', 'Select video', '2016-05-02 21:00:00', '0000-00-00 00:00:00'),
 (73, 'en', 'CONTACT_INFO', 'Contact Information', NULL, '2016-12-19 18:00:00'),
 (74, 'fi', 'CONTACT_INFO', 'Yhteystiedot', NULL, '2016-12-19 18:00:00'),
-(75, 'se', 'CONTACT_INFO', 'Kontakt information', '2016-12-19 17:41:09', '2016-12-19 18:00:00');
+(75, 'se', 'CONTACT_INFO', 'Kontakt information', '2016-12-19 17:41:09', '2016-12-19 18:00:00'),
+(76, 'fi', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Me Länsi-Uudenmaan Puuavussa suoritamme puutyöt vastuulla ja huolenpidolla. Tavoitteemme ovat tyytyväiset asiakkaat sekä kaunis ja toimiva ympäristö.', NULL, '2016-12-27 18:00:00'),
+(77, 'en', 'FRONT_PAGE_SH_CAPTION_TEXT', 'We at Länsi-Uudenmaan PuuApu take great care and responsibility of woodworking. We have reached our goal when you are happy and have a beautiful and well functioning environment.', NULL, '2016-12-27 18:00:00'),
+(78, 'se', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Lorem ipsum dolores', NULL, '2016-12-27 18:00:00'),
+(79, 'se', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Trä problem?', NULL, '2016-12-27 20:00:00'),
+(80, 'en', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Tree trouble?', NULL, '2016-12-27 20:00:00'),
+(81, 'fi', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Puupulmia?', NULL, '2016-12-27 20:00:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

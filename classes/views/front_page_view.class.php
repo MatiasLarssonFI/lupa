@@ -24,7 +24,8 @@ class FrontPageView extends AbstractView {
         return array(
             "strings" => array(
                 "page_title" => $text_storage->text("FRONT_PAGE_TITLE"),
-                "promo_text" => $text_storage->text("FRONT_PAGE_PROMO")
+                "slideshow_caption_title" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TITLE"),
+                "slideshow_caption_paragraph" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
             ),
             "logo_url" => \SiteConfigFactory::get()->get_site_config()->base_uri() . 
                             "/data/img/front-logo.png",
