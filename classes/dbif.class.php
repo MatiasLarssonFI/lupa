@@ -146,14 +146,29 @@ class DBIF {
      * 
      * Calls cb_store_row on each row.
      */
-    public function get_services($cb_store_row) {
-        $stm = $this->_pdo->prepare("SELECT title, text, img_uri, gallery_img_id FROM {$this->_table_prefix}service");
+    public function get_services($cb_store_row, $language) {
+        $sql = 
+            "SELECT
+                st.title,
+                st.text,
+                si.image_uri
+            from {$this->_table_prefix}service s
+            
+            inner join {$this->_table_prefix}service_text st on s.id = st.service_id
+            inner join {$this->_table_prefix}service_image si on s.id = si.service_id
+            
+            where st.language = :lang
+            
+            order by s.id
+            ";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindParam(":lang", $language, PDO::PARAM_STR);
         $stm->execute();
         
         while ($row = $stm->fetch()) {
             $cb_store_row($row);
         }
-    }
+    } 
     
     
     /**

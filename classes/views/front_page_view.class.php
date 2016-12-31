@@ -6,6 +6,7 @@ require_once(dirname(__FILE__) . "/abstract_view.class.php");
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
 require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/../slide_factory.class.php");
+require_once(dirname(__FILE__) . "/../service_factory.class.php");
 
 
 class FrontPageView extends AbstractView {
@@ -30,6 +31,7 @@ class FrontPageView extends AbstractView {
             "logo_url" => \SiteConfigFactory::get()->get_site_config()->base_uri() . 
                             "/data/img/front-logo.png",
             "slides" => \SlideFactory::get()->get_front_page_slides(),
+            "services" => \ServiceFactory::get()->get_services(),
             "lang" => $text_storage->get_language(),
         );
     }

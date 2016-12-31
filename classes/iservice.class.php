@@ -18,17 +18,9 @@ interface IService {
     
     
     /**
-     * Returns the image URI.
+     * Returns the image URIs.
      * 
-     * @return string
+     * @return string[]
      */
-    public function get_img_uri();
-    
-    
-    /**
-     * Returns the gallery image ID.
-     * 
-     * @return string
-     */
-    public function get_gallery_img_id();
+    public function get_img_uris();
 }
