@@ -19,6 +19,28 @@ INSERT INTO `lupa_config` (`id`, `key`, `value`, `time_edited`, `time_created`) 
 (9, 'js_src_version', '20160812', '2016-08-12 12:51:49', '2016-07-15 18:00:00'),
 (10, 'css_src_version', '20160716', NULL, '2016-07-15 18:00:00');
 
+INSERT INTO `lupa_service` (`id`, `time_edited`, `time_created`) VALUES
+(1, NULL, '2016-12-31 14:41:27'),
+(2, NULL, '2016-12-31 14:41:27'),
+(3, NULL, '2016-12-31 14:41:27'),
+(4, NULL, '2016-12-31 14:41:27');
+
+INSERT INTO `lupa_service_image` (`id`, `service_id`, `image_uri`, `time_edited`, `time_created`) VALUES
+(8, 2, '/data/img/services/puiden_kaataminen.jpg', '2016-12-31 13:10:43', '2016-12-31 00:00:00'),
+(9, 3, '/data/img/services/sahauspalvelu.jpg', '2016-12-31 13:10:46', '2016-12-31 00:00:00'),
+(10, 4, '/data/img/services/kantojyrsintä.jpg', '2016-12-31 13:10:48', '2016-12-31 00:00:00'),
+(11, 1, '/data/img/services/sahauspalvelu.jpg', '2016-12-31 13:10:51', '2016-12-31 00:00:00');
+
+INSERT INTO `lupa_service_text` (`id`, `service_id`, `language`, `title`, `text`, `time_edited`, `time_created`) VALUES
+(8, 2, 'fi', 'Puunkaato, poiskuljetus ja hakettaminen', 'Suunnittelemme puillesi ja pihallesi sopivaa puunkaatoa. Kaadamme puusi kiipeilykaatona, nostokorikaatona, suorana kaatona tai muuten, aina ammatilliseen arviointiin perustuen. Tarjoamme myös risujen ja runkojen poiskuljetuksen. Haketamme usein risut poiskuljetuksen helpottamiseksi. Haketamme tarvittaessa teille sopivaa haketta omista risuistanne.', NULL, '2016-12-31 00:00:00'),
+(9, 3, 'fi', 'Sahauspalvelut', 'Sahauttamalla tukkejasi voit saada ainutlaatuista puutavaraa, sellaista mitä kaupasta ei saa. Sahauttamalla tukkeja käsityönä voit saada paksuja ja leveitä lankkuja ja parruja. Jos iso tukki on hankalassa paikassa voi halkaisusahaus olla hyvä tapa saada tukki pienennetty kuljetusta varten, ja lankuista voit tehdä esimerkiksi pihapenkin. Tavanomaista puutavaraa saat kuitenkin edullisemmin ostamalla sen puutavaraliikkeestä.', NULL, '2016-12-31 00:00:00'),
+(10, 4, 'fi', 'Kantojyrsintä', 'Kantojyrsinnällä pääset eroon kannoista ja juurakoista. Kantojyrsinnästä syntyvä hake soveltuu hyvin puutarhakatteeksi pensaitesi alle. Tarjoamme myös multauksen ja nurmikon kylvön, jolloin saat puun kasvupaikan täysin maisemoitua. Kanto hankaloittaa pihasi käyttöä, mm nurmikkoa leikattaessa ja lumitöissä. Kannon voi poista kaivinkoneella tai jyrsimällä. Kanto lahoaa 10-30 vuotta riippuen puulajista ja kannon koosta.', NULL, '2016-12-31 00:00:00'),
+(11, 1, 'se', 'Trädvård, plantering och besiktning', 'När du planterar ditt träd med kunskap och färdighet försäkrar du att ditt träd får en god start. Träd behöver skydd och vård, särskilt i byggd miljö. Hur mår dina träd? Vi erbjuder och rekomenderar de tjänster dina träd behöver för att frodas.', NULL, '2016-12-31 00:00:00'),
+(12, 2, 'se', 'Trädfällning, bortforsling och flisning', 'Vi planerar och genomför trädfällning anpassad för dina träd och din gård. Dina träd fälls med traditionell teknik, genom sektionsfällning (klättring), med bomlift eller med annan ändamålsenlig teknik, alltid enligt yrkesmässig bedömning. Vi erbjuder även bortforsling av stammar och ris. Riset flisas ofta för att underlätta transport. Vi kan också flisa ris på beställning.', NULL, '2016-12-31 00:00:00'),
+(13, 3, 'se', 'Sågning', 'Genom att såga upp dina stockar kan du få sågvirke med speciella dimensioner, tex speciellt breda och tjocka plankor och balkar. Då en stor stock ligger på en olämplig plats kan klyvsågning med motorsåg vara ett bra sätt att göra stocken transporterbar, dessutom blir det möjligt att utnyttja stocken som material för tex trädgårdsbygge. Om du bara behöver vanligt sågvirke är det förmånligare att köpa det från en brädgård.', NULL, '2016-12-31 00:00:00'),
+(14, 4, 'se', 'Stubbfräsning', 'Vi kan avlägsna dina stubbar och ytliga rötter genom att fräsa dem. Fliset som blir kvar passar utmärkt som marktäckning runt träd och buskar. Ofta bortforslar vi dock fliset, lägger mull och sår gräs där trädet stod. En stubbe orsakar problem vid såväl gräsklippning som snöröjning. Stubben kan avlägsnas med grävmaskin eller stubbfräs. En stubbe förmultnar under 10-30 år beroende på storlek och träslag.', NULL, '2016-12-31 00:00:00'),
+(15, 1, 'fi', 'Sahauspalvelut', '', NULL, '2016-12-31 00:00:00');
+
 INSERT INTO `lupa_slide` (`id`, `language`, `html`, `content_target`, `is_published`, `time_created`, `time_edited`) VALUES
 (1, 'fi', '<img src="/data/img/slides/skog5B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:17'),
 (2, 'fi', '<img src="/data/img/slides/skog6B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:23'),
@@ -109,10 +131,10 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (73, 'en', 'CONTACT_INFO', 'Contact Information', NULL, '2016-12-19 18:00:00'),
 (74, 'fi', 'CONTACT_INFO', 'Yhteystiedot', NULL, '2016-12-19 18:00:00'),
 (75, 'se', 'CONTACT_INFO', 'Kontakt information', '2016-12-19 17:41:09', '2016-12-19 18:00:00'),
-(76, 'fi', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Me Länsi-Uudenmaan Puuavussa suoritamme puutyöt vastuulla ja huolenpidolla. Tavoitteemme ovat tyytyväiset asiakkaat sekä kaunis ja toimiva ympäristö.', NULL, '2016-12-27 18:00:00'),
-(77, 'en', 'FRONT_PAGE_SH_CAPTION_TEXT', 'We at Länsi-Uudenmaan PuuApu take great care and responsibility of woodworking. We have reached our goal when you are happy and have a beautiful and well functioning environment.', NULL, '2016-12-27 18:00:00'),
-(78, 'se', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Lorem ipsum dolores', NULL, '2016-12-27 18:00:00'),
-(79, 'se', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Trä problem?', NULL, '2016-12-27 20:00:00'),
+(76, 'fi', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Me Länsiuudenmaan Puuapussa suoritamme puutyöt vastuulla ja huolenpidolla. Tavoitteemme ovat tyytyväiset asiakkaat sekä kaunis ja toimiva ympäristö.', '2016-12-31 12:11:53', '2016-12-27 18:00:00'),
+(77, 'en', 'FRONT_PAGE_SH_CAPTION_TEXT', 'We at Länsiuudenmaan Puuapu take great care and responsibility of woodworking. We have reached our goal when you are happy and have a beautiful and well functioning environment.', '2016-12-31 12:11:58', '2016-12-27 18:00:00'),
+(78, 'se', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Länsiuudenmaan Puuapu sköter träd och fällning med ansvar och omsorg. Vi eftersträvar nöjda kunder samt en vacker och fungerande miljö.', '2016-12-31 12:12:12', '2016-12-27 18:00:00'),
+(79, 'se', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Trätrubbel?', '2016-12-31 12:11:15', '2016-12-27 20:00:00'),
 (80, 'en', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Tree trouble?', NULL, '2016-12-27 20:00:00'),
 (81, 'fi', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Puupulmia?', NULL, '2016-12-27 20:00:00');
 

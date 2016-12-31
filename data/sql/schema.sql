@@ -25,6 +25,30 @@ CREATE TABLE `lupa_contact_inbox` (
   `time_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
+CREATE TABLE `lupa_service` (
+  `id` int(11) NOT NULL,
+  `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `time_created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+CREATE TABLE `lupa_service_image` (
+  `id` int(11) NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `image_uri` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `time_created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+CREATE TABLE `lupa_service_text` (
+  `id` int(11) NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `language` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `title` text COLLATE utf8_swedish_ci NOT NULL,
+  `text` text COLLATE utf8_swedish_ci NOT NULL,
+  `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `time_created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
 CREATE TABLE `lupa_slide` (
   `id` int(11) NOT NULL,
   `language` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
@@ -51,6 +75,17 @@ ALTER TABLE `lupa_config`
 ALTER TABLE `lupa_contact_inbox`
   ADD PRIMARY KEY (`id`);
 
+ALTER TABLE `lupa_service`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `lupa_service_image`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `service_id` (`service_id`);
+
+ALTER TABLE `lupa_service_text`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `service_id` (`service_id`);
+
 ALTER TABLE `lupa_slide`
   ADD PRIMARY KEY (`id`);
 
@@ -63,10 +98,23 @@ ALTER TABLE `lupa_config`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 ALTER TABLE `lupa_contact_inbox`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `lupa_service`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `lupa_service_image`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+ALTER TABLE `lupa_service_text`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 ALTER TABLE `lupa_slide`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 ALTER TABLE `lupa_ui_text`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+
+ALTER TABLE `lupa_service_image`
+  ADD CONSTRAINT `lupa_service_image_ibfk_1` FOREIGN KEY (`service_id`) REFERENCES `lupa_service` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `lupa_service_text`
+  ADD CONSTRAINT `lupa_service_text_ibfk_1` FOREIGN KEY (`service_id`) REFERENCES `lupa_service` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
