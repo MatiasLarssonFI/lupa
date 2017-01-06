@@ -51,7 +51,6 @@ CREATE TABLE `lupa_service_text` (
 
 CREATE TABLE `lupa_slide` (
   `id` int(11) NOT NULL,
-  `language` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
   `html` text COLLATE utf8_swedish_ci NOT NULL,
   `content_target` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
   `is_published` tinyint(1) NOT NULL,
@@ -97,13 +96,13 @@ ALTER TABLE `lupa_ui_text`
 ALTER TABLE `lupa_config`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 ALTER TABLE `lupa_contact_inbox`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 ALTER TABLE `lupa_service`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 ALTER TABLE `lupa_service_image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 ALTER TABLE `lupa_service_text`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 ALTER TABLE `lupa_slide`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 ALTER TABLE `lupa_ui_text`
