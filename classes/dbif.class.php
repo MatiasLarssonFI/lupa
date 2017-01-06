@@ -83,14 +83,12 @@ class DBIF {
      * 
      * Calls cb_store_row on each row.
      */
-    public function get_front_page_slides($cb_store_row, $lang) {
+    public function get_front_page_slides($cb_store_row) {
         $stm = $this->_pdo->prepare(
             "SELECT html, id
             FROM {$this->_table_prefix}slide
-                WHERE language = :lang
-                and content_target = 'front_page'
+                where content_target = 'front_page'
                 and is_published");
-        $stm->bindParam(":lang", $lang, PDO::PARAM_STR);
         $stm->execute();
         
         while ($row = $stm->fetch()) {

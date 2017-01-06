@@ -31,14 +31,12 @@ class SlideFactory {
     public function get_front_page_slides() {
         $ret = array();
         
-        $lang = UITextStorage::get()->get_language();
-        
         DBIF::get()->get_front_page_slides(function(array $row) use (&$ret) {
             $ret[] = new FrontPageSlide(
                 $row["html"],
                 $row["id"]
             );
-        }, $lang);
+        });
         
         return $ret;
     }
