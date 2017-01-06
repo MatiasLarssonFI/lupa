@@ -6,7 +6,7 @@ require_once(dirname(__FILE__) . "/dbif.class.php");
 require_once(dirname(__FILE__) . "/site_config_factory.class.php");
 
 require_once(dirname(__FILE__) . "/../lib/Twig-1.24.0/Twig-1.24.0/lib/Twig/Autoloader.php");
-require_once(dirname(__FILE__) . "/../lib/PHPMailer-5.2.14/PHPMailerAutoload.php");
+require_once(dirname(__FILE__) . "/../lib/PHPMailer-5.2.21/PHPMailerAutoload.php");
 
 
 class ContactMessageMailer implements IMailer {
