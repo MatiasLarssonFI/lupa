@@ -1,18 +1,20 @@
-<div class="row service dark">
-    <div class="col-xs-12 col-md-6 service-img">
-        <div class="service-carousel">
-        {% for img_uri in service.get_img_uris %}
-            <div>
-                <img src="{{ img_uri }}" alt="" class="pull-right">
+<div class="row dark">
+    <div class="col-xs-12 service-container">
+        <div class="col-xs-12 col-md-6 service-img">
+            <div class="service-carousel">
+            {% for img_uri in service.get_img_uris %}
+                <div>
+                    <img src="{{ img_uri }}" alt="" class="pull-right">
+                </div>
+            {% endfor %}
             </div>
+        </div>
+        
+        <div class="col-xs-12 col-md-5 text-left service-text">
+            <h4>{{ service.get_title }}</h4>
+        {% for p in service.get_text_paragraphs %}
+            <p>{{ p }}</p>
         {% endfor %}
         </div>
-    </div>
-    
-    <div class="col-xs-12 col-md-5 text-left service-text">
-        <h4>{{ service.get_title }}</h4>
-    {% for p in service.get_text_paragraphs %}
-        <p>{{ p }}</p>
-    {% endfor %}
     </div>
 </div>

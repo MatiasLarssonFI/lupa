@@ -71,13 +71,13 @@
     cursor: pointer;
 }
 
-.service.dark {
+.row.dark {
     background-color: #484848;
     color: #fff;
 }
 
 
-.service.light {
+.row.light {
     background-color: #fff;
     color: #484848;
 }
