@@ -149,6 +149,7 @@ class DBIF {
     public function get_services($cb_store_row, $language) {
         $sql = 
             "SELECT
+                s.id,
                 st.title,
                 st.text,
                 si.image_uri
