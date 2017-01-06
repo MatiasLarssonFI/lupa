@@ -26,34 +26,28 @@ INSERT INTO `lupa_service` (`id`, `time_edited`, `time_created`) VALUES
 (4, NULL, '2016-12-31 14:41:27');
 
 INSERT INTO `lupa_service_image` (`id`, `service_id`, `image_uri`, `time_edited`, `time_created`) VALUES
-(8, 2, '/data/img/services/puiden_kaataminen.jpg', '2016-12-31 13:10:43', '2016-12-31 00:00:00'),
-(9, 3, '/data/img/services/sahauspalvelu.jpg', '2016-12-31 13:10:46', '2016-12-31 00:00:00'),
-(10, 4, '/data/img/services/kantojyrsintä.jpg', '2016-12-31 13:10:48', '2016-12-31 00:00:00'),
-(11, 1, '/data/img/services/sahauspalvelu.jpg', '2016-12-31 13:10:51', '2016-12-31 00:00:00');
+(8, 2, '/data/img/services/rz_puiden_kaataminen.png', '2017-01-06 15:54:28', '2016-12-31 00:00:00'),
+(9, 3, '/data/img/services/rz_sahauspalvelu.png', '2017-01-06 15:54:31', '2016-12-31 00:00:00'),
+(10, 4, '/data/img/services/kantojyrsinta.jpg', '2017-01-06 15:12:26', '2016-12-31 00:00:00'),
+(11, 1, '/data/img/services/rz_istutus.png', '2017-01-06 15:54:34', '2016-12-31 00:00:00'),
+(12, 1, '/data/img/services/rz_istutus_mirror.png', NULL, '2017-01-06 00:00:00');
 
 INSERT INTO `lupa_service_text` (`id`, `service_id`, `language`, `title`, `text`, `time_edited`, `time_created`) VALUES
 (8, 2, 'fi', 'Puunkaato, poiskuljetus ja hakettaminen', 'Suunnittelemme puillesi ja pihallesi sopivaa puunkaatoa. Kaadamme puusi kiipeilykaatona, nostokorikaatona, suorana kaatona tai muuten, aina ammatilliseen arviointiin perustuen. Tarjoamme myös risujen ja runkojen poiskuljetuksen. Haketamme usein risut poiskuljetuksen helpottamiseksi. Haketamme tarvittaessa teille sopivaa haketta omista risuistanne.', NULL, '2016-12-31 00:00:00'),
-(9, 3, 'fi', 'Sahauspalvelut', 'Sahauttamalla tukkejasi voit saada ainutlaatuista puutavaraa, sellaista mitä kaupasta ei saa. Sahauttamalla tukkeja käsityönä voit saada paksuja ja leveitä lankkuja ja parruja. Jos iso tukki on hankalassa paikassa voi halkaisusahaus olla hyvä tapa saada tukki pienennetty kuljetusta varten, ja lankuista voit tehdä esimerkiksi pihapenkin. Tavanomaista puutavaraa saat kuitenkin edullisemmin ostamalla sen puutavaraliikkeestä.', NULL, '2016-12-31 00:00:00'),
+(9, 3, 'fi', 'Sahauspalvelut', 'Sahauttamalla tukkejasi voit saada ainutlaatuista puutavaraa, sellaista mitä kaupasta ei saa. Sahauttamalla tukkeja käsityönä voit saada paksuja ja leveitä lankkuja ja parruja. Jos iso tukki on hankalassa paikassa voi halkaisusahaus olla hyvä tapa saada tukki pienennettyä kuljetusta varten, ja lankuista voit tehdä esimerkiksi pihapenkin. Tavanomaista puutavaraa saat kuitenkin edullisemmin ostamalla sen puutavaraliikkeestä.', '2017-01-02 19:26:22', '2016-12-31 00:00:00'),
 (10, 4, 'fi', 'Kantojyrsintä', 'Kantojyrsinnällä pääset eroon kannoista ja juurakoista. Kantojyrsinnästä syntyvä hake soveltuu hyvin puutarhakatteeksi pensaitesi alle. Tarjoamme myös multauksen ja nurmikon kylvön, jolloin saat puun kasvupaikan täysin maisemoitua. Kanto hankaloittaa pihasi käyttöä, mm nurmikkoa leikattaessa ja lumitöissä. Kannon voi poista kaivinkoneella tai jyrsimällä. Kanto lahoaa 10-30 vuotta riippuen puulajista ja kannon koosta.', NULL, '2016-12-31 00:00:00'),
 (11, 1, 'se', 'Trädvård, plantering och besiktning', 'När du planterar ditt träd med kunskap och färdighet försäkrar du att ditt träd får en god start. Träd behöver skydd och vård, särskilt i byggd miljö. Hur mår dina träd? Vi erbjuder och rekomenderar de tjänster dina träd behöver för att frodas.', NULL, '2016-12-31 00:00:00'),
 (12, 2, 'se', 'Trädfällning, bortforsling och flisning', 'Vi planerar och genomför trädfällning anpassad för dina träd och din gård. Dina träd fälls med traditionell teknik, genom sektionsfällning (klättring), med bomlift eller med annan ändamålsenlig teknik, alltid enligt yrkesmässig bedömning. Vi erbjuder även bortforsling av stammar och ris. Riset flisas ofta för att underlätta transport. Vi kan också flisa ris på beställning.', NULL, '2016-12-31 00:00:00'),
 (13, 3, 'se', 'Sågning', 'Genom att såga upp dina stockar kan du få sågvirke med speciella dimensioner, tex speciellt breda och tjocka plankor och balkar. Då en stor stock ligger på en olämplig plats kan klyvsågning med motorsåg vara ett bra sätt att göra stocken transporterbar, dessutom blir det möjligt att utnyttja stocken som material för tex trädgårdsbygge. Om du bara behöver vanligt sågvirke är det förmånligare att köpa det från en brädgård.', NULL, '2016-12-31 00:00:00'),
 (14, 4, 'se', 'Stubbfräsning', 'Vi kan avlägsna dina stubbar och ytliga rötter genom att fräsa dem. Fliset som blir kvar passar utmärkt som marktäckning runt träd och buskar. Ofta bortforslar vi dock fliset, lägger mull och sår gräs där trädet stod. En stubbe orsakar problem vid såväl gräsklippning som snöröjning. Stubben kan avlägsnas med grävmaskin eller stubbfräs. En stubbe förmultnar under 10-30 år beroende på storlek och träslag.', NULL, '2016-12-31 00:00:00'),
-(15, 1, 'fi', 'Sahauspalvelut', '', NULL, '2016-12-31 00:00:00');
+(15, 1, 'fi', 'Puiden arvioiminen, suojaaminen, hoitaminen sekä istuttaminen', 'Kun istutat puun huolella ja taidolla, varmistat puullesi pitkän iän. Puusi tarvitsee suojelua ja hoitoa, varsinkin rakennetussa ympäristössä, pihoilla ja puistoissa. Miten puusi voi? Pitäisikö sille tehdä jotain? Arvioimme ja suosittelemme/tarjoamme sinulle puusi tarvitsemat palvelut!', '2017-01-06 16:14:52', '2016-12-31 00:00:00'),
+(16, 3, 'en', 'Sawing services', 'Having your logs sawed by hand can get you lumber of unique quality. Having logs sawed by hand can get you thick and wide planks and spars. Got a large log in an awkward place? Rip cutting it can be a great way to reduce the log for transportation. You can then use the wood to make a garden bench, for example. However, the standard timber is more affordable when purchased at a lumberyard.', NULL, '2017-01-02 00:00:00');
 
-INSERT INTO `lupa_slide` (`id`, `language`, `html`, `content_target`, `is_published`, `time_created`, `time_edited`) VALUES
-(1, 'fi', '<img src="/data/img/slides/skog5B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:17'),
-(2, 'fi', '<img src="/data/img/slides/skog6B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:23'),
-(3, 'fi', '<img src="/data/img/slides/skog3B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:28'),
-(4, 'fi', '<img src="/data/img/slides/skog1leikattu.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:34'),
-(5, 'en', '<img src="/data/img/slides/skog5B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:17'),
-(6, 'en', '<img src="/data/img/slides/skog6B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:23'),
-(7, 'en', '<img src="/data/img/slides/skog3B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:28'),
-(8, 'en', '<img src="/data/img/slides/skog1leikattu.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:34'),
-(9, 'se', '<img src="/data/img/slides/skog5B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:17'),
-(10, 'se', '<img src="/data/img/slides/skog6B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:23'),
-(11, 'se', '<img src="/data/img/slides/skog3B.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:28'),
-(12, 'se', '<img src="/data/img/slides/skog1leikattu.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2016-12-28 18:08:34');
+INSERT INTO `lupa_slide` (`id`, `html`, `content_target`, `is_published`, `time_created`, `time_edited`) VALUES
+(1, '<img src="/data/img/slides/rz_skog5B.png" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:17'),
+(2, '<img src="/data/img/slides/rz_skog6B.png" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:25'),
+(3, '<img src="/data/img/slides/rz_skog3B.png" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:33'),
+(4, '<img src="/data/img/slides/rz_skog1leikattu.png" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:43');
 
 INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, `time_created`) VALUES
 (1, 'fi', 'FRONT_PAGE_PROMO', 'Kehitämme ja valmistamme prototyypejä ja sisustusosia puusta. Hyödynnämme mm. cnc-tekniikkaa ja puun muotopuristusta.', '2016-05-15 18:35:20', '2016-03-05 22:00:00'),
@@ -131,7 +125,7 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (73, 'en', 'CONTACT_INFO', 'Contact Information', NULL, '2016-12-19 18:00:00'),
 (74, 'fi', 'CONTACT_INFO', 'Yhteystiedot', NULL, '2016-12-19 18:00:00'),
 (75, 'se', 'CONTACT_INFO', 'Kontakt information', '2016-12-19 17:41:09', '2016-12-19 18:00:00'),
-(76, 'fi', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Me Länsiuudenmaan Puuapussa suoritamme puutyöt vastuulla ja huolenpidolla. Tavoitteemme ovat tyytyväiset asiakkaat sekä kaunis ja toimiva ympäristö.', '2016-12-31 12:11:53', '2016-12-27 18:00:00'),
+(76, 'fi', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Me Länsiuudenmaan Puuavussa suoritamme puutyöt vastuulla ja huolenpidolla. Tavoitteemme ovat tyytyväiset asiakkaat sekä kaunis ja toimiva ympäristö.', '2017-01-06 16:05:40', '2016-12-27 18:00:00'),
 (77, 'en', 'FRONT_PAGE_SH_CAPTION_TEXT', 'We at Länsiuudenmaan Puuapu take great care and responsibility of woodworking. We have reached our goal when you are happy and have a beautiful and well functioning environment.', '2016-12-31 12:11:58', '2016-12-27 18:00:00'),
 (78, 'se', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Länsiuudenmaan Puuapu sköter träd och fällning med ansvar och omsorg. Vi eftersträvar nöjda kunder samt en vacker och fungerande miljö.', '2016-12-31 12:12:12', '2016-12-27 18:00:00'),
 (79, 'se', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Trätrubbel?', '2016-12-31 12:11:15', '2016-12-27 20:00:00'),
