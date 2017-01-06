@@ -37,32 +37,6 @@
 }
 
 
-.videos-list-container h3 {
-    border-bottom: 1px solid #ccc;
-}
-
-
-.videos-list-container {
-    border-left: 1px solid #ddd;
-}
-
-
-.videos-list-container .row-video:hover {
-    background-color: #eee;
-}
-
-
-.videos-list-container hr {
-    border-color: #ccc;
-}
-
-
-.video-container {
-    background-color: #f6f6f6;
-    box-shadow: 0px 0px 5px 2px #bbb;
-}
-
-
 .navbar-default .navbar-nav > li > a {
     color: #484848;
     background-color: transparent;
@@ -90,4 +64,20 @@
 
 .btn-bold {
     font-weight: bold;
+}
+
+
+.service-carousel {
+    cursor: pointer;
+}
+
+.service.dark {
+    background-color: #484848;
+    color: #fff;
+}
+
+
+.service.light {
+    background-color: #fff;
+    color: #484848;
 }

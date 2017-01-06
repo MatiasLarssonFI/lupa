@@ -37,9 +37,24 @@
 </div>
 {% endblock %}
 
+{% block head_extra %}
+<link rel="stylesheet" type="text/css" href="{{ __base_uri }}/lib/slick-1.6.0/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="{{ __base_uri }}/lib/slick-1.6.0/slick/slick-theme.css"/>
+{% endblock %}
 
 {% block content %}
 <main>
-    
+    <div class="row">
+        <div class="col-xs-12 services-container">
+        {% for service in services %}
+            {% include loop.index % 2 == 0 ? "service__text_left.html" : "service__text_right.html" %}
+        {% endfor %}
+        </div>
+    </div>
 </main>
+{% endblock %}
+
+{% block js_link %}
+    <script type="text/javascript" src="{{ __base_uri }}/lib/slick-1.6.0/slick/slick.min.js"></script>
+    <script src="{{ __base_uri }}/js/service-carousels.{{ __js_src_mode }}.js?v={{ __js_src_version }}"></script>
 {% endblock %}
