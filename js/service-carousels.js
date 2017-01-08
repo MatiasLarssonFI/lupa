@@ -1,15 +1,22 @@
 !function($) {
+    function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+    
     var carousels = $(".service-carousel");
-    carousels.slick({
-        autoplay: true,
-        autoplaySpeed: 4000,
-        adaptiveHeight: true,
-        fade: true,
-        infinite: true,
-        arrows: false,
-        pauseOnFocus: false,
-        cssEase: 'linear'
+    carousels.each(function() {
+        $(this).slick({
+            adaptiveHeight: true,
+            fade: true,
+            infinite: true,
+            arrows: false,
+            pauseOnFocus: false,
+            cssEase: 'linear'
+        });
     });
+    setInterval(function() {
+        $(carousels[Math.floor(Math.random()*carousels.length)]).slick("slickNext");
+    }, 4000);
     carousels.click(function() {
         $(this).slick("slickNext");
     });
