@@ -6,7 +6,6 @@
     var carousels = $(".service-carousel");
     carousels.each(function() {
         $(this).slick({
-            adaptiveHeight: true,
             fade: true,
             infinite: true,
             arrows: false,

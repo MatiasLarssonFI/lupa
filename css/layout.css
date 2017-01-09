@@ -92,26 +92,19 @@ img.lang-flag {
     margin-bottom: 0px;
 }
 
-
-.service-container {
-    height: 300px;
-}
-
-
-.service-carousel,
-.service-text {
-    height: 100%;
-}
-
 .service-img {
     height: 100%;
     padding-left: 0px;
     padding-right: 0px;
 }
 
-.service-img img {
-    height: 300px;
-    max-height: 300px;
+
+.services-container .service-text p {
+    font-size: 16px;
+}
+
+.services-container .service-text h4 {
+    font-size: 22px;
 }
 
 
@@ -129,11 +122,21 @@ img.lang-flag {
     
     .front-page-carousel-container {
         top: 0px;
+        margin-bottom: 0px;
     }
     
     .lupa-slide-content {
         padding: 10px;
         bottom: 20%;
+    }
+    
+    
+    .services-container .service-text p {
+        font-size: 14px;
+    }
+
+    .services-container .service-text h4 {
+        font-size: 20px;
     }
 }
 

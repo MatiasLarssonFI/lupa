@@ -81,3 +81,10 @@
     background-color: #fff;
     color: #484848;
 }
+
+
+@media (max-width: 768px) {
+    hr.service-separator {
+        border: 1px solid #dfdfdf;
+    }
+}

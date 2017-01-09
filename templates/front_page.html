@@ -48,6 +48,7 @@
         <div class="col-xs-12 services-container">
         {% for service in services %}
             {% include loop.index % 2 == 0 ? "service__text_left.html" : "service__text_right.html" %}
+            <hr class="service-separator hidden-sm hidden-md hidden-lg">
         {% endfor %}
         </div>
     </div>
