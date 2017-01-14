@@ -52,6 +52,21 @@
         {% endfor %}
         </div>
     </div>
+    <div class="row dark some-row">
+        <div class="col-xs-12 col-md-5">
+           <img class="phone-symbol pull-left" src="{{ __base_uri }}/data/img/ui-symbols/phone-circle.png">
+           <img class="phone-number pull-left" src="{{ __base_uri }}/data/img/pn.png">
+        </div>
+        <div class="hidden-xs hidden-sm col-md-7 text-right"> <!-- not xs or sm -->
+            <a class="some-link" href="{{ facebook_page_url }}"><img src="{{ __base_uri }}/data/img/facebook.png" alt="Facebook" title="Facebook page"> {{ __contact_info.name }}</a>
+        </div>
+    </div>
+    
+    <div class="row dark some-row some-row-xs hidden-md hidden-lg"> <!-- xs and sm only -->
+        <div class="col-xs-12">
+            <a class="some-link" href="{{ facebook_page_url }}"><img src="{{ __base_uri }}/data/img/facebook.png" alt="Facebook" title="Facebook page"> {{ __contact_info.name }}</a>
+        </div>
+    </div>
 </main>
 {% endblock %}
 

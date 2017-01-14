@@ -33,6 +33,7 @@ class FrontPageView extends AbstractView {
             "slides" => \SlideFactory::get()->get_front_page_slides(),
             "services" => \ServiceFactory::get()->get_services(),
             "lang" => $text_storage->get_language(),
+            "facebook_page_url" => \DBIF::get()->get_facebook_page_url(),
         );
     }
 }

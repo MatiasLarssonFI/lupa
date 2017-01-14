@@ -83,6 +83,26 @@
 }
 
 
+.services-container .service-text h3 {
+    font-weight: bold;
+}
+
+
+.some-link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-style: italic;
+}
+
+a.some-link:hover,
+a.some-link:focus,
+a.some-link:active,
+a.some-link:visited {
+    color: #fff;
+}
+
+
 @media (max-width: 768px) {
     hr.service-separator {
         border: 1px solid #dfdfdf;

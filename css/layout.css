@@ -99,12 +99,48 @@ img.lang-flag {
 }
 
 
-.services-container .service-text p {
+.services-container .service-text p,
+.services-container .service-text h3 {
     font-size: 16px;
 }
 
-.services-container .service-text h4 {
-    font-size: 22px;
+
+.some-link img {
+    width: 34px;
+    padding-bottom: 4px;
+}
+
+
+.some-link {
+    font-size: 28px;
+}
+
+
+.some-row {
+    max-height: 43px;
+    padding-left: 3em;
+    padding-right: 3em;
+    margin-top: 20px;
+}
+
+
+.some-row-xs {
+    margin-top: 70px;
+    max-height: none;
+}
+
+
+.some-row img.phone-symbol {
+    width: 100px;
+    position: relative;
+    top: -34px;
+}
+
+
+.some-row img.phone-number {
+    height: 40px;
+    margin-left: -28px;
+    position: relative;
 }
 
 

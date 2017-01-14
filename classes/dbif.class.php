@@ -63,17 +63,14 @@ class DBIF {
     
     
     /**
-     * Get the gallery images.
+     * Returns the facebook page url.
      * 
-     * Calls cb_store_row on each row.
+     * @return string
      */
-    public function get_gallery_images($cb_store_row) {
-        $stm = $this->_pdo->prepare("SELECT thumb_url, original_url, name, description, id FROM {$this->_table_prefix}gallery_image where is_published");
+    public function get_facebook_page_url() {
+        $stm = $this->_pdo->prepare("SELECT `value` from {$this->_table_prefix}config where `key` = 'facebook_page_url'");
         $stm->execute();
-        
-        while ($row = $stm->fetch()) {
-            $cb_store_row($row);
-        }
+        return $stm->fetchColumn();
     }
     
     
