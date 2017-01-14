@@ -9,9 +9,9 @@
             <h2>{{ strings.contact_info_title }}</h2>
                 <div class="well">
                 <address>
-                    Länsiuudenmaan PuuApu<br>
-                    Malminkatu 16<br>
-                    08150 Lohja
+                    {{ __contact_info.name }}<br>
+                    {{ __contact_info.address }}<br>
+                    {{ __contact_info.postal_code }} {{ __contact_info.city }}
                 </address>
             </div>
         </div>
