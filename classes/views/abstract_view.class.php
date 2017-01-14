@@ -51,12 +51,10 @@ abstract class AbstractView implements IView {
         $data["__base_uri"] = $base_uri;
         $data["__contact_info"] = $this->make_contact_info($text_storage);
         $data["__header_logo_uri"] = $base_uri . $dbif->get_header_logo_uri();
-        $data["__header_promo_text"] = $text_storage->text("HEADER_PROMO");
         $data["__str_up"] = $text_storage->text("UP");
         $data["__color_css_uri"] = $base_uri . $dbif->get_color_css_uri();
         $data["__lang"] = $language;
         $data["__nav_links"] = $this->_nlf->get_nav_links();
-        $data["__sub_nav_links"] = $this->_nlf->get_sub_nav_links();
         $data["__lang_links"] = $this->_nlf->get_lang_links();
         $data["__js_texts"] = $this->get_js_texts();
         $data["__js_src_mode"] = $src_conf->get_js_src_mode();
