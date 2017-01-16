@@ -77,13 +77,13 @@ main.contact h2 {
     cursor: pointer;
 }
 
-.row.dark {
+div.dark {
     background-color: #484848;
     color: #fff;
 }
 
 
-.row.light {
+div.light {
     background-color: #fff;
     color: #484848;
 }
@@ -99,6 +99,16 @@ main.contact h2 {
     color: #fff;
     font-weight: bold;
     font-style: italic;
+}
+
+.footer-upper {
+    background-color: #b5927d;
+    color: #fff;
+}
+
+.footer-upper h2 {
+    font-weight: bold;
+    border-bottom: 1px solid #fff;
 }
 
 a.some-link:hover,

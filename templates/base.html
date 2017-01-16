@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ link.get_language }}">
     <!-- {{ "now"|date("Y") }} Matias Larsson -->
     <head>
         {% block head %}
@@ -29,9 +29,9 @@
                 {% block content %}{% endblock %}
                </div>
             </div>
-            <div class="row dark">
-                <div class="col-xs-12" id="footer">
-                    <ul class="nav nav-pills lang downsize">
+            <div class="row" id="footer">
+                <div class="col-xs-12 dark">
+                    <ul class="nav nav-pills lang">
                     {% for link in __lang_links %}
                         <li><a title="{{ link.get_language }}" href='{{ __base_uri }}/{{ link.get_language }}/{{ link.get_action }}'><img class="lang-flag" alt="{{ link.get_language }}" src="{{ __base_uri }}/data/img/flag-{{ link.get_language }}.png"></a></li>
                     {% endfor %}
