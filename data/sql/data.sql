@@ -18,6 +18,7 @@ INSERT INTO `lupa_config` (`id`, `key`, `value`, `time_edited`, `time_created`) 
 (8, 'js_src_mode', 'debug', NULL, '2016-07-15 18:00:00'),
 (9, 'js_src_version', '20160812', '2016-08-12 12:51:49', '2016-07-15 18:00:00'),
 (10, 'css_src_version', '20160716', NULL, '2016-07-15 18:00:00');
+(11, 'facebook_page_url', 'https://www.facebook.com/lansiuudenmaanpuuapu/', NULL, '2017-01-14 00:00:00');
 
 INSERT INTO `lupa_service` (`id`, `time_edited`, `time_created`) VALUES
 (1, NULL, '2016-12-31 14:41:27'),
@@ -130,7 +131,22 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (78, 'se', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Länsiuudenmaan Puuapu sköter träd och fällning med ansvar och omsorg. Vi eftersträvar nöjda kunder samt en vacker och fungerande miljö.', '2016-12-31 12:12:12', '2016-12-27 18:00:00'),
 (79, 'se', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Trätrubbel?', '2016-12-31 12:11:15', '2016-12-27 20:00:00'),
 (80, 'en', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Tree trouble?', NULL, '2016-12-27 20:00:00'),
-(81, 'fi', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Puupulmia?', NULL, '2016-12-27 20:00:00');
+(81, 'fi', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Puupulmia?', NULL, '2016-12-27 20:00:00'),
+(82, 'fi', 'CONTACT_TEXT_NAME', 'Länsi-Uudenmaan PuuApu', '2017-01-14 13:52:31', '2017-01-13 22:00:00'),
+(83, 'fi', 'CONTACT_TEXT_STREET_ADDRESS', 'Malminkatu 16', NULL, '2017-01-13 22:00:00'),
+(84, 'fi', 'CONTACT_TEXT_POSTAL_CODE', '08150', NULL, '2017-01-13 22:00:00'),
+(85, 'fi', 'CONTACT_TEXT_CITY', 'Lohja', '2017-01-14 12:49:39', '2017-01-13 22:00:00'),
+(86, 'se', 'CONTACT_TEXT_CITY', 'Lojo', '2017-01-14 10:49:39', '2017-01-13 20:00:00'),
+(87, 'se', 'CONTACT_TEXT_POSTAL_CODE', '08150', NULL, '2017-01-13 20:00:00'),
+(88, 'se', 'CONTACT_TEXT_STREET_ADDRESS', 'Malminkatu 16', NULL, '2017-01-13 20:00:00'),
+(89, 'en', 'CONTACT_TEXT_CITY', 'Lohja', '2017-01-14 10:49:39', '2017-01-13 20:00:00'),
+(90, 'en', 'CONTACT_TEXT_POSTAL_CODE', '08150', NULL, '2017-01-13 20:00:00'),
+(91, 'en', 'CONTACT_TEXT_STREET_ADDRESS', 'Malminkatu 16', NULL, '2017-01-13 20:00:00'),
+(92, 'se', 'CONTACT_TEXT_NAME', 'Länsi-Uudenmaan PuuApu', '2017-01-14 13:52:28', '2017-01-13 22:00:00'),
+(93, 'en', 'CONTACT_TEXT_NAME', 'Länsi-Uudenmaan PuuApu', '2017-01-14 13:52:26', '2017-01-13 22:00:00'),
+(94, 'fi', 'CONTACT_TEXT_BUSINESS_ID', '2138386-4', '2017-01-16 17:45:25', '2017-01-15 22:00:00'),
+(95, 'se', 'CONTACT_TEXT_BUSINESS_ID', '2138386-4', NULL, '2017-01-15 22:00:00'),
+(96, 'en', 'CONTACT_TEXT_BUSINESS_ID', '2138386-4', NULL, '2017-01-15 22:00:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
