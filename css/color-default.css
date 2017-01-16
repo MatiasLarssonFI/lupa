@@ -1,3 +1,7 @@
+main.contact h2 {
+    border-bottom: 1px solid #ccc;
+}
+
 .lupa-navbar {
     background-color: rgba(255,255,255,0.8);
     border: none;
@@ -24,7 +28,9 @@
 }
 
 
-.btn-primary {
+.btn-primary,
+.btn-primary:active,
+.btn-primary:focus {
     background-color: #484848;
     border-color: #fff;
     color: #c0f47a;
