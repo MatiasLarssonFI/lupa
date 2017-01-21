@@ -1,0 +1,6 @@
+<div class="service-text-inner">
+    <h3>{{ service.get_title }}</h3>
+    {% for p in service.get_text_paragraphs %}
+        <p>{{ p }}</p>
+    {% endfor %}
+</div>

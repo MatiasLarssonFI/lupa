@@ -33,6 +33,11 @@ main.contact h2 {
     padding-top: .2em;
 }
 
+.lang-top {
+    position: relative;
+    z-index: 2;
+}
+
 
 img.lang-flag {
     width: 40px;
@@ -70,8 +75,8 @@ img.lang-flag {
 
 .front-page-carousel-container {
     position: relative;
-    top: -100px;
-    margin-bottom: -100px;
+    top: -150px;
+    margin-bottom: -150px;
     z-index: 1;
 }
 
@@ -95,7 +100,6 @@ img.lang-flag {
 
 .lupa-navbar {
     position: relative;
-    top: 20px;
     z-index: 2;
     height: 100px;
     border-radius: 0px;
@@ -109,9 +113,29 @@ img.lang-flag {
 }
 
 
+.service-img img {
+    width: 100%;
+}
+
+
 .services-container .service-text p,
 .services-container .service-text h3 {
     font-size: 16px;
+}
+
+
+.service-container .service-text-inner {
+    margin: 20px 10px;
+    padding: 20px;
+}
+
+.service-container.left .service-text-inner {
+    text-align: right;
+}
+
+
+.service-container.right .service-text-inner {
+    text-align: left;
 }
 
 
@@ -123,37 +147,6 @@ img.lang-flag {
 
 .some-link {
     font-size: 28px;
-}
-
-
-.some-row {
-    height: 43px;
-    max-height: 43px;
-    padding-left: 3em;
-    padding-right: 3em;
-    margin-top: 20px;
-}
-
-
-.some-row-xs {
-    margin-top: 70px;
-    max-height: none;
-    height: auto;
-    max-height: auto;
-}
-
-
-.some-row img.phone-symbol {
-    width: 100px;
-    position: relative;
-    top: -34px;
-}
-
-
-.some-row img.phone-number {
-    height: 40px;
-    margin-left: -28px;
-    position: relative;
 }
 
 
@@ -171,6 +164,7 @@ img.lang-flag {
 
 .footer-upper {
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 
@@ -220,17 +214,17 @@ address {
     
     .lupa-navbar {
         height: auto;
+        position: static;
     }
     
     .lupa-slide-content {
         padding: 0px 4px;
-        font-size: 11px;
+        font-size: 14px;
         bottom: 10%;
     }
     
     
     .lupa-slide-content h3 {
-        font-size: 14px;
         margin-top: 4px;
     }
 }

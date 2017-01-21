@@ -3,7 +3,7 @@ main.contact h2 {
 }
 
 .lupa-navbar {
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(0,0,0,0.7);
     border: none;
 }
 
@@ -44,27 +44,33 @@ main.contact h2 {
 
 
 .navbar-default .navbar-nav > li > a {
-    color: #484848;
+    color: #fff;
     background-color: transparent;
-    padding: 7px 10px;
-    font-weight: bold;
-    font-size: 16px;
-    margin-left: 10px;
+    padding: 7px 15px;
+    font-weight: normal;
+    font-size: 20px;
 }
 
 
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li > a:hover {
     text-decoration: underline;
+    color: #fff;
 }
 
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus,
 .navbar-default .navbar-nav > .active > a:hover {
-    background-color: #484848;
+    background: transparent;
     color: #fff;
     border: none;
+    font-weight: bold;
+}
+
+
+.navbar-default .navbar-nav > li:not(:last-child){
+    border-right: 2px solid #fff;
 }
 
 
@@ -89,8 +95,19 @@ div.light {
 }
 
 
+div.brown {
+    background-color: #7d6446;
+    color: #fff;
+}
+
+
 .services-container .service-text h3 {
     font-weight: bold;
+}
+
+
+.services-container .service-text-inner {
+    border: 1px solid #fff;
 }
 
 
@@ -102,7 +119,6 @@ div.light {
 }
 
 .footer-upper {
-    background-color: #b5927d;
     color: #fff;
 }
 

@@ -1,17 +1,14 @@
-<div class="row light">
-    <div class="col-xs-12 service-container">
+<div class="row brown">
+    <div class="col-xs-12 service-container left">
         <div class="row">
-            <div class="col-xs-12 col-sm-5 col-sm-offset-1 text-right service-text">
-                <h3>{{ service.get_title }}</h3>
-            {% for p in service.get_text_paragraphs %}
-                <p>{{ p }}</p>
-            {% endfor %}
+            <div class="col-xs-12 col-sm-6 service-text">
+                {% include "service_text.html" %}
             </div>
             
             <div class="col-xs-12 col-sm-6 service-img">
-                <div class="service-carousel">
+                <div class="service-carousel row">
                 {% for img_uri in service.get_img_uris %}
-                    <div>
+                    <div class="col-xs-12">
                         <img src="{{ img_uri }}" alt="" class="pull-left" title="{{ service.get_title }}">
                     </div>
                 {% endfor %}

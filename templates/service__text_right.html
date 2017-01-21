@@ -1,5 +1,5 @@
-<div class="row dark">
-    <div class="col-xs-12 service-container">
+<div class="row brown">
+    <div class="col-xs-12 service-container right">
         <div class="row">
             <div class="col-xs-12 col-sm-6 service-img">
                 <div class="service-carousel">
@@ -11,11 +11,8 @@
                 </div>
             </div>
             
-            <div class="col-xs-12 col-sm-5 text-left service-text">
-                <h3>{{ service.get_title }}</h3>
-            {% for p in service.get_text_paragraphs %}
-                <p>{{ p }}</p>
-            {% endfor %}
+            <div class="col-xs-12 col-sm-6 service-text">
+                {% include "service_text.html" %}
             </div>
         </div>
     </div>
