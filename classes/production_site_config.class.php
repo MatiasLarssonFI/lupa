@@ -25,7 +25,7 @@ class ProductionSiteConfig implements ISiteConfig {
     
     
     public function db_login_params() {
-        $creds_fname = dirname(__FILE__) . "/../../db_creds.json";
+        $creds_fname = dirname(__FILE__) . "/../../../db_creds.json";
         if (is_readable($creds_fname)) {
             $jso = json_decode(file_get_contents($creds_fname));
             return array(
