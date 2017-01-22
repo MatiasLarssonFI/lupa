@@ -20,11 +20,11 @@ INSERT INTO `lupa_config` (`id`, `key`, `value`, `time_edited`, `time_created`) 
 (10, 'css_src_version', '20160716', NULL, '2016-07-15 18:00:00'),
 (11, 'facebook_page_url', 'https://www.facebook.com/lansiuudenmaanpuuapu/', '2017-01-14 12:59:06', '2017-01-13 22:00:00');
 
-INSERT INTO `lupa_service` (`id`, `time_edited`, `time_created`) VALUES
-(1, NULL, '2016-12-31 14:41:27'),
-(2, NULL, '2016-12-31 14:41:27'),
-(3, NULL, '2016-12-31 14:41:27'),
-(4, NULL, '2016-12-31 14:41:27');
+INSERT INTO `lupa_service` (`id`, `icon_uri`, `time_edited`, `time_created`) VALUES
+(1, '/data/img/ui-symbols/plant.png', '2017-01-22 13:37:13', '2016-12-31 14:41:27'),
+(2, '/data/img/ui-symbols/tree.png', '2017-01-22 13:37:28', '2016-12-31 14:41:27'),
+(3, '/data/img/ui-symbols/saw.png', '2017-01-22 13:37:43', '2016-12-31 14:41:27'),
+(4, '/data/img/ui-symbols/stump.png', '2017-01-22 13:37:52', '2016-12-31 14:41:27');
 
 INSERT INTO `lupa_service_image` (`id`, `service_id`, `image_uri`, `time_edited`, `time_created`) VALUES
 (8, 2, '/data/img/services/rz_puiden_kaataminen.png', '2017-01-06 15:54:28', '2016-12-31 00:00:00'),
