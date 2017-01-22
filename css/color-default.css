@@ -96,8 +96,13 @@ div.light {
 
 
 div.brown {
-    background-color: #7d6446;
+    background-image: url("../data/img/brown-texture.jpg");
     color: #fff;
+}
+
+
+div.brown.service-row {
+    background-size: 50% 100%;
 }
 
 
