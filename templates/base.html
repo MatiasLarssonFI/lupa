@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="{{ link.get_language }}">
+<html lang="{{ __lang }}">
     <!-- {{ "now"|date("Y") }} Matias Larsson -->
     <!-- Graphical design: Eero Hynninen -->
     <head>
         {% block head %}
-            <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+            {% if __scale_mobile %}
+                <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+            {% endif %}
+            
             <link rel="stylesheet" href="{{ __base_uri }}/lib/bootstrap-3.3.6/css/bootstrap.min.css">
             
             <script src="{{ __base_uri }}/js/wp.js"></script>
@@ -20,7 +23,7 @@
         {% endblock %}
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid" style="max-width: 1140px;">
             <header>
                 <div class="row lang-top"><!-- lang -->
                     {% include "lang_sm.html" %}
