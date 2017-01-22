@@ -18,6 +18,14 @@ interface IService {
     
     
     /**
+     * Returns the icon URI.
+     * 
+     * @return string
+     */
+    public function get_icon_uri();
+    
+    
+    /**
      * Returns the image URIs.
      * 
      * @return string[]

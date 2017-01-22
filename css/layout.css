@@ -138,6 +138,26 @@ img.lang-flag {
     text-align: left;
 }
 
+.service-title {
+    overflow: hidden;
+}
+
+.service-title img {
+    width: 6em;
+    margin-bottom: 10px;
+    padding-left: 1em;
+    padding-right: 1em;
+    display: inline-block;
+}
+
+
+.service-title h3 {
+    margin-top: 0px;
+    padding-top: 20px;
+    display: inline-block;
+    max-width: 24em;
+}
+
 
 .some-link img {
     width: 34px;

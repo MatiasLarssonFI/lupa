@@ -39,7 +39,8 @@ class ServiceFactory {
             if (!array_key_exists($row_id, $ret)) {
                 $ret[$row_id] = new Service(
                     $row["title"],
-                    $row["text"]
+                    $row["text"],
+                    $row["icon_uri"]
                 );
             }
             
