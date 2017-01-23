@@ -106,6 +106,19 @@ div.brown.service-row {
 }
 
 
+div.brown-gradient {
+    background-image: url("../data/img/brown-gradient.png");
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    color: #fff;
+}
+
+hr.brown {
+    border-color: #ab7d58;
+    border-width: 2px;
+}
+
+
 .services-container .service-text h3 {
     font-weight: bold;
 }

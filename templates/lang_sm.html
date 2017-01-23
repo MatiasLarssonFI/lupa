@@ -1,4 +1,4 @@
-<div class="col-xs-12">
+<div class="col-xs-12 col-lg-8 col-lg-offset-2">
     <ul class="nav nav-pills lang downsize">
     {% for link in __lang_links %}
         <li class="pull-right"><a title="{{ link.get_language }}" href='{{ __base_uri }}/{{ link.get_language }}/{{ link.get_action }}'><img class="lang-flag" alt="{{ link.get_language }}" src="{{ __base_uri }}/data/img/flag-{{ link.get_language }}.png"></a></li>

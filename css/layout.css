@@ -1,5 +1,5 @@
 main {
-    padding: 20px 1em 0px 1em;
+    padding: 0px 1em;
 }
 
 main.contact h2 {
@@ -118,6 +118,23 @@ img.lang-flag {
 }
 
 
+.services-title h4 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.services-title {
+    margin-top: 26px;
+    margin-bottom: 26px;
+}
+
+
+hr.services-title-line {
+    margin-top: 44px;
+}
+
+
 .services-container .service-text p,
 .services-container .service-text h3 {
     font-size: 16px;
@@ -155,7 +172,7 @@ img.lang-flag {
     margin-top: 0px;
     padding-top: 20px;
     display: inline-block;
-    max-width: 350px;
+    max-width: 75%;
 }
 
 
@@ -205,17 +222,6 @@ address {
         padding-bottom: 20px;
     }
     
-    .front-page-carousel-container {
-        top: 0px;
-        margin-bottom: 0px;
-    }
-    
-    .lupa-slide-content {
-        padding: 10px;
-        bottom: 20%;
-    }
-    
-    
     .services-container .service-text p {
         font-size: 14px;
     }
@@ -226,7 +232,7 @@ address {
     
     
     .service-title h3 {
-        max-width: 60%;
+        max-width: 100%;
     }
 }
 
@@ -240,17 +246,6 @@ address {
     .lupa-navbar {
         height: auto;
         position: static;
-    }
-    
-    .lupa-slide-content {
-        padding: 0px 4px;
-        font-size: 14px;
-        bottom: 10%;
-    }
-    
-    
-    .lupa-slide-content h3 {
-        margin-top: 4px;
     }
     
     
