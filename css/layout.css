@@ -118,9 +118,9 @@ img.lang-flag {
 }
 
 
-.services-title h4 {
-    padding-top: 10px;
-    padding-bottom: 10px;
+.services-title h3 {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 
@@ -241,11 +241,6 @@ address {
 @media (max-width: 768px) {
     .lupa-nav-links {
         padding-top: 0;
-    }
-    
-    .lupa-navbar {
-        height: auto;
-        position: static;
     }
     
     
