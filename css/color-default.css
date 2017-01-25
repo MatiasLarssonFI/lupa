@@ -1,3 +1,8 @@
+body {
+    font-family: Ebrima, Helvetica, sans-serif;
+}
+
+
 main.contact h2 {
     border-bottom: 1px solid #ccc;
 }
@@ -30,16 +35,19 @@ main.contact h2 {
 
 .btn-primary,
 .btn-primary:active,
-.btn-primary:focus {
-    background-color: #484848;
-    border-color: #fff;
-    color: #c0f47a;
+.btn-primary:focus,
+.btn-primary:hover {
+    border: none;
+    background-image: url("../data/img/orange-gradient.png");
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    color: #fff;
+    border-radius: 0px;
 }
 
+
 .btn-primary:hover {
-    background-color: #585858;
-    border-color: #fff;
-    color: #c0f47a;
+    box-shadow: 0px 0px 15px 4px rgba(248,93,0,0.5);
 }
 
 
@@ -143,6 +151,28 @@ hr.brown {
 .footer-upper h2 {
     font-weight: bold;
     border-bottom: 1px solid #fff;
+}
+
+
+.footer-upper-inner {
+    border-top: 2px solid #636363;
+}
+
+
+.footer-nav > li > a,
+.footer-nav > li > a:hover,
+.footer-nav > li > a:focus,
+.footer-nav > li > a:active,
+.footer-nav > li > a:visited {
+    color: #dbcab9;
+    font-weight: bold;
+    background-color: transparent;
+    padding-left: 0px;
+}
+
+.footer-nav > li > a:hover,
+.footer-nav > li > a:focus {
+    text-decoration: underline;
 }
 
 a.some-link:hover,

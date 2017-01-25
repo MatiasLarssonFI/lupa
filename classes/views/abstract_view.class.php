@@ -62,6 +62,13 @@ abstract class AbstractView implements IView {
         $data["__css_src_version"] = $src_conf->get_css_src_version();
         $data["__scale_mobile"] = $this->is_mobile_scale_enabled();
         
+        $data["__strings"] = [
+            "footer_promo" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
+            "name_short" => $text_storage->text("NAME_SHORT"),
+            "footer_navigation" => $text_storage->text("FOOTER_NAVIGATION_TITLE"),
+            "contact_info_title" => $text_storage->text("CONTACT_INFO"),
+        ];
+        
         echo $twig->render($this->get_template_name(), $data);
     }
     

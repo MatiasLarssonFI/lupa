@@ -1,15 +1,9 @@
 main {
-    padding: 0px 1em;
+    padding: 0px;
 }
 
 main.contact h2 {
     padding-bottom: 2px;
-}
-
-
-#footer {
-    padding-left: 1em;
-    padding-right: 1em;
 }
 
 
@@ -90,6 +84,13 @@ img.lang-flag {
     bottom: 30%;
     padding: 15px 10px;
     font-size: 16px;
+    text-align: left;
+    max-width: 40em;
+    left: 19%;
+}
+
+.lupa-slide-content h3 {
+    margin-top: 0px;
 }
 
 
@@ -118,9 +119,13 @@ img.lang-flag {
 }
 
 
-.services-title h3 {
-    padding-top: 5px;
-    padding-bottom: 5px;
+.services-title h4 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.no-padding {
+    padding: 0px;
 }
 
 
@@ -183,7 +188,7 @@ hr.services-title-line {
 
 
 .some-link {
-    font-size: 28px;
+    font-size: 14px;
 }
 
 
@@ -193,15 +198,20 @@ hr.services-title-line {
 }
 
 
-.footer-upper,
 .footer-upper h2 {
     font-size: 18px;
 }
 
 
 .footer-upper {
+    margin-top: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+
+.footer-upper-inner {
+    margin-top: 10px;
 }
 
 

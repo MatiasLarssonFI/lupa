@@ -19,8 +19,9 @@
             </div>
         {% endfor %}
             <div class="carousel-caption lupa-slide-content">
-            <h3>{{ strings.slideshow_caption_title }}</h3>
+            <h3><b>{{ strings.slideshow_caption_title }}</b></h3>
             <p>{{ strings.slideshow_caption_paragraph|nl2br }}</p>
+            <a class="hidden-xs btn btn-lg btn-primary" href="{{ __base_uri }}/{{ __lang }}/contact">{{ strings.contact_us }}&nbsp;&raquo;</a>
         </div>
         </div>
 
@@ -45,14 +46,18 @@
 {% block content %}
 <main>
     <div class="row">
-        <div class="col-xs-4 col-md-5">
-            <hr class="brown services-title-line">
-        </div>
-        <div class="col-xs-4 col-md-2 text-uppercase text-center">
-            <div class="brown-gradient services-title"><h3><b>{{ strings.services_title }}</b></h3></div>
-        </div>
-        <div class="col-xs-4 col-md-5">
-            <hr class="brown services-title-line">
+        <div class="col-xs-12 col-lg-8 col-lg-offset-2 services-container">
+            <div class="row">
+                <div class="col-xs-4 col-md-5">
+                    <hr class="brown services-title-line">
+                </div>
+                <div class="col-xs-4 col-md-2 text-uppercase text-center no-padding">
+                    <div class="brown-gradient services-title"><h4><b>{{ strings.services_title }}</b></h4></div>
+                </div>
+                <div class="col-xs-4 col-md-5">
+                    <hr class="brown services-title-line">
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -63,37 +68,18 @@
         {% endfor %}
         </div>
     </div>
-    <div class="row dark some-row">
-        <div class="col-xs-12 col-lg-8 col-lg-offset-2">
-            <a class="some-link" href="{{ facebook_page_url }}"><img src="{{ __base_uri }}/data/img/facebook.png" alt="Facebook" title="Facebook page"> {{ __contact_info.name }}</a>
-        </div>
-    </div>
-    
-    <div class="row dark footer-upper">
-        <div class="col-xs-12 col-lg-8 col-lg-offset-2">
-            <h2>Osoite</h2>
-            <address>
-                {{ __contact_info.name }}<br>
-                {{ __contact_info.address }}<br>
-                {{ __contact_info.postal_code }} {{ __contact_info.city }}
-            </address>
-        </div>
-        
-        <div class="col-xs-12 col-lg-8 col-lg-offset-2">
-            <h2>Yhteystiedot</h2>
-            <img class="phone-number-sm" src="{{ __base_uri }}/data/img/pn-sm.png" alt=""><br>
-            <img class="email-sm" src="{{ __base_uri }}/data/img/em-sm.png" alt=""><br>
-            Y-tunnus: {{ __contact_info.business_id }}
-        </div>
-    </div>
 </main>
 <script>
-    $(window).load(function() {
-        $(".service-text-inner").each(function() {
-            var node = $(this);
-            node.outerHeight(node.closest(".row").innerHeight() - parseInt(node.css("padding-bottom")) - parseInt(node.css("margin-bottom")));
-        });
-    });
+    !function($) {
+        var update_service_boxes = function() {
+            $(".service-text-inner").each(function() {
+                var node = $(this);
+                node.css("min-height", node.closest(".row").innerHeight() - parseInt(node.css("padding-bottom")) - parseInt(node.css("margin-bottom")));
+            });
+        };
+        $(window).load(update_service_boxes);
+        $(window).resize(update_service_boxes);
+    }(jQuery);
 </script>
 {% endblock %}
 

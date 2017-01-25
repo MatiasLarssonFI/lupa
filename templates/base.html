@@ -36,6 +36,42 @@
                 {% block content %}{% endblock %}
                </div>
             </div>
+            
+            <div class="row dark footer-upper">
+                <div class="col-xs-12 col-lg-8 col-lg-offset-2 footer-upper-inner">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4">
+                            <h3><b>{{ __strings.contact_info_title }}</b></h3>
+                            <img class="phone-number-sm" src="{{ __base_uri }}/data/img/pn-sm.png" alt=""><br>
+                            <img class="email-sm" src="{{ __base_uri }}/data/img/em-sm.png" alt=""><br>
+                            
+                            <div class="row dark some-row">
+                                <div class="col-xs-12">
+                                    <a class="some-link" href="{{ facebook_page_url }}"><img src="{{ __base_uri }}/data/img/facebook.png" alt="Facebook" title="Facebook page">
+                                    &nbsp;{{ __contact_info.name }}</a>
+                                </div>
+                            </div>
+                            <hr class="hidden-md hidden-lg">
+                        </div>
+                        <div class="col-xs-12 col-md-4">
+                            <h3><b>{{ __strings.name_short }}</b></h3>
+                            <p>{{ __strings.footer_promo }}</p>
+                            <hr class="hidden-md hidden-lg">
+                        </div>
+                        <div class="col-xs-12 col-md-3 col-md-offset-1">
+                            <h3><b>{{ __strings.footer_navigation }}</b></h3>
+                            <nav>
+                                <ul class="nav footer-nav">
+                                    {% for link in __nav_links %}
+                                        <li><a href='{{ __base_uri }}/{{ __lang }}/{{ link.get_action }}' title="{{ link.get_text }}">{{ link.get_text }}&nbsp;&raquo;</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="row" id="footer">
                 <div class="col-xs-12 brown">
                     <div class="row">

@@ -5,23 +5,27 @@
 <main class="contact">
     <div class="row">
         <hr style="visibility: hidden;">
-        <div class="col-md-4">
-            <h2>{{ strings.contact_info_title }}</h2>
-            <div class="well well-sm">
-                <address>
-                    {{ __contact_info.name }}<br>
-                    {{ __contact_info.address }}<br>
-                    {{ __contact_info.postal_code }} {{ __contact_info.city }}
-                </address>
+        <div class="col-xs-12 col-lg-8 col-lg-offset-2">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>{{ strings.contact_info_title }}</h2>
+                    <div class="well well-sm">
+                        <address>
+                            {{ __contact_info.name }}<br>
+                            {{ __contact_info.address }}<br>
+                            {{ __contact_info.postal_code }} {{ __contact_info.city }}
+                        </address>
+                    </div>
+                </div>
+            
+                <div class="col-md-7 col-md-offset-1" id="form-content">
+                    <h2>{{ strings.contact_form_title }}</h2>
+                    <div id="feedback">
+                        &nbsp;
+                    </div>
+                    {% include "contact_form.html" %}
+                </div>
             </div>
-        </div>
-        
-        <div class="col-md-7 col-md-offset-1" id="form-content">
-            <h2>{{ strings.contact_form_title }}</h2>
-            <div id="feedback">
-                &nbsp;
-            </div>
-            {% include "contact_form.html" %}
         </div>
     </div>
 </main>
