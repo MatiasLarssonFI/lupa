@@ -1,74 +1,209 @@
-main {
-    border-top: 1px solid #C0C0C0;
-}
-
-
-.img-bar-img, .gallery-img {
-    border: 2px solid #C0C0C0;
-    box-shadow: 2px 0px 5px #C0C0C0;
-}
-
-
-.lang a {
-    border: 1px solid #dfdfdf;
-    color: #000080;
-    background-color: #eee;
-}
-
-
-.lang li > a:hover {
-    border-color: #000080;
-}
-
-
-.woodparts-nav > li > a,
-.woodparts-nav > li > a:hover,
-.woodparts-nav > li > a:visited {
-    color: #000080;
-    font-family: monospace;
-}
-
-
-.woodparts-nav > li.active > a,
-.woodparts-nav > li.active > a:focus,
-.woodparts-nav > li.active > a:hover {
+body {
+    font-family: 'Ek Mukta', sans-serif;
+    font-size: 16px;
     background-color: #fff;
-    color: #000080;
-    border-bottom: 1px solid #000080;
 }
 
 
-.btn-primary {
-    background-color: #000080;
-    border-color: #000;
-}
-
-.btn-primary:hover {
-    background-color: #000080;
-}
-
-
-.videos-list-container h3 {
+main.contact h2 {
     border-bottom: 1px solid #ccc;
 }
 
-
-.videos-list-container {
-    border-left: 1px solid #ddd;
+.lang li > a:hover {
+    background: transparent;
 }
 
 
-.videos-list-container .row-video:hover {
-    background-color: #eee;
+.lupa-navbar {
+    background-color: rgba(0,0,0,0.7);
+    border: none;
 }
 
 
-.videos-list-container hr {
-    border-color: #ccc;
+.lupa-slide-content {
+    background-color: rgba(0,0,0, 0.7);
+    color: #fff;
+}
+
+.lupa-slide-content > hr {
+    border: 1px solid #87563b;
 }
 
 
-.video-container {
-    background-color: #f6f6f6;
-    box-shadow: 0px 0px 5px 2px #bbb;
+.lupa-slide-content .btn-primary {
+    font-weight: bold;
+}
+
+
+.lupa-carousel-indicator.active {
+    background-color: #c0f47a;
+}
+
+
+.lupa-bold {
+    color: #c0f47a;
+}
+
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+    border: none;
+    background-color: transparent;
+    background-image: url("../data/img/orange-gradient.png");
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    color: #fff;
+    border-radius: 0px;
+}
+
+
+.btn-primary:hover {
+    box-shadow: 0px 0px 15px 4px rgba(248,93,0,0.5);
+}
+
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+    background-color: transparent;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+    background: transparent;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+}
+
+
+.navbar-default .navbar-nav > li:not(:last-child){
+    border-right: 2px solid #fff;
+}
+
+
+.btn-bold {
+    font-weight: bold;
+}
+
+
+.service-carousel {
+    cursor: pointer;
+}
+
+div.dark {
+    background-color: #484848;
+    color: #fff;
+}
+
+
+div.light {
+    background-color: #fff;
+    color: #484848;
+}
+
+
+div.brown {
+    background-image: url("../data/img/brown-texture.jpg");
+    color: #fff;
+}
+
+
+div.brown.service-row {
+    background-size: 50% 100%;
+}
+
+
+div.brown-gradient {
+    background-image: url("../data/img/brown-gradient.png");
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    color: #fff;
+}
+
+hr.brown {
+    border-color: #ab7d58;
+    border-width: 2px;
+}
+
+.services-container {
+    border: 15px solid #82694b;
+}
+
+.services-container .service-text h3 {
+    font-weight: bold;
+}
+
+
+.services-container .service-text-inner {
+    border: 1px solid #fff;
+}
+
+
+.some-link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.footer-upper {
+    color: #fff;
+}
+
+.footer-upper h2 {
+    font-weight: bold;
+    border-bottom: 1px solid #fff;
+}
+
+
+.footer-upper-inner {
+    border-top: 2px solid #636363;
+}
+
+
+.footer-nav > li > a,
+.footer-nav > li > a:hover,
+.footer-nav > li > a:focus,
+.footer-nav > li > a:active,
+.footer-nav > li > a:visited {
+    color: #dbcab9;
+    font-weight: bold;
+    background-color: transparent;
+    padding-left: 0px;
+}
+
+.footer-nav > li > a:hover,
+.footer-nav > li > a:focus {
+    text-decoration: underline;
+}
+
+a.some-link:hover,
+a.some-link:focus,
+a.some-link:active,
+a.some-link:visited {
+    color: #fff;
+}
+
+span.green {
+    color: #c7f66c;
+}
+
+
+@media (max-width: 768px) {
+    hr.service-separator {
+        border: 1px solid #dfdfdf;
+    }
 }

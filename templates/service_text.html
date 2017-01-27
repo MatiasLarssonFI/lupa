@@ -1,0 +1,14 @@
+<div class="service-text-inner">
+    <div class="service-title">
+        {% if text_side == "l" %}
+            <img src="{{ service.get_icon_uri }}" alt="">
+            <h3>{{ service.get_title|raw }}</h3>
+        {% else %}
+            <h3>{{ service.get_title|raw }}</h3>
+            <img src="{{ service.get_icon_uri }}" alt="">
+        {% endif %}
+    </div>
+    {% for p in service.get_text_paragraphs %}
+        <p>{{ p }}</p>
+    {% endfor %}
+</div>

@@ -1,0 +1,14 @@
+{% set text_side = "l" %}
+<div class="row brown service-row">
+    <div class="col-xs-12 service-container left">
+        <div class="row">
+            <div class="col-xs-6 service-text">
+                {% include "service_text.html" %}
+            </div>
+            
+            <div class="col-xs-6 service-img">
+                <img src="{{ service.get_img_uris.0 }}" alt="" class="img-responsive" title="{{ service.get_title }}">
+            </div>
+        </div>
+    </div>
+</div>

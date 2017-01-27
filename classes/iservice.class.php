@@ -18,17 +18,17 @@ interface IService {
     
     
     /**
-     * Returns the image URI.
+     * Returns the icon URI.
      * 
      * @return string
      */
-    public function get_img_uri();
+    public function get_icon_uri();
     
     
     /**
-     * Returns the gallery image ID.
+     * Returns the image URIs.
      * 
-     * @return string
+     * @return string[]
      */
-    public function get_gallery_img_id();
+    public function get_img_uris();
 }

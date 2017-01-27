@@ -30,21 +30,23 @@ class ServiceFactory {
      */
     public function get_services() {
         $ret = array();
+        $image_uris = array();
         
         $lang = UITextStorage::get()->get_language();
         
-        DBIF::get()->get_services(function(array $row) use (&$ret, $lang) {
-            $title_obj = json_decode($row["title"]);
-            $text_obj = json_decode($row["text"]);
+        DBIF::get()->get_services(function(array $row) use (&$ret) {
+            $row_id = $row["id"];
+            if (!array_key_exists($row_id, $ret)) {
+                $ret[$row_id] = new Service(
+                    $row["title"],
+                    $row["text"],
+                    $row["icon_uri"]
+                );
+            }
             
-            $ret[] = new Service(
-                $title_obj->$lang,
-                $text_obj->$lang,
-                $row["img_uri"],
-                $row["gallery_img_id"]
-            );
-        });
+            $ret[$row_id]->add_image_uri($row["image_uri"]);
+        },$lang);
         
-        return $ret;
+        return array_values($ret);
     }
 }
