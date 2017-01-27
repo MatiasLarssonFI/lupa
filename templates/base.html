@@ -47,6 +47,28 @@
                             <img class="phone-number-sm" src="{{ __base_uri }}/data/img/pn-sm.png" alt=""><br>
                             <img class="email-sm" src="{{ __base_uri }}/data/img/em-sm.png" alt=""><br>
                             
+                            <div class="row">
+                                <div class="col-xs-12" id="form-content">
+                                    <div id="feedback">
+                                        &nbsp;
+                                    </div>
+                                    <form method="post" action="{{ __base_uri }}/{{ __lang }}/contact_submit" id="contact-form">
+                                        <div class="form-group">
+                                            <input type="hidden" name="__csrf_token" value="{{ __csrf_token }}">
+                                            <input type="hidden" id="is_ajax" name="is_ajax" value="0">
+                                            <input type="text" name="url" class="contact-url" value="">
+                                            <input type="text" name="company" class="contact-url" value="company name oy">
+                                            <input type="hidden" id="name" name="name" value="#NONAME">
+                                            <input type="hidden" id="subject" name="subject" value="#FRONT-PAGE-FORM">
+                                            <input type="hidden" id="message" name="message" value="#NOMESSAGE">
+                                            <input type="email" name="email" class="footer-email-input">
+                                            &nbsp;<input type="submit" class="btn btn-primary" value="{{ __strings.submit_email }}&nbsp;&raquo;">
+                                            <img id="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif" alt="">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
                             <div class="row dark some-row">
                                 <div class="col-xs-12">
                                     <a class="some-link" href="{{ facebook_page_url }}"><img src="{{ __base_uri }}/data/img/facebook.png" alt="Facebook" title="Facebook page">
@@ -90,6 +112,7 @@
         </div>
         
         <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+        <script src="{{ __base_uri }}/js/contact.js"></script>
         <script>
             // all AJAX shall actually be asynchronous (duh)
             $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
@@ -106,6 +129,12 @@
                     img.attr("src", img.attr("src").replace("-hover.png", ".png"));
                 });
             });
+            
+            !function($) {
+                $(document).ready(function() {
+                    wp.contact.init();
+                });
+            }(jQuery);
         </script>
         {% block js_link %}{% endblock %}
     </body>

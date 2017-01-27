@@ -67,6 +67,7 @@ abstract class AbstractView implements IView {
             "name_short" => $text_storage->text("NAME_SHORT"),
             "footer_navigation" => $text_storage->text("FOOTER_NAVIGATION_TITLE"),
             "contact_info_title" => $text_storage->text("CONTACT_INFO"),
+            "submit_email" => $text_storage->text("CONTACT_US"),
         ];
         
         echo $twig->render($this->get_template_name(), $data);
