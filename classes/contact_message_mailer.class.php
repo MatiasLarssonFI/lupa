@@ -6,7 +6,7 @@ require_once(dirname(__FILE__) . "/dbif.class.php");
 require_once(dirname(__FILE__) . "/site_config_factory.class.php");
 
 require_once(dirname(__FILE__) . "/../lib/Twig-1.24.0/Twig-1.24.0/lib/Twig/Autoloader.php");
-require_once(dirname(__FILE__) . "/../lib/PHPMailer-5.2.14/PHPMailerAutoload.php");
+require_once(dirname(__FILE__) . "/../lib/PHPMailer-5.2.21/PHPMailerAutoload.php");
 
 
 class ContactMessageMailer implements IMailer {
@@ -22,14 +22,15 @@ class ContactMessageMailer implements IMailer {
 
         $mail_user = $db->get_mail_user();
         if (strlen($mail_user) > 0) {
-            $mail->isSMTP();                       // Set mailer to use SMTP
+            // disabled SMTP, because of some SSL problem in the environment / Jan. 2017
+            //$mail->isSMTP();                       // Set mailer to use SMTP
             $mail->Host = $db->get_mail_server();  // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true;
+            //$mail->SMTPAuth = true;
             $mail->Username = $mail_user;
             $mail->Password = $db->get_mail_password();
         }
         
-        $mail->Port = 587;
+        $mail->Port = 25;
 
         $mail->addReplyTo($contactmsg->get_email(), $contactmsg->get_name());
         $mail->setFrom('contactform@{$host}', 'WOODparts Contact Form');

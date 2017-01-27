@@ -19,7 +19,7 @@
                     },
                     success : function(html) {
                         form.slideUp(600, function() {
-                            $("#page-content #feedback").css("opacity", 0).html(html).animate({opacity : 1});
+                            $("#form-content #feedback").css("opacity", 0).html(html).animate({opacity : 1});
                         });
                     },
                     error : function() {

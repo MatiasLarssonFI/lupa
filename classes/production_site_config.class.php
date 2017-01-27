@@ -10,13 +10,7 @@ class ProductionSiteConfig implements ISiteConfig {
     
     
     public function host() {
-        if (strpos($_SERVER["HTTP_HOST"], "martinlarsson.fi") !== false) {
-            // if the request header "Host" is "martinlarsson.fi",
-            // then use that
-            return "martinlarsson.fi";
-        }
-        
-        return "woodparts.fi";
+        return "lu-pa.fi";
     }
     
     
@@ -25,8 +19,13 @@ class ProductionSiteConfig implements ISiteConfig {
     }
     
     
+    public function db_table_prefix() {
+        return "lupa_";
+    }
+    
+    
     public function db_login_params() {
-        $creds_fname = dirname(__FILE__) . "/../../db_creds.json";
+        $creds_fname = dirname(__FILE__) . "/../../../db_creds.json";
         if (is_readable($creds_fname)) {
             $jso = json_decode(file_get_contents($creds_fname));
             return array(

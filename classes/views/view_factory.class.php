@@ -3,11 +3,10 @@
 namespace Views;
 
 require_once(dirname(__FILE__) . "/front_page_view.class.php");
-require_once(dirname(__FILE__) . "/gallery_view.class.php");
 require_once(dirname(__FILE__) . "/service_view.class.php");
 require_once(dirname(__FILE__) . "/contact_view.class.php");
 require_once(dirname(__FILE__) . "/contact_submit_view.class.php");
-require_once(dirname(__FILE__) . "/videos_page_view.class.php");
+require_once(dirname(__FILE__) . "/../nav_link_factory.class.php");
 
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
 
@@ -38,22 +37,16 @@ class ViewFactory {
      * @param string $action The action name
      * @param string[] $params The action parameters
      * @param string $language Current language
-     * @param IWidget[] $widgets [ "nav" => IWidget, ... ]
+     * @param NavLinkFactory $nlf
      * @return IView
      */
-    public function get_view($action, array $params, $language, array $widgets) {
+    public function get_view($action, array $params, $language, \NavLinkFactory $nlf) {
         if ($action === "") {
-            return new FrontPageView(array(), $widgets);
-        } else if ($action === "gallery") {
-            return new GalleryView(array(), $widgets);
-        } else if ($action === "services") {
-            return new ServiceView(array(), $widgets);
+            return new FrontPageView(array(), $nlf);
         } else if ($action === "contact") {
-            return new ContactView(array(), $widgets);
+            return new ContactView(array(), $nlf);
         } else if ($action === "contact_submit") {
-            return new ContactSubmitView($_POST, $widgets);
-        } else if ($action === "videos") {
-            return new VideosPageView(array("selected_video" => $this->optional_element(0, 1, $params)), $widgets);
+            return new ContactSubmitView($_POST, $nlf);
         }
         
         // Bad request: redirect to front page

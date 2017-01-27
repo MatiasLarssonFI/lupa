@@ -24,7 +24,8 @@ class ContactSubmitView extends AbstractView {
         $is_success = false;
         $text_storage = \UITextStorage::get();
         $errors = array();
-        if (strlen($params["url"]) === 0) { // url is actually a hidden captcha field, not to be filled
+        if (strlen($params["url"]) === 0 && // url is actually a hidden captcha field, not to be filled
+            strlen($params["company"] === "company name oy")) { // hidden captcha as well
             $errors = $this->get_form_errors($params, $text_storage);
             if (empty($errors)) {
                 $f = \ContactMessageFactory::get();

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ __lang }}">
+    <!-- {{ "now"|date("Y") }} Matias Larsson -->
+    <!-- Graphical design by Eero Hynninen -->
     <head>
         {% block head %}
-            <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+            {% if __scale_mobile %}
+                <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+            {% endif %}
+            
             <link rel="stylesheet" href="{{ __base_uri }}/lib/bootstrap-3.3.6/css/bootstrap.min.css">
             
-            <script src="{{ __base_uri }}/lib/jquery-1.12.1/jquery-1.12.1.min.js"></script>
-            <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
             <script src="{{ __base_uri }}/js/wp.js"></script>
             
             {% block head_extra %}{% endblock %}
@@ -14,40 +17,126 @@
             <link rel="stylesheet" href="{{ __base_uri }}/css/layout.css">
             <link rel="stylesheet" href="{{ __color_css_uri }}">
             
-            <title>{% block title %}{% endblock %} - WOODparts Finland</title>
+            <link href="https://fonts.googleapis.com/css?family=Ek+Mukta" rel="stylesheet"> 
             
-            <script>
-                // all AJAX shall actually be asynchronous (duh)
-                $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
-                    options.async = true;
-                });
-            </script>
+            <title>{% block title %}{% endblock %} - {{ __contact_info.name }}</title>
+            
+            <script src="{{ __base_uri }}/lib/jquery-1.12.1/jquery-1.12.1.min.js"></script>
         {% endblock %}
     </head>
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12" id="header">
-                    <img class="img-responsive" alt='WOODparts Finland' src="{{ __header_img_uri }}" id="header-img">
+        <div class="container-fluid">
+            <header>
+                <div class="row lang-top"><!-- lang -->
+                    {% include "lang_sm.html" %}
                 </div>
-            </div>
+                {% include "nav.html" %}
+                {% block header_content %}{% endblock %}
+            </header>
             <div class="row">
-               <div class="col-xs-4 col-md-12">
-                   <div class="row">
-                       <div class="col-xs-12">
-                           {{ __widgets.nav.get_html|raw }}
-                       </div>
-                   </div>
-               </div>
-               <div class="col-xs-8 col-md-12">
+               <div class="col-xs-12">
                 {% block content %}{% endblock %}
                </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12" id="footer">
-                    <img class="img-responsive" alt='solutions for wood design' src="{{ __footer_img_uri }}" id="footer-img">
+            
+            <div class="row dark footer-upper">
+                <div class="col-xs-12 col-lg-8 col-lg-offset-2 footer-upper-inner">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4">
+                            <h3><b>{{ __strings.contact_info_title }}</b></h3>
+                            <img class="phone-number-sm" src="{{ __base_uri }}/data/img/pn-sm.png" alt=""><br>
+                            <img class="email-sm" src="{{ __base_uri }}/data/img/em-sm.png" alt=""><br>
+                            
+                            <div class="row">
+                                <div class="col-xs-12" id="form-content">
+                                    <div id="feedback">
+                                        &nbsp;
+                                    </div>
+                                    <form method="post" action="{{ __base_uri }}/{{ __lang }}/contact_submit" id="contact-form">
+                                        <div class="form-group">
+                                            <input type="hidden" name="__csrf_token" value="{{ __csrf_token }}">
+                                            <input type="hidden" id="is_ajax" name="is_ajax" value="0">
+                                            <input type="text" name="url" class="contact-url" value="">
+                                            <input type="text" name="company" class="contact-url" value="company name oy">
+                                            <input type="hidden" id="name" name="name" value="#NONAME">
+                                            <input type="hidden" id="subject" name="subject" value="#FRONT-PAGE-FORM">
+                                            <input type="hidden" id="message" name="message" value="#NOMESSAGE">
+                                            <input type="email" name="email" class="footer-email-input">
+                                            &nbsp;<input type="submit" class="btn btn-primary" value="{{ __strings.submit_email }}&nbsp;&raquo;">
+                                            <img id="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif" alt="">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <div class="row dark some-row">
+                                <div class="col-xs-12">
+                                    <a class="some-link" href="{{ facebook_page_url }}"><img src="{{ __base_uri }}/data/img/facebook.png" alt="Facebook" title="Facebook page">
+                                    &nbsp;{{ __contact_info.name }}</a>
+                                </div>
+                            </div>
+                            <hr class="hidden-md hidden-lg">
+                        </div>
+                        <div class="col-xs-12 col-md-4">
+                            <h3><b>{{ __strings.name_short }}</b></h3>
+                            <p>{{ __strings.footer_promo }}</p>
+                            <a href="https://www.tilaajavastuu.fi/?yt=2138386-4"><img border="0" src="https://www.tilaajavastuu.fi/wp-content/uploads/2013/10/lk_logo.png" alt="LuotettavaKumppaniyritys"/></a>
+                            <hr class="hidden-md hidden-lg">
+                        </div>
+                        <div class="col-xs-12 col-md-3 col-md-offset-1">
+                            <h3><b>{{ __strings.footer_navigation }}</b></h3>
+                            <nav>
+                                <ul class="nav footer-nav">
+                                    {% for link in __nav_links %}
+                                        <li><a href='{{ __base_uri }}/{{ __lang }}/{{ link.get_action }}' title="{{ link.get_text }}">{{ link.get_text }}&nbsp;&raquo;</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" id="footer">
+                <div class="col-xs-12 brown">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-2 col-lg-offset-2">
+                            <ul class="nav nav-pills lang">
+                            {% for link in __lang_links %}
+                                <li><a title="{{ link.get_language }}" href='{{ __base_uri }}/{{ link.get_language }}/{{ link.get_action }}'><img class="lang-flag" alt="{{ link.get_language }}" src="{{ __base_uri }}/data/img/flag-{{ link.get_language }}.png"></a></li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        
+        <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+        <script src="{{ __base_uri }}/js/contact.js"></script>
+        <script>
+            // all AJAX shall actually be asynchronous (duh)
+            $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+                options.async = true;
+            });
+            
+            
+            $(document).ready(function() {
+                $(".lang li > a").mouseenter(function() {
+                    var img = $(this).find("img");
+                    img.attr("src", img.attr("src").replace(".png", "-hover.png"));
+                }).mouseleave(function() {
+                    var img = $(this).find("img");
+                    img.attr("src", img.attr("src").replace("-hover.png", ".png"));
+                });
+            });
+            
+            !function($) {
+                $(document).ready(function() {
+                    wp.contact.init();
+                });
+            }(jQuery);
+        </script>
+        {% block js_link %}{% endblock %}
     </body>
 </html>

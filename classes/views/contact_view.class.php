@@ -26,7 +26,9 @@ class ContactView extends AbstractView {
                 "field_email" => $text_storage->text("CONTACT_FIELD_EMAIL"),
                 "field_subject" => $text_storage->text("CONTACT_FIELD_SUBJECT"),
                 "field_message" => $text_storage->text("CONTACT_FIELD_MESSAGE"),
-                "submit" => $text_storage->text("CONTACT_SUBMIT")
+                "submit" => $text_storage->text("CONTACT_SUBMIT"),
+                "contact_form_title" => $text_storage->text("CONTACT_SUBMIT"),
+                "contact_info_title" => $text_storage->text("CONTACT_INFO"),
             ),
             "prefill" => array(
                 "name" => "",
@@ -34,6 +36,7 @@ class ContactView extends AbstractView {
                 "subject" => "",
                 "message" => "",
                 "url" => "", // hidden captcha
+                "company" => "company name oy", // hidden captcha
             ),
             "lang" => $text_storage->get_language()
         );

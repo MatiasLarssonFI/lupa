@@ -71,6 +71,7 @@ class UITextStorage {
     
     private function load_texts($language) {
         $texts = &$this->_texts;
+        $texts = [];
         DBIF::get()->get_ui_texts($language, function(array $row) use(&$texts) {
             $texts[$row["code"]] = $row["content"];
         });
