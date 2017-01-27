@@ -145,6 +145,7 @@ class DBIF {
         $sql = 
             "SELECT
                 s.id,
+                s.icon_uri,
                 st.title,
                 st.text,
                 si.image_uri

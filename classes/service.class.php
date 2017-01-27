@@ -6,6 +6,7 @@ require_once(dirname(__FILE__) . "/iservice.class.php");
 class Service implements IService {
     private $_title;
     private $_text;
+    private $_icon_uri;
     private $_img_uris;
     
     
@@ -16,9 +17,10 @@ class Service implements IService {
      * @param string $text
      * @param string[] $img_uris
      */
-    public function __construct($title, $text) {
+    public function __construct($title, $text, $icon_uri) {
         $this->_title = $title;
         $this->_text = $text;
+        $this->_icon_uri = $icon_uri;
         $this->_img_uris = [];
     }
     
@@ -35,6 +37,11 @@ class Service implements IService {
     
     public function get_title() {
         return $this->_title;
+    }
+    
+    
+    public function get_icon_uri() {
+        return $this->_icon_uri;
     }
     
     

@@ -1,9 +1,21 @@
+body {
+    font-family: 'Ek Mukta', sans-serif;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+
 main.contact h2 {
     border-bottom: 1px solid #ccc;
 }
 
+.lang li > a:hover {
+    background: transparent;
+}
+
+
 .lupa-navbar {
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(0,0,0,0.7);
     border: none;
 }
 
@@ -15,6 +27,11 @@ main.contact h2 {
 
 .lupa-slide-content > hr {
     border: 1px solid #87563b;
+}
+
+
+.lupa-slide-content .btn-primary {
+    font-weight: bold;
 }
 
 
@@ -30,41 +47,50 @@ main.contact h2 {
 
 .btn-primary,
 .btn-primary:active,
-.btn-primary:focus {
-    background-color: #484848;
-    border-color: #fff;
-    color: #c0f47a;
+.btn-primary:focus,
+.btn-primary:hover {
+    border: none;
+    background-color: transparent;
+    background-image: url("../data/img/orange-gradient.png");
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    color: #fff;
+    border-radius: 0px;
 }
 
+
 .btn-primary:hover {
-    background-color: #585858;
-    border-color: #fff;
-    color: #c0f47a;
+    box-shadow: 0px 0px 15px 4px rgba(248,93,0,0.5);
 }
 
 
 .navbar-default .navbar-nav > li > a {
-    color: #484848;
+    color: #fff;
     background-color: transparent;
-    padding: 7px 10px;
-    font-weight: bold;
-    font-size: 16px;
-    margin-left: 10px;
+    font-weight: normal;
+    font-size: 20px;
 }
 
 
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li > a:hover {
     text-decoration: underline;
+    color: #fff;
 }
 
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus,
 .navbar-default .navbar-nav > .active > a:hover {
-    background-color: #484848;
+    background: transparent;
     color: #fff;
     border: none;
+    font-weight: bold;
+}
+
+
+.navbar-default .navbar-nav > li:not(:last-child){
+    border-right: 2px solid #fff;
 }
 
 
@@ -89,8 +115,40 @@ div.light {
 }
 
 
+div.brown {
+    background-image: url("../data/img/brown-texture.jpg");
+    color: #fff;
+}
+
+
+div.brown.service-row {
+    background-size: 50% 100%;
+}
+
+
+div.brown-gradient {
+    background-image: url("../data/img/brown-gradient.png");
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    color: #fff;
+}
+
+hr.brown {
+    border-color: #ab7d58;
+    border-width: 2px;
+}
+
+.services-container {
+    border: 15px solid #82694b;
+}
+
 .services-container .service-text h3 {
     font-weight: bold;
+}
+
+
+.services-container .service-text-inner {
+    border: 1px solid #fff;
 }
 
 
@@ -102,7 +160,6 @@ div.light {
 }
 
 .footer-upper {
-    background-color: #b5927d;
     color: #fff;
 }
 
@@ -111,11 +168,37 @@ div.light {
     border-bottom: 1px solid #fff;
 }
 
+
+.footer-upper-inner {
+    border-top: 2px solid #636363;
+}
+
+
+.footer-nav > li > a,
+.footer-nav > li > a:hover,
+.footer-nav > li > a:focus,
+.footer-nav > li > a:active,
+.footer-nav > li > a:visited {
+    color: #dbcab9;
+    font-weight: bold;
+    background-color: transparent;
+    padding-left: 0px;
+}
+
+.footer-nav > li > a:hover,
+.footer-nav > li > a:focus {
+    text-decoration: underline;
+}
+
 a.some-link:hover,
 a.some-link:focus,
 a.some-link:active,
 a.some-link:visited {
     color: #fff;
+}
+
+span.green {
+    color: #c7f66c;
 }
 
 
