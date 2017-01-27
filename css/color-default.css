@@ -1,12 +1,18 @@
 body {
     font-family: 'Ek Mukta', sans-serif;
     font-size: 16px;
+    background-color: #fff;
 }
 
 
 main.contact h2 {
     border-bottom: 1px solid #ccc;
 }
+
+.lang li > a:hover {
+    background: transparent;
+}
+
 
 .lupa-navbar {
     background-color: rgba(0,0,0,0.7);
@@ -21,6 +27,11 @@ main.contact h2 {
 
 .lupa-slide-content > hr {
     border: 1px solid #87563b;
+}
+
+
+.lupa-slide-content .btn-primary {
+    font-weight: bold;
 }
 
 
@@ -56,7 +67,6 @@ main.contact h2 {
 .navbar-default .navbar-nav > li > a {
     color: #fff;
     background-color: transparent;
-    padding: 7px 15px;
     font-weight: normal;
     font-size: 20px;
 }
@@ -128,6 +138,9 @@ hr.brown {
     border-width: 2px;
 }
 
+.services-container {
+    border: 15px solid #82694b;
+}
 
 .services-container .service-text h3 {
     font-weight: bold;
@@ -182,6 +195,10 @@ a.some-link:focus,
 a.some-link:active,
 a.some-link:visited {
     color: #fff;
+}
+
+span.green {
+    color: #c7f66c;
 }
 
 

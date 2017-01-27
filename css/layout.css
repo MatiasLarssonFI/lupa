@@ -1,9 +1,32 @@
+.navbar-brand-lg img {
+    height: 100%;
+    width: auto;
+}
+
+.navbar-brand-lg {
+    height:100px;
+    padding: 0px;
+}
+
+
 main {
     padding: 0px;
 }
 
 main.contact h2 {
     padding-bottom: 2px;
+}
+
+
+header {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+
+.services-title-container {
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 
@@ -22,10 +45,26 @@ main.contact h2 {
 }
 
 
+.lang > li:first-child > a {
+    padding-left: 0px;
+}
+
+
+.lang.downsize > li:first-child > a {
+    padding-left: 15px;
+}
+
+
 .lang.downsize > li > a {
     padding-bottom: .2em;
     padding-top: .2em;
+    padding-right: 15px;
 }
+
+.lang.downsize > li:last-child > a {
+    padding-right: 15px;
+}
+
 
 .lang-top {
     position: relative;
@@ -57,13 +96,18 @@ img.lang-flag {
     width: 200px;
 }
 
-.navbar-brand-lg {
-    height:auto;
-}
-
 
 .lupa-nav-links {
     margin-top: 30px;
+}
+
+.lupa-nav-links li > a {
+    padding: 7px 15px;
+}
+
+
+.lupa-nav-links li:last-child > a {
+    padding-right: 0px;
 }
 
 
@@ -85,12 +129,25 @@ img.lang-flag {
     padding: 15px 10px;
     font-size: 16px;
     text-align: left;
-    max-width: 40em;
-    left: 19%;
+    left: 16%;
+    right: 16.666%;
+    position: absolute;
+}
+
+
+.lupa-slide-content .btn-primary {
+    margin: 10px 0px 0px 0px;
+}
+
+
+.lupa-slide-content .btn-primary,
+.lupa-slide-content p {
+    font-size: 26px;
 }
 
 .lupa-slide-content h3 {
     margin-top: 0px;
+    font-size: 38px;
 }
 
 
@@ -160,6 +217,22 @@ hr.services-title-line {
     text-align: left;
 }
 
+
+.service-container .service-text-inner p {
+    margin-top: 20px;
+}
+
+
+.service-container.left .service-text-inner p {
+    margin-left: 35px;
+}
+
+
+.service-container.right .service-text-inner p {
+    margin-right: 35px;
+}
+
+
 .service-title {
     overflow: hidden;
 }
@@ -215,15 +288,39 @@ hr.services-title-line {
 }
 
 
+.phone-number-sm,
+.email-sm {
+    margin-bottom: 10px;
+}
+
+
 address {
     margin-bottom: 0px;
 }
 
 
-@media (max-width: 1200px) {
+@media (min-width: 1170px) {
+    .nav-container,
+    .nav-container > .container-fluid,
+    .lang-sm-container {
+        padding-left: 0px;
+    }
+}
+
+
+@media (max-width: 1170px) {
     .lupa-slide-content {
         padding: 10px;
         bottom: 20%;
+    }
+    
+    .lupa-slide-content .btn-primary,
+    .lupa-slide-content p {
+        font-size: 14px;
+    }
+
+    .lupa-slide-content h3 {
+        font-size: 18px;
     }
 }
 

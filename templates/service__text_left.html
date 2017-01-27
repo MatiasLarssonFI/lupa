@@ -7,13 +7,7 @@
             </div>
             
             <div class="col-xs-6 service-img">
-                <div class="service-carousel row">
-                {% for img_uri in service.get_img_uris %}
-                    <div class="col-xs-12">
-                        <img src="{{ img_uri }}" alt="" class="pull-left" title="{{ service.get_title }}">
-                    </div>
-                {% endfor %}
-                </div>
+                <img src="{{ service.get_img_uris.0 }}" alt="" class="img-responsive" title="{{ service.get_title }}">
             </div>
         </div>
     </div>
