@@ -1,5 +1,6 @@
 body {
-    font-family: Ebrima, Helvetica, sans-serif;
+    font-family: 'Ek Mukta', sans-serif;
+    font-size: 16px;
 }
 
 
@@ -38,6 +39,7 @@ main.contact h2 {
 .btn-primary:focus,
 .btn-primary:hover {
     border: none;
+    background-color: transparent;
     background-image: url("../data/img/orange-gradient.png");
     background-repeat: repeat-x;
     background-size: auto 100%;
