@@ -316,11 +316,14 @@ address {
 }
 
 
-@media (max-width: 1170px) {
+@media (max-width: 1400px) {
     .lupa-slide-content {
         padding: 10px;
         bottom: 20%;
     }
+}
+    
+@media (max-width: 1170px) {
     
     .lupa-slide-content .btn-primary,
     .lupa-slide-content p {
