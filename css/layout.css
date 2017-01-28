@@ -199,7 +199,7 @@ hr.services-title-line {
 
 .services-container .service-text p,
 .services-container .service-text h3 {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 
@@ -215,11 +215,6 @@ hr.services-title-line {
 
 .service-container.right .service-text-inner {
     text-align: left;
-}
-
-
-.service-container .service-text-inner p {
-    margin-top: 20px;
 }
 
 
@@ -330,6 +325,15 @@ address {
     .lupa-slide-content {
         padding: 10px;
         bottom: 20%;
+    }
+    
+    .service-container.left .service-text-inner p {
+        margin-left: 0px;
+    }
+
+
+    .service-container.right .service-text-inner p {
+        margin-right: 0px;
     }
 }
     
