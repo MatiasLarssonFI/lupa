@@ -202,6 +202,13 @@ span.green {
 }
 
 
+.footer-email-input {
+    border: none;
+    color: #000;
+}
+
+
+
 @media (max-width: 768px) {
     hr.service-separator {
         border: 1px solid #dfdfdf;

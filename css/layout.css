@@ -301,9 +301,19 @@ address {
 
 .footer-email-input {
     border-radius: 0px;
-    border: none;
-    color: #000;
-    padding: 4px;
+    padding: 6px;
+    font-size: 14px;
+    max-width: 55%;
+}
+
+
+.footer-submit-btn {
+    max-width: 40%;
+}
+
+
+.footer-submit-btn-xs {
+    margin-top: 5px;
 }
 
 
@@ -364,5 +374,10 @@ address {
     
     .service-title h3 {
         max-width: 100%;
+    }
+    
+    
+    .footer-email-input {
+        max-width: none;
     }
 }
