@@ -33,12 +33,12 @@ class ContactMessageMailer implements IMailer {
         $mail->Port = 25;
 
         $mail->addReplyTo($contactmsg->get_email(), $contactmsg->get_name());
-        $mail->setFrom('contactform@{$host}', 'WOODparts Contact Form');
+        $mail->setFrom('contactform@{$host}', 'LU-PA Contact Form');
         $mail->addAddress($db->get_contact_email());     // Add a recipient
         $mail->isHTML(true);                                  // Set email format to HTML
     
         $mail->CharSet = 'UTF-8';
-        $mail->Subject = "WPCONTACT: {$contactmsg->get_subject()}";
+        $mail->Subject = "LU-PA-CONTACT: {$contactmsg->get_subject()}";
         $mail->Body    = $twig->render("contact_email.html", array("message" => $contactmsg));
         $mail->AltBody = $twig->render("contact_email.txt", array("message" => $contactmsg));
 
