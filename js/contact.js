@@ -1,14 +1,14 @@
 !function($) {
     wp.contact = {
         init : function() {
-            $("#contact-form").unbind("submit").submit(function(e) {
+            $("[data-contact-form]").off("submit").submit(function(e) {
                 e.preventDefault();
                 
                 var form = $(this);
                 var submit_btn = form.find("button[type='submit']");
-                var spinner = form.find("#ajax-spinner");
+                var spinner = form.find("[data-ajax-spinner]");
                 
-                form.find("#is_ajax").val(1);
+                form.find("[data-is-ajax-input]").val(1);
                 $.ajax({
                     type: "post",
                     url : form.attr("action"),
@@ -19,7 +19,7 @@
                     },
                     success : function(html) {
                         form.slideUp(600, function() {
-                            $("#form-content #feedback").css("opacity", 0).html(html).animate({opacity : 1});
+                            $("[data-form-content] [data-contact-feedback]").css("opacity", 0).html(html).animate({opacity : 1});
                         });
                     },
                     error : function() {

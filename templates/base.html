@@ -14,7 +14,7 @@
             
             {% block head_extra %}{% endblock %}
             
-            <link rel="stylesheet" href="{{ __base_uri }}/css/layout.css">
+            <link rel="stylesheet" href="{{ __base_uri }}/css/layout.css?v={{ __css_src_version }}">
             <link rel="stylesheet" href="{{ __color_css_uri }}">
             
             <link href="https://fonts.googleapis.com/css?family=Ek+Mukta" rel="stylesheet"> 
@@ -48,14 +48,14 @@
                             <img class="email-sm" src="{{ __base_uri }}/data/img/em-sm.png" alt=""><br>
                             
                             <div class="row">
-                                <div class="col-xs-12" id="form-content">
-                                    <div id="feedback">
+                                <div class="col-xs-12" data-form-content>
+                                    <div data-contact-feedback>
                                         &nbsp;
                                     </div>
-                                    <form method="post" action="{{ __base_uri }}/{{ __lang }}/contact_submit" id="contact-form">
+                                    <form method="post" action="{{ __base_uri }}/{{ __lang }}/contact_submit" data-contact-form>
                                         <div class="form-group">
                                             <input type="hidden" name="__csrf_token" value="{{ __csrf_token }}">
-                                            <input type="hidden" id="is_ajax" name="is_ajax" value="0">
+                                            <input type="hidden" data-is-ajax-input name="is_ajax" value="0">
                                             <input type="text" name="url" class="contact-url" value="">
                                             <input type="text" name="company" class="contact-url" value="company name oy">
                                             <input type="hidden" id="name" name="name" value="#NONAME">
@@ -64,7 +64,7 @@
                                             <input type="email" name="email" class="footer-email-input" placeholder="email@example.com" required>
                                             <input type="submit" class="text-uppercase hidden-xs btn btn-primary footer-submit-btn" value="{{ __strings.submit_email }}&nbsp;&raquo;">
                                             <input type="submit" class="text-uppercase hidden-sm hidden-md hidden-lg btn btn-primary footer-submit-btn-xs" value="{{ __strings.submit_email }}&nbsp;&raquo;">
-                                            <img id="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif" alt="">
+                                            <img data-ajax-spinner class="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif" alt="">
                                         </div>
                                     </form>
                                 </div>
@@ -112,7 +112,7 @@
         </div>
         
         <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-        <script src="{{ __base_uri }}/js/contact.js"></script>
+        <script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}"></script>
         <script>
             // all AJAX shall actually be asynchronous (duh)
             $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
