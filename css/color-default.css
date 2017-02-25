@@ -1,7 +1,7 @@
 body {
     font-family: 'Ek Mukta', sans-serif;
     font-size: 16px;
-    background-color: #fff;
+    background-color: #000;
 }
 
 
@@ -15,7 +15,6 @@ main.contact h2 {
 
 
 .lupa-navbar {
-    background-color: rgba(0,0,0,0.7);
     border: none;
 }
 
@@ -139,7 +138,11 @@ hr.brown {
 }
 
 .services-container {
-    border: 15px solid #82694b;
+    border: 20px solid #82694b;
+}
+
+.services-container .service-text {
+    background-color: rgba(0,0,0, 0.7);
 }
 
 .services-container .service-text h3 {
@@ -205,12 +208,4 @@ span.green {
 .footer-email-input {
     border: none;
     color: #000;
-}
-
-
-
-@media (max-width: 768px) {
-    hr.service-separator {
-        border: 1px solid #dfdfdf;
-    }
 }
