@@ -29,7 +29,7 @@
 {% endblock %}
 
 {% block content %}
-<main style="position:relative;z-index: 2;">
+<main class="front-main">
     <div class="row">
         <div class="col-xs-12 lupa-slide-content">
             <h3><b>{{ strings.slideshow_caption_title|raw }}</b></h3>
@@ -39,7 +39,7 @@
         
     </div>
     <div class="row">
-        <div class="col-xs-12 services-container">
+        <div class="col-xs-12 services-container brown">
         {% for service in services %}
             {% include loop.index % 2 == 0 ? "service__text_left.html" : "service__text_right.html" %}
         {% endfor %}

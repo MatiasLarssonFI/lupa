@@ -25,7 +25,7 @@
         {% endblock %}
     </head>
     <body>
-        <div class="container-fluid">
+        <div class="container-fluid" id="main-container">
             <div class="row">
                 <div class="col-xs-12">
                     {% block header_content %}{% endblock %}
@@ -53,6 +53,7 @@
                         
                     <div class="row footer-upper">
                         <div class="col-xs-12 footer-upper-inner">
+                            <hr>
                             <div class="row">
                                 <div class="col-xs-5">
                                     <h3><b>{{ __strings.contact_info_title }}</b></h3>
@@ -107,17 +108,22 @@
                             </div>
                         </div>
                     </div>
-                        
                     <div class="row" id="footer">
-                        <div class="col-xs-12">
+                        <div class="col-xs-6">
                             <ul class="nav nav-pills lang">
                             {% for link in __lang_links %}
                                 <li><a title="{{ link.get_language }}" href='{{ __base_uri }}/{{ link.get_language }}/{{ link.get_action }}'><img class="lang-flag" alt="{{ link.get_language }}" src="{{ __base_uri }}/data/img/flag-{{ link.get_language }}.png"></a></li>
                             {% endfor %}
                             </ul>
                         </div>
+                        <div class="col-xs-6 text-right">
+                            <img class="img-brand-sm" alt="{{ __contact_info.name }}" src="{{ __small_logo_uri }}">
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="footer-img">
+                <img alt="" src="{{ __footer_img_uri }}">
             </div>
         </div>
         
