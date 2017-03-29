@@ -9,15 +9,15 @@ SET time_zone = "+00:00";
 
 INSERT INTO `lupa_config` (`id`, `key`, `value`, `time_edited`, `time_created`) VALUES
 (1, 'color_css_uri', '/css/color-default.css', NULL, '2016-03-13 22:00:00'),
-(2, 'footer_img_uri', '/data/img/footer-grey-blue.png', '2016-03-17 20:18:00', '2016-03-16 22:00:00'),
-(3, 'header_logo_uri', '/data/img/logo.png', '2016-12-12 18:53:20', '2016-03-25 22:00:00'),
+(2, 'footer_img_uri', '/data/img/footer.jpg', '2017-02-28 18:04:11', '2016-03-16 22:00:00'),
+(3, 'header_logo_uri', '/data/img/logo22V.png', '2017-01-31 19:38:54', '2016-03-25 22:00:00'),
 (4, 'contact_email', 'matias@matias-laptop', '2016-04-02 18:37:11', '2016-04-01 21:00:00'),
 (5, 'mail_server', 'localhost', '2016-04-13 19:20:29', '2016-04-12 21:00:00'),
 (6, 'mail_user', '', NULL, '2016-04-12 21:00:00'),
 (7, 'mail_password', '', NULL, '2016-04-12 21:00:00'),
 (8, 'js_src_mode', 'debug', NULL, '2016-07-15 18:00:00'),
-(9, 'js_src_version', '20160812', '2016-08-12 12:51:49', '2016-07-15 18:00:00'),
-(10, 'css_src_version', '20160716', NULL, '2016-07-15 18:00:00'),
+(9, 'js_src_version', '20170212', '2017-02-12 13:09:50', '2016-07-15 18:00:00'),
+(10, 'css_src_version', '20170212', '2017-02-12 13:09:55', '2016-07-15 18:00:00'),
 (11, 'facebook_page_url', 'https://www.facebook.com/lansiuudenmaanpuuapu/', '2017-01-14 12:59:06', '2017-01-13 22:00:00');
 
 INSERT INTO `lupa_service` (`id`, `icon_uri`, `time_edited`, `time_created`) VALUES
@@ -27,24 +27,24 @@ INSERT INTO `lupa_service` (`id`, `icon_uri`, `time_edited`, `time_created`) VAL
 (4, '/data/img/ui-symbols/stump.png', '2017-01-22 13:37:52', '2016-12-31 14:41:27');
 
 INSERT INTO `lupa_service_image` (`id`, `service_id`, `image_uri`, `time_edited`, `time_created`) VALUES
-(8, 2, '/data/img/services/rz_puiden_kaataminen.png', '2017-01-06 15:54:28', '2016-12-31 00:00:00'),
-(9, 3, '/data/img/services/rz_sahauspalvelu.png', '2017-01-06 15:54:31', '2016-12-31 00:00:00'),
+(8, 2, '/data/img/services/puiden_kaataminen.jpg', '2017-01-27 15:54:06', '2016-12-31 00:00:00'),
+(9, 3, '/data/img/services/sahauspalvelu.jpg', '2017-01-27 15:54:12', '2016-12-31 00:00:00'),
 (10, 4, '/data/img/services/kantojyrsinta.jpg', '2017-01-06 15:12:26', '2016-12-31 00:00:00'),
-(11, 1, '/data/img/services/rz_istutus.png', '2017-01-06 15:54:34', '2016-12-31 00:00:00'),
-(12, 1, '/data/img/services/rz_istutus_mirror.png', NULL, '2017-01-06 00:00:00'),
-(13, 2, '/data/img/services/rz_puiden_kaataminen_orig.png', '2017-01-06 15:54:28', '2016-12-31 00:00:00'),
-(14, 3, '/data/img/services/rz_sahauspalvelu_orig.png', '2017-01-06 15:54:31', '2016-12-31 00:00:00');
+(11, 1, '/data/img/services/istutus.jpg', '2017-01-27 15:54:21', '2016-12-31 00:00:00');
 
 INSERT INTO `lupa_service_text` (`id`, `service_id`, `language`, `title`, `text`, `time_edited`, `time_created`) VALUES
-(8, 2, 'fi', 'Puunkaato, poiskuljetus ja hakettaminen.', 'Suunnittelemme puillesi ja pihallesi sopivaa puunkaatoa. Kaadamme puusi kiipeilykaatona, nostokorikaatona, suorana kaatona tai muuten, aina ammatilliseen arviointiin perustuen. Tarjoamme myös risujen ja runkojen poiskuljetuksen. Haketamme usein risut poiskuljetuksen helpottamiseksi. Haketamme tarvittaessa teille sopivaa haketta omista risuistanne.', '2017-01-14 13:12:36', '2016-12-31 00:00:00'),
-(9, 3, 'fi', 'Sahauspalvelut.', 'Sahauttamalla tukkejasi voit saada ainutlaatuista puutavaraa, sellaista mitä kaupasta ei saa. Sahauttamalla tukkeja käsityönä voit saada paksuja ja leveitä lankkuja ja parruja. Jos iso tukki on hankalassa paikassa voi halkaisusahaus olla hyvä tapa saada tukki pienennettyä kuljetusta varten, ja lankuista voit tehdä esimerkiksi pihapenkin. Tavanomaista puutavaraa saat kuitenkin edullisemmin ostamalla sen puutavaraliikkeestä.', '2017-01-14 13:12:42', '2016-12-31 00:00:00'),
-(10, 4, 'fi', 'Kantojyrsintä.', 'Kantojyrsinnällä pääset eroon kannoista ja juurakoista. Kantojyrsinnästä syntyvä hake soveltuu hyvin puutarhakatteeksi pensaitesi alle. Tarjoamme myös multauksen ja nurmikon kylvön, jolloin saat puun kasvupaikan täysin maisemoitua. Kanto hankaloittaa pihasi käyttöä, mm nurmikkoa leikattaessa ja lumitöissä. Kannon voi poista kaivinkoneella tai jyrsimällä. Kanto lahoaa 10-30 vuotta riippuen puulajista ja kannon koosta.', '2017-01-14 13:12:44', '2016-12-31 00:00:00'),
-(11, 1, 'se', 'Trädvård, plantering och besiktning.', 'När du planterar ditt träd med kunskap och färdighet försäkrar du att ditt träd får en god start. Träd behöver skydd och vård, särskilt i byggd miljö. Hur mår dina träd? Vi erbjuder och rekomenderar de tjänster dina träd behöver för att frodas.', '2017-01-14 13:12:47', '2016-12-31 00:00:00'),
-(12, 2, 'se', 'Trädfällning, bortforsling och flisning.', 'Vi planerar och genomför trädfällning anpassad för dina träd och din gård. Dina träd fälls med traditionell teknik, genom sektionsfällning (klättring), med bomlift eller med annan ändamålsenlig teknik, alltid enligt yrkesmässig bedömning. Vi erbjuder även bortforsling av stammar och ris. Riset flisas ofta för att underlätta transport. Vi kan också flisa ditt ris på beställning.', '2017-01-21 14:05:43', '2016-12-31 00:00:00'),
-(13, 3, 'se', 'Sågning.', 'Genom att såga upp dina stockar kan du få sågvirke med speciella dimensioner, tex speciellt breda och tjocka plankor och balkar. Då en stor stock ligger på en olämplig plats kan klyvsågning med motorsåg vara ett bra sätt att göra stocken transporterbar, dessutom blir det möjligt att utnyttja stocken som material för tex trädgårdsbygge. Om du bara behöver vanligt sågvirke är det förmånligare att köpa det från en brädgård. ', '2017-01-21 14:05:32', '2016-12-31 00:00:00'),
-(14, 4, 'se', 'Stubbfräsning.', 'Vi kan avlägsna dina stubbar och ytliga rötter genom att fräsa dem. Fliset som blir kvar passar utmärkt som marktäckning runt träd och buskar. Ofta bortforslar vi dock fliset, lägger mull och sår gräs där trädet stod. En stubbe orsakar problem vid såväl gräsklippning som snöröjning. Stubben kan avlägsnas med grävmaskin eller stubbfräs. En stubbe förmultnar under 10-30 år beroende på storlek och träslag. Våra stubbfräsar skadar inte gräsmattan och är av tre olika storlekar, för att passa dina behov.', '2017-01-21 14:05:19', '2016-12-31 00:00:00'),
-(15, 1, 'fi', 'Puiden arvioiminen, suojaaminen, hoitaminen sekä istuttaminen.', 'Kun istutat puun huolella ja taidolla, varmistat puullesi pitkän iän. Puusi tarvitsee suojelua ja hoitoa, varsinkin rakennetussa ympäristössä, pihoilla ja puistoissa. Miten puusi voi? Pitäisikö sille tehdä jotain? Arvioimme ja suosittelemme/tarjoamme sinulle puusi tarvitsemat palvelut!', '2017-01-14 13:12:56', '2016-12-31 00:00:00'),
-(16, 3, 'en', 'Sawing services.', 'Having your logs sawed by hand can get you lumber of unique quality. Having logs sawed by hand can get you thick and wide planks and spars. Got a large log in an awkward place? Rip cutting it can be a great way to reduce the log for transportation. You can then use the wood to make a garden bench, for example. However, the standard timber is more affordable when purchased at a lumberyard.', '2017-01-14 13:12:58', '2017-01-02 00:00:00');
+(8, 2, 'fi', '<span class="green">Puunkaato</span>, poiskuljetus, pilkkominen ja hakettaminen.', 'Suunnittelemme puillesi ja pihallesi sopivan puunkaadon. Kaadamme puusi kiipeilykaatona, nostokorikaatona, suorana kaatona tai muuten, aina ammatilliseen arviointiin perustuen. Tarjoamme myös risujen ja runkojen poiskuljetuksen. Haketamme usein risut poiskuljetuksen helpottamiseksi. Haketamme tarvittaessa teille sopivaa haketta omista risuistanne. Hake soveltuu kuorikatteeksi esimerkiksi pensaiden juurille. Tukkien pätkimisen ja karsimisen lisäksi voimme pilkkoa pölkyt klapeiksi tehokkaalla klapikoneella, jota myös voi vuokrata omaan käyttöön.', '2017-01-29 17:30:50', '2016-12-31 00:00:00'),
+(9, 3, 'fi', '<span class="green">Sahaus</span>palvelut.', 'Sahauttamalla tukkejasi voit saada ainutlaatuista puutavaraa, sellaista mitä kaupasta ei saa. Sahauttamalla tukkeja käsityönä voit saada paksuja ja leveitä lankkuja ja parruja. Jos iso tukki on hankalassa paikassa voi halkaisusahaus olla hyvä tapa saada tukki pienennettyä kuljetusta varten, ja lankuista voit tehdä esimerkiksi pihapenkin. Tavanomaista puutavaraa saat kuitenkin edullisemmin ostamalla sen puutavaraliikkeestä.', '2017-01-27 17:47:12', '2016-12-31 00:00:00'),
+(10, 4, 'fi', '<span class="green">Kanto</span>jyrsintä.', 'Kantojyrsinnällä pääset eroon kannoista ja juurakoista. Kantojyrsinnästä syntyvä hake soveltuu hyvin puutarhakatteeksi pensaitesi alle. Tarjoamme myös multauksen ja nurmikon kylvön, jolloin saat puun kasvupaikan täysin maisemoitua. Kanto hankaloittaa pihasi käyttöä, muun muassa nurmikkoa leikattaessa ja lumitöissä. Kannon voi poistaa kaivinkoneella tai jyrsimällä. Kanto lahoaa 10-30 vuotta riippuen puulajista ja kannon koosta.', '2017-01-29 17:32:19', '2016-12-31 00:00:00'),
+(11, 1, 'se', '<span class="green">Trädvård</span>, plantering och besiktning.', 'När du planterar ditt träd med kunskap och färdighet försäkrar du att ditt träd får en god start. Träd behöver skydd och vård, särskilt i byggd miljö. Hur mår dina träd? Vi erbjuder och rekomenderar de tjänster dina träd behöver för att frodas.', '2017-01-27 17:50:50', '2016-12-31 00:00:00'),
+(12, 2, 'se', '<span class="green">Trädfällning</span>, bortforsling, klyvning och flisning.', 'Vi planerar och genomför trädfällning anpassad för dina träd och din gård. Dina träd fälls med traditionell teknik, genom sektionsfällning (klättring), med bomlift eller med annan ändamålsenlig teknik, alltid enligt yrkesmässig bedömning. Vi erbjuder även bortforsling av stammar och ris. Riset flisas ofta för att underlätta transport. Vi kan också flisa ditt ris på beställning. Vi kan också kapa upp och klyva stockarna till vedklabbar med en effektiv vedklyv, som även kan hyras för eget bruk.', '2017-01-28 10:22:10', '2016-12-31 00:00:00'),
+(13, 3, 'se', '<span class="green">Såg</span>ning.', 'Genom att såga upp dina stockar kan du få sågvirke med speciella dimensioner, tex speciellt breda och tjocka plankor och balkar. Då en stor stock ligger på en olämplig plats kan klyvsågning med motorsåg vara ett bra sätt att göra stocken transporterbar, dessutom blir det möjligt att utnyttja stocken som material för tex trädgårdsbygge. Om du bara behöver vanligt sågvirke är det förmånligare att köpa det från en brädgård. ', '2017-01-27 17:51:19', '2016-12-31 00:00:00'),
+(14, 4, 'se', '<span class="green">Stubb</span>fräsning.', 'Vi kan avlägsna dina stubbar och ytliga rötter genom att fräsa dem. Fliset som blir kvar passar utmärkt som marktäckning runt träd och buskar. Ofta bortforslar vi dock fliset, lägger mull och sår gräs där trädet stod. En stubbe orsakar problem vid såväl gräsklippning som snöröjning. Stubben kan avlägsnas med grävmaskin eller stubbfräs. En stubbe förmultnar under 10-30 år beroende på storlek och träslag. Våra stubbfräsar skadar inte gräsmattan och är av tre olika storlekar, för att passa dina behov.', '2017-01-27 17:52:11', '2016-12-31 00:00:00'),
+(15, 1, 'fi', '<span class="green">Puiden</span> istuttaminen ja hoitaminen.', 'Kun istutat puun huolella ja taidolla, varmistat puullesi pitkän iän. Puusi tarvitsee suojelua ja hoitoa, varsinkin rakennetussa ympäristössä, pihoilla ja puistoissa. Miten puusi voi? Pitäisikö sille tehdä jotain? Arvioimme ja suosittelemme/tarjoamme sinulle puusi tarvitsemat palvelut!', '2017-01-27 21:00:54', '2016-12-31 00:00:00'),
+(16, 3, 'en', '<span class=\'green\'>Sawing</span> logs.', 'Having your logs cut manually can provide you with unique material such as wide rustic boards and large beams in dimensions not provided by your local hardware store. Sawing can also provide a solution if your logs are in a difficult location, it will make them easier to move, and you can benefit from the material as well. Standard dimension boards and planks tohough are cheaper to buy at the hardware store.', '2017-01-28 10:20:46', '2017-01-02 00:00:00'),
+(17, 4, 'en', '<span class=\'green\'>Stump</span> grinding', 'We can remove your tree stumps and roots well under ground to give place for your lawn or other plants.The chips produced by the stump grinders carbide teeth are suitable for covering the ground around trees and bushes. on request we also transport the chips to the city dump, and seed lawn where tree stood. Tree stumps make lawn mowing and snow shoveling difficult. It takes 10-30 years for a tree stump to decompose naturally, and it can only be removed with a large excavator or a stump grinder. Our stump grinders do not damage your lawn, and come in three different sizes, depending on your needs.', NULL, '2017-01-28 00:00:00'),
+(18, 2, 'en', '<span class="green">Tree</span> felling, removal, splitting and chipping.', 'We plan and carry out tree removal to suit your trees as well as your yard. We fell your trees by climbing, using a skylift or by other means fit for purpose, always based on a professional analysis. We also offer removal of brushwood and trunks. We usually chip the brushwood for ease of transport, and tree chips are well suited as ground cover in gardens around bushes and trees. We can split the tree blocks into firewood using an efficiant wood splittter wich you also can rent an use your self.', NULL, '2017-01-28 00:00:00'),
+(19, 1, 'en', '<span class="green">Tree</span> care, planting and inspection.', 'Having your tree planted with skill and care provides it with the good start it needs to  thrive and survive . Your tree needs protection and care taking, especially in built environment. How are your trees? Do they need attention? We inspect and recomend/offer the services your trees need!', NULL, '2017-01-28 00:00:00');
 
 INSERT INTO `lupa_slide` (`id`, `html`, `content_target`, `is_published`, `time_created`, `time_edited`) VALUES
 (1, '<img src="/data/img/slides/rz_skog5B.png" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:17'),
@@ -128,12 +128,12 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (73, 'en', 'CONTACT_INFO', 'Contact Information', NULL, '2016-12-19 18:00:00'),
 (74, 'fi', 'CONTACT_INFO', 'Yhteystiedot', NULL, '2016-12-19 18:00:00'),
 (75, 'se', 'CONTACT_INFO', 'Kontakt information', '2016-12-19 17:41:09', '2016-12-19 18:00:00'),
-(76, 'fi', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Me Länsi-Uudenmaan Puuavussa suoritamme puutyöt vastuulla ja huolenpidolla. Tavoitteemme ovat tyytyväiset asiakkaat sekä kaunis ja toimiva ympäristö.', '2017-01-21 13:45:56', '2016-12-27 18:00:00'),
+(76, 'fi', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Länsi-Uudenmaan PuuApu on lohjalainen yritys, joka toimii Länsi-Uudellamaalla ja Salon seudulla. Suorittaessamme puutyöt vastuulla ja huolenpidolla, tavoitteenamme ovat tyytyväiset asiakkaat sekä kaunis ja toimiva ympäristö.', '2017-01-29 17:39:01', '2016-12-27 18:00:00'),
 (77, 'en', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Länsi-uudenmaan PuuApu takes care of trees with responsibility and attention. Our ambition is to provide satisfied customers with a functional and beautiful environment.', '2017-01-18 19:48:00', '2016-12-27 18:00:00'),
 (78, 'se', 'FRONT_PAGE_SH_CAPTION_TEXT', 'Länsiuudenmaan PuuApu sköter träd och fällning med ansvar och omsorg. Vi eftersträvar nöjda kunder samt en vacker och fungerande miljö.', '2017-01-21 14:10:37', '2016-12-27 18:00:00'),
-(79, 'se', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Trätrubbel?', '2016-12-31 12:11:15', '2016-12-27 20:00:00'),
-(80, 'en', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Tree trouble?', NULL, '2016-12-27 20:00:00'),
-(81, 'fi', 'FRONT_PAGE_SH_CAPTION_TITLE', 'Puupulmia?', NULL, '2016-12-27 20:00:00'),
+(79, 'se', 'FRONT_PAGE_SH_CAPTION_TITLE', '<span class="green">Trä</span>trubbel?', '2017-01-27 17:49:46', '2016-12-27 20:00:00'),
+(80, 'en', 'FRONT_PAGE_SH_CAPTION_TITLE', '<span class="green">Tree</span> trouble?', '2017-01-27 17:50:07', '2016-12-27 20:00:00'),
+(81, 'fi', 'FRONT_PAGE_SH_CAPTION_TITLE', '<span class=\'green\'>Puu</span>pulmia?', '2017-01-27 17:44:17', '2016-12-27 20:00:00'),
 (82, 'fi', 'CONTACT_TEXT_NAME', 'Länsi-Uudenmaan PuuApu', '2017-01-14 13:52:31', '2017-01-13 22:00:00'),
 (83, 'fi', 'CONTACT_TEXT_STREET_ADDRESS', 'Malminkatu 16', NULL, '2017-01-13 22:00:00'),
 (84, 'fi', 'CONTACT_TEXT_POSTAL_CODE', '08150', NULL, '2017-01-13 22:00:00'),
@@ -149,9 +149,18 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (94, 'fi', 'CONTACT_TEXT_BUSINESS_ID', '2138386-4', '2017-01-16 17:45:25', '2017-01-15 22:00:00'),
 (95, 'se', 'CONTACT_TEXT_BUSINESS_ID', '2138386-4', NULL, '2017-01-15 22:00:00'),
 (96, 'en', 'CONTACT_TEXT_BUSINESS_ID', '2138386-4', NULL, '2017-01-15 22:00:00'),
-(97, 'fi', 'FRONT_PAGE_SERVICES_TITLE', 'Palvelumme', NULL, '2017-01-23 22:00:00'),
-(98, 'se', 'FRONT_PAGE_SERVICES_TITLE', 'Services', NULL, '2017-01-23 22:00:00'),
-(99, 'en', 'FRONT_PAGE_SERVICES_TITLE', 'Services', NULL, '2017-01-23 22:00:00');
+(97, 'fi', 'FRONT_PAGE_SERVICES_TITLE', 'Palvelumme', NULL, '2017-01-23 20:00:00'),
+(98, 'se', 'FRONT_PAGE_SERVICES_TITLE', 'Services', NULL, '2017-01-23 20:00:00'),
+(99, 'en', 'FRONT_PAGE_SERVICES_TITLE', 'Services', NULL, '2017-01-23 20:00:00'),
+(100, 'fi', 'NAME_SHORT', 'LUPA', NULL, '2017-01-24 22:00:00'),
+(101, 'se', 'NAME_SHORT', 'LUPA', NULL, '2017-01-24 22:00:00'),
+(102, 'en', 'NAME_SHORT', 'LUPA', NULL, '2017-01-24 22:00:00'),
+(103, 'fi', 'FOOTER_NAVIGATION_TITLE', 'Navigointi', '2017-01-25 18:57:20', '2017-01-24 22:00:00'),
+(104, 'en', 'FOOTER_NAVIGATION_TITLE', 'Navigation', NULL, '2017-01-24 22:00:00'),
+(105, 'se', 'FOOTER_NAVIGATION_TITLE', 'Navigation', NULL, '2017-01-24 22:00:00'),
+(106, 'fi', 'CONTACT_US', 'Ota yhteyttä', NULL, '2017-01-24 22:00:00'),
+(108, 'se', 'CONTACT_US', 'Kontakta oss', NULL, '2017-01-24 22:00:00'),
+(109, 'en', 'CONTACT_US', 'Contact us', NULL, '2017-01-24 22:00:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
