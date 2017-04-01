@@ -213,6 +213,11 @@ span.green {
 }
 
 
+span.orange {
+	color: #fd7e13;
+}
+
+
 .footer-email-input {
     border: none;
     color: #000;

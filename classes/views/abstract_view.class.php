@@ -66,9 +66,9 @@ abstract class AbstractView implements IView {
         
         $data["__strings"] = [
             "footer_promo" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
-            "name_short" => $text_storage->text("NAME_SHORT"),
+            "name_short" => $text_storage->text("CONTACT_INFO_FP_NAME"),
             "footer_navigation" => $text_storage->text("FOOTER_NAVIGATION_TITLE"),
-            "contact_info_title" => $text_storage->text("CONTACT_INFO"),
+            "contact_info_title" => $text_storage->text("CONTACT_INFO_FP_TITLE"),
             "submit_email" => $text_storage->text("CONTACT_US"),
         ];
         

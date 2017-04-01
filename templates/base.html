@@ -58,7 +58,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-xs-5">
-                                    <h3><b>{{ __strings.contact_info_title }}</b></h3>
+                                    <h3><b>{{ __strings.contact_info_title|raw }}</b></h3>
                                     <img class="phone-number-sm" src="{{ __base_uri }}/data/img/pn-sm.png" alt=""><br>
                                     <img class="email-sm" src="{{ __base_uri }}/data/img/em-sm.png" alt=""><br>
                                     
@@ -93,12 +93,12 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
-                                    <h3><b>{{ __strings.name_short }}</b></h3>
+                                    <h3><b>{{ __strings.name_short|raw }}</b></h3>
                                     <p>{{ __strings.footer_promo }}</p>
                                     <a href="https://www.tilaajavastuu.fi/?yt=2138386-4"><img border="0" src="https://www.tilaajavastuu.fi/wp-content/uploads/2013/10/lk_logo.png" alt="LuotettavaKumppaniyritys"/></a>
                                 </div>
                                 <div class="col-xs-3">
-                                    <h3><b>{{ __strings.footer_navigation }}</b></h3>
+                                    <h3><b>{{ __strings.footer_navigation|raw }}</b></h3>
                                     <nav>
                                         <ul class="nav footer-nav">
                                             {% for link in __nav_links %}
