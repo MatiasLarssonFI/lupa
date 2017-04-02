@@ -46,6 +46,19 @@
         </div>
     </div>
 </main>
+<script>
+    !function($) {
+        var update_service_boxes = function() {
+            $(".service-text-inner").each(function() {
+                var node = $(this);
+                node.css("min-height", 0);
+                node.css("min-height", node.closest(".row").find(".service-img").height() - parseInt(node.css("padding-bottom")) - parseInt(node.css("margin-bottom")) - 10);
+            });
+        };
+        $(window).load(update_service_boxes);
+        $(window).resize(update_service_boxes);
+    }(jQuery);
+</script>
 {% endblock %}
 
 {% block js_link %}
