@@ -58,6 +58,7 @@ abstract class AbstractView implements IView {
         $data["__lang"] = $language;
         $data["__nav_links"] = $this->_nlf->get_nav_links();
         $data["__lang_links"] = $this->_nlf->get_lang_links();
+        $data["__all_lang_links"] = $this->_nlf->get_all_lang_links();
         $data["__js_texts"] = $this->get_js_texts();
         $data["__js_src_mode"] = $src_conf->get_js_src_mode();
         $data["__js_src_version"] = $src_conf->get_js_src_version();
