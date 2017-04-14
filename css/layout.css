@@ -148,6 +148,9 @@ img.lang-flag {
     width: 100%;
     z-index: 1;
     margin-left: -15px;
+    top: 34px;
+    height: 620px;
+    overflow: hidden;
 }
 
 
@@ -370,6 +373,12 @@ address {
     width: 100%;
     z-index: 1;
     margin-left: -15px;
+}
+
+
+.footer-img-inner {
+    height: 420px;
+    overflow: hidden;
 }
 
 
