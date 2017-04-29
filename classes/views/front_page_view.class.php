@@ -36,9 +36,4 @@ class FrontPageView extends AbstractView {
             "facebook_page_url" => \DBIF::get()->get_facebook_page_url(),
         );
     }
-    
-    
-    protected function is_mobile_scale_enabled() {
-        return false;
-    }
 }
