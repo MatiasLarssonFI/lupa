@@ -4,13 +4,6 @@
 {% block header_content %}
 <div class="front-page-carousel-container">
     <div class="carousel slide" data-ride="carousel" data-pause="null" data-interval="8000" id="frontPageCarousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators hidden-xs">
-        {% for ix, slide in slides %}
-            <li data-target="#frontPageCarousel" data-slide-to="{{ ix }}" class="lupa-carousel-indicator {{ loop.first ? 'active' : '' }}"></li>
-        {% endfor %}
-        </ol>
-
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
         {% for slide in slides %}
@@ -36,18 +29,67 @@
             <p class="text">{{ strings.slideshow_caption_paragraph|nl2br }}</p>
             <a class="hidden-xs btn btn-lg btn-primary text-uppercase" href="{{ __base_uri }}/{{ __lang }}/contact">{{ strings.contact_us }}&nbsp;&raquo;</a>
         </div>
-        
     </div>
     <div class="row">
         <div class="col-xs-12 services-container brown">
-        {% for service in services %}
-            {% include loop.index % 2 == 0 ? "service__text_right.html" : "service__text_left.html" %}
-        {% endfor %}
+            <div class="row hidden-xs">
+                <div class="col-sm-4">
+                    <div class="brown-gradient title-in-box text-uppercase">{{ strings.services_title }}</div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="carousel-indicators-outer-container">
+                        <div class="carousel-indicators-inner-container brown">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators hidden-xs">
+                            {% for ix, slide in slides %}
+                                <li data-target="#frontPageCarousel" data-slide-to="{{ ix }}" class="lupa-carousel-indicator {{ loop.first ? 'active' : '' }}"></li>
+                            {% endfor %}
+                            </ol>
+                         </div>
+                     </div>
+                </div>
+                <div class="col-sm-4 pull-right">
+                    <div class="brown-gradient title-in-box text-uppercase text-right">{{ strings.contact_title }}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    {% for service in services %}
+                        {% include loop.index % 2 == 0 ? "service__text_right.html" : "service__text_left.html" %}
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </main>
-{% endblock %}
-
-{% block js_link %}
-    <script type="text/javascript" src="{{ __base_uri }}/lib/slick-1.6.0/slick/slick.min.js"></script>
+<script>
+(function() {
+    $(document).ready(function() { // make indicators work outside of carousel
+        var $carousel = $('#frontPageCarousel');
+        $carousel.carousel();
+        var handled = false;
+        
+        $carousel.bind('slide.bs.carousel', function (e) {
+            var current = $(e.target).find('.item.active');
+            var indx = $(current).index();
+            if((indx + 2) > $('.carousel-indicators li').length) {
+                indx = -1
+            }
+                            
+            if(!handled) {
+                $('.carousel-indicators li').removeClass('active')
+                $('.carousel-indicators li:nth-child(' + (indx + 2) + ')').addClass('active');
+            }
+            else {
+                handled = !handled;
+            }
+        });
+        
+        $(".carousel-indicators li").on('click',function(){
+           $(this).addClass('active').siblings().removeClass('active');
+           handled = true;
+        });
+    });
+})();
+</script>
 {% endblock %}

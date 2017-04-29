@@ -122,7 +122,8 @@ div.light {
 
 
 div.brown {
-    background-image: url("../data/img/brown-texture.jpg");
+    /*background-image: url("../data/img/brown-texture.jpg");*/
+    background-color: #8e725c;
     color: #fff;
 }
 
@@ -132,7 +133,7 @@ div.brown.service-row {
 }
 
 
-div.brown-gradient {
+.brown-gradient {
     background-image: url("../data/img/brown-gradient.png");
     background-repeat: repeat-x;
     background-size: auto 100%;
@@ -221,4 +222,10 @@ span.orange {
 .footer-email-input {
     border: none;
     color: #000;
+}
+
+
+.title-in-box {
+    text-shadow: 2px 2px 2px #222;
+    font-weight: bold;
 }

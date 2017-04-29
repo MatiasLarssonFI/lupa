@@ -26,6 +26,7 @@ class FrontPageView extends AbstractView {
             "strings" => array(
                 "page_title" => $text_storage->text("FRONT_PAGE_TITLE"),
                 "services_title" => $text_storage->text("FRONT_PAGE_SERVICES_TITLE"),
+                "contact_title" => $text_storage->text("CONTACT_INFO"),
                 "slideshow_caption_title" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TITLE"),
                 "slideshow_caption_paragraph" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
                 "contact_us" => $text_storage->text("CONTACT_US"),
