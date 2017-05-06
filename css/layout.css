@@ -415,19 +415,47 @@ address {
 
 
 .carousel-indicators-outer-container {
-    bottom: 17px;
+    bottom: 26px;
     position: relative;
 }
 
 .carousel-indicators-inner-container {
-    padding: 6px 0px 6px 0px;
-    width: 50%;
+    padding: 12px 0px 0px 0px;
+    width: 70%;
     margin: auto;
+    display: inline-block;
 }
 
 
 .carousel-indicators-inner-container ol {
     margin:0;
+}
+
+
+.carousel-indicators-corner {
+    height: 26px;
+    position: relative;
+    bottom: 13px;
+    display: inline-block;
+}
+
+
+.carousel-indicators-corner-left {
+    margin-right: -4px;
+}
+
+
+.carousel-indicators-corner-right {
+    margin-left: -4px;
+}
+
+
+.lupa-carousel-indicator,
+.lupa-carousel-indicator.active {
+    width: 18px !important; /* if not !important, will be overridden by bs carousel styles */
+    height: 18px !important;
+    border: 2px solid #fff !important;
+    margin: 0px 2px 0px 2px !important;
 }
 
 
