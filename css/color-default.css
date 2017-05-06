@@ -57,6 +57,7 @@ main.contact h2 {
     background-size: auto 100%;
     color: #fff;
     border-radius: 0px;
+    text-shadow: 2px 2px 4px #222;
 }
 
 
@@ -228,4 +229,15 @@ span.orange {
 .title-in-box {
     text-shadow: 2px 2px 2px #222;
     font-weight: bold;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+}
+
+
+.title-in-box a,
+.title-in-box a:visited,
+.title-in-box a:hover,
+.title-in-box a:focus,
+.title-in-box a:active {
+    color: inherit;
+    text-decoration: inherit;
 }
