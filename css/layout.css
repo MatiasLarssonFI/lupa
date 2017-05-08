@@ -60,12 +60,6 @@ header {
 }
 
 
-.services-title-container {
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-
 .img-bar-img, .gallery-img {
     margin-bottom: 1em;
 }
@@ -208,24 +202,8 @@ img.lang-flag {
 }
 
 
-.services-title h4 {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
 .no-padding {
     padding: 0px;
-}
-
-
-.services-title {
-    margin-top: 26px;
-    margin-bottom: 26px;
-}
-
-
-hr.services-title-line {
-    margin-top: 44px;
 }
 
 .services-container {
@@ -287,11 +265,16 @@ hr.services-title-line {
 }
 
 
+.service-title img.long-title {
+    margin-bottom: 20px;
+}
+
+
 .service-title h3 {
     margin-top: 0px;
     padding-top: 20px;
     display: inline-block;
-    max-width: 75%;
+    max-width: 70%;
 }
 
 
@@ -488,18 +471,6 @@ address {
     }
 }
 
-@media (max-width: 992px) {
-    .logo-img {
-        padding-bottom: 20px;
-    }
-    
-    
-    .service-title h3 {
-        max-width: 100%;
-    }
-}
-
-
 
 @media (max-width: 768px) {
     .lupa-nav-links {
@@ -507,12 +478,29 @@ address {
     }
     
     
-    .service-title h3 {
-        max-width: 100%;
+    .footer-email-input {
+        max-width: none;
     }
     
     
-    .footer-email-input {
-        max-width: none;
+    .service-container .service-text-inner {
+        height: auto;
+    }
+    
+    
+    .service-title img {
+        max-width: 40px;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    
+    
+    .service-title h3 {
+        padding-top: 10px;
+    }
+    
+    
+    .lupa-slide-content {
+        margin-bottom: 0px;
     }
 }
