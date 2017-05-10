@@ -1,5 +1,5 @@
 <div class="service-text-inner">
-    <div class="service-title">
+    <div class="service-title text-side-{{ text_side }}">
         {% if text_side == "l" %}
             <img src="{{ service.get_icon_uri }}" alt="" {{ service.get_title|striptags|length > 20 ? "class='long-title'" }}>
             <h3>{{ service.get_title|raw }}</h3>
