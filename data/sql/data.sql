@@ -10,7 +10,7 @@ SET time_zone = "+00:00";
 INSERT INTO `lupa_config` (`id`, `key`, `value`, `time_edited`, `time_created`) VALUES
 (1, 'color_css_uri', '/css/color-default.css', NULL, '2016-03-13 22:00:00'),
 (2, 'footer_img_uri', '/data/img/footer.jpg', '2017-02-28 18:04:11', '2016-03-16 22:00:00'),
-(3, 'header_logo_uri', '/data/img/logo22V.png', '2017-01-31 19:38:54', '2016-03-25 22:00:00'),
+(3, 'header_logo_uri', '/data/img/logo22V-{lang}.png', '2017-01-31 19:38:54', '2016-03-25 22:00:00'),
 (4, 'contact_email', 'matias@matias-laptop', '2016-04-02 18:37:11', '2016-04-01 21:00:00'),
 (5, 'mail_server', 'localhost', '2016-04-13 19:20:29', '2016-04-12 21:00:00'),
 (6, 'mail_user', '', NULL, '2016-04-12 21:00:00'),

@@ -50,10 +50,9 @@ abstract class AbstractView implements IView {
         $data["__csrf_token"] = \Session::get()->get_csrf_token();
         $data["__base_uri"] = $base_uri;
         $data["__contact_info"] = $this->make_contact_info($text_storage);
-        $data["__header_logo_uri"] = $base_uri . $dbif->get_header_logo_uri();
+        $data["__header_logo_uri"] = str_replace("{lang}", $language, $base_uri . $dbif->get_header_logo_uri());
         $data["__small_logo_uri"] = $data["__header_logo_uri"];
         $data["__footer_img_uri"] = $base_uri . $dbif->get_footer_img_uri();
-        $data["__str_up"] = $text_storage->text("UP");
         $data["__color_css_uri"] = "{$base_uri}{$dbif->get_color_css_uri()}?v={$src_conf->get_css_src_version()}";
         $data["__lang"] = $language;
         $data["__nav_links"] = $this->_nlf->get_nav_links();
