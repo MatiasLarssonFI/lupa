@@ -177,17 +177,17 @@ img.lang-flag {
 
 .lupa-slide-content .btn-primary {
     margin: 10px 0px 0px 0px;
+    font-size: 16px;
 }
 
 
-.lupa-slide-content .btn-primary,
 .lupa-slide-content p {
     font-size: 26px;
 }
 
 .lupa-slide-content h3 {
     margin-top: 0px;
-    font-size: 38px;
+    font-size: 58px;
 }
 
 
@@ -400,6 +400,11 @@ address {
     padding: 10px 15px 10px 15px;
     margin: 8px 0px 8px 0px;
     line-height: 1;
+}
+
+
+.title-in-box a {
+    display: block;
 }
 
 
