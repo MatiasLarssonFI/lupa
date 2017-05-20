@@ -463,6 +463,26 @@ address {
 }
 
 
+.contact-bar-component + .contact-bar-component {
+    margin-left: 5px;
+}
+
+.contact-bar-component,
+.contact-bar-component-separator {
+    font-size: 24px;
+}
+
+.contact-bar-component-separator{
+    padding: 0px 7px 0px 7px;
+}
+
+
+.contact-bar {
+    margin-top: 20px;
+    padding: 6px 0px 6px 0px;
+}
+
+
 @media (max-width: 1700px) {
     .front-page-carousel-container {
         height: 745px;

@@ -110,6 +110,25 @@
                                     </nav>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="contact-bar">
+                                        <span class="contact-bar-component">{{ __strings.name_short|striptags }}</span>
+                                        <span class="contact-bar-component-separator">•</span>
+                                        
+                                        <span class="contact-bar-component">{{ __contact_info.address }}, {{ __contact_info.postal_code }} {{ __contact_info.city }}</span>
+                                        <span class="contact-bar-component-separator">•</span>
+                                        
+                                        <span class="contact-bar-component"><img src="{{ __base_uri }}/data/img/contact-bar/pn.png" alt="" style="margin-bottom: 5px;"></span>
+                                        <span class="contact-bar-component-separator">•</span>
+                                        
+                                        <span class="contact-bar-component"><img src="{{ __base_uri }}/data/img/contact-bar/em.png" alt=""></span>
+                                        <span class="contact-bar-component-separator">•</span>
+                                        
+                                        <span class="contact-bar-component">Y: {{ __contact_info.business_id }}</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row" id="footer">

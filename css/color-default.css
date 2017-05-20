@@ -247,3 +247,19 @@ span.orange {
     color: inherit;
     text-decoration: inherit;
 }
+
+
+.contact-bar {
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+
+
+.contact-bar-component {
+    font-weight: bold;
+}
+
+
+.contact-bar-component-separator {
+    font-weight: bold;
+}
