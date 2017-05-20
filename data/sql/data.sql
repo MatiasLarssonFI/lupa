@@ -169,7 +169,10 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (115, 'en', 'CONTACT_INFO_FP_NAME', '<span class="orange">LU</span>PA', NULL, '2017-01-24 20:00:00'),
 (116, 'fi', 'FRONT_PAGE_CONTACT_TITLE', 'Yhteystiedot', NULL, '2017-05-05 21:00:00'),
 (117, 'en', 'FRONT_PAGE_CONTACT_TITLE', 'Contact', NULL, '2017-05-05 21:00:00'),
-(118, 'sv', 'FRONT_PAGE_CONTACT_TITLE', 'Kontakt', NULL, '2017-05-05 21:00:00');
+(118, 'sv', 'FRONT_PAGE_CONTACT_TITLE', 'Kontakt', NULL, '2017-05-05 21:00:00'),
+(119, 'fi', 'CONTACT_PROMPT_TEXT', 'Lähetä meille yhteydenottopyyntö antamalla sähköpostiosoitteesi alla olevaan kenttään.', NULL, '2017-05-20 15:00:00'),
+(120, 'en', 'CONTACT_PROMPT_TEXT', 'Send us a contact request by entering your e-mail address below.', NULL, '2017-05-20 15:00:00'),
+(121, 'sv', 'CONTACT_PROMPT_TEXT', 'Skicka oss en kontaktbegäran genom att ange din e-postadress nedan.', NULL, '2017-05-20 15:00:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

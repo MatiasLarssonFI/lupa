@@ -69,6 +69,7 @@ abstract class AbstractView implements IView {
             "name_short" => $text_storage->text("CONTACT_INFO_FP_NAME"),
             "footer_navigation" => $text_storage->text("FOOTER_NAVIGATION_TITLE"),
             "contact_info_title" => $text_storage->text("CONTACT_INFO_FP_TITLE"),
+            "contact_prompt" => $text_storage->text("CONTACT_PROMPT_TEXT"),
             "submit_email" => $text_storage->text("CONTACT_US"),
         ];
         
