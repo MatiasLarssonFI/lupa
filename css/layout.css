@@ -310,11 +310,6 @@ img.lang-flag {
 }
 
 
-.some-link {
-    font-size: 14px;
-}
-
-
 .parent-height {
     height: 100%;
     max-height: 100%;
@@ -503,6 +498,7 @@ address {
 .contact-bar {
     margin-top: 20px;
     padding: 6px 0px 6px 0px;
+    text-align: center;
 }
 
 
