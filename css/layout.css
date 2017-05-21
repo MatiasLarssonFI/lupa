@@ -210,10 +210,11 @@ img.lang-flag {
     width: 100%;
     position: absolute;
     padding-right: 30px;
+    z-index: 1;
 }
 
 
-.service-img img {
+.service-img .service-img-main {
     width: 100%;
 }
 
@@ -225,6 +226,10 @@ img.lang-flag {
 .services-container {
     overflow: visible;
     padding: 0px 20px 20px 20px;
+}
+
+.services-container .service-text {
+    z-index: 3;
 }
 
 .services-container .service-text p {
@@ -393,6 +398,24 @@ address {
 .img-brand-sm {
     height: 35px;
     margin-top: 6px;
+}
+
+
+.service-img-brand {
+    height: 45px;
+    position: absolute;
+    z-index: 2;
+    bottom: 30px;
+}
+
+
+.service-img-brand-l {
+    right: 40px;
+}
+
+
+.service-img-brand-r {
+    left: 40px;
 }
 
 

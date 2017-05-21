@@ -3,8 +3,9 @@
     <div class="col-xs-12 service-container left">
         <div class="row">
             <div class="col-xs-12">
+                <img class="service-img-brand service-img-brand-{{ text_side }}" alt="{{ __contact_info.name }}" src="{{ __small_logo_uri }}">
                 <div class="service-img">
-                    <img src="{{ service.get_img_uris.0 }}" alt="" title="{{ service.get_title|striptags }}">
+                    <img src="{{ service.get_img_uris.0 }}" alt="" title="{{ service.get_title|striptags }}" class="service-img-main">
                 </div>
                 <div class="col-xs-12 col-sm-6 service-text">
                     {% include "service_text.html" %}
