@@ -170,8 +170,8 @@ img.lang-flag {
 .lupa-slide-content {
     padding: 15px;
     font-size: 16px;
-    margin-top: 120px;
-    margin-bottom: 120px;
+    margin-top: 140px;
+    margin-bottom: 140px;
 }
 
 
@@ -250,7 +250,7 @@ img.lang-flag {
 .service-container .service-text-inner {
     margin: 20px 10px;
     padding: 20px;
-    height: 460px;
+    min-height: 320px;
 }
 
 .service-container.left .service-text-inner {
@@ -260,6 +260,11 @@ img.lang-flag {
 
 .service-container.right .service-text-inner {
     text-align: left;
+}
+
+
+.service-container .service-text-inner p {
+    margin-bottom: 0px;    
 }
 
 
