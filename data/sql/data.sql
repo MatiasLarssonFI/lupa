@@ -22,8 +22,8 @@ INSERT INTO `lupa_config` (`id`, `key`, `value`, `time_edited`, `time_created`) 
 
 INSERT INTO `lupa_service` (`id`, `icon_uri`, `time_edited`, `time_created`) VALUES
 (1, '/data/img/ui-symbols/plant.png', '2017-01-22 13:37:13', '2016-12-31 14:41:27'),
-(2, '/data/img/ui-symbols/tree.png', '2017-01-22 13:37:28', '2016-12-31 14:41:27'),
-(3, '/data/img/ui-symbols/saw.png', '2017-01-22 13:37:43', '2016-12-31 14:41:27'),
+(2, '/data/img/ui-symbols/saw.png', '2017-01-22 13:37:43', '2016-12-31 14:41:27'),
+(3, '/data/img/ui-symbols/tree.png', '2017-01-22 13:37:28', '2016-12-31 14:41:27'),
 (4, '/data/img/ui-symbols/stump.png', '2017-01-22 13:37:52', '2016-12-31 14:41:27');
 
 INSERT INTO `lupa_service_image` (`id`, `service_id`, `image_uri`, `time_edited`, `time_created`) VALUES
