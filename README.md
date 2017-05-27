@@ -1,2 +1,2 @@
 # Länsiuudenmaan PuuApu
-http://lu-pa.fi
+https://lu-pa.fi

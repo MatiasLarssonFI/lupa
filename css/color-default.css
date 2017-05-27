@@ -1,7 +1,7 @@
 body {
     font-family: 'Ek Mukta', sans-serif;
     font-size: 16px;
-    background-color: #fff;
+    background-color: #000;
 }
 
 
@@ -9,18 +9,19 @@ main.contact h2 {
     border-bottom: 1px solid #ccc;
 }
 
+
 .lang li > a:hover {
     background: transparent;
 }
 
 
 .lupa-navbar {
-    background-color: rgba(0,0,0,0.7);
     border: none;
 }
 
 
-.lupa-slide-content {
+.lupa-slide-content,
+.contact-content {
     background-color: rgba(0,0,0, 0.7);
     color: #fff;
 }
@@ -32,6 +33,11 @@ main.contact h2 {
 
 .lupa-slide-content .btn-primary {
     font-weight: bold;
+}
+
+
+.lupa-carousel-indicator {
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.6), 0px 0px 10px rgba(0,0,0,0.3) inset;
 }
 
 
@@ -56,6 +62,7 @@ main.contact h2 {
     background-size: auto 100%;
     color: #fff;
     border-radius: 0px;
+    text-shadow: 2px 2px 4px #222;
 }
 
 
@@ -68,7 +75,9 @@ main.contact h2 {
     color: #fff;
     background-color: transparent;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 24px;
+    text-shadow: 2px 2px 2px #000;
+    text-transform: uppercase;
 }
 
 
@@ -91,6 +100,10 @@ main.contact h2 {
 
 .navbar-default .navbar-nav > li:not(:last-child){
     border-right: 2px solid #fff;
+}
+
+.img-brand {
+    filter: drop-shadow(0px 0px 20px rgba(0,0,0, 0.6));
 }
 
 
@@ -116,7 +129,8 @@ div.light {
 
 
 div.brown {
-    background-image: url("../data/img/brown-texture.jpg");
+    /*background-image: url("../data/img/brown-texture.jpg");*/
+    background-color: #8e725c;
     color: #fff;
 }
 
@@ -126,7 +140,7 @@ div.brown.service-row {
 }
 
 
-div.brown-gradient {
+.brown-gradient {
     background-image: url("../data/img/brown-gradient.png");
     background-repeat: repeat-x;
     background-size: auto 100%;
@@ -138,8 +152,9 @@ hr.brown {
     border-width: 2px;
 }
 
-.services-container {
-    border: 15px solid #82694b;
+
+.services-container .service-text {
+    background-color: rgba(0,0,0, 0.7);
 }
 
 .services-container .service-text h3 {
@@ -161,6 +176,7 @@ hr.brown {
 
 .footer-upper {
     color: #fff;
+    background-color: rgba(0,0,0, 0.7);
 }
 
 .footer-upper h2 {
@@ -169,9 +185,12 @@ hr.brown {
 }
 
 
-.footer-upper-inner {
-    border-top: 2px solid #636363;
+.footer-upper hr {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #fff;
 }
+
 
 
 .footer-nav > li > a,
@@ -202,8 +221,45 @@ span.green {
 }
 
 
-@media (max-width: 768px) {
-    hr.service-separator {
-        border: 1px solid #dfdfdf;
-    }
+span.orange {
+	color: #fd7e13;
+}
+
+
+.footer-email-input {
+    border: none;
+    color: #000;
+}
+
+
+.title-in-box {
+    text-shadow: 2px 2px 2px #222;
+    font-weight: bold;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+}
+
+
+.title-in-box a,
+.title-in-box a:visited,
+.title-in-box a:hover,
+.title-in-box a:focus,
+.title-in-box a:active {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+
+.contact-bar {
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+
+
+.contact-bar-component {
+    font-weight: bold;
+}
+
+
+.contact-bar-component-separator {
+    font-weight: bold;
 }

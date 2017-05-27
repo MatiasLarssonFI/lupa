@@ -1,9 +1,9 @@
-Nimi: {{ message.get_name }}
+Nimi: {{ message.get_name|raw }}
 ----------------------------------
-Aihe: {{ message.get_subject }}
+Aihe: {{ message.get_subject|raw }}
 ----------------------------------
-Sähköposti: {{ message.get_email }}
+Sähköposti: {{ message.get_email|raw }}
 ----------------------------------
 Viesti:
 
-{{ message.get_message }}
+{{ message.get_message|raw }}

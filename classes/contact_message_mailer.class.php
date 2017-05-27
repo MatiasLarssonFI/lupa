@@ -22,23 +22,24 @@ class ContactMessageMailer implements IMailer {
 
         $mail_user = $db->get_mail_user();
         if (strlen($mail_user) > 0) {
-            // disabled SMTP, because of some SSL problem in the environment / Jan. 2017
-            //$mail->isSMTP();                       // Set mailer to use SMTP
+            $mail->isSMTP();                       // Set mailer to use SMTP
             $mail->Host = $db->get_mail_server();  // Specify main and backup SMTP servers
-            //$mail->SMTPAuth = true;
+            $mail->SMTPAuth = true;
             $mail->Username = $mail_user;
             $mail->Password = $db->get_mail_password();
+            $mail->Port = 587;
+        } else {
+            $mail->Port = 25;
         }
         
-        $mail->Port = 25;
 
         $mail->addReplyTo($contactmsg->get_email(), $contactmsg->get_name());
-        $mail->setFrom('contactform@{$host}', 'WOODparts Contact Form');
+        $mail->setFrom('contactform@{$host}', 'LU-PA Contact Form');
         $mail->addAddress($db->get_contact_email());     // Add a recipient
         $mail->isHTML(true);                                  // Set email format to HTML
     
         $mail->CharSet = 'UTF-8';
-        $mail->Subject = "WPCONTACT: {$contactmsg->get_subject()}";
+        $mail->Subject = "LU-PA-CONTACT: {$contactmsg->get_subject()}";
         $mail->Body    = $twig->render("contact_email.html", array("message" => $contactmsg));
         $mail->AltBody = $twig->render("contact_email.txt", array("message" => $contactmsg));
 

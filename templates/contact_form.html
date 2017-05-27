@@ -2,9 +2,9 @@
 <div class="alert alert-danger">{{ errors.__csrf_token }}</div>
 {% endif %}
 
-<form method="post" action="{{ __base_uri }}/{{ lang }}/contact_submit" class="form-horizontal" id="contact-form">
+<form method="post" action="{{ __base_uri }}/{{ lang }}/contact_submit" class="form-horizontal" data-contact-form>
     <input type="hidden" name="__csrf_token" value="{{ __csrf_token }}">
-    <input type="hidden" id="is_ajax" name="is_ajax" value="0">
+    <input type="hidden" data-is-ajax-input name="is_ajax" value="0">
     <input type="text" name="url" class="contact-url" value="{{ prefill.url }}">
     <div class="form-group {{ errors.name is defined ? 'has-error': '' }}">
         <label for="name" class="col-sm-4">{{ strings.field_name }}</label>
@@ -36,7 +36,7 @@
     <div class="form-group {{ errors.message is defined ? 'has-error': '' }}">
         <label for="message" class="col-xs-12">{{ strings.field_message }}</label>
         <div class="col-xs-12">
-            <textarea id="message" name="message" class="form-control" rows="4" minlength="3" required>{{ prefill.message }}</textarea>
+            <textarea id="message" name="message" class="form-control" rows="4" minlength="4" required>{{ prefill.message }}</textarea>
             {% if errors.message is defined %}
                 <span class="help-block">{{ errors.message }}<span>
             {% endif %}
@@ -47,11 +47,11 @@
             <input type="text" name="company" class="contact-url" value="{{ prefill.company }}">
             
             <button type="submit" class="btn btn-primary">{{ strings.submit }}</button>
-            <img id="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif" alt="">
+            <img data-ajax-spinner class="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif" alt="">
         </div>
     </div>
 </form>
-<script src="{{ __base_uri }}/js/contact.js"></script>
+<script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}"></script>
 <script>
     !function($) {
         $(document).ready(function() {

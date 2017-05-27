@@ -1,3 +1,9 @@
+RewriteEngine On
+
+# se -> sv
+RewriteRule "^/?se/?(.*)$" "/sv/$1" [L,R=301]
+
+
 # The rewrite rules:
 # 
 # If the first URI part has the length of two characters, those characters
@@ -17,7 +23,6 @@
 # is present.
 # 
 
-RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

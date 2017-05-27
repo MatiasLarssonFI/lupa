@@ -38,7 +38,8 @@ class ContactView extends AbstractView {
                 "url" => "", // hidden captcha
                 "company" => "company name oy", // hidden captcha
             ),
-            "lang" => $text_storage->get_language()
+            "lang" => $text_storage->get_language(),
+            "facebook_page_url" => \DBIF::get()->get_facebook_page_url(),
         );
     }
 }
