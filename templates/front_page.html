@@ -95,7 +95,11 @@
     var updateServiceImgH = function() {
         $(".service-img-main").each(function() {
             var node = $(this);
-            node.css("min-height", node.closest(".service-container").height());
+            if ($(".hidden-xs").is(":visible")) {
+                node.css("min-height", node.closest(".service-container").height());
+            } else {
+                node.css("min-height", 0);
+            }
         });
     };
     $(window).load(updateServiceImgH);

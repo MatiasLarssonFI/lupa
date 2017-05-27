@@ -3,6 +3,8 @@ RewriteEngine On
 # se -> sv
 RewriteRule "^/?se/?(.*)$" "/sv/$1" [L,R=301]
 
+Options -Indexes
+
 
 # The rewrite rules:
 # 

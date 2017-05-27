@@ -19,17 +19,19 @@ class ContactMessageMailer implements IMailer {
         
         $host = \SiteConfigFactory::get()->get_site_config()->host();
         $db = \DBIF::get();
-
+        
         $mail_user = $db->get_mail_user();
-        if (strlen($mail_user) > 0) {
-            $mail->isSMTP();                       // Set mailer to use SMTP
-            $mail->Host = $db->get_mail_server();  // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true;
-            $mail->Username = $mail_user;
-            $mail->Password = $db->get_mail_password();
-            $mail->Port = 587;
-        } else {
-            $mail->Port = 25;
+        $mail->Port = 25;
+        if (strlen($mail_user) > 0) { // username can also just indicate SMTP
+            $mail->isSMTP();
+            $mail->Host = $db->get_mail_server();
+            $mail_password = $db->get_mail_password();
+            if (strlen($mail_password) > 0) {
+                $mail->SMTPAuth = true;
+                $mail->Username = $mail_user;
+                $mail->Password = $mail_password;
+                $mail->Port = 587;
+            }
         }
         
 
