@@ -71,6 +71,14 @@ class NavLinkFactory {
     
     
     public function get_lang_links() {
+   		$lang = $this->_lang;
+        return array_filter($this->get_all_lang_links(), function ($link) use($lang) {
+            return $link->get_language() !== $lang;
+        });
+    }
+    
+    
+    public function get_all_lang_links() {
         $action = $this->_action;
         $action_params_str = "";
         if (strlen($action) > 0) {
@@ -80,8 +88,6 @@ class NavLinkFactory {
         $lang = $this->_lang;
         return array_map(function($lang) use ($action_params_str) {
             return new LangLink($lang, strtoupper($lang), $action_params_str);
-        }, array_filter(DBIF::get()->get_language_codes(), function($code) use ($lang) {
-            return $code !== $lang;
-        }));
+        }, DBIF::get()->get_language_codes());
     }
 }

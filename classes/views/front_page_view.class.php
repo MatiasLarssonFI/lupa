@@ -26,6 +26,7 @@ class FrontPageView extends AbstractView {
             "strings" => array(
                 "page_title" => $text_storage->text("FRONT_PAGE_TITLE"),
                 "services_title" => $text_storage->text("FRONT_PAGE_SERVICES_TITLE"),
+                "contact_title" => $text_storage->text("FRONT_PAGE_CONTACT_TITLE"),
                 "slideshow_caption_title" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TITLE"),
                 "slideshow_caption_paragraph" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
                 "contact_us" => $text_storage->text("CONTACT_US"),
@@ -34,10 +35,5 @@ class FrontPageView extends AbstractView {
             "services" => \ServiceFactory::get()->get_services(),
             "facebook_page_url" => \DBIF::get()->get_facebook_page_url(),
         );
-    }
-    
-    
-    protected function is_mobile_scale_enabled() {
-        return false;
     }
 }

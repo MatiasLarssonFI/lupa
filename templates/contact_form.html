@@ -36,7 +36,7 @@
     <div class="form-group {{ errors.message is defined ? 'has-error': '' }}">
         <label for="message" class="col-xs-12">{{ strings.field_message }}</label>
         <div class="col-xs-12">
-            <textarea id="message" name="message" class="form-control" rows="4" minlength="3" required>{{ prefill.message }}</textarea>
+            <textarea id="message" name="message" class="form-control" rows="4" minlength="4" required>{{ prefill.message }}</textarea>
             {% if errors.message is defined %}
                 <span class="help-block">{{ errors.message }}<span>
             {% endif %}

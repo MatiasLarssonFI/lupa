@@ -4,13 +4,6 @@
 {% block header_content %}
 <div class="front-page-carousel-container">
     <div class="carousel slide" data-ride="carousel" data-pause="null" data-interval="8000" id="frontPageCarousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators hidden-xs">
-        {% for ix, slide in slides %}
-            <li data-target="#frontPageCarousel" data-slide-to="{{ ix }}" class="lupa-carousel-indicator {{ loop.first ? 'active' : '' }}"></li>
-        {% endfor %}
-        </ol>
-
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
         {% for slide in slides %}
@@ -18,61 +11,95 @@
                 {{ slide.get_html|raw }}
             </div>
         {% endfor %}
-            <div class="lupa-slide-content">
-            <h3><b>{{ strings.slideshow_caption_title|raw }}</b></h3>
-            <p class="text">{{ strings.slideshow_caption_paragraph|nl2br }}</p>
-            <a class="hidden-xs btn btn-lg btn-primary text-uppercase" href="{{ __base_uri }}/{{ __lang }}/contact">{{ strings.contact_us }}&nbsp;&raquo;</a>
-        </div>
         </div>
     </div>
 </div>
 {% endblock %}
 
-{% block head_extra %}
-<link rel="stylesheet" type="text/css" href="{{ __base_uri }}/lib/slick-1.6.0/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="{{ __base_uri }}/lib/slick-1.6.0/slick/slick-theme.css"/>
-{% endblock %}
-
 {% block content %}
-<main>
+<main class="front-main">
     <div class="row">
-        <div class="col-xs-12 col-lg-8 col-lg-offset-2 services-title-container">
+        <div class="col-xs-12 lupa-slide-content">
+            <h3><b>{{ strings.slideshow_caption_title|raw }}</b></h3>
+            <p class="text">{{ strings.slideshow_caption_paragraph|raw }}</p>
+            <a class="hidden-xs btn btn-lg btn-primary text-uppercase" href="{{ __base_uri }}/{{ __lang }}/contact">{{ strings.contact_us }}&nbsp;&raquo;</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 services-container brown" id="services">
+            <div class="row hidden-xs">
+                <div class="col-sm-4">
+                    <div class="brown-gradient title-in-box text-uppercase"><a href="#services">{{ strings.services_title }}</a></div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="carousel-indicators-outer-container text-center">
+                        <img class="carousel-indicators-corner carousel-indicators-corner-left" src="{{ __base_uri }}/data/img/brown-corner-l.png" alt="">
+                        <div class="carousel-indicators-inner-container brown">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators hidden-xs">
+                            {% for ix, slide in slides %}
+                                <li data-target="#frontPageCarousel" data-slide-to="{{ ix }}" class="lupa-carousel-indicator {{ loop.first ? 'active' : '' }}"></li>
+                            {% endfor %}
+                            </ol>
+                         </div>
+                         <img class="carousel-indicators-corner carousel-indicators-corner-right" src="{{ __base_uri }}/data/img/brown-corner-r.png" alt="">
+                     </div>
+                </div>
+                <div class="col-sm-4 pull-right">
+                    <div class="brown-gradient title-in-box text-uppercase text-right"><a href="#contact">{{ strings.contact_title }}</a></div>
+                </div>
+            </div>
             <div class="row">
-                <div class="col-xs-4 col-md-5">
-                    <hr class="brown services-title-line">
-                </div>
-                <div class="col-xs-4 col-md-2 text-uppercase text-center no-padding">
-                    <div class="brown-gradient services-title"><h4><b>{{ strings.services_title }}</b></h4></div>
-                </div>
-                <div class="col-xs-4 col-md-5">
-                    <hr class="brown services-title-line">
+                <div class="col-xs-12">
+                    {% for service in services %}
+                        {% include loop.index % 2 == 0 ? "service__text_right.html" : "service__text_left.html" %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12 col-lg-8 col-lg-offset-2 services-container">
-        {% for service in services %}
-            {% include loop.index % 2 == 0 ? "service__text_left.html" : "service__text_right.html" %}
-        {% endfor %}
-        </div>
-    </div>
 </main>
 <script>
-    !function($) {
-        var update_service_boxes = function() {
-            $(".service-text-inner").each(function() {
-                var node = $(this);
-                node.css("min-height", 0);
-                node.css("min-height", node.closest(".row").innerHeight() - parseInt(node.css("padding-bottom")) - parseInt(node.css("margin-bottom")));
+(function() {
+    $(document).ready(function() {
+        // make indicators work outside of carousel
+        (function() {
+            var $carousel = $('#frontPageCarousel');
+            $carousel.carousel();
+            var handled = false;
+            
+            $carousel.bind('slide.bs.carousel', function (e) {
+                var current = $(e.target).find('.item.active');
+                var indx = $(current).index();
+                if((indx + 2) > $('.carousel-indicators li').length) {
+                    indx = -1
+                }
+                                
+                if(!handled) {
+                    $('.carousel-indicators li').removeClass('active')
+                    $('.carousel-indicators li:nth-child(' + (indx + 2) + ')').addClass('active');
+                }
+                else {
+                    handled = !handled;
+                }
             });
-        };
-        $(window).load(update_service_boxes);
-        $(window).resize(update_service_boxes);
-    }(jQuery);
+            
+            $(".carousel-indicators li").on('click',function(){
+               $(this).addClass('active').siblings().removeClass('active');
+               handled = true;
+            });
+        })();
+    });
+    
+    // fix service img heights
+    var updateServiceImgH = function() {
+        $(".service-img-main").each(function() {
+            var node = $(this);
+            node.css("min-height", node.closest(".service-container").height());
+        });
+    };
+    $(window).load(updateServiceImgH);
+    $(window).resize(updateServiceImgH);
+})();
 </script>
-{% endblock %}
-
-{% block js_link %}
-    <script type="text/javascript" src="{{ __base_uri }}/lib/slick-1.6.0/slick/slick.min.js"></script>
 {% endblock %}

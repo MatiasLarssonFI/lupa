@@ -50,12 +50,14 @@ abstract class AbstractView implements IView {
         $data["__csrf_token"] = \Session::get()->get_csrf_token();
         $data["__base_uri"] = $base_uri;
         $data["__contact_info"] = $this->make_contact_info($text_storage);
-        $data["__header_logo_uri"] = $base_uri . $dbif->get_header_logo_uri();
-        $data["__str_up"] = $text_storage->text("UP");
+        $data["__header_logo_uri"] = str_replace("{lang}", $language, $base_uri . $dbif->get_header_logo_uri());
+        $data["__small_logo_uri"] = $data["__header_logo_uri"];
+        $data["__footer_img_uri"] = $base_uri . $dbif->get_footer_img_uri();
         $data["__color_css_uri"] = "{$base_uri}{$dbif->get_color_css_uri()}?v={$src_conf->get_css_src_version()}";
         $data["__lang"] = $language;
         $data["__nav_links"] = $this->_nlf->get_nav_links();
         $data["__lang_links"] = $this->_nlf->get_lang_links();
+        $data["__all_lang_links"] = $this->_nlf->get_all_lang_links();
         $data["__js_texts"] = $this->get_js_texts();
         $data["__js_src_mode"] = $src_conf->get_js_src_mode();
         $data["__js_src_version"] = $src_conf->get_js_src_version();
@@ -64,9 +66,10 @@ abstract class AbstractView implements IView {
         
         $data["__strings"] = [
             "footer_promo" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
-            "name_short" => $text_storage->text("NAME_SHORT"),
+            "name_short" => $text_storage->text("CONTACT_INFO_FP_NAME"),
             "footer_navigation" => $text_storage->text("FOOTER_NAVIGATION_TITLE"),
-            "contact_info_title" => $text_storage->text("CONTACT_INFO"),
+            "contact_info_title" => $text_storage->text("CONTACT_INFO_FP_TITLE"),
+            "contact_prompt" => $text_storage->text("CONTACT_PROMPT_TEXT"),
             "submit_email" => $text_storage->text("CONTACT_US"),
         ];
         
