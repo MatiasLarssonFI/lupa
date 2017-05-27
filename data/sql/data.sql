@@ -47,10 +47,10 @@ INSERT INTO `lupa_service_text` (`id`, `service_id`, `language`, `title`, `text`
 (19, 1, 'en', '<span class="green">Tree</span> care, planting and inspection.', 'Having your tree planted with skill and care provides it with the good start it needs to  thrive and survive . Your tree needs protection and care taking, especially in built environment. How are your trees? Do they need attention? We inspect and recomend/offer the services your trees need!', NULL, '2017-01-28 00:00:00');
 
 INSERT INTO `lupa_slide` (`id`, `html`, `content_target`, `is_published`, `time_created`, `time_edited`) VALUES
-(1, '<img src="/data/img/slides/rz_skog5B.png" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:17'),
-(2, '<img src="/data/img/slides/rz_skog6B.png" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:25'),
-(3, '<img src="/data/img/slides/rz_skog3B.png" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:33'),
-(4, '<img src="/data/img/slides/rz_skog1leikattu.png" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:43');
+(1, '<img src="/data/img/slides/skog5B_be.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:17'),
+(2, '<img src="/data/img/slides/skog6B_be.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:25'),
+(3, '<img src="/data/img/slides/skog3B_be.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:33'),
+(4, '<img src="/data/img/slides/skog1leikattu_be.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:43');
 
 INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, `time_created`) VALUES
 (1, 'fi', 'FRONT_PAGE_PROMO', 'Kehitämme ja valmistamme prototyypejä ja sisustusosia puusta. Hyödynnämme mm. cnc-tekniikkaa ja puun muotopuristusta.', '2016-05-15 18:35:20', '2016-03-05 22:00:00'),
