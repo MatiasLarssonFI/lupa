@@ -63,6 +63,7 @@ abstract class AbstractView implements IView {
         $data["__js_src_version"] = $src_conf->get_js_src_version();
         $data["__css_src_version"] = $src_conf->get_css_src_version();
         $data["__scale_mobile"] = $this->is_mobile_scale_enabled();
+        $data["__facebook_page_url"] = \DBIF::get()->get_facebook_page_url();
         
         $data["__strings"] = [
             "footer_promo" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
