@@ -43,7 +43,7 @@ class NavLinkFactory {
         
         return array_map(function ($action) use ($texts, $current_action) {
             if ($action !== "") {
-                $title = $texts->text("NAV_" . strtoupper($action));
+                $title = $texts->text("NAV_" . str_replace("-", "_", strtoupper($action)));
             } else {
                 $title = $texts->text("NAV_FRONT_PAGE");
             }
