@@ -174,6 +174,16 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (120, 'en', 'CONTACT_PROMPT_TEXT', 'Send us a contact request by entering your e-mail address below.', NULL, '2017-05-20 15:00:00'),
 (121, 'sv', 'CONTACT_PROMPT_TEXT', 'Ange din e-post adress nedan så tar vi kontakt.', NULL, '2017-05-20 15:00:00');
 
+
+/* v2.2.0 */
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+('fi', 'NAV_FREQUENTLY_ASKED_QUESTIONS', 'Usein kysyttyä', NULL, '2016-03-11 22:00:00'),
+('en', 'NAV_FREQUENTLY_ASKED_QUESTIONS', 'Frequently asked', NULL, '2016-03-11 22:00:00'),
+('sv', 'NAV_FREQUENTLY_ASKED_QUESTIONS', 'Vanliga frågor', '2017-04-02 13:20:03', '2016-03-11 22:00:00'),
+('fi', 'FAQ_TITLE', 'Usein kysyttyä', NULL, '2016-03-11 22:00:00'),
+('en', 'FAQ_TITLE', 'Frequently asked', NULL, '2016-03-11 22:00:00'),
+('sv', 'FAQ_TITLE', 'Vanliga frågor', '2017-04-02 13:20:03', '2016-03-11 22:00:00');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
