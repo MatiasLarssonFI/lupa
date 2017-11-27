@@ -12,20 +12,20 @@ require_once(dirname(__FILE__) . "/classes/nav_link_factory.class.php");
 
 try {
     $request = array_merge(
-                        array(
-                            "action" => "", 
-                            "params" => "",
-                            "language" => SiteConfigFactory::get()->get_site_config()->default_language()
-                        ),
-                    $_GET
-                );
-        $request["params"] = array_filter(explode("/", $request["params"]), "strlen"); // :<
-        
-        $actions = [
-            "", "contact", "frequently-asked-questions",
-        ];
-        
-        $nlf = new NavLinkFactory($request["action"], $request["params"], $actions, $request["language"]);
+            array(
+                "action" => "", 
+                "params" => "",
+                "language" => SiteConfigFactory::get()->get_site_config()->default_language()
+            ),
+        $_GET
+    );
+    $request["params"] = array_filter(explode("/", $request["params"]), "strlen"); // :<
+    
+    $actions = [
+        "", "contact", "frequently-asked-questions",
+    ];
+    
+    $nlf = new NavLinkFactory($request["action"], $request["params"], $actions, $request["language"]);
     try {
         UITextStorage::get()->try_change_language($request["language"]);
         Views\ViewFactory::get()->get_view($request["action"], $request["params"], $request["language"], $nlf)->render();
