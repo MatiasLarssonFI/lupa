@@ -2,10 +2,24 @@
 {% block title %}{{ strings.page_title }}{% endblock %}
 
 {% block content %}
-<main class="contact">
+<main class="faq">
     <div class="row brown">
-        <div class="col-xs-12 col-lg-10 col-lg-offset-1">
-            {{ strings.page_title }}
+        <div class="col-xs-12 col-lg-10 col-lg-offset-1 faq-content">
+            <h2>{{ strings.page_title }}</h2>
+        </div>
+        <div class="col-xs-12 col-lg-10 col-lg-offset-1 faq-content faq-answers">
+            <div class="row">
+                {% for answer in answers %}
+                <div class="col-xs-12 faq-answer">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <dt><strong>{{ answer.get_question }}</strong></dt>
+                            <dd class="faq-answer-text"><p>{{ answer.get_answer }}</p></dd>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </main>

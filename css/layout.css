@@ -42,13 +42,15 @@ header {
 
 
 .front-main,
-.contact {
+.contact,
+.faq {
     position: relative;
     z-index: 2;
 }
 
 
-.contact {
+.contact,
+.faq {
 	margin-top: 30px;
 }
 
@@ -492,6 +494,21 @@ address {
     margin-top: 20px;
     padding: 6px 0px 6px 0px;
     text-align: center;
+}
+
+
+.faq-answers {
+    margin-top: 15px;
+}
+
+
+.faq-answer {
+    margin-top: 10px;
+}
+
+
+.faq-answer-text {
+    padding-left: 10px;
 }
 
 

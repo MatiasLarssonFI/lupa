@@ -165,7 +165,7 @@ class DBIF {
         while ($row = $stm->fetch()) {
             $cb_store_row($row);
         }
-    } 
+    }
     
     
     /**
@@ -294,6 +294,32 @@ class DBIF {
         $stm->bindParam(":subject", $subject, PDO::PARAM_STR);
         $stm->bindParam(":message", $msg, PDO::PARAM_STR);
         $stm->execute();
+    }
+    
+    
+    /**
+     * Get the FAQ answers.
+     * 
+     * Calls cb_store_row on each row.
+     */
+    public function get_faq_answers($cb_store_row, $language) {
+        $sql = 
+            "SELECT
+                a.id,
+                at.question,
+                at.answer
+            from {$this->_table_prefix}faq_answer a
+            inner join {$this->_table_prefix}faq_answer_text at on a.id = at.faq_answer_id
+            where at.language = :lang
+            order by a.id
+            ";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindParam(":lang", $language, PDO::PARAM_STR);
+        $stm->execute();
+        
+        while ($row = $stm->fetch()) {
+            $cb_store_row($row);
+        }
     }
     
     

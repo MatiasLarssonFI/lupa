@@ -4,6 +4,7 @@ namespace Views;
 
 require_once(dirname(__FILE__) . "/abstract_view.class.php");
 require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
+require_once(dirname(__FILE__) . "/../faq_factory.class.php");
 
 
 class FAQView extends AbstractView {
@@ -23,6 +24,7 @@ class FAQView extends AbstractView {
             "strings" => array(
                 "page_title" => $text_storage->text("FAQ_TITLE"),
             ),
+            "answers" => \FAQFactory::get()->get_answers(),
             "lang" => $text_storage->get_language(),
         );
     }
