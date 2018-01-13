@@ -51,8 +51,8 @@
         </div>
     </div>
 </form>
-<script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}"></script>
-<script>
+<script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
+<script async="false">
     !function($) {
         $(document).ready(function() {
             wp.contact.init();

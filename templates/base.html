@@ -21,8 +21,6 @@
             
             <title>{% block title %}{% endblock %} - {{ __contact_info.name }}</title>
             
-            <script src="{{ __base_uri }}/lib/jquery-1.12.1/jquery-1.12.1.min.js"></script>
-            
             {% for link in __all_lang_links %}
                 <link rel="alternate" href='{{ __base_uri }}/{{ link.get_language }}/{{ link.get_action }}' hreflang="{{ link.get_language }}">
             {% endfor %}
@@ -152,9 +150,10 @@
             </div>
         </div>
         
+        <script src="{{ __base_uri }}/lib/jquery-1.12.1/jquery-1.12.1.min.js"></script>
         <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-        <script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}"></script>
-        <script>
+        <script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
+        <script async="false">
             // all AJAX shall actually be asynchronous (duh)
             $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
                 options.async = true;

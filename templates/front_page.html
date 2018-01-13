@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ __base_uri }}/lib/mediaelement-4.2.7/build/mediaelementplayer.min.css" />
+{% endblock %}
+
 {% block title %}{{ strings.page_title }}{% endblock %}
 
 {% block header_content %}
@@ -59,8 +64,15 @@
         </div>
     </div>
 </main>
-<script>
-(function() {
+{% endblock %}
+
+{% block js_link %}
+<script src="{{ __base_uri }}/lib/mediaelement-4.2.7/build/mediaelement-and-player.min.js"></script>
+<script src="{{ __base_uri }}/js/videos.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
+{# Add any other renderers you need; see Use Renderers for more information #}
+
+<script async="false">
+(function($) {
     $(document).ready(function() {
         // make indicators work outside of carousel
         (function() {
@@ -104,6 +116,6 @@
     };
     $(window).load(updateServiceImgH);
     $(window).resize(updateServiceImgH);
-})();
+})(jQuery);
 </script>
 {% endblock %}
