@@ -99,10 +99,16 @@ class DBIF {
      * 
      * Calls cb_store_row on each row.
      */
-    public function get_videos_page_videos_list($cb_store_row) {
-        $stm = $this->_pdo->prepare("SELECT thumb_url, name, description, id FROM {$this->_table_prefix}videos_page_video where is_published");
+    public function get_front_page_videos($cb_store_row) {
+        $stm = $this->_pdo->prepare(
+                            "SELECT
+                                thumb_url,
+                                name,
+                                vf.video_url as video_url,
+                                v.id
+                             FROM {$this->_table_prefix}video v
+                             inner join {$this->_table_prefix}video_file vf on vf.video_id = v.id");
         $stm->execute();
-        
         while ($row = $stm->fetch()) {
             $cb_store_row($row);
         }
@@ -116,17 +122,15 @@ class DBIF {
      * 
      * @param int $id
      */
-    public function get_videos_page_video($id, $cb_store_row) {
+    public function get_front_page_video($id, $cb_store_row) {
         $stm = $this->_pdo->prepare(
                             "SELECT
                                 thumb_url,
                                 name,
-                                description,
                                 vf.video_url as video_url,
-                                vf.mime_subtype as mime_subtype,
                                 v.id
-                             FROM {$this->_table_prefix}videos_page_video v
-                             inner join {$this->_table_prefix}video_file vf on vf.videos_page_video_id = v.id
+                             FROM {$this->_table_prefix}video v
+                             inner join {$this->_table_prefix}video_file vf on vf.video_id = v.id
                              where v.id = :id");
         $stm->bindParam(":id", $id, PDO::PARAM_INT);
         $stm->execute();

@@ -138,6 +138,33 @@ CREATE TABLE `lupa_faq_answer_text` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 
+CREATE TABLE IF NOT EXISTS `lupa_video` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text COLLATE utf8_swedish_ci NOT NULL,
+  `description` text COLLATE utf8_swedish_ci NOT NULL,
+  `thumb_url` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `is_published` tinyint(1) NOT NULL DEFAULT '1',
+  `time_created` datetime NOT NULL,
+  `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1;
+
+
+CREATE TABLE IF NOT EXISTS `lupa_video_file` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `video_id` int(11) NOT NULL,
+  `video_url` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `mime_subtype` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `time_created` datetime NOT NULL,
+  `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `videos_page_video_id` (`videos_page_video_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1;
+
+
+ALTER TABLE `lupa_video_file` ADD FOREIGN KEY (`videos_page_video_id`) REFERENCES `lupa_video`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
 ALTER TABLE `lupa_faq_answer`
   ADD PRIMARY KEY (`id`);
 
