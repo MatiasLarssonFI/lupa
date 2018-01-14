@@ -107,7 +107,8 @@ class DBIF {
                                 vf.video_url as video_url,
                                 v.id
                              FROM {$this->_table_prefix}video v
-                             inner join {$this->_table_prefix}video_file vf on vf.video_id = v.id");
+                             inner join {$this->_table_prefix}video_file vf on vf.video_id = v.id
+                             order by v.id asc");
         $stm->execute();
         while ($row = $stm->fetch()) {
             $cb_store_row($row);

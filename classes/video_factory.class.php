@@ -67,15 +67,6 @@ class VideoFactory {
             );
         }, $videos_data);
         
-        usort($ret, function(IVideo $img1, IVideo $img2) {
-            $name1 = $img1->get_name();
-            $name2 = $img2->get_name();
-            if ($name1 === $name2) {
-                return 0;
-            }
-            return ($name1 < $name2 ? -1 : 1);
-        });
-        
         return $ret;
     }
     
