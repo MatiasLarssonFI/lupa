@@ -33,9 +33,7 @@
     <div class="row">
         <div class="col-xs-12 services-container brown" id="services">
             <div class="row hidden-xs">
-                <div class="col-sm-4">
-                    <div class="brown-gradient title-in-box text-uppercase"><a href="#services">{{ strings.services_title }}</a></div>
-                </div>
+                <div class="col-sm-4"></div>
                 <div class="col-sm-4">
                     <div class="carousel-indicators-outer-container text-center">
                         <img class="carousel-indicators-corner carousel-indicators-corner-left" src="{{ __base_uri }}/data/img/brown-corner-l.png" alt="">
@@ -50,8 +48,11 @@
                          <img class="carousel-indicators-corner carousel-indicators-corner-right" src="{{ __base_uri }}/data/img/brown-corner-r.png" alt="">
                      </div>
                 </div>
-                <div class="col-sm-4 pull-right">
-                    <div class="brown-gradient title-in-box text-uppercase text-right"><a href="#contact">{{ strings.contact_title }}</a></div>
+                <div class="col-sm-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    {% include "videos_playlist.html" %}
                 </div>
             </div>
             <div class="row">
