@@ -522,6 +522,11 @@ address {
 }
 
 
+.videos-playlist {
+    margin-bottom: 15px;
+}
+
+
 @media (max-width: 1700px) {
     .front-page-carousel-container {
         height: 745px;
