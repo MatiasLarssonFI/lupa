@@ -5,7 +5,6 @@
             success: function(mediaElement, originalNode, instance) {
                 $("[data-video-select]").on("click", function() {
                     instance.setSrc($(this).data("videoSelect"));
-                    instance.load();
                     instance.play();
                 });
             },
