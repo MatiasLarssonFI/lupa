@@ -626,5 +626,6 @@ address {
 
 .navbar-toggle-img-btn {
     padding:0;
-    width: 50px;
+    width: 65px;
+    margin:15px;
 }
