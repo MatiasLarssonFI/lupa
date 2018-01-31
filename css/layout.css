@@ -617,3 +617,14 @@ address {
         height: 230px;
     }
 }
+
+
+.navbar-toggle-img {
+    width:100%;
+}
+
+
+.navbar-toggle-img-btn {
+    padding:0;
+    width: 50px;
+}
