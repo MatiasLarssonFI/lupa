@@ -629,3 +629,11 @@ address {
     width: 65px;
     margin:15px;
 }
+
+
+.navbar-toggle-img-btn-container,
+.navbar-toggle-img-btn-container:hover {
+    padding:5px;
+    margin:0;
+    border-radius:0px;
+}

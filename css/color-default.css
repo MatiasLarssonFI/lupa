@@ -263,7 +263,12 @@ span.orange {
 
 
 .bg-orange {
-    background-color: #fd8111;
+    background-color: #fd8111 !important;
+}
+
+
+.bg-green {
+    background-color: #a5e35c !important;
 }
 
 
@@ -271,4 +276,10 @@ span.orange {
 .navbar-toggle-img-btn:hover {
     border: none;
     background-color: transparent !important;
+}
+
+
+.navbar-toggle-img-btn-container,
+.navbar-toggle-img-btn-container:hover {
+    border: none;
 }
