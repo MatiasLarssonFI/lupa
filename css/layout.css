@@ -163,16 +163,19 @@ img.lang-flag {
     font-size: 16px;
     margin-top: 140px;
     margin-bottom: 140px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
 }
 
 
 .lupa-slide-content .btn-primary {
     margin: 10px 0px 0px 0px;
-    font-size: 16px;
+    font-size: 26px;
 }
 
 
-.lupa-slide-content p {
+.lupa-slide-content {
     font-size: 26px;
 }
 
@@ -603,12 +606,6 @@ address {
     .lupa-slide-content {
         margin-top: 0px;
         margin-bottom: 0px;
-    }
-    
-    
-    .lupa-slide-content .btn-primary,
-    .lupa-slide-content p {
-        font-size: 18px;
     }
     
     

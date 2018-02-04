@@ -20,10 +20,14 @@ main.contact h2 {
 }
 
 
-.lupa-slide-content,
 .contact-content,
 .faq-content {
     background-color: rgba(0,0,0, 0.7);
+    color: #fff;
+}
+
+
+.lupa-slide-content {
     color: #fff;
 }
 
@@ -57,18 +61,13 @@ main.contact h2 {
 .btn-primary:focus,
 .btn-primary:hover {
     border: none;
-    background-color: transparent;
-    background-image: url("../data/img/orange-gradient.png");
-    background-repeat: repeat-x;
-    background-size: auto 100%;
     color: #fff;
     border-radius: 0px;
-    text-shadow: 2px 2px 4px #222;
 }
 
 
 .btn-primary:hover {
-    box-shadow: 0px 0px 15px 4px rgba(248,93,0,0.5);
+    box-shadow: 0px 0px 15px 4px rgba(165, 227, 92,0.5);
 }
 
 
@@ -282,4 +281,9 @@ span.orange {
 .navbar-toggle-img-btn-container,
 .navbar-toggle-img-btn-container:hover {
     border: none;
+}
+
+
+.carousel-inner {
+    filter: blur(3px);
 }
