@@ -29,6 +29,9 @@ main.contact h2 {
 
 .lupa-slide-content {
     color: #fff;
+    background-image: url("../data/img/slides/skog5B_be_blur.jpg");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
 }
 
 .lupa-slide-content > hr {
@@ -281,9 +284,4 @@ span.orange {
 .navbar-toggle-img-btn-container,
 .navbar-toggle-img-btn-container:hover {
     border: none;
-}
-
-
-.carousel-inner {
-    filter: blur(3px);
 }

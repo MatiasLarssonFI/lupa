@@ -6,21 +6,6 @@
 
 {% block title %}{{ strings.page_title }}{% endblock %}
 
-{% block header_content %}
-<div class="front-page-carousel-container">
-    <div class="carousel slide" data-ride="carousel" data-pause="null" data-interval="8000" id="frontPageCarousel">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-        {% for slide in slides %}
-            <div class="item {{ loop.first ? 'active' : '' }} lupa-slide">
-                {{ slide.get_html|raw }}
-            </div>
-        {% endfor %}
-        </div>
-    </div>
-</div>
-{% endblock %}
-
 {% block content %}
 <main class="front-main">
     <div class="row">
@@ -32,23 +17,8 @@
     </div>
     <div class="row">
         <div class="col-xs-12 services-container brown" id="services">
-            <div class="row hidden-xs">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
-                    <div class="carousel-indicators-outer-container text-center">
-                        <img class="carousel-indicators-corner carousel-indicators-corner-left" src="{{ __base_uri }}/data/img/brown-corner-l.png" alt="">
-                        <div class="carousel-indicators-inner-container brown">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators hidden-xs">
-                            {% for ix, slide in slides %}
-                                <li data-target="#frontPageCarousel" data-slide-to="{{ ix }}" class="lupa-carousel-indicator {{ loop.first ? 'active' : '' }}"></li>
-                            {% endfor %}
-                            </ol>
-                         </div>
-                         <img class="carousel-indicators-corner carousel-indicators-corner-right" src="{{ __base_uri }}/data/img/brown-corner-r.png" alt="">
-                     </div>
-                </div>
-                <div class="col-sm-4"></div>
+            <div class="row">
+                <!-- TBD -->
             </div>
             <div class="row">
                 <div class="col-xs-12">

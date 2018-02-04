@@ -10,11 +10,6 @@
 }
 
 
-#frontPageCarousel {
-    width: 100%;
-}
-
-
 .navbar-brand-lg img {
     height: 100%;
     width: auto;
@@ -144,15 +139,6 @@ img.lang-flag {
 }
 
 
-.front-page-carousel-container {
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-    margin-left: -15px;
-    top: 34px;
-}
-
-
 .lupa-slide-content > hr {
     width: 15em;
 }
@@ -161,8 +147,8 @@ img.lang-flag {
 .lupa-slide-content {
     padding: 15px;
     font-size: 16px;
-    margin-top: 140px;
-    margin-bottom: 140px;
+    padding-top: 120px;
+    padding-bottom: 120px;
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
@@ -186,8 +172,7 @@ img.lang-flag {
 
 
 .lupa-slide-image {
-    min-width: 100%;
-    max-width: none !important;
+    width: 100%;
 }
 
 
@@ -425,60 +410,6 @@ address {
 }
 
 
-.carousel-indicators {
-    width: auto;
-    padding-left: 0;
-    margin-left: 0;
-    text-align: center;
-    position: static;
-}
-
-
-.carousel-indicators-outer-container {
-    bottom: 26px;
-    position: relative;
-}
-
-.carousel-indicators-inner-container {
-    padding: 12px 0px 0px 0px;
-    width: 70%;
-    margin: auto;
-    display: inline-block;
-}
-
-
-.carousel-indicators-inner-container ol {
-    margin:0;
-}
-
-
-.carousel-indicators-corner {
-    height: 31px;
-    position: relative;
-    bottom: 11px;
-    display: inline-block;
-}
-
-
-.carousel-indicators-corner-left {
-    margin-right: -4px;
-}
-
-
-.carousel-indicators-corner-right {
-    margin-left: -4px;
-}
-
-
-.lupa-carousel-indicator,
-.lupa-carousel-indicator.active {
-    width: 18px !important; /* if not !important, will be overridden by bs carousel styles */
-    height: 18px !important;
-    border: 2px solid #fff !important;
-    margin: 0px 2px 0px 2px !important;
-}
-
-
 .contact-bar-component + .contact-bar-component {
     margin-left: 5px;
 }
@@ -530,13 +461,6 @@ address {
 }
 
 
-@media (max-width: 1700px) {
-    .front-page-carousel-container {
-        height: 745px;
-    }
-}
-
-
 @media (max-width: 1400px) {
     .service-container.left .service-text-inner p {
         margin-left: 0px;
@@ -550,8 +474,8 @@ address {
     
 @media (max-width: 1170px) { 
     .lupa-slide-content {
-        margin-top: 100px;
-        margin-bottom: 100px;
+        padding-top: 50px;
+        padding-bottom: 50px;
     }
 }
 
@@ -604,14 +528,20 @@ address {
     
     
     .lupa-slide-content {
-        margin-top: 0px;
-        margin-bottom: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 16px;
     }
     
     
-    .front-page-carousel-container {
-        top: 100px;        
-        height: 230px;
+    
+    .lupa-slide-content .btn-primary {
+        font-size: 16px;
+    }
+    
+    
+    .lupa-slide-content h3 {
+        font-size: 38px;
     }
 }
 
@@ -634,3 +564,4 @@ address {
     margin:0;
     border-radius:0px;
 }
+
