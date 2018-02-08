@@ -1,31 +1,26 @@
-<nav class="navbar navbar-default lupa-navbar">
-    <div class="row bg-orange">
-        <div class="col-xs-12 nav-container">
-          <div class="container-fluid">
-            <div class="navbar-header">
-                <div class="col-xs-12">
-                    <div class="row">
-                        <div class="col-xs-3 hidden-sm hidden-md hidden-lg bg-green navbar-toggle collapsed navbar-toggle-img-btn-container text-center">
-                          <button type="button" class="navbar-toggle-img-btn" data-toggle="collapse" data-target="#navbarCollapse" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <img alt="Nav" src="{{ __base_uri }}/data/img/hamburger.png" class="navbar-toggle-img">
-                          </button>
-                        </div>
-                        <div class="col-xs-9 col-sm-12 navbar-brand navbar-brand-lg">
-                          <a href="{{ __base_uri }}/{{ __lang }}"><img class="img-responsive img-brand" alt="{{ __contact_info.name }}" src="{{ __header_logo_uri }}"></a>
-                        </div>
-                    </div>
-                 </div>
+<div class="row bg-orange">
+    <div class="col-xs-12 nav-container">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6 hidden-xs pull-right bg-green">
+                <div class="navbar-default navbar-nav navbar-padded bg-green text-right">
+                  <ul class="nav navbar-nav lupa-nav-links">
+                {% for link in __nav_links %}
+                    <li {{ link.is_active ? "class='active'" : "" }}><a href='{{ __base_uri }}/{{ __lang }}/{{ link.get_action }}' title="{{ link.get_text }}">{{ link.get_text }}<span class="sr-only"> (current)</span></a></li>
+                {% endfor %}
+                  </ul>
+                </div>
             </div>
-            
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-              <ul class="nav navbar-nav navbar-right lupa-nav-links">
-            {% for link in __nav_links %}
-                <li {{ link.is_active ? "class='active'" : "" }}><a href='{{ __base_uri }}/{{ __lang }}/{{ link.get_action }}' title="{{ link.get_text }}">{{ link.get_text }}<span class="sr-only"> (current)</span></a></li>
-            {% endfor %}
-              </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
+            <div class="col-xs-3 hidden-sm hidden-md hidden-lg bg-green navbar-toggle-img-btn-container text-center pull-right">
+              <button type="button" class="navbar-toggle-img-btn flyout-toggle img-btn" data-toggle="flyout" data-target="#navbarCollapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <img alt="Nav" src="{{ __base_uri }}/data/img/hamburger.png" class="navbar-toggle-img">
+              </button>
+            </div>
+            <div class="col-xs-6 col-md-3 ptm pbm logo-container">
+              <a href="{{ __base_uri }}/{{ __lang }}"><img class="img-responsive" alt="{{ __contact_info.name }}" src="{{ __header_logo_uri }}"></a>
+            </div>
         </div>
+      </div><!-- /.container-fluid -->
     </div>
-</nav>
+</div>

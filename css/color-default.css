@@ -78,7 +78,7 @@ main.contact h2 {
     color: #fff;
     background-color: transparent;
     font-weight: normal;
-    font-size: 24px;
+    font-size: inherit;
     text-shadow: 2px 2px 2px #000;
     text-transform: uppercase;
 }
@@ -101,7 +101,7 @@ main.contact h2 {
 }
 
 
-.navbar-default .navbar-nav > li:not(:last-child){
+.navbar-default .navbar-nav > li:not(:last-child) {
     border-right: 2px solid #fff;
 }
 
@@ -283,5 +283,11 @@ span.orange {
 
 .navbar-toggle-img-btn-container,
 .navbar-toggle-img-btn-container:hover {
+    border: none;
+}
+
+
+
+.nav-flyout.navbar-default .navbar-nav > li:not(:last-child) {
     border: none;
 }

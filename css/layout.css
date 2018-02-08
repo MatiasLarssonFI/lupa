@@ -10,14 +10,8 @@
 }
 
 
-.navbar-brand-lg img {
-    height: 100%;
-    width: auto;
-}
-
-.navbar-brand-lg {
-    height:100px;
-    padding: 0px;
+.navbar-brand-lupa img {
+    width: 100%;
 }
 
 
@@ -27,6 +21,11 @@ main {
 
 main.contact h2 {
     padding-bottom: 2px;
+}
+
+
+.logo-container {
+    max-width: 300px;
 }
 
 
@@ -120,14 +119,6 @@ img.lang-flag {
     position: absolute;
 }
 
-.img-brand {
-    width: 200px;
-}
-
-
-.lupa-nav-links {
-    margin-top: 30px;
-}
 
 .lupa-nav-links li > a {
     padding: 7px 15px;
@@ -176,12 +167,8 @@ img.lang-flag {
 }
 
 
-.lupa-navbar {
-    position: relative;
-    z-index: 2;
-    min-height: 100px;
-    border-radius: 0px;
-    margin-bottom: 0px;
+.navbar-default {
+    width: 100%;
 }
 
 .service-img {
@@ -554,14 +541,42 @@ address {
 .navbar-toggle-img-btn {
     padding:0;
     width: 65px;
-    margin:15px;
+    margin:25px;
 }
 
 
-.navbar-toggle-img-btn-container,
-.navbar-toggle-img-btn-container:hover {
+@media (max-width: 490px) {
+    .navbar-toggle-img-btn {
+        width: 39px;
+        margin:20px;
+    }
+}
+
+
+.navbar-toggle-img-btn-container {
     padding:5px;
     margin:0;
     border-radius:0px;
 }
 
+
+.nav-flyout {
+    font-size: 18px;
+    padding: 15px;
+    max-width: 100%;
+}
+
+
+.ptm {
+    padding-top: 10px;
+}
+
+
+.pbm {
+    padding-bottom: 10px;
+}
+
+
+.navbar-padded {
+    padding: 5px
+}
