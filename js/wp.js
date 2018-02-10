@@ -18,7 +18,7 @@ var lupa = {
             node.css({
                 position: "absolute",
                 top: btn_warp.offset().top + h + "px",
-                right: "15px",
+                right: "0px",
                 zIndex: 9999,
                 minWidth: w,
                 width: nav_w / 1.5 + "em"

@@ -25,7 +25,8 @@ main.contact h2 {
 
 
 .logo-container {
-    max-width: 300px;
+    width: 300px;
+    display: inline-block;
 }
 
 
@@ -448,6 +449,61 @@ address {
 }
 
 
+.navbar-toggle-img {
+    width:100%;
+}
+
+
+.navbar-toggle-img-btn {
+    padding:0;
+    width: 65px;
+    margin:15px;
+}
+
+
+.navbar-toggle-img-btn-container {
+    margin:0;
+    border-radius:0px;
+}
+
+
+.nav-flyout {
+    font-size: 18px;
+    padding: 15px;
+    max-width: 100%;
+    margin: 0;
+}
+
+
+.ptm {
+    padding-top: 10px;
+}
+
+
+.pbm {
+    padding-bottom: 10px;
+}
+
+
+.navbar-padded {
+    padding: 5px
+}
+
+
+.navbar-container {
+    text-align: right;
+    float: right;
+}
+
+
+.navbar-mobile-container {
+    width: 30%;
+    text-align: center;
+    height: 58px;
+    float: right;
+}
+
+
 @media (max-width: 1400px) {
     .service-container.left .service-text-inner p {
         margin-left: 0px;
@@ -494,6 +550,12 @@ address {
 
 
 @media (max-width: 768px) {
+    .logo-container {
+        width: 150px;
+        height: 50px;
+        padding: 5px 0 0 5px;
+    }
+    
     .lupa-nav-links {
         padding-top: 0;
     }
@@ -530,53 +592,11 @@ address {
     .lupa-slide-content h3 {
         font-size: 38px;
     }
-}
-
-
-.navbar-toggle-img {
-    width:100%;
-}
-
-
-.navbar-toggle-img-btn {
-    padding:0;
-    width: 65px;
-    margin:25px;
-}
-
-
-@media (max-width: 490px) {
+    
+    
     .navbar-toggle-img-btn {
         width: 39px;
-        margin:20px;
+        margin: 10px;
     }
 }
 
-
-.navbar-toggle-img-btn-container {
-    padding:5px;
-    margin:0;
-    border-radius:0px;
-}
-
-
-.nav-flyout {
-    font-size: 18px;
-    padding: 15px;
-    max-width: 100%;
-}
-
-
-.ptm {
-    padding-top: 10px;
-}
-
-
-.pbm {
-    padding-bottom: 10px;
-}
-
-
-.navbar-padded {
-    padding: 5px
-}
