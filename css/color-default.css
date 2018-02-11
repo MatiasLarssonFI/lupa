@@ -291,3 +291,49 @@ span.orange {
 .nav-flyout.navbar-default .navbar-nav > li:not(:last-child) {
     border: none;
 }
+
+
+
+.bg-fp-banner-filter {
+    background-color:rgba(0,0,100, 0.1);
+}
+
+
+.title-bar-left {
+    background-color: #fff;
+}
+
+
+.title-bar-right {
+    background-color: #0c161f;
+}
+
+
+.title-bar-title-text {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.title-bar-title-text-left,
+.title-bar-subtitle-left {
+    color: #0c161f;
+}
+
+
+.title-bar-title-text-right,
+.title-bar-subtitle-right {
+    color: #fff;
+}
+
+
+.title-bar-decor-left {
+    border-top: 1px solid #0c161f;
+    border-right: 1px solid #0c161f;
+}
+
+
+.title-bar-decor-right {
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #fff;
+}

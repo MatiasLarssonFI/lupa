@@ -15,17 +15,15 @@
             <a class="btn btn-lg btn-primary bg-green text-uppercase" href="{{ __base_uri }}/{{ __lang }}/contact">{{ strings.contact_us }}</a>
         </div>
     </div>
+    {% include "title_bar.html" %}
     <div class="row">
-        <div class="col-xs-12 services-container brown" id="services">
-            <div class="row">
-                <!-- TBD -->
-            </div>
+        <div class="col-xs-12 services-container brown">
             <div class="row">
                 <div class="col-xs-12">
                     {% include "videos_playlist.html" %}
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="services">
                 <div class="col-xs-12">
                     {% for service in services %}
                         {% include loop.index % 2 == 0 ? "service__text_right.html" : "service__text_left.html" %}

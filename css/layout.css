@@ -504,6 +504,32 @@ address {
 }
 
 
+.title-bar-subtitle {
+    font-size: 8px;
+    text-transform: uppercase;
+    padding:0;
+    margin:0;
+    position: relative;
+    top: -10px;
+}
+
+
+.title-bar-decor {
+    line-height: .9;
+    margin-top: 5px;
+}
+
+
+.title-bar-title-left {
+    padding-left: 0;
+}
+
+
+.title-bar-title-right {
+    padding-right: 0;
+}
+
+
 @media (max-width: 1400px) {
     .service-container.left .service-text-inner p {
         margin-left: 0px;
