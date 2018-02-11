@@ -626,3 +626,30 @@ address {
     }
 }
 
+
+@media (min-width: 440px) and (max-width: 768px) {
+    .lupa-slide-content p {
+        width: 424px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+@media (max-width: 440px) {
+    .lupa-slide-content p {
+        font-size: 12px;
+    }
+    
+    
+    .lupa-slide-content .btn-primary {
+        font-size: 12px;
+        margin-top: 0;
+        padding: 8px 13px;
+    }
+    
+    
+    .lupa-slide-content h3 {
+        font-size:28px;
+    }
+}
