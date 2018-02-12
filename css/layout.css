@@ -137,13 +137,11 @@ img.lang-flag {
 
 
 .lupa-slide-content {
-    padding: 15px;
-    font-size: 16px;
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding: 120px 15px 100px 15px;
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
+    font-size: 26px;
 }
 
 
@@ -153,13 +151,16 @@ img.lang-flag {
 }
 
 
-.lupa-slide-content {
-    font-size: 26px;
+.lupa-slide-content p {
+    width: 740px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .lupa-slide-content h3 {
-    margin-top: 0px;
-    font-size: 58px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 100px;
 }
 
 
@@ -543,8 +544,17 @@ address {
     
 @media (max-width: 1170px) { 
     .lupa-slide-content {
-        padding-top: 50px;
-        padding-bottom: 50px;
+        padding-top: 80px;
+    }
+    
+    
+    .lupa-slide-content h3 {
+        font-size: 78px;
+    }
+    
+    .lupa-slide-content p {
+        font-size: 20px;
+        width: 580px;
     }
 }
 
@@ -571,6 +581,11 @@ address {
     .service-title h3 {
         padding-top: 0px;
         margin-bottom: 0px;
+    }
+    
+    
+    .lupa-slide-content {
+        padding-bottom: 50px;
     }
 }
 
@@ -602,12 +617,27 @@ address {
     }
     
     
+    .navbar-toggle-img-btn {
+        width: 39px;
+        margin: 10px;
+    }
+}
+
+
+@media (min-width: 500px) {
     .lupa-slide-content {
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 20px;
+        padding-bottom: 20px;
         font-size: 16px;
     }
     
+    
+    .lupa-slide-content p {
+        width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 16px;
+    }
     
     
     .lupa-slide-content .btn-primary {
@@ -616,27 +646,50 @@ address {
     
     
     .lupa-slide-content h3 {
-        font-size: 38px;
-    }
-    
-    
-    .navbar-toggle-img-btn {
-        width: 39px;
-        margin: 10px;
+        font-size: 58px;
     }
 }
 
 
-@media (min-width: 440px) and (max-width: 768px) {
+@media (min-width: 370px) and (max-width: 500px) {
     .lupa-slide-content p {
-        width: 424px;
+        width: 350px;
         margin-left: auto;
         margin-right: auto;
+        font-size: 12px;
+    }
+    
+    
+    .lupa-slide-content {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    
+    .lupa-slide-content .btn-primary {
+        font-size: 12px;
+    }
+    
+    
+    .lupa-slide-content h3 {
+        font-size: 46px;
     }
 }
 
 
 @media (max-width: 440px) {
+    .lupa-slide-content p {
+        max-width: 350px;
+        width: auto;
+    }
+    
+    
+    .lupa-slide-content {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    
     .lupa-slide-content p {
         font-size: 12px;
     }
@@ -650,6 +703,6 @@ address {
     
     
     .lupa-slide-content h3 {
-        font-size:28px;
+        font-size: 42px;
     }
 }
