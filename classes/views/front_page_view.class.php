@@ -36,7 +36,6 @@ class FrontPageView extends AbstractView {
                 "slideshow_caption_paragraph" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
                 "contact_us" => $text_storage->text("CONTACT_US"),
             ),
-            "slides" => \SlideFactory::get()->get_front_page_slides(),
             "services" => \ServiceFactory::get()->get_services(),
             "selected_video" => !empty($videos) ? reset($videos) : null,
             "videos" => $videos,
