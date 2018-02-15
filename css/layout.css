@@ -506,7 +506,7 @@ address {
 
 
 .title-bar-subtitle {
-    font-size: 8px;
+    font-size: 10px;
     text-transform: uppercase;
     padding:0;
     margin:0;
@@ -517,8 +517,13 @@ address {
 }
 
 
+.title-bar-title-text {
+    font-size: 20px;
+}
+
+
 .title-bar-decor {
-    line-height: .9;
+    line-height: 1;
     margin-top: 5px;
 }
 
@@ -713,6 +718,21 @@ address {
     
     .lupa-slide-content h3 {
         font-size: 42px;
+    }
+    
+    
+    .title-bar-subtitle {
+        font-size: 8px;
+    }
+    
+    
+    .title-bar-title-text {
+        font-size: 16px;
+    }
+    
+    
+    .title-bar-decor {
+        line-height: .9;
     }
 }
 
