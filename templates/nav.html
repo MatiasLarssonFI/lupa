@@ -5,7 +5,7 @@
             <div class="logo-container">
               <a href="{{ __base_uri }}/{{ __lang }}"><img class="img-responsive" alt="{{ __contact_info.name }}" src="{{ __header_logo_uri }}"></a>
             </div>
-            <div class="navbar-container hidden-xs bg-green">
+            <div class="navbar-container hidden-xs hidden-sm bg-green">
                 <div class="navbar-default navbar-nav navbar-padded bg-green text-right">
                   <ul class="nav navbar-nav lupa-nav-links">
                 {% for link in __nav_links %}
@@ -14,7 +14,7 @@
                   </ul>
                 </div>
             </div>
-            <div class="navbar-mobile-container hidden-sm hidden-md hidden-lg bg-green navbar-toggle-img-btn-container text-center">
+            <div class="navbar-mobile-container hidden-md hidden-lg bg-green navbar-toggle-img-btn-container text-center">
               <button type="button" class="navbar-toggle-img-btn flyout-toggle img-btn" data-toggle="flyout" data-target="#navbarCollapse" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <img alt="Nav" src="{{ __base_uri }}/data/img/hamburger.png" class="navbar-toggle-img">

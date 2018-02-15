@@ -293,6 +293,11 @@ span.orange {
 }
 
 
+.nav-flyout {
+    box-shadow: -5px 5px 10px #000;
+}
+
+
 
 .bg-fp-banner-filter {
     background-color:rgba(0,0,100, 0.1);
