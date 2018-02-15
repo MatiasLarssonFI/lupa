@@ -512,6 +512,8 @@ address {
     margin:0;
     position: relative;
     top: -10px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 
