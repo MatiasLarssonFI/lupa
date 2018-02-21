@@ -370,6 +370,11 @@ address {
 }
 
 
+.pts {
+    padding-top: 5px;
+}
+
+
 .pbm {
     padding-bottom: 10px;
 }
