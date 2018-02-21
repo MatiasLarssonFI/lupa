@@ -1,6 +1,6 @@
 body {
     font-family: 'Ek Mukta', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     background-color: #000;
 }
 
@@ -111,10 +111,6 @@ main.contact h2 {
 }
 
 
-.service-carousel {
-    cursor: pointer;
-}
-
 div.dark {
     background-color: #484848;
     color: #fff;
@@ -134,11 +130,6 @@ div.brown {
 }
 
 
-div.brown.service-row {
-    background-size: 50% 100%;
-}
-
-
 .brown-gradient {
     background-image: url("../data/img/brown-gradient.png");
     background-repeat: repeat-x;
@@ -150,21 +141,6 @@ hr.brown {
     border-color: #ab7d58;
     border-width: 2px;
 }
-
-
-.services-container .service-text {
-    background-color: rgba(0,0,0, 0.7);
-}
-
-.services-container .service-text h3 {
-    font-weight: bold;
-}
-
-
-.services-container .service-text-inner {
-    border: 1px solid #fff;
-}
-
 
 .some-link {
     text-decoration: none;
@@ -274,6 +250,11 @@ span.orange {
 }
 
 
+.bg-white {
+    background-color: #fff;
+}
+
+
 .navbar-toggle-img-btn,
 .navbar-toggle-img-btn:hover {
     border: none;
@@ -341,4 +322,11 @@ span.orange {
 .title-bar-decor-right {
     border-bottom: 1px solid #fff;
     border-left: 1px solid #fff;
+}
+
+
+.service-text__title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
 }
