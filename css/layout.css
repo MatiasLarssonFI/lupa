@@ -393,6 +393,7 @@ address {
 .navbar-container {
     text-align: right;
     float: right;
+    height: 107px;
 }
 
 
@@ -401,6 +402,13 @@ address {
     text-align: center;
     height: 50px;
     float: right;
+}
+
+
+.navbar-container .navbar-nav > li {
+    display: block;
+    clear: both;
+    font-size: 14px;
 }
 
 

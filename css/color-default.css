@@ -92,11 +92,6 @@ main.contact h2 {
 }
 
 
-.navbar-default .navbar-nav > li:not(:last-child) {
-    border-right: 2px solid #fff;
-}
-
-
 .btn-bold {
     font-weight: bold;
 }
