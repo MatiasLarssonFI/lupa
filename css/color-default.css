@@ -39,8 +39,9 @@ main.contact h2 {
 }
 
 
-.lupa-slide-content .btn-primary {
+.lupa-slide-content-btn {
     font-weight: bold;
+    color: #fff;
 }
 
 

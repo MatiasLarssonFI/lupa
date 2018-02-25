@@ -145,16 +145,23 @@ img.lang-flag {
 }
 
 
-.lupa-slide-content .btn-primary {
+.lupa-slide-content-btn {
     margin: 10px 0px 0px 0px;
     font-size: 26px;
+    padding: 8px;
+    border-radius: 0px;
 }
 
 
 .lupa-slide-content p {
-    width: 740px;
     margin-left: auto;
     margin-right: auto;
+    max-width: 780px;
+    margin-bottom: 0px;
+}
+
+.lupa-slide-content p + p {
+    margin-top: 10px;
 }
 
 .lupa-slide-content h3 {
@@ -444,6 +451,12 @@ address {
     padding-top: 5px;
 }
 
+
+.content-text-padding {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
     
 @media (max-width: 1170px) { 
     .lupa-slide-content {
@@ -452,12 +465,16 @@ address {
     
     
     .lupa-slide-content h3 {
-        font-size: 78px;
+        font-size: 88px;
     }
     
     .lupa-slide-content p {
-        font-size: 20px;
-        width: 580px;
+        font-size: 22px;
+        max-width: 636px;
+    }
+    
+    .lupa-slide-content-btn {
+        font-size: 22px;
     }
 }
 
@@ -466,17 +483,6 @@ address {
     .lupa-slide-content {
         padding-bottom: 80px;
         padding-top: 80px;
-    }
-    
-    
-    .lupa-slide-content p {
-        width: 580px;
-        font-size: 20px;
-    }
-    
-    
-    .lupa-slide-content .btn-primary {
-        font-size: 20px;
     }
     
     
@@ -503,62 +509,6 @@ address {
     .footer-email-input {
         max-width: none;
     }
-}
-
-
-@media (min-width: 500px) and (max-width: 768px) {
-    .lupa-slide-content {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-    
-    
-    .lupa-slide-content p {
-        width: 450px;
-        font-size: 16px;
-    }
-    
-    
-    .lupa-slide-content .btn-primary {
-        font-size: 16px;
-    }
-    
-    
-    .lupa-slide-content h3 {
-        font-size: 58px;
-    }
-}
-
-
-@media (min-width: 370px) and (max-width: 500px) {
-    .lupa-slide-content p {
-        width: 350px;
-        font-size: 12px;
-    }
-    
-    
-    .lupa-slide-content {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-    
-    
-    .lupa-slide-content .btn-primary {
-        font-size: 12px;
-    }
-    
-    
-    .lupa-slide-content h3 {
-        font-size: 46px;
-    }
-}
-
-
-@media (max-width: 440px) {
-    .lupa-slide-content p {
-        max-width: 350px;
-        width: auto;
-    }
     
     
     .lupa-slide-content {
@@ -568,19 +518,46 @@ address {
     
     
     .lupa-slide-content p {
-        font-size: 12px;
-    }
-    
-    
-    .lupa-slide-content .btn-primary {
-        font-size: 12px;
-        margin-top: 0;
-        padding: 8px 13px;
+        font-size: 14px;
+        max-width: 398px;
     }
     
     
     .lupa-slide-content h3 {
-        font-size: 42px;
+        font-size: 55px;
+    }
+    
+    
+    .lupa-slide-content-btn {
+        font-size: 16px;
+        padding: 8px 8px 6px 8px;
+    }
+}
+
+
+
+@media (max-width: 440px) {
+    .lupa-slide-content {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    
+    .lupa-slide-content p {
+        font-size: 12px;
+        letter-spacing: .05em;
+        max-width: 354px;
+    }
+    
+    
+    .lupa-slide-content-btn {
+        font-size: 14px;
+        margin-top: 0;
+    }
+    
+    
+    .lupa-slide-content h3 {
+        font-size: 49px;
     }
     
     
@@ -600,10 +577,43 @@ address {
 }
 
 
+@media (max-width: 400px) {
+    .lupa-slide-content h3 {
+        font-size: 47px;
+    }
+    
+    
+    .lupa-slide-content p {
+        letter-spacing: .03em;
+        max-width: 340px;
+    }
+}
+
+
+@media (max-width: 380px) {
+    .lupa-slide-content p {
+        font-size: 10px;
+        letter-spacing: .05em;
+        max-width: 296px;
+    }
+    
+    
+    .lupa-slide-content-btn {
+        font-size: 12px;
+    }
+    
+    
+    .lupa-slide-content h3 {
+        font-size: 41px;
+    }
+}
+
+
 @media (max-width: 339px) {
     .lupa-slide-content p {
-        max-width: 350px;
-        width: auto;
+        font-size: 9px;
+        letter-spacing: .07em;
+        max-width: 282px;
     }
     
     
@@ -613,15 +623,8 @@ address {
     }
     
     
-    .lupa-slide-content p {
-        font-size: 10px;
-    }
-    
-    
-    .lupa-slide-content .btn-primary {
-        font-size: 10px;
-        margin-top: 0;
-        padding: 8px 13px;
+    .lupa-slide-content-btn {
+        font-size: 11px;
     }
     
     
