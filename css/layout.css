@@ -447,7 +447,37 @@ address {
 
 .service-image {
     width: 100%;
+    position: relative;
+    overflow: hidden;
 }
+
+
+.service-image__left-layer,
+.service-image__right-layer {
+    width: 100%;
+    position: absolute;
+    z-index: 9999;
+}
+
+.service-image__left-layer {
+    bottom:0;
+}
+
+.service-image__right-layer {
+    top:0;
+}
+
+
+.service-image__left-layer__img {
+    width: 10%;
+    float: left;
+}
+
+.service-image__right-layer__img {
+    width: 53%;
+    float: right;
+}
+
 
 .service-image__img {
     width: 100%;
@@ -464,7 +494,6 @@ address {
     padding-left: 20px;
     padding-right: 20px;
 }
-
     
 @media (max-width: 1170px) { 
     .lupa-slide-content {

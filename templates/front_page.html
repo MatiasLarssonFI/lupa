@@ -45,45 +45,13 @@
 
 <script async="false">
 (function($) {
-    $(document).ready(function() {
-        // make indicators work outside of carousel
-        (function() {
-            var $carousel = $('#frontPageCarousel');
-            $carousel.carousel();
-            var handled = false;
-            
-            $carousel.bind('slide.bs.carousel', function (e) {
-                var current = $(e.target).find('.item.active');
-                var indx = $(current).index();
-                if((indx + 2) > $('.carousel-indicators li').length) {
-                    indx = -1
-                }
-                                
-                if(!handled) {
-                    $('.carousel-indicators li').removeClass('active')
-                    $('.carousel-indicators li:nth-child(' + (indx + 2) + ')').addClass('active');
-                }
-                else {
-                    handled = !handled;
-                }
-            });
-            
-            $(".carousel-indicators li").on('click',function(){
-               $(this).addClass('active').siblings().removeClass('active');
-               handled = true;
-            });
-        })();
-    });
-    
-    // fix service img heights
+    // fix service img layer positions
     var updateServiceImgH = function() {
-        $(".service-img-main").each(function() {
-            var node = $(this);
-            if ($(".hidden-xs").is(":visible")) {
-                node.css("min-height", node.closest(".service-container").height());
-            } else {
-                node.css("min-height", 0);
-            }
+        $(".service-image").each(function() {
+            var parent = $(this);
+            var h = parent.height();
+            parent.find(".service-image__right-layer__img").css("height", h + 1);
+            parent.find(".service-image__left-layer__img").css("height", h/3);
         });
     };
     $(window).load(updateServiceImgH);
