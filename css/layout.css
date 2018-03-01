@@ -412,6 +412,11 @@ address {
 }
 
 
+.title-bar {
+    padding-top: 8px;
+}
+
+
 .title-bar-subtitle {
     font-size: 10px;
     text-transform: uppercase;
