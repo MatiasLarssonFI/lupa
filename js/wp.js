@@ -8,6 +8,7 @@ var lupa = {
             var btn_warp = btn.closest(".navbar-toggle-img-btn-container");
             var w = btn_warp.outerWidth();
             var h = btn_warp.height();
+            var banner_h = $(".fp-banner-image").height();
             var nav_w = 0;
             node.find("[data-link-text]").each(function() {
                 var len = $(this).text().length
@@ -21,7 +22,8 @@ var lupa = {
                 right: "0px",
                 zIndex: 9999,
                 minWidth: w,
-                width: nav_w / 1.5 + "em"
+                width: nav_w / 1.5 + "em",
+                height: banner_h + "px"
             });
             node.toggleClass("hidden");
         };
