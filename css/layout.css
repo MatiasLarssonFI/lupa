@@ -474,30 +474,19 @@ address {
 }
 
 
-.service-image__left-layer,
-.service-image__right-layer {
+.service-image__full-layer {
     width: 100%;
     position: absolute;
     z-index: 9999;
 }
 
-.service-image__left-layer {
+.service-image__full-layer {
     bottom:0;
 }
 
-.service-image__right-layer {
-    top:0;
-}
-
-
-.service-image__left-layer__img {
-    width: 10%;
+.service-image__full-layer__img {
+    width: 100%;
     float: left;
-}
-
-.service-image__right-layer__img {
-    width: 53%;
-    float: right;
 }
 
 
