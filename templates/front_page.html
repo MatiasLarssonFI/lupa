@@ -50,8 +50,7 @@
         $(".service-image").each(function() {
             var parent = $(this);
             var h = parent.height();
-            parent.find(".service-image__right-layer__img").css("height", h + 1);
-            parent.find(".service-image__left-layer__img").css("height", h/3);
+            parent.find(".service-image__full-layer__img").css("height", h + 1);
         });
     };
     $(window).load(updateServiceImgH);
