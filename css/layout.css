@@ -502,6 +502,29 @@ address {
     padding-top: 5px;
 }
 
+.service-image__subtitle {
+    position: absolute;
+    z-index: 9999;
+    right: 11%;
+    bottom: 33%;
+    padding-bottom: 2%;
+    text-align: center;
+    width: 16%;
+}
+
+.service-image__subtitle__words_container {
+    padding: 8px 0 0 0;
+}
+
+.service-image__subtitle__img {
+    width: 30px;
+}
+
+
+.service-image__subtitle__word {
+    display: block;
+}
+
 
 .content-text-padding {
     padding-left: 20px;

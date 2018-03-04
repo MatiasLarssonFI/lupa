@@ -8,6 +8,7 @@ class Service implements IService {
     private $_text;
     private $_icon_uri;
     private $_img_uris;
+    private $_subtitle;
     
     
     /**
@@ -17,8 +18,9 @@ class Service implements IService {
      * @param string $text
      * @param string[] $img_uris
      */
-    public function __construct($title, $text, $icon_uri) {
+    public function __construct($title, $subtitle, $text, $icon_uri) {
         $this->_title = $title;
+        $this->_subtitle = $subtitle;
         $this->_text = $text;
         $this->_icon_uri = $icon_uri;
         $this->_img_uris = [];
@@ -47,5 +49,10 @@ class Service implements IService {
     
     public function get_img_uris() {
         return $this->_img_uris;
+    }
+    
+    
+    public function get_subtitle_words() {
+        return explode(" ", $this->_subtitle);
     }
 }

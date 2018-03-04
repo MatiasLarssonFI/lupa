@@ -152,6 +152,7 @@ class DBIF {
                 s.id,
                 s.icon_uri,
                 st.title,
+                st.subtitle,
                 st.text,
                 si.image_uri
             from {$this->_table_prefix}service s

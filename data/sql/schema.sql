@@ -45,6 +45,7 @@ CREATE TABLE `lupa_service_text` (
   `service_id` int(11) NOT NULL,
   `language` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
   `title` text COLLATE utf8_swedish_ci NOT NULL,
+  `subtitle` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `text` text COLLATE utf8_swedish_ci NOT NULL,
   `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `time_created` datetime NOT NULL
