@@ -492,6 +492,8 @@ address {
 
 .service-image__img {
     width: 100%;
+    position: relative;
+    right: 20%;
 }
 
 .service-text__title {
