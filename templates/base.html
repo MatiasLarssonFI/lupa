@@ -137,7 +137,7 @@
         </div>
         
         <div class="hidden-md hidden-lg navbar-default navbar-nav nav-flyout hidden bg-green" id="navbarCollapse">
-            <ul class="nav navbar-nav navbar-right lupa-nav-links">
+            <ul class="nav navbar-nav lupa-nav-links">
             {% for link in __nav_links %}
                 <li {{ link.is_active ? "class='active'" : "" }}>
                     <a href='{{ __base_uri }}/{{ __lang }}/{{ link.get_action }}' title="{{ link.get_text }}">
