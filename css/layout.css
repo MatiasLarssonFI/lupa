@@ -56,8 +56,7 @@ header {
 }
 
 
-.contact,
-.faq {
+.contact {
 	margin-top: 30px;
 }
 
@@ -329,17 +328,16 @@ address {
 
 
 .faq-answers {
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 
 .faq-answer {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
-
-.faq-answer-text {
-    padding-left: 10px;
+.faq-title {
+    margin: 15px 0 0 0;
 }
 
 
