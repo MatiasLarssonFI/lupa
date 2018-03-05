@@ -554,7 +554,7 @@ address {
 
 @media (max-width: 992px) {
     .lupa-slide-content {
-        padding-bottom: 80px;
+        padding-bottom: 60px;
         padding-top: 80px;
     }
 }
@@ -572,8 +572,8 @@ address {
     
     
     .lupa-slide-content {
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 50px;
+        padding-bottom: 50px;
     }
     
     
