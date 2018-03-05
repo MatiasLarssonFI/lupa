@@ -505,7 +505,7 @@ address {
 .service-image__subtitle {
     position: absolute;
     z-index: 9999;
-    right: 11%;
+    right: 11.3%;
     bottom: 33%;
     padding-bottom: 2%;
     text-align: center;
@@ -517,12 +517,13 @@ address {
 }
 
 .service-image__subtitle__img {
-    width: 30px;
+    width: 60px;
 }
 
 
 .service-image__subtitle__word {
     display: block;
+    font-size: 24px;
 }
 
 
@@ -556,6 +557,11 @@ address {
     .lupa-slide-content {
         padding-bottom: 60px;
         padding-top: 80px;
+    }
+    
+    
+    .service-image__subtitle__word {
+        font-size: 20px;
     }
 }
 
@@ -592,8 +598,28 @@ address {
         font-size: 16px;
         padding: 8px 8px 6px 8px;
     }
+    
+    .service-image__subtitle__word {
+        font-size: 18px;
+    }
+    
+    
+    .service-image__subtitle__img {
+        width: 30px;
+    }
 }
 
+
+@media (max-width: 600px) {
+    .lupa-slide-content {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .service-image__subtitle__word {
+        font-size: 11px;
+    }
+}
 
 
 @media (max-width: 440px) {
@@ -634,6 +660,10 @@ address {
     .title-bar-decor {
         line-height: .9;
     }
+    
+    .service-image__subtitle__word {
+        font-size: 10px;
+    }
 }
 
 
@@ -646,6 +676,11 @@ address {
     .lupa-slide-content p {
         letter-spacing: .03em;
         max-width: 340px;
+    }
+    
+    
+    .service-image__subtitle__word {
+        font-size: 9px;
     }
 }
 
@@ -665,6 +700,10 @@ address {
     
     .lupa-slide-content h3 {
         font-size: 41px;
+    }
+    
+    .service-image__subtitle__word {
+        font-size: 8px;
     }
 }
 
