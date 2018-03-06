@@ -62,6 +62,7 @@ abstract class AbstractView implements IView {
         $data["__js_src_mode"] = $src_conf->get_js_src_mode();
         $data["__js_src_version"] = $src_conf->get_js_src_version();
         $data["__css_src_version"] = $src_conf->get_css_src_version();
+        $data["__css_src_mode"] = $src_conf->get_css_src_mode();
         $data["__scale_mobile"] = $this->is_mobile_scale_enabled();
         $data["__facebook_page_url"] = \DBIF::get()->get_facebook_page_url();
         
