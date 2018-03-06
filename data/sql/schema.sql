@@ -124,6 +124,7 @@ ALTER TABLE `lupa_service_text`
 
 CREATE TABLE `lupa_faq_answer` (
   `id` int(11) NOT NULL,
+  `image_uri` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
   `time_created` datetime NOT NULL,
   `time_edited` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;

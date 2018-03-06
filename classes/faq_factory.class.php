@@ -34,6 +34,7 @@ class FAQFactory {
         DBIF::get()->get_faq_answers(function(array $row) use (&$ret) {
             $ret[] = new FAQAnswer(
                 $row["id"],
+                $row["image_uri"],
                 $row["question"],
                 $row["answer"]
             );

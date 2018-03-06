@@ -312,6 +312,7 @@ class DBIF {
         $sql = 
             "SELECT
                 a.id,
+                a.image_uri,
                 at.question,
                 at.answer
             from {$this->_table_prefix}faq_answer a
