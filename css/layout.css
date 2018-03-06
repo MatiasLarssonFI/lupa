@@ -267,42 +267,9 @@ address {
     margin-top: 5px;
 }
 
-
-.footer-img {
-    position: absolute;
-    bottom: 47px;
-    width: 100%;
-    z-index: 1;
-    margin-left: -15px;
-}
-
-
-.footer-img-inner {
-    width: 100%;
-}
-
-
-.footer-img img {
-    width: 100%;
-}
-
-
 .img-brand-sm {
     height: 35px;
     margin-top: 6px;
-}
-
-
-.title-in-box {
-    font-size: 30px;
-    padding: 10px 15px 10px 15px;
-    margin: 8px 0px 8px 0px;
-    line-height: 1;
-}
-
-
-.title-in-box a {
-    display: block;
 }
 
 
