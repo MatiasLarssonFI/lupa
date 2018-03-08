@@ -53,21 +53,7 @@
                                             <div data-contact-feedback>
                                                 &nbsp;
                                             </div>
-                                            <form method="post" action="{{ __base_uri }}/{{ __lang }}/contact_submit" data-contact-form>
-                                                <div class="form-group">
-                                                    <input type="hidden" name="__csrf_token" value="{{ __csrf_token }}">
-                                                    <input type="hidden" data-is-ajax-input name="is_ajax" value="0">
-                                                    <input type="text" name="url" class="contact-url" value="">
-                                                    <input type="text" name="company" class="contact-url" value="company name oy">
-                                                    <input type="hidden" id="fp-name" name="name" value="#NONAME">
-                                                    <input type="hidden" id="fp-subject" name="subject" value="#FRONT-PAGE-FORM">
-                                                    <input type="hidden" id="fp-message" name="message" value="#NOMESSAGE">
-                                                    <input type="email" name="email" class="footer-email-input" placeholder="email@example.com" required>
-                                                    <input type="submit" class="text-uppercase hidden-xs btn btn-primary footer-submit-btn" value="{{ __strings.submit_email }}&nbsp;&raquo;">
-                                                    <input type="submit" class="text-uppercase hidden-sm hidden-md hidden-lg btn btn-primary footer-submit-btn-xs" value="{{ __strings.submit_email }}&nbsp;&raquo;">
-                                                    <img data-ajax-spinner class="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif" alt="">
-                                                </div>
-                                            </form>
+                                            {% include "contact_form.html" %}
                                         </div>
                                     </div>
                                     

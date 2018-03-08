@@ -35,6 +35,19 @@ class FrontPageView extends AbstractView {
                 "slideshow_caption_title" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TITLE"),
                 "slideshow_caption_paragraph" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
                 "contact_us" => $text_storage->text("CONTACT_US"),
+                "field_name" => $text_storage->text("CONTACT_FIELD_NAME"),
+                "field_email" => $text_storage->text("CONTACT_FIELD_EMAIL"),
+                "field_subject" => $text_storage->text("CONTACT_FIELD_SUBJECT"),
+                "field_message" => $text_storage->text("CONTACT_FIELD_MESSAGE"),
+                "submit" => $text_storage->text("CONTACT_SUBMIT"),
+            ),
+            "prefill" => array(
+                "name" => "",
+                "email" => "",
+                "subject" => "",
+                "message" => "",
+                "url" => "", // hidden captcha
+                "company" => "company name oy", // hidden captcha
             ),
             "services" => \ServiceFactory::get()->get_services(),
             "selected_video" => !empty($videos) ? reset($videos) : null,

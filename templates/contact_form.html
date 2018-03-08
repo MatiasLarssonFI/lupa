@@ -2,10 +2,10 @@
 <div class="alert alert-danger">{{ errors.__csrf_token }}</div>
 {% endif %}
 
-<form method="post" action="{{ __base_uri }}/{{ lang }}/contact_submit" class="form-horizontal" data-contact-form>
+<form method="post" action="{{ __base_uri }}/{{ __lang }}/contact_submit" class="form-horizontal" data-contact-form>
     <input type="hidden" name="__csrf_token" value="{{ __csrf_token }}">
     <input type="hidden" data-is-ajax-input name="is_ajax" value="0">
-    <input type="text" name="url" class="contact-url" value="{{ prefill.url }}">
+    <input type="text" name="url" class="contact-url" value="{{ prefill.url }}" autocomplete="off">
     <div class="form-group {{ errors.name is defined ? 'has-error': '' }}">
         <label for="name" class="col-sm-4">{{ strings.field_name }}</label>
         <div class="col-sm-8">
@@ -46,16 +46,8 @@
         <div class="col-xs-12">
             <input type="text" name="company" class="contact-url" value="{{ prefill.company }}">
             
-            <button type="submit" class="btn btn-primary">{{ strings.submit }}</button>
+            <button type="submit" class="btn btn-primary bg-green text-uppercase"><b>{{ strings.submit }}</b></button>
             <img data-ajax-spinner class="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif" alt="">
         </div>
     </div>
 </form>
-<script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
-<script async="false">
-    !function($) {
-        $(document).ready(function() {
-            wp.contact.init();
-        });
-    }(jQuery);
-</script>
