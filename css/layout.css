@@ -364,15 +364,11 @@ address {
 }
 
 
-.navbar-padded {
-    padding: 5px
-}
-
-
 .navbar-container {
     text-align: right;
     float: right;
-    height: 107px;
+    height: 111px;
+    padding: 5px;
 }
 
 
