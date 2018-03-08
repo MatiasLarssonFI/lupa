@@ -5,11 +5,12 @@
             <div class="logo-container">
               <a href="{{ __base_uri }}/{{ __lang }}"><img class="img-responsive" alt="{{ __contact_info.name }}" src="{{ __header_logo_uri }}"></a>
             </div>
-            <div class="navbar-container hidden-xs hidden-sm hidden-md bg-green">
-                <div class="navbar-default navbar-nav bg-green text-right">
+            <div class="navbar-container hidden-xs hidden-sm hidden-md bg-green content-text-padding">
+                <div class="navbar-default navbar-nav bg-green">
                   <ul class="nav navbar-nav lupa-nav-links">
                 {% for link in __nav_links %}
-                    <li {{ link.is_active ? "class='active'" : "" }}><a href='{{ __base_uri }}/{{ __lang }}/{{ link.get_action }}' title="{{ link.get_text }}">{{ link.get_text }}<span class="sr-only"> (current)</span></a></li>
+                    {% set href = ( link.is_page ? [ __base_uri, __lang, link.get_action ]|join("/") : link.get_action ) %}
+                    <li {{ link.is_active ? "class='active'" : "" }}><a href='{{ href }}' title="{{ link.get_text }}">{{ link.get_text }}<span class="sr-only"> (current)</span></a></li>
                 {% endfor %}
                   </ul>
                 </div>

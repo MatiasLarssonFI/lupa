@@ -41,17 +41,11 @@ class ContactSubmitView extends AbstractView {
             "strings" => array(
                 "success_text" => $text_storage->text("CONTACT_SUBMIT_TEXT"),
                 "page_title" => $text_storage->text("CONTACT_TITLE"),
-                "field_name" => $text_storage->text("CONTACT_FIELD_NAME"),
-                "field_email" => $text_storage->text("CONTACT_FIELD_EMAIL"),
-                "field_subject" => $text_storage->text("CONTACT_FIELD_SUBJECT"),
-                "field_message" => $text_storage->text("CONTACT_FIELD_MESSAGE"),
-                "submit" => $text_storage->text("CONTACT_SUBMIT")
             ),
             "prefill" => $params,
             "errors" => $errors,
             "is_ajax" => (bool)$params["is_ajax"],
             "is_success" => $is_success,
-            "lang" => $text_storage->get_language()
         );
     }
     

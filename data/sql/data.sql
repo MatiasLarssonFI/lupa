@@ -171,16 +171,16 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (116, 'fi', 'FRONT_PAGE_CONTACT_TITLE', 'Yhteystiedot', NULL, '2017-05-05 21:00:00'),
 (117, 'en', 'FRONT_PAGE_CONTACT_TITLE', 'Contact', NULL, '2017-05-05 21:00:00'),
 (118, 'sv', 'FRONT_PAGE_CONTACT_TITLE', 'Kontakt', NULL, '2017-05-05 21:00:00'),
-(119, 'fi', 'CONTACT_PROMPT_TEXT', 'Lähetä meille yhteydenottopyyntö antamalla sähköpostiosoitteesi alla olevaan kenttään.', NULL, '2017-05-20 15:00:00'),
-(120, 'en', 'CONTACT_PROMPT_TEXT', 'Send us a contact request by entering your e-mail address below.', NULL, '2017-05-20 15:00:00'),
-(121, 'sv', 'CONTACT_PROMPT_TEXT', 'Ange din e-post adress nedan så tar vi kontakt.', NULL, '2017-05-20 15:00:00');
+(119, 'fi', 'CONTACT_PROMPT_TEXT', 'Lähetä meille yhteydenottopyyntö antamalla tietosi alla olevaan lomakkeeseen.', NULL, '2017-05-20 15:00:00'),
+(120, 'en', 'CONTACT_PROMPT_TEXT', 'Send us a contact request by entering your information below.', NULL, '2017-05-20 15:00:00'),
+(121, 'sv', 'CONTACT_PROMPT_TEXT', 'Ange din information nedan så tar vi kontakt.', NULL, '2017-05-20 15:00:00');
 
 
 /* v2.2.0 */
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
-('fi', 'NAV_FREQUENTLY_ASKED_QUESTIONS', 'Usein kysyttyä', NULL, '2016-03-11 22:00:00'),
-('en', 'NAV_FREQUENTLY_ASKED_QUESTIONS', 'Frequently asked', NULL, '2016-03-11 22:00:00'),
-('sv', 'NAV_FREQUENTLY_ASKED_QUESTIONS', 'Vanliga frågor', '2017-04-02 13:20:03', '2016-03-11 22:00:00'),
+('fi', 'NAV_FAQ', 'Usein kysyttyä', NULL, '2016-03-11 22:00:00'),
+('en', 'NAV_FAQ', 'Frequently asked', NULL, '2016-03-11 22:00:00'),
+('sv', 'NAV_FAQ', 'Vanliga frågor', '2017-04-02 13:20:03', '2016-03-11 22:00:00'),
 ('fi', 'FRONT_PAGE_VIDEOS_TITLE', 'Videot', NULL, '2017-01-23 20:00:00'),
 ('sv', 'FRONT_PAGE_VIDEOS_TITLE', 'Video', '2017-04-02 13:20:03', '2017-01-23 20:00:00'),
 ('en', 'FRONT_PAGE_VIDEOS_TITLE', 'Videos', NULL, '2017-01-23 20:00:00'),

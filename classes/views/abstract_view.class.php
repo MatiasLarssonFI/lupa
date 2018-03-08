@@ -72,8 +72,23 @@ abstract class AbstractView implements IView {
             "footer_navigation" => $text_storage->text("FOOTER_NAVIGATION_TITLE"),
             "contact_info_title" => $text_storage->text("CONTACT_INFO_FP_TITLE"),
             "contact_prompt" => $text_storage->text("CONTACT_PROMPT_TEXT"),
-            "submit_email" => $text_storage->text("CONTACT_US"),
+            
+            "field_name" => $text_storage->text("CONTACT_FIELD_NAME"),
+            "field_email" => $text_storage->text("CONTACT_FIELD_EMAIL"),
+            "field_subject" => $text_storage->text("CONTACT_FIELD_SUBJECT"),
+            "field_message" => $text_storage->text("CONTACT_FIELD_MESSAGE"),
+            "submit" => $text_storage->text("CONTACT_SUBMIT"),
         ];
+        if (!array_key_exists("prefill", $data)) {
+            $data["prefill"] = [
+                "name" => "",
+                "email" => "",
+                "subject" => "",
+                "message" => "",
+                "url" => "", // hidden captcha
+                "company" => "company name oy", // hidden captcha
+            ];
+        }
         
         echo $twig->render($this->get_template_name(), $data);
     }

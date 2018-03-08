@@ -48,7 +48,7 @@ class ViewFactory {
             return new ContactView(array(), $nlf);
         } else if ($action === "contact_submit") {
             return new ContactSubmitView($_POST, $nlf);
-        }  else if ($action === "frequently-asked-questions") {
+        }  else if ($action === "faq") {
             return new FAQView([], $nlf);
         }
         
