@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
                                     <h3><b class="text-uppercase">{{ __strings.name_short|raw }}</b></h3>
-                                    <p>{{ __strings.footer_promo|raw }}</p>
+                                    {{ __strings.footer_promo|raw }}
                                     <a href="https://www.tilaajavastuu.fi/?yt=2138386-4"><img src="https://www.tilaajavastuu.fi/wp-content/uploads/2013/10/lk_logo.png" alt="LuotettavaKumppaniyritys"/></a>
                                 </div>
                                 <div class="col-xs-12 col-sm-3">
@@ -133,7 +133,7 @@
         <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
         <script src="{{ __base_uri }}/js/wp.{{ __js_src_mode }}.js" defer></script>
         <script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
-        <script async="false">
+        <script>
             // all AJAX shall actually be asynchronous (duh)
             $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
                 options.async = true;

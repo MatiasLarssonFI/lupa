@@ -9,7 +9,7 @@
     <div class="form-group {{ errors.name is defined ? 'has-error': '' }}">
         <label for="name" class="col-sm-4">{{ __strings.field_name }}</label>
         <div class="col-sm-8">
-            <input type="text" id="name" name="name" class="form-control" value="{{ prefill.name }}" autofocus required>
+            <input type="text" id="name" name="name" class="form-control" value="{{ prefill.name }}" required>
             {% if errors.name is defined %}
                 <span class="help-block">{{ errors.name }}<span>
             {% endif %}
