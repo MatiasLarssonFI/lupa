@@ -14,7 +14,7 @@
                     <div class="row">
                         {% if answer.get_image_uri|length > 0 %}
                         <div class="col-xs-5">
-                            <img src="{{ __base_uri }}{{ answer.get_image_uri }}" class="img-responsive">
+                            <img src="{{ __base_uri }}{{ answer.get_image_uri }}" class="img-responsive" alt="">
                         </div>
                         {% endif %}
                         <div class="col-xs-{{ answer.get_image_uri|length > 0 ? "7" : "12" }}">
