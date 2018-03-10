@@ -16,7 +16,7 @@
             <div class="col-xs-4 col-md-push-2 col-md-8 ptm">
                 <a href="#v-{{ video.get_url_name }}" title="{{ video.get_name }}" data-video-select="{{ video.get_video_files.0.get_url }}">
                     <img class="video-playlist-list__thumbnail img-responsive" alt="{{ video.get_name }}" src="{{ __base_uri }}{{ video.get_thumb_url }}">
-                    <div class="thumb-play-btn" aria-label="Play" aria-pressed="false"></div>
+                    <div class="thumb-play-btn"></div>
                 </a>
             </div>
     {% endfor %}

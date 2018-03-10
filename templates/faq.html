@@ -18,8 +18,8 @@
                         </div>
                         {% endif %}
                         <div class="col-xs-{{ answer.get_image_uri|length > 0 ? "7" : "12" }}">
-                            <dt><strong>{{ answer.get_question }}</strong></dt>
-                            <dd class="faq-answer-text"><p>{{ answer.get_answer }}</p></dd>
+                            <div><strong>{{ answer.get_question }}</strong></div>
+                            <div class="faq-answer-text"><p>{{ answer.get_answer }}</p></div>
                         </div>
                     </div>
                 </div>
