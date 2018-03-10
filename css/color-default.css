@@ -327,3 +327,16 @@ span.orange {
     color: #ff6d00;
     font-weight: normal;
 }
+
+
+.thumb-play-btn {
+    background-image: url('../data/img/video/thumb-play.png');
+    background-size: 16%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.videos-title {
+    color: #fff;
+}

@@ -319,19 +319,16 @@ address {
     margin: 15px 0 0 0;
 }
 
+.thumb-play-btn {
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    bottom: 0;
+    left: 0;
+}
 
-.video-playlist-list__thumbnail {
+.video-playlist-current {
     margin-bottom: 10px;
-}
-
-
-.row-video:last-child .video-playlist-list__thumbnail {
-    margin-bottom: 0;
-}
-
-
-.videos-playlist {
-    margin-bottom: 15px;
 }
 
 
