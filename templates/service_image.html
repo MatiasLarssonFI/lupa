@@ -1,6 +1,6 @@
 <div class="service-image">
     <div class="service-image__full-layer">
-        <img class="service-image__full-layer__img" src="{{ __base_uri }}/data/img/service-layer.png" alt="">
+        <img class="service-image__full-layer__img" src="{{ __base_uri }}/data/img/service-layer-nostripe.png" alt="">
     </div>
     <div class="service-image__subtitle">
         <img class="service-image__subtitle__img" src="{{ __base_uri }}{{ service.get_icon_uri }}" alt="">
@@ -8,7 +8,9 @@
         {% for word in service.get_subtitle_words %}
             <span class="service-image__subtitle__word">{{ word }}</span>
         {% endfor %}
+            <hr class="service-image__subtitle__hr">
         </div>
+        <hr class="service-image__subtitle__hr-full">
     </div>
     <img src="{{ __base_uri }}{{ service.get_img_uris.0 }}" alt="" title="{{ service.get_title }}" class="service-image__img">
 </div>

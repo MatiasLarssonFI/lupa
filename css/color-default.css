@@ -311,7 +311,19 @@ span.orange {
     font-weight: bold;
 }
 
+.service-image__subtitle__hr {
+    border: 1px solid #ff6a28;
+    box-shadow: 0px 0px 2px 1px #ff6a28;
+}
+
+
+.service-image__subtitle__hr-full {
+    border: 1px solid #ff6a28;
+    box-shadow: 0px 0px 1px 0px #ff6a28;
+}
+
+
 .service-image__subtitle__word:nth-child(even) {
-    color: #fd8111;
+    color: #ff6d00;
     font-weight: normal;
 }
