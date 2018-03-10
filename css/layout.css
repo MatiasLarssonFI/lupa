@@ -334,6 +334,10 @@ address {
     width:100%;
 }
 
+.video-playlist-list {
+    margin-bottom: 10px;
+}
+
 
 .navbar-toggle-img-btn {
     padding:0;
