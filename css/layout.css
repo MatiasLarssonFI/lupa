@@ -29,6 +29,18 @@ main.contact h2 {
     width: 130px;
     height: 43px;
     padding: 5px 0 0 5px;
+    overflow: visible;
+}
+
+
+.logo-wrapper-link {
+    display: block;
+    overflow: visible;
+}
+
+
+.nav-container__logo-img {
+    filter: drop-shadow(0px 0px 20px rgba(0,0,0, 0.6));
 }
 
 
