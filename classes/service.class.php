@@ -53,6 +53,6 @@ class Service implements IService {
     
     
     public function get_subtitle_words() {
-        return explode(" ", $this->_subtitle);
+        return explode("/", $this->_subtitle);
     }
 }
