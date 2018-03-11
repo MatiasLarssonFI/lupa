@@ -74,7 +74,8 @@
                                     <nav>
                                         <ul class="nav footer-nav">
                                             {% for link in __nav_links %}
-                                                <li><a href='{{ __base_uri }}/{{ __lang }}/{{ link.get_action }}' title="{{ link.get_text }}">{{ link.get_text }}&nbsp;&raquo;</a></li>
+                                                {% set href = ( link.is_page ? [ __base_uri, __lang, link.get_action ]|join("/") : link.get_action ) %}
+                                                <li><a href='{{ href }}' title="{{ link.get_text }}">{{ link.get_text }}&nbsp;&raquo;</a></li>
                                             {% endfor %}
                                         </ul>
                                     </nav>
