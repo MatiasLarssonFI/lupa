@@ -41,7 +41,7 @@
                        </div>
                     </div>
                         
-                    <div class="row footer-upper" id="contact">
+                    <div class="row footer-upper">
                         <div class="col-xs-12 footer-upper-inner content-text-padding">
                             {% if __strings.news_content|length > 0 %}
                             <div class="row" id="news">
@@ -54,7 +54,7 @@
                             </div>
                             {% endif %}
                             <hr>
-                            <div class="row">
+                            <div class="row" id="contact">
                                 <div class="col-xs-12 col-sm-5">
                                     <h3><b class="text-uppercase">{{ __strings.contact_info_title|raw }}</b></h3>
                                     <p>{{ __strings.contact_prompt }}</p>
