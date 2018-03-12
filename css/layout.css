@@ -341,8 +341,8 @@ address {
 
 .navbar-toggle-img-btn {
     padding:0;
-    width: 34px;
-    margin: 8px;
+    width: 65px;
+    margin: 16px;
 }
 
 
@@ -375,18 +375,11 @@ address {
 }
 
 
-.navbar-container {
-    text-align: right;
-    float: right;
-    height: 100px;
-    padding: 5px;
-}
-
 
 .navbar-mobile-container {
     width: 30%;
     text-align: center;
-    height: 50px;
+    height: 100px;
     float: right;
 }
 
@@ -534,6 +527,16 @@ address {
     
     .lupa-slide-content-btn {
         font-size: 22px;
+    }
+        
+    .navbar-mobile-container {
+        height:50px;
+    }
+    
+    
+    .navbar-toggle-img-btn {
+        width: 34px;
+        margin: 8px;
     }
 }
 
