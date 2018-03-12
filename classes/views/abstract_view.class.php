@@ -78,6 +78,9 @@ abstract class AbstractView implements IView {
             "field_subject" => $text_storage->text("CONTACT_FIELD_SUBJECT"),
             "field_message" => $text_storage->text("CONTACT_FIELD_MESSAGE"),
             "submit" => $text_storage->text("CONTACT_SUBMIT"),
+            
+            "news_title" => $text_storage->text("NEWS_TITLE"),
+            "news_content" => $text_storage->text("NEWS_CONTENT"),
         ];
         if (!array_key_exists("prefill", $data)) {
             $data["prefill"] = [

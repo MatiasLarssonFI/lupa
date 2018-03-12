@@ -43,6 +43,16 @@
                         
                     <div class="row footer-upper" id="contact">
                         <div class="col-xs-12 footer-upper-inner content-text-padding">
+                            {% if __strings.news_content|length > 0 %}
+                            <div class="row" id="news">
+                                <div class="col-xs-12">
+                                    <h3><b class="text-uppercase">{{ __strings.news_title }}</b></h3>
+                                    {% for p in __strings.news_content|split("\n") %}
+                                        <p>{{ p }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
                             <hr>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-5">
