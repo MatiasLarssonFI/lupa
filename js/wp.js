@@ -9,7 +9,13 @@ var lupa = {
             var w = btn_warp.outerWidth();
             var h = btn_warp.height();
             var banner_h = $(".fp-banner-image").height();
+            if (banner_h)  {
+                banner_h += "px";
+            } else {
+                banner_h = "auto"
+            }
             var nav_w = 0;
+            var lc = $("#layout-container");
             node.find("[data-link-text]").each(function() {
                 var len = $(this).text().length
                 if (len > nav_w) {
@@ -19,11 +25,11 @@ var lupa = {
             node.css({
                 position: "absolute",
                 top: btn_warp.offset().top + h + "px",
-                right: "0px",
+                left: lc.offset().left + lc.outerWidth() - w,
                 zIndex: 9999,
                 minWidth: w,
                 width: nav_w / 1.5 + "em",
-                height: banner_h + "px"
+                height: banner_h
             });
             node.toggleClass("hidden");
         };
