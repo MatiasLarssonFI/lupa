@@ -22,15 +22,24 @@ var lupa = {
                     nav_w = len;
                 }
             });
-            node.css({
+            var btn_warp_os = btn_warp.offset();
+            var window_width = $(window).width();
+            var css = {
                 position: "absolute",
-                top: btn_warp.offset().top + h + "px",
-                left: lc.offset().left + lc.outerWidth() - w,
+                top: btn_warp_os.top + h + "px",
                 zIndex: 9999,
                 minWidth: w,
                 width: nav_w / 1.5 + "em",
                 height: banner_h
-            });
+            };
+            if (lc.outerWidth() < window_width) {
+                css.left = btn_warp_os.left + "px";
+                css.right = "initial";
+            } else {
+                css.right = "0px";
+                css.left = "initial";
+            }
+            node.css(css);
             node.toggleClass("hidden");
         };
         flyout_toggle = $("[data-toggle='flyout']");
