@@ -54,6 +54,34 @@ INSERT INTO `lupa_slide` (`id`, `html`, `content_target`, `is_published`, `time_
 (3, '<img src="/data/img/slides/skog3B_be.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:33'),
 (4, '<img src="/data/img/slides/skog1leikattu_be.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:43');
 
+
+INSERT INTO `lupa_faq_answer` (`id`, `image_uri`, `time_created`, `time_edited`) VALUES
+(1, '', '2017-11-28 00:00:00', NULL),
+(2, '', '2017-11-28 00:00:00', NULL),
+(3, '/data/img/faq/martin_01.jpg', '2017-11-28 00:00:00', '2018-03-06 20:08:08'),
+(4, '', '2018-03-14 00:00:00', NULL),
+(5, '', '2018-03-14 00:00:00', NULL),
+(6, '', '2018-03-14 00:00:00', NULL),
+(7, '', '2018-03-14 00:00:00', NULL),
+(8, '', '2018-03-14 00:00:00', NULL),
+(9, '', '2018-03-14 00:00:00', NULL),
+(10, '', '2018-03-14 00:00:00', NULL),
+(11, '', '2018-03-14 00:00:00', NULL);
+
+INSERT INTO `lupa_faq_answer_text` (`id`, `faq_answer_id`, `language`, `question`, `answer`, `time_created`, `time_edited`) VALUES
+(1, 1, 'fi', 'Syntyykö kantojyrsinnästä paljon haketta?', 'Pienen, alle 20cm kannon hakkeet voi tasoittaa kannon paikalle, mutta isommasta yli 60cm kannosta voi syntyä kuutiometrin eli 10 jätesäkin verran haketta. Maksusta viemme jyrsintäjätteet mennessämme.', '2017-11-28 00:00:00', '2018-03-14 21:27:58'),
+(8, 2, 'fi', 'Kuinka paljon puun kaataminen maksaa?', 'Merkittyjen puiden kaatohinnan arvioimme maksutta. Usein myös keskustelemme tavoitteista ja ehdotamme erilaisia ratkaisuja. Kirjallinen tarjous on tietysti maksuton.', '2017-11-28 00:00:00', '2018-03-14 21:31:06'),
+(11, 3, 'fi', 'Puussa on halkeama tai kääpä/kuori irtoaa, onko puu pakko kaataa?', 'Kyseiset oireet ovat usein merkkejä vakavasta ongelmasta, mutta jokainen puu on arvioitava erikseen. Tilanne riippuu paljolti puulajista, puun rakenteesta ja sijainnista ym. Tulemme mielellämme tekemään arvion ja tarjouksen tarvittavista toimenpiteistä.', '2017-11-28 00:00:00', '2018-03-14 21:31:56'),
+(12, 4, 'fi', 'Meille on tulossa pihatöitä, kuinka suojaan säilytettävät puut?', 'Suojaus riippuu puulajista ja puun koosta. On mm. tärkeää suojata puun pintajuuria, mikäli puun vierestä on tarkoitus ajaa maansiirtokoneilla. Ihan puun vierestä ei myöskään voi suorittaa kaivuutöitä vahingoittamatta puuta peruuttamattomasti. Tulemme mielellämme arvioimaan tilanteen ja laatimaan puullesi suojaussuunnitelman.', '2018-03-14 00:00:00', '2018-03-14 21:38:12'),
+(13, 5, 'fi', 'Paljonko kantojyrsintä maksaa?', 'Teemme mielellämme tarjouksen kantojyrsinnästä. Hinta per kanto on pienempi, mikäli kantoja on paljon (yli 10 kpl). Kannon koko ja sijainti vaikuttavat myös hintaan.', '2018-03-14 00:00:00', '2018-03-14 21:38:12'),
+(14, 6, 'fi', 'Kuinka leveän kulkuväylän kantojyrsin vaatii?', 'Iso kone mahtuu 90 cm leveästä portista. Pienempi kone mahtuu alle 70 cm portista. Pikkukantoja varten meiltä löytyy myös kannettava jyrsin.', '2018-03-14 00:00:00', '2018-03-14 21:44:29'),
+(15, 7, 'fi', 'Voiko jyrsityn kannon tilalle kylvää nurmikon?', 'Kyllä voi!', '2018-03-14 00:00:00', NULL),
+(16, 8, 'fi', 'Puu kallistuu, kaatuuko se?', 'On hälyttävää, jos puun asento muuttuu, varsinkin jos juuret nousevat kallistumaan ”selkäpuolella”. Toisaalta kallellaan oleva puu voi olla tasapainossa siinä missä pystysuorakin puu.', '2018-03-14 00:00:00', NULL),
+(17, 9, 'fi', 'Omenapuun sato on heikko, onko mitään tehtävissä? ', 'Omenat ja lehdet tarvitsevat valoa ja liikkuvaa ilmaa kehittyäkseen suotuisasti, siksi kannattaa puut kannattaa hoitoleikata kerran vuodessa helmi-maaliskuussa.', '2018-03-14 00:00:00', NULL),
+(18, 10, 'fi', 'Voiko vanhan puun paikalle istuttaa uuden?', 'Voi, kunhan vanha kanto saadaan kokonaan jyrsittyä pois.', '2018-03-14 00:00:00', NULL),
+(19, 11, 'fi', 'Kuinka syvälle kantojyrsin yltää?', 'Normaali jyrsintäsyvyys on 15 cm, mutta tarvittaessa päästään n. 30 cm asti.', '2018-03-14 00:00:00', NULL);
+
+
 INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, `time_created`) VALUES
 (1, 'fi', 'FRONT_PAGE_PROMO', 'Kehitämme ja valmistamme prototyypejä ja sisustusosia puusta. Hyödynnämme mm. cnc-tekniikkaa ja puun muotopuristusta.', '2016-05-15 18:35:20', '2016-03-05 22:00:00'),
 (2, 'sv', 'FRONT_PAGE_PROMO', 'Vi utvecklar och tillverkar prototyper och inredningsdetaljer av trä. Cnc-fräsning och vakumlaminering ar några av de tekniker vi tillämpar.', '2017-04-02 13:20:03', '2016-03-05 22:00:00'),
