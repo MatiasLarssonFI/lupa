@@ -28,6 +28,7 @@ CREATE TABLE `lupa_contact_inbox` (
 CREATE TABLE `lupa_service` (
   `id` int(11) NOT NULL,
   `icon_uri` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `sort` INT UNSIGNED NOT NULL DEFAULT '0',
   `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `time_created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;

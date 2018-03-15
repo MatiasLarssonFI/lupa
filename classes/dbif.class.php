@@ -162,7 +162,7 @@ class DBIF {
             
             where st.language = :lang
             
-            order by s.id
+            order by s.sort asc, s.id
             ";
         $stm = $this->_pdo->prepare($sql);
         $stm->bindParam(":lang", $language, PDO::PARAM_STR);
