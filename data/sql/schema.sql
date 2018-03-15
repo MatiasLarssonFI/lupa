@@ -184,6 +184,8 @@ ALTER TABLE `lupa_faq_answer_text`
 
 ALTER TABLE `lupa_faq_answer_text`
   ADD CONSTRAINT `fk_txt_faq_answer_id ` FOREIGN KEY (`faq_answer_id`) REFERENCES `lupa_faq_answer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  
+ALTER TABLE `lupa_service` ADD INDEX `sort` (`sort`);
 
 /* End of v2.2.0 */
 
