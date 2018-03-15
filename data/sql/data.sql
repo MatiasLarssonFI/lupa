@@ -21,18 +21,18 @@ INSERT INTO `lupa_config` (`id`, `key`, `value`, `time_edited`, `time_created`) 
 (11, 'facebook_page_url', 'https://www.facebook.com/lansiuudenmaanpuuapu/', '2017-01-14 12:59:06', '2017-01-13 22:00:00'),
 (12, 'css_src_mode', 'debug', NULL, '2016-07-15 18:00:00');
 
-INSERT INTO `lupa_service` (`id`, `icon_uri`, `time_edited`, `time_created`) VALUES
-(1, '/data/img/ui-symbols/plant.png', '2017-01-22 13:37:13', '2016-12-31 14:41:27'),
-(2, '/data/img/ui-symbols/pruning.png', '2017-01-22 13:37:43', '2016-12-31 14:41:27'),
-(3, '/data/img/ui-symbols/tree.png', '2017-01-22 13:37:28', '2016-12-31 14:41:27'),
-(4, '/data/img/ui-symbols/stump.png', '2017-01-22 13:37:52', '2016-12-31 14:41:27');
+
+INSERT INTO `lupa_service` (`id`, `icon_uri`, `sort`, `time_edited`, `time_created`) VALUES
+(1, '/data/img/ui-symbols/plant.png', 2, '2018-03-15 18:50:42', '2016-12-31 14:41:27'),
+(2, '/data/img/ui-symbols/pruning.png', 3, '2018-03-15 18:50:43', '2016-12-31 14:41:27'),
+(3, '/data/img/ui-symbols/tree.png', 0, '2017-05-24 17:16:37', '2016-12-31 14:41:27'),
+(4, '/data/img/ui-symbols/stump.png', 1, '2018-03-15 18:48:56', '2016-12-31 14:41:27');
 
 INSERT INTO `lupa_service_image` (`id`, `service_id`, `image_uri`, `time_edited`, `time_created`) VALUES
-(8, 2, '/data/img/services/puiden_kaataminen.jpg', '2017-01-27 15:54:06', '2016-12-31 00:00:00'),
-(9, 3, '/data/img/services/sahauspalvelu.jpg', '2017-01-27 15:54:12', '2016-12-31 00:00:00'),
-(10, 4, '/data/img/services/kantojyrsinta.jpg', '2017-01-06 15:12:26', '2016-12-31 00:00:00'),
-(11, 1, '/data/img/services/istutus.jpg', '2017-01-27 15:54:21', '2016-12-31 00:00:00');
-
+(8, 3, '/data/img/services/puunkaato.jpg', '2018-03-04 14:21:26', '2016-12-31 00:00:00'),
+(9, 2, '/data/img/services/puunhoito.jpg', '2018-03-15 18:38:26', '2016-12-31 00:00:00'),
+(10, 4, '/data/img/services/kantojyrsinta.jpg', '2018-03-04 14:21:50', '2016-12-31 00:00:00'),
+(11, 1, '/data/img/services/istutus.jpg', '2018-03-15 18:38:30', '2016-12-31 00:00:00');
 
 INSERT INTO `lupa_service_text` (`id`, `service_id`, `language`, `title`, `subtitle`, `text`, `time_edited`, `time_created`) VALUES
 (8, 3, 'fi', 'Puunkaato, poiskuljetus, pilkkominen ja hakettaminen', 'Puunkaatoa/ammattitaidolla', 'Suunnittelemme puillesi ja pihallesi sopivan puunkaadon. Kaadamme puusi kiipeilykaatona, nostokorikaatona, suorana kaatona tai muulla tavoin, aina ammatilliseen arviointiin perustuen. Tarjoamme (järjestämme?) myös risujen ja runkojen poiskuljetuksen. Haketamme usein risut kuljetuksen helpottamiseksi. Hake soveltuu kuorikatteeksi esimerkiksi pensaiden juurille. Tukkien pätkimisen ja karsimisen lisäksi voimme pilkkoa pölkyt klapeiksi tehokkaalla klapikoneella, jota vuokraamme myös omaan käyttöön.', '2018-03-14 17:57:08', '2016-12-31 00:00:00'),
@@ -42,11 +42,12 @@ INSERT INTO `lupa_service_text` (`id`, `service_id`, `language`, `title`, `subti
 (12, 3, 'sv', 'Trädfällning, bortforsling, klyvning och flisning', 'Trädfällning/yrkesmässigt', 'Vi planerar och genomför trädfällning anpassad för dina träd och din gård. Dina träd fälls med traditionell teknik, genom sektionsfällning (klättring), med bomlift eller med annan ändamålsenlig teknik, alltid enligt yrkesmässig bedömning. Vi erbjuder även bortforsling av stammar och ris. Riset flisas ofta för att underlätta transport. Flisen passar bl.a. som marktäckning runt träd och buskar. Vi kan också flisa ditt ris på beställning. Vi kan också kapa upp och klyva stockarna till vedklabbar med en effektiv vedklyv, som även kan hyras för eget bruk.', '2018-03-14 18:19:32', '2016-12-31 00:00:00'),
 (13, 2, 'sv', 'Beskärning av träd och buskar', 'Beskärning/underhåll', 'Vi beskär såväl äppelträd, cypress- och granhäckar som stora ädellövträd. Vi beskär bl.a. från marken, med bomlift eller med klätterteknik. När du beskär dina träd tillräckligt ofta skyddar du både dem från omgivningen samt vice versa.', '2018-03-14 18:23:44', '2016-12-31 00:00:00'),
 (14, 4, 'sv', 'Stubbfräsning', 'Stubbfräsning/ta bort stubben', 'Vi kan avlägsna dina stubbar och ytliga rötter genom att fräsa dem. Flisen som blir kvar passar utmärkt som marktäckning runt träd och buskar. Ofta bortforslar vi dock flisen, lägger mull och sår gräs där trädet stod. En stubbe orsakar problem vid såväl gräsklippning som snöröjning. Stubben kan avlägsnas med grävmaskin eller stubbfräs. En stubbe förmultnar under 10–30 år beroende på storlek och träslag. Våra stubbfräsar skadar inte gräsmattan och är av tre olika storlekar, för att passa dina behov.', '2018-03-14 18:21:33', '2016-12-31 00:00:00'),
-(15, 1, 'fi', 'Puiden istuttaminen, hoitaminen ja arvioiminen', 'Puunhoito/arviointi', 'Kun istutat oikean puun oikealla tavalla oikeaan paikkaan, varmistat puullesi pitkän iän. Puusi tarvitsee myös suojelua ja hoitoa, varsinkin rakennetussa ympäristössä, pihoilla ja puistoissa. Miten puusi voi? Arvioimme ja tarjoamme sinulle puusi tarvitsemat palvelut!', '2018-03-14 18:00:59', '2016-12-31 00:00:00'),
+(15, 1, 'fi', 'Puiden istuttaminen, hoitaminen ja arvioiminen', 'Istuttaminen/arviointi', 'Kun istutat oikean puun oikealla tavalla oikeaan paikkaan, varmistat puullesi pitkän iän. Puusi tarvitsee myös suojelua ja hoitoa, varsinkin rakennetussa ympäristössä, pihoilla ja puistoissa. Miten puusi voi? Arvioimme ja tarjoamme sinulle puusi tarvitsemat palvelut!', '2018-03-15 18:41:13', '2016-12-31 00:00:00'),
 (16, 2, 'en', 'Pruning', 'Pruning/tree maintenance', 'We prune apple trees, fir hedges as well as large broadleaved trees from the ground, by climbing the tree or using a skylift. By pruning your trees regularly you protect them from the surroundings and vice versa.', '2018-03-14 18:56:33', '2017-01-02 00:00:00'),
 (17, 4, 'en', 'Stump grinding', 'Stump grinding/removing stumps', 'We can remove your tree stumps and roots well under ground to give place for your lawn or otherplants. The chips produced by the stump grinders carbide teeth are suitable for covering the ground around trees and bushes. On request we also transport the chips to the city dump, and seed lawn where the tree stood. Tree stumps make lawn mowing and snow shoveling difficult. It takes 10-30 years for a tree stump to decompose naturally, and it can only be removed with a large excavator or a stump grinder. Our stump grinders do not damage your lawn and they come in three different sizes, depending on your needs.', '2018-03-14 18:55:09', '2017-01-28 00:00:00'),
 (18, 3, 'en', 'Tree felling, removal, splitting and chipping', 'Tree felling/professionally', 'We plan and carry out tree removal to suit your trees as well as your yard. We fell your trees byclimbing, using a skylift or by other means fit for purpose, always based on a professional analysis. We also offer removal of brushwood and trunks. We usually chip the brushwood for ease of transport, and tree chips are well suited as ground cover in gardens around bushes and trees. We can split the tree blocks into firewood using an efficient wood splitter which you also can rent and use yourself.', '2018-03-14 18:53:35', '2017-01-28 00:00:00'),
 (19, 1, 'en', 'Tree care, planting and inspection', 'Planting/inspection', 'Having the right tree planted the right way in the right spot with skill and care provides it with the good start it needs to thrive and survive. Your tree needs protection and care taking, especially in a built environment. How are your trees doing? Do they need attention? We inspect and offer the services your trees need!', '2018-03-14 18:58:45', '2017-01-28 00:00:00');
+
 
 INSERT INTO `lupa_slide` (`id`, `html`, `content_target`, `is_published`, `time_created`, `time_edited`) VALUES
 (1, '<img src="/data/img/slides/skog5B_be.jpg" alt="" class="lupa-slide-image">', 'front_page', 1, '2016-12-21 00:00:00', '2017-01-06 16:01:17'),
