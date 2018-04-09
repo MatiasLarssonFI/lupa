@@ -28,6 +28,7 @@ CREATE TABLE `lupa_contact_inbox` (
 CREATE TABLE `lupa_service` (
   `id` int(11) NOT NULL,
   `icon_uri` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `sort` INT UNSIGNED NOT NULL DEFAULT '0',
   `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `time_created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
@@ -45,6 +46,7 @@ CREATE TABLE `lupa_service_text` (
   `service_id` int(11) NOT NULL,
   `language` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
   `title` text COLLATE utf8_swedish_ci NOT NULL,
+  `subtitle` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `text` text COLLATE utf8_swedish_ci NOT NULL,
   `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `time_created` datetime NOT NULL
@@ -114,6 +116,78 @@ ALTER TABLE `lupa_service_image`
 
 ALTER TABLE `lupa_service_text`
   ADD CONSTRAINT `lupa_service_text_ibfk_1` FOREIGN KEY (`service_id`) REFERENCES `lupa_service` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+/* v2.2.0 */
+ALTER TABLE `lupa_service_text`
+  ADD KEY `lang` (`language`),
+  ADD UNIQUE KEY `uniq` (`service_id`, `language`);
+
+CREATE TABLE `lupa_faq_answer` (
+  `id` int(11) NOT NULL,
+  `image_uri` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `time_created` datetime NOT NULL,
+  `time_edited` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+CREATE TABLE `lupa_faq_answer_text` (
+  `id` int(11) NOT NULL,
+  `faq_answer_id` int(11) NOT NULL,
+  `language` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `question` text COLLATE utf8_swedish_ci NOT NULL,
+  `answer` text COLLATE utf8_swedish_ci NOT NULL,
+  `time_created` datetime NOT NULL,
+  `time_edited` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+
+CREATE TABLE IF NOT EXISTS `lupa_video` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text COLLATE utf8_swedish_ci NOT NULL,
+  `description` text COLLATE utf8_swedish_ci NOT NULL,
+  `thumb_url` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `is_published` tinyint(1) NOT NULL DEFAULT '1',
+  `time_created` datetime NOT NULL,
+  `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1;
+
+
+CREATE TABLE IF NOT EXISTS `lupa_video_file` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `video_id` int(11) NOT NULL,
+  `video_url` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `mime_subtype` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `time_created` datetime NOT NULL,
+  `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `videos_page_video_id` (`videos_page_video_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1;
+
+
+ALTER TABLE `lupa_video_file` ADD FOREIGN KEY (`videos_page_video_id`) REFERENCES `lupa_video`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+ALTER TABLE `lupa_faq_answer`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `lupa_faq_answer_text`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uniq` (`faq_answer_id`,`language`),
+  ADD KEY `lang` (`language`);
+
+
+ALTER TABLE `lupa_faq_answer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `lupa_faq_answer_text`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+ALTER TABLE `lupa_faq_answer_text`
+  ADD CONSTRAINT `fk_txt_faq_answer_id ` FOREIGN KEY (`faq_answer_id`) REFERENCES `lupa_faq_answer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  
+ALTER TABLE `lupa_service` ADD INDEX `sort` (`sort`);
+
+/* End of v2.2.0 */
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,109 +1,61 @@
 {% extends "base.html" %}
-{% block title %}{{ strings.page_title }}{% endblock %}
 
-{% block header_content %}
-<div class="front-page-carousel-container">
-    <div class="carousel slide" data-ride="carousel" data-pause="null" data-interval="8000" id="frontPageCarousel">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-        {% for slide in slides %}
-            <div class="item {{ loop.first ? 'active' : '' }} lupa-slide">
-                {{ slide.get_html|raw }}
-            </div>
-        {% endfor %}
-        </div>
-    </div>
-</div>
+{% block head_extra %}
+<link rel="stylesheet" href="{{ __base_uri }}/lib/mediaelement-4.2.7/build/mediaelementplayer.min.css" />
 {% endblock %}
+
+{% block title %}{{ strings.page_title }}{% endblock %}
 
 {% block content %}
 <main class="front-main">
     <div class="row">
-        <div class="col-xs-12 lupa-slide-content">
-            <h3><b>{{ strings.slideshow_caption_title|raw }}</b></h3>
-            <p class="text">{{ strings.slideshow_caption_paragraph|raw }}</p>
-            <a class="hidden-xs btn btn-lg btn-primary text-uppercase" href="{{ __base_uri }}/{{ __lang }}/contact">{{ strings.contact_us }}&nbsp;&raquo;</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 services-container brown" id="services">
-            <div class="row hidden-xs">
-                <div class="col-sm-4">
-                    <div class="brown-gradient title-in-box text-uppercase"><a href="#services">{{ strings.services_title }}</a></div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="carousel-indicators-outer-container text-center">
-                        <img class="carousel-indicators-corner carousel-indicators-corner-left" src="{{ __base_uri }}/data/img/brown-corner-l.png" alt="">
-                        <div class="carousel-indicators-inner-container brown">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators hidden-xs">
-                            {% for ix, slide in slides %}
-                                <li data-target="#frontPageCarousel" data-slide-to="{{ ix }}" class="lupa-carousel-indicator {{ loop.first ? 'active' : '' }}"></li>
-                            {% endfor %}
-                            </ol>
-                         </div>
-                         <img class="carousel-indicators-corner carousel-indicators-corner-right" src="{{ __base_uri }}/data/img/brown-corner-r.png" alt="">
-                     </div>
-                </div>
-                <div class="col-sm-4 pull-right">
-                    <div class="brown-gradient title-in-box text-uppercase text-right"><a href="#contact">{{ strings.contact_title }}</a></div>
+        <div class="col-xs-12 fp-banner-image">
+            <div class="row">
+                <div class="col-xs-12 lupa-slide-content bg-fp-banner-filter content-text-padding">
+                    <h3><b>{{ strings.slideshow_caption_title|raw }}</b></h3>
+                    {{ strings.slideshow_caption_paragraph|raw }}
+                    <a class="btn btn-lg btn-primary bg-green text-uppercase lupa-slide-content-btn" href="#contact">{{ strings.contact_us }}</a>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    {% for service in services %}
-                        {% include loop.index % 2 == 0 ? "service__text_right.html" : "service__text_left.html" %}
-                    {% endfor %}
+        </div>
+    </div>
+    {% include "title_bar.html" %}
+    <div class="row">
+        <div class="col-xs-12 services-container">
+            <div class="row" id="services">
+                {% for service in services %}
+                    {% include "service_image.html" %}
+                    {% include "service_text.html" %}
+                {% endfor %}
+            </div>
+            <div class="row bg-dark-blue" id="videos">
+                <div class="col-xs-12 content-text-padding">
+                    <h3 class="videos-title text-uppercase"><b>{{ strings.videos_title }}</b></h3>
+                    {% include "videos_playlist.html" %}
                 </div>
             </div>
         </div>
     </div>
 </main>
+{% endblock %}
+
+{% block js_link %}
+<script src="{{ __base_uri }}/lib/mediaelement-4.2.7/build/mediaelement-and-player.min.js"></script>
+<script src="{{ __base_uri }}/js/videos.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
+{# Add any other renderers you need; see Use Renderers for more information #}
+
 <script>
-(function() {
-    $(document).ready(function() {
-        // make indicators work outside of carousel
-        (function() {
-            var $carousel = $('#frontPageCarousel');
-            $carousel.carousel();
-            var handled = false;
-            
-            $carousel.bind('slide.bs.carousel', function (e) {
-                var current = $(e.target).find('.item.active');
-                var indx = $(current).index();
-                if((indx + 2) > $('.carousel-indicators li').length) {
-                    indx = -1
-                }
-                                
-                if(!handled) {
-                    $('.carousel-indicators li').removeClass('active')
-                    $('.carousel-indicators li:nth-child(' + (indx + 2) + ')').addClass('active');
-                }
-                else {
-                    handled = !handled;
-                }
-            });
-            
-            $(".carousel-indicators li").on('click',function(){
-               $(this).addClass('active').siblings().removeClass('active');
-               handled = true;
-            });
-        })();
-    });
-    
-    // fix service img heights
+(function($) {
+    // fix service img layer positions
     var updateServiceImgH = function() {
-        $(".service-img-main").each(function() {
-            var node = $(this);
-            if ($(".hidden-xs").is(":visible")) {
-                node.css("min-height", node.closest(".service-container").height());
-            } else {
-                node.css("min-height", 0);
-            }
+        $(".service-image").each(function() {
+            var parent = $(this);
+            var h = parent.height();
+            parent.find(".service-image__full-layer__img").css("height", h + 1);
         });
     };
     $(window).load(updateServiceImgH);
     $(window).resize(updateServiceImgH);
-})();
+})(jQuery);
 </script>
 {% endblock %}

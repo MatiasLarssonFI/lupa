@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{{ strings.page_title }}{% endblock %}
+
+{% block content %}
+<main class="faq">
+    <div class="row bg-dark-blue">
+        <div class="col-xs-12 faq-content content-text-padding">
+            <h2 class="faq-title">{{ strings.page_title }}</h2>
+        </div>
+        <div class="col-xs-12 faq-content faq-answers content-text-padding">
+            <div class="row">
+                {% for answer in answers %}
+                <div class="col-xs-12 faq-answer">
+                    <div class="row">
+                        {% if answer.get_image_uri|length > 0 %}
+                        <div class="col-xs-5">
+                            <img src="{{ __base_uri }}{{ answer.get_image_uri }}" class="img-responsive" alt="">
+                        </div>
+                        {% endif %}
+                        <div class="col-xs-{{ answer.get_image_uri|length > 0 ? "7" : "12" }}">
+                            <div><strong>{{ answer.get_question }}</strong></div>
+                            <div class="faq-answer-text"><p>{{ answer.get_answer }}</p></div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

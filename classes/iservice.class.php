@@ -31,4 +31,12 @@ interface IService {
      * @return string[]
      */
     public function get_img_uris();
+    
+    
+    /**
+     * Returns the subtitle words.
+     * 
+     * @return string[]
+     */
+    public function get_subtitle_words();
 }

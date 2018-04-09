@@ -4,6 +4,7 @@ namespace Views;
 
 require_once(dirname(__FILE__) . "/front_page_view.class.php");
 require_once(dirname(__FILE__) . "/service_view.class.php");
+require_once(dirname(__FILE__) . "/faq_view.class.php");
 require_once(dirname(__FILE__) . "/contact_view.class.php");
 require_once(dirname(__FILE__) . "/contact_submit_view.class.php");
 require_once(dirname(__FILE__) . "/../nav_link_factory.class.php");
@@ -47,6 +48,8 @@ class ViewFactory {
             return new ContactView(array(), $nlf);
         } else if ($action === "contact_submit") {
             return new ContactSubmitView($_POST, $nlf);
+        }  else if ($action === "faq") {
+            return new FAQView([], $nlf);
         }
         
         // Bad request: redirect to front page

@@ -9,6 +9,8 @@ require_once(dirname(__FILE__) . "/site_config_factory.class.php");
  */
 class UITextStorage {
     private $_texts;
+    private $_is_loaded;
+    private $_lang_codes;
     private $_current_language;
     
     private static $_inst;
@@ -36,10 +38,10 @@ class UITextStorage {
      * @param string $language ISO-3166, 2 chars
      */
     public function try_change_language($language) {
-        if (in_array($language, DBIF::get()->get_language_codes()) &&
+        if (in_array($language, $this->_lang_codes) &&
             $this->_current_language !== $language) {
             
-            $this->load_texts($language);
+            $this->_is_loaded = false;
             $this->_current_language = $language;
         }
     }
@@ -51,6 +53,10 @@ class UITextStorage {
      * @param string $code The UI text code
      */
     public function text($code) {
+        if (!$this->_is_loaded) {
+            $this->load_texts($this->_current_language);
+            $this->_is_loaded = true;
+        }
         if (array_key_exists($code, $this->_texts)) {
             return $this->_texts[$code];
         }
@@ -79,6 +85,8 @@ class UITextStorage {
     
     
     protected function __construct($language) {
+        $this->_is_loaded = false;
+        $this->_lang_codes = DBIF::get()->get_language_codes();
         $this->try_change_language($language);
     }
 }

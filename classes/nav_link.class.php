@@ -49,4 +49,13 @@ class NavLink {
     public function is_active() {
         return $this->_is_active;
     }
+    
+    
+    /**
+     * Returns true if the nav link points to a separate page.
+     * @return boolean
+     */
+    public function is_page() {
+        return strlen($this->_action) == 0 || $this->_action[0] !== "#";
+    }
 }
