@@ -48,6 +48,13 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule "^/?([a-zA-Z]{3,})/([^/]+)/?$" "/index.php?action=$1&params=$2" [L]
 
 
+# BEGIN GZIP
+<ifmodule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</ifmodule>
+# END GZIP
+
+
 # MIME types for MediaElementJS
 
 # Video support
