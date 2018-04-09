@@ -20,4 +20,11 @@ interface IFAQAnswer {
      * @return int
      */
     public function get_id();
+    
+    
+    /**
+     * Returns the image URI.
+     * @return string
+     */
+    public function get_image_uri();
 }

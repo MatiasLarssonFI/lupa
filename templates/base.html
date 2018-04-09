@@ -10,18 +10,14 @@
             
             <link rel="stylesheet" href="{{ __base_uri }}/lib/bootstrap-3.3.6/css/bootstrap.min.css">
             
-            <script src="{{ __base_uri }}/js/wp.js"></script>
-            
             {% block head_extra %}{% endblock %}
             
-            <link rel="stylesheet" href="{{ __base_uri }}/css/layout.css?v={{ __css_src_version }}">
+            <link rel="stylesheet" href="{{ __base_uri }}/css/layout.{{ __css_src_mode }}.css?v={{ __css_src_version }}">
             <link rel="stylesheet" href="{{ __color_css_uri }}">
             
             <link href="https://fonts.googleapis.com/css?family=Ek+Mukta" rel="stylesheet"> 
             
             <title>{% block title %}{% endblock %} - {{ __contact_info.name }}</title>
-            
-            <script src="{{ __base_uri }}/lib/jquery-1.12.1/jquery-1.12.1.min.js"></script>
             
             {% for link in __all_lang_links %}
                 <link rel="alternate" href='{{ __base_uri }}/{{ link.get_language }}/{{ link.get_action }}' hreflang="{{ link.get_language }}">
@@ -31,19 +27,7 @@
     <body>
         <div class="container-fluid" id="main-container">
             <div class="row">
-                <div class="col-xs-12">
-                    {% block header_content %}{% endblock %}
-                </div>
-            </div>
-            <div class="row">
                 <div id="layout-container" class="col-xs-12">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="row lang-top"><!-- lang -->
-                                {% include "lang_sm.html" %}
-                            </div>
-                        </div>
-                    </div>
                     
                     <div class="row">
                         <div class="col-xs-12">
@@ -57,10 +41,20 @@
                        </div>
                     </div>
                         
-                    <div class="row footer-upper" id="contact">
-                        <div class="col-xs-12 footer-upper-inner">
+                    <div class="row footer-upper">
+                        <div class="col-xs-12 footer-upper-inner content-text-padding">
+                            {% if __strings.news_content|length > 0 %}
+                            <div class="row" id="news">
+                                <div class="col-xs-12">
+                                    <h3><b class="text-uppercase">{{ __strings.news_title }}</b></h3>
+                                    {% for p in __strings.news_content|split("\n") %}
+                                        <p>{{ p }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
                             <hr>
-                            <div class="row">
+                            <div class="row" id="contact">
                                 <div class="col-xs-12 col-sm-5">
                                     <h3><b class="text-uppercase">{{ __strings.contact_info_title|raw }}</b></h3>
                                     <p>{{ __strings.contact_prompt }}</p>
@@ -69,21 +63,7 @@
                                             <div data-contact-feedback>
                                                 &nbsp;
                                             </div>
-                                            <form method="post" action="{{ __base_uri }}/{{ __lang }}/contact_submit" data-contact-form>
-                                                <div class="form-group">
-                                                    <input type="hidden" name="__csrf_token" value="{{ __csrf_token }}">
-                                                    <input type="hidden" data-is-ajax-input name="is_ajax" value="0">
-                                                    <input type="text" name="url" class="contact-url" value="">
-                                                    <input type="text" name="company" class="contact-url" value="company name oy">
-                                                    <input type="hidden" id="fp-name" name="name" value="#NONAME">
-                                                    <input type="hidden" id="fp-subject" name="subject" value="#FRONT-PAGE-FORM">
-                                                    <input type="hidden" id="fp-message" name="message" value="#NOMESSAGE">
-                                                    <input type="email" name="email" class="footer-email-input" placeholder="email@example.com" required>
-                                                    <input type="submit" class="text-uppercase hidden-xs btn btn-primary footer-submit-btn" value="{{ __strings.submit_email }}&nbsp;&raquo;">
-                                                    <input type="submit" class="text-uppercase hidden-sm hidden-md hidden-lg btn btn-primary footer-submit-btn-xs" value="{{ __strings.submit_email }}&nbsp;&raquo;">
-                                                    <img data-ajax-spinner class="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif" alt="">
-                                                </div>
-                                            </form>
+                                            {% include "contact_form.html" %}
                                         </div>
                                     </div>
                                     
@@ -96,7 +76,7 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
                                     <h3><b class="text-uppercase">{{ __strings.name_short|raw }}</b></h3>
-                                    <p>{{ __strings.footer_promo|raw }}</p>
+                                    {{ __strings.footer_promo|raw }}
                                     <a href="https://www.tilaajavastuu.fi/?yt=2138386-4"><img src="https://www.tilaajavastuu.fi/wp-content/uploads/2013/10/lk_logo.png" alt="LuotettavaKumppaniyritys"/></a>
                                 </div>
                                 <div class="col-xs-12 col-sm-3">
@@ -104,7 +84,8 @@
                                     <nav>
                                         <ul class="nav footer-nav">
                                             {% for link in __nav_links %}
-                                                <li><a href='{{ __base_uri }}/{{ __lang }}/{{ link.get_action }}' title="{{ link.get_text }}">{{ link.get_text }}&nbsp;&raquo;</a></li>
+                                                {% set href = ( link.is_page ? [ __base_uri, __lang, link.get_action ]|join("/") : link.get_action ) %}
+                                                <li><a href='{{ href }}' title="{{ link.get_text }}">{{ link.get_text }}&nbsp;&raquo;</a></li>
                                             {% endfor %}
                                         </ul>
                                     </nav>
@@ -145,15 +126,25 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-img">
-                <div class="footer-img-inner">
-                    <img alt="" src="{{ __footer_img_uri }}">
-                </div>
-            </div>
         </div>
         
+        <div class="navbar-default navbar-nav nav-flyout hidden bg-green" id="navbarCollapse">
+            <ul class="nav navbar-nav lupa-nav-links">
+            {% for link in __nav_links %}
+                {% set href = ( link.is_page ? [ __base_uri, __lang, link.get_action ]|join("/") : link.get_action ) %}
+                <li {{ link.is_active ? "class='active'" : "" }}>
+                    <a href='{{ href }}' title="{{ link.get_text }}">
+                        <span data-link-text>{{ link.get_text }}</span><span class="sr-only"> (current)</span>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        
+        <script src="{{ __base_uri }}/lib/jquery-1.12.1/jquery-1.12.1.min.js"></script>
         <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-        <script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}"></script>
+        <script src="{{ __base_uri }}/js/wp.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
+        <script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
         <script>
             // all AJAX shall actually be asynchronous (duh)
             $.ajaxPrefilter(function(options, originalOptions, jqXHR) {

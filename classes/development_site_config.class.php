@@ -5,11 +5,12 @@ require_once(dirname(__FILE__) . "/isite_config.class.php");
 
 class DevelopmentSiteConfig implements ISiteConfig {
     public function base_uri() {
-        return "http://localhost";
+        return "https://{$this->host()}";
     }
     
     
     public function host() {
+        if (strpos($_SERVER["REMOTE_ADDR"], "192.168.1.") === 0) return "192.168.1.8";
         return "localhost";
     }
     

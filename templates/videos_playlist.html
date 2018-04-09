@@ -1,0 +1,26 @@
+<div class="row videos-playlist">
+    <div class="col-xs-12 col-md-8 video-playlist-current ptm">
+        <div class="embed-responsive embed-responsive-16by9">
+        {% if selected_video %}
+            <video src="{{ selected_video.get_video_files.0.get_url }}"
+                data-video-player 
+                data-cfg-poster="{{ __base_uri }}{{ selected_video.get_thumb_url }}"
+                data-cfg-plugin-path="{{ __base_uri }}/lib/mediaelement-4.2.7/build">
+            </video>
+        {% endif %}
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-4 video-playlist-list">
+        <div class="row">
+    {% for video in videos %}
+            <div class="col-xs-4 col-md-push-2 col-md-8 ptm">
+                <a href="#v-{{ video.get_url_name }}" title="{{ video.get_name }}" data-video-select="{{ video.get_video_files.0.get_url }}">
+                    <img class="video-playlist-list__thumbnail img-responsive" alt="{{ video.get_name }}" src="{{ __base_uri }}{{ video.get_thumb_url }}">
+                    <div class="thumb-play-btn"></div>
+                </a>
+            </div>
+    {% endfor %}
+        </div>
+    </div>
+</div>
+    

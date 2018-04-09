@@ -33,7 +33,9 @@ class SiteConfigFactory {
     
     
     protected function make_site_config() {
-        if ($_SERVER["REMOTE_ADDR"] === "127.0.0.1") { // topkek
+        if (in_array($_SERVER["REMOTE_ADDR"], ["127.0.0.1", "::1"]) ||
+            strpos($_SERVER["REMOTE_ADDR"], "192.168.1.") === 0) {
+            
             return new DevelopmentSiteConfig();
         } else {
             return new ProductionSiteConfig();

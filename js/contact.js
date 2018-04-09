@@ -1,6 +1,7 @@
 !function($) {
     wp.contact = {
         init : function() {
+            var self = this;
             $("[data-contact-form]").off("submit").submit(function(e) {
                 e.preventDefault();
                 
@@ -20,6 +21,7 @@
                     success : function(html) {
                         form.slideUp(600, function() {
                             $("[data-form-content] [data-contact-feedback]").css("opacity", 0).html(html).animate({opacity : 1});
+                            self.init();
                         });
                     },
                     error : function() {

@@ -2,21 +2,21 @@
 <div class="alert alert-danger">{{ errors.__csrf_token }}</div>
 {% endif %}
 
-<form method="post" action="{{ __base_uri }}/{{ lang }}/contact_submit" class="form-horizontal" data-contact-form>
+<form method="post" action="{{ __base_uri }}/{{ __lang }}/contact_submit" class="form-horizontal" data-contact-form>
     <input type="hidden" name="__csrf_token" value="{{ __csrf_token }}">
     <input type="hidden" data-is-ajax-input name="is_ajax" value="0">
-    <input type="text" name="url" class="contact-url" value="{{ prefill.url }}">
+    <input type="text" name="url" class="contact-url" value="{{ prefill.url }}" autocomplete="off">
     <div class="form-group {{ errors.name is defined ? 'has-error': '' }}">
-        <label for="name" class="col-sm-4">{{ strings.field_name }}</label>
+        <label for="name" class="col-sm-4">{{ __strings.field_name }}</label>
         <div class="col-sm-8">
-            <input type="text" id="name" name="name" class="form-control" value="{{ prefill.name }}" autofocus required>
+            <input type="text" id="name" name="name" class="form-control" value="{{ prefill.name }}" required>
             {% if errors.name is defined %}
                 <span class="help-block">{{ errors.name }}<span>
             {% endif %}
         </div>
     </div>
     <div class="form-group {{ errors.email is defined ? 'has-error': '' }}">
-        <label for="email" class="col-sm-4">{{ strings.field_email }}</label>
+        <label for="email" class="col-sm-4">{{ __strings.field_email }}</label>
         <div class="col-sm-8">
             <input type="email" id="email" name="email" class="form-control" value="{{ prefill.email }}" required>
             {% if errors.email is defined %}
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="form-group {{ errors.subject is defined ? 'has-error': '' }}">
-        <label for="subject" class="col-sm-4">{{ strings.field_subject }}</label>
+        <label for="subject" class="col-sm-4">{{ __strings.field_subject }}</label>
         <div class="col-sm-8">
             <input type="text" id="subject" name="subject" class="form-control" value="{{ prefill.subject }}" required>
             {% if errors.subject is defined %}
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="form-group {{ errors.message is defined ? 'has-error': '' }}">
-        <label for="message" class="col-xs-12">{{ strings.field_message }}</label>
+        <label for="message" class="col-xs-12">{{ __strings.field_message }}</label>
         <div class="col-xs-12">
             <textarea id="message" name="message" class="form-control" rows="4" minlength="4" required>{{ prefill.message }}</textarea>
             {% if errors.message is defined %}
@@ -44,18 +44,10 @@
     </div>
     <div class="form-group">
         <div class="col-xs-12">
-            <input type="text" name="company" class="contact-url" value="{{ prefill.company }}">
+            <input type="text" name="company" class="contact-url" value="{{ prefill.company }}" autocomplete="off">
             
-            <button type="submit" class="btn btn-primary">{{ strings.submit }}</button>
+            <button type="submit" class="btn btn-primary bg-green text-uppercase"><b>{{ __strings.submit }}</b></button>
             <img data-ajax-spinner class="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif" alt="">
         </div>
     </div>
 </form>
-<script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}"></script>
-<script>
-    !function($) {
-        $(document).ready(function() {
-            wp.contact.init();
-        });
-    }(jQuery);
-</script>

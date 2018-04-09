@@ -99,10 +99,17 @@ class DBIF {
      * 
      * Calls cb_store_row on each row.
      */
-    public function get_videos_page_videos_list($cb_store_row) {
-        $stm = $this->_pdo->prepare("SELECT thumb_url, name, description, id FROM {$this->_table_prefix}videos_page_video where is_published");
+    public function get_front_page_videos($cb_store_row) {
+        $stm = $this->_pdo->prepare(
+                            "SELECT
+                                thumb_url,
+                                name,
+                                vf.video_url as video_url,
+                                v.id
+                             FROM {$this->_table_prefix}video v
+                             inner join {$this->_table_prefix}video_file vf on vf.video_id = v.id
+                             order by v.id asc");
         $stm->execute();
-        
         while ($row = $stm->fetch()) {
             $cb_store_row($row);
         }
@@ -116,17 +123,15 @@ class DBIF {
      * 
      * @param int $id
      */
-    public function get_videos_page_video($id, $cb_store_row) {
+    public function get_front_page_video($id, $cb_store_row) {
         $stm = $this->_pdo->prepare(
                             "SELECT
                                 thumb_url,
                                 name,
-                                description,
                                 vf.video_url as video_url,
-                                vf.mime_subtype as mime_subtype,
                                 v.id
-                             FROM {$this->_table_prefix}videos_page_video v
-                             inner join {$this->_table_prefix}video_file vf on vf.videos_page_video_id = v.id
+                             FROM {$this->_table_prefix}video v
+                             inner join {$this->_table_prefix}video_file vf on vf.video_id = v.id
                              where v.id = :id");
         $stm->bindParam(":id", $id, PDO::PARAM_INT);
         $stm->execute();
@@ -147,6 +152,7 @@ class DBIF {
                 s.id,
                 s.icon_uri,
                 st.title,
+                st.subtitle,
                 st.text,
                 si.image_uri
             from {$this->_table_prefix}service s
@@ -156,7 +162,7 @@ class DBIF {
             
             where st.language = :lang
             
-            order by s.id
+            order by s.sort asc, s.id
             ";
         $stm = $this->_pdo->prepare($sql);
         $stm->bindParam(":lang", $language, PDO::PARAM_STR);
@@ -258,7 +264,7 @@ class DBIF {
      * @return string[], keys are js_src_mode, js_src_version and css_src_version
      */
     public function get_resource_configuration() {
-        $stm = $this->_pdo->prepare("SELECT `key`, `value` from {$this->_table_prefix}config where `key` in ('js_src_mode', 'js_src_version', 'css_src_version')");
+        $stm = $this->_pdo->prepare("SELECT `key`, `value` from {$this->_table_prefix}config where `key` in ('js_src_mode', 'js_src_version', 'css_src_version', 'css_src_mode')");
         $stm->execute();
         $ret = array();
         while ($row = $stm->fetch()) {
@@ -306,6 +312,7 @@ class DBIF {
         $sql = 
             "SELECT
                 a.id,
+                a.image_uri,
                 at.question,
                 at.answer
             from {$this->_table_prefix}faq_answer a

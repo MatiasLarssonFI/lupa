@@ -62,6 +62,7 @@ abstract class AbstractView implements IView {
         $data["__js_src_mode"] = $src_conf->get_js_src_mode();
         $data["__js_src_version"] = $src_conf->get_js_src_version();
         $data["__css_src_version"] = $src_conf->get_css_src_version();
+        $data["__css_src_mode"] = $src_conf->get_css_src_mode();
         $data["__scale_mobile"] = $this->is_mobile_scale_enabled();
         $data["__facebook_page_url"] = \DBIF::get()->get_facebook_page_url();
         
@@ -71,8 +72,26 @@ abstract class AbstractView implements IView {
             "footer_navigation" => $text_storage->text("FOOTER_NAVIGATION_TITLE"),
             "contact_info_title" => $text_storage->text("CONTACT_INFO_FP_TITLE"),
             "contact_prompt" => $text_storage->text("CONTACT_PROMPT_TEXT"),
-            "submit_email" => $text_storage->text("CONTACT_US"),
+            
+            "field_name" => $text_storage->text("CONTACT_FIELD_NAME"),
+            "field_email" => $text_storage->text("CONTACT_FIELD_EMAIL"),
+            "field_subject" => $text_storage->text("CONTACT_FIELD_SUBJECT"),
+            "field_message" => $text_storage->text("CONTACT_FIELD_MESSAGE"),
+            "submit" => $text_storage->text("CONTACT_SUBMIT"),
+            
+            "news_title" => $text_storage->text("NEWS_TITLE"),
+            "news_content" => $text_storage->text("NEWS_CONTENT"),
         ];
+        if (!array_key_exists("prefill", $data)) {
+            $data["prefill"] = [
+                "name" => "",
+                "email" => "",
+                "subject" => "",
+                "message" => "",
+                "url" => "", // hidden captcha
+                "company" => "company name oy", // hidden captcha
+            ];
+        }
         
         echo $twig->render($this->get_template_name(), $data);
     }

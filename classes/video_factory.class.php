@@ -26,68 +26,77 @@ class VideoFactory {
     
     
     /**
-     * Returns the videos page videos for listing.
+     * Returns the front page videos for listing.
      * 
      * @return IVideo[]
      */
-    public function get_videos_page_videos() {
+    public function get_front_page_videos() {
         $ret = array();
         
         $lang = UITextStorage::get()->get_language();
+        $videos_data = array();
+        $files_data = array();
         
-        DBIF::get()->get_videos_page_videos_list(function(array $row) use (&$ret, $lang) {
-            $name_obj = json_decode($row["name"]);
-            $descr_obj = json_decode($row["description"]);
+        DBIF::get()->get_front_page_videos(function(array $row) use ($lang, &$videos_data, &$files_data) {
+            $id = $row["id"];
             
-            $ret[] = new VideosPageVideo(
-                $row["id"],
-                $row["thumb_url"],
-                $name_obj->$lang,
-                $descr_obj->$lang,
-                array()
+            if (!array_key_exists($id, $videos_data)) {
+                $name_obj = json_decode($row["name"]);
+                $videos_data[$id] = array(
+                    "id" => $id,
+                    "thumb_url" => $row["thumb_url"],
+                    "name" => $name_obj->$lang,
+                    "description" => "", // unused
+                );
+            }
+            
+            $files_data[$id] = array(
+                "video_url" => $row["video_url"],
+                "mime_subtype" => null, // unused
             );
         });
         
-        usort($ret, function(IVideo $img1, IVideo $img2) {
-            $name1 = $img1->get_name();
-            $name2 = $img2->get_name();
-            if ($name1 === $name2) {
-                return 0;
-            }
-            return ($name1 < $name2 ? -1 : 1);
-        });
+        $ret = array_map(function(array $video_data) use ($files_data) {
+            $file_data = $files_data[$video_data["id"]];
+            return new VideosPageVideo(
+                $video_data["id"],
+                $video_data["thumb_url"],
+                $video_data["name"],
+                $video_data["description"],
+                [ new VideoFile($file_data["video_url"], $file_data["mime_subtype"]) ]
+            );
+        }, $videos_data);
         
         return $ret;
     }
     
     
     /**
-     * Returns one videos page video.
+     * Returns one front page video.
      * 
      * @param int $id
      * @return IVideo
      */
-    public function get_videos_page_video($id) {
+    public function get_front_page_video($id) {
         $lang = UITextStorage::get()->get_language();
         $video_data = array();
         $files_data = array();
         
-        DBIF::get()->get_videos_page_video($id, function(array $row) use ($lang, &$video_data, &$files_data) {
+        DBIF::get()->get_front_page_video($id, function(array $row) use ($lang, &$video_data, &$files_data) {
             if (empty($video_data)) {
                 $name_obj = json_decode($row["name"]);
-                $descr_obj = json_decode($row["description"]);
                 
                 $video_data = array(
                     "id" => $row["id"],
                     "thumb_url" => $row["thumb_url"],
                     "name" => $name_obj->$lang,
-                    "description" => $descr_obj->$lang,
+                    "description" => "", // unused
                 );
             }
             
             $files_data[] = array(
                 "video_url" => $row["video_url"],
-                "mime_subtype" => $row["mime_subtype"],
+                "mime_subtype" => null, // unused
             );
         });
         
