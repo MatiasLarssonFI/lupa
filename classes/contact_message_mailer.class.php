@@ -21,19 +21,18 @@ class ContactMessageMailer implements IMailer {
         $db = \DBIF::get();
         
         $mail_user = $db->get_mail_user();
-        $mail->Port = 25;
-        if (strlen($mail_user) > 0) { // username can also just indicate SMTP
-            $mail->isSMTP();
+        $mail_password = $db->get_mail_password();
+        if (strlen($mail_user) > 0) { // username can also just indicate SMTP, lol
+            $mail->isSMTP(); // Set mailer to use SMTP
             $mail->Host = $db->get_mail_server();
-            $mail_password = $db->get_mail_password();
             if (strlen($mail_password) > 0) {
                 $mail->SMTPAuth = true;
                 $mail->Username = $mail_user;
                 $mail->Password = $mail_password;
-                $mail->Port = 587;
             }
         }
         
+        $mail->Port = 587;
 
         $mail->addReplyTo($contactmsg->get_email(), $contactmsg->get_name());
         $mail->setFrom('contactform@{$host}', 'LU-PA Contact Form');
