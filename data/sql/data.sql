@@ -177,9 +177,9 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (91, 'en', 'CONTACT_TEXT_STREET_ADDRESS', 'Malminkatu 16', NULL, '2017-01-13 20:00:00'),
 (92, 'sv', 'CONTACT_TEXT_NAME', 'Länsi-Uudenmaan PuuApu', '2017-04-02 13:20:03', '2017-01-13 22:00:00'),
 (93, 'en', 'CONTACT_TEXT_NAME', 'Länsi-Uudenmaan PuuApu', '2017-01-14 13:52:26', '2017-01-13 22:00:00'),
-(94, 'fi', 'CONTACT_TEXT_BUSINESS_ID', '2138386-4', '2017-01-16 17:45:25', '2017-01-15 22:00:00'),
-(95, 'sv', 'CONTACT_TEXT_BUSINESS_ID', '2138386-4', '2017-04-02 13:20:03', '2017-01-15 22:00:00'),
-(96, 'en', 'CONTACT_TEXT_BUSINESS_ID', '2138386-4', NULL, '2017-01-15 22:00:00'),
+(94, 'fi', 'CONTACT_TEXT_BUSINESS_ID', '2899706-8', '2017-01-16 17:45:25', '2017-01-15 22:00:00'),
+(95, 'sv', 'CONTACT_TEXT_BUSINESS_ID', '2899706-8', '2017-04-02 13:20:03', '2017-01-15 22:00:00'),
+(96, 'en', 'CONTACT_TEXT_BUSINESS_ID', '2899706-8', NULL, '2017-01-15 22:00:00'),
 (97, 'fi', 'FRONT_PAGE_SERVICES_TITLE', 'Palvelut', '2018-02-11 15:19:52', '2017-01-23 20:00:00'),
 (98, 'sv', 'FRONT_PAGE_SERVICES_TITLE', 'Tjänster', '2017-04-02 13:20:03', '2017-01-23 20:00:00'),
 (99, 'en', 'FRONT_PAGE_SERVICES_TITLE', 'Services', NULL, '2017-01-23 20:00:00'),
@@ -228,6 +228,11 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (150, 'fi', 'NAV_NEWS', 'Ajankohtaista', NULL, '2016-03-11 20:00:00'),
 (151, 'en', 'NAV_NEWS', 'News', NULL, '2016-03-11 20:00:00'),
 (152, 'sv', 'NAV_NEWS', 'News', '2017-04-02 10:20:03', '2016-03-11 20:00:00');
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+('fi', 'CONTACT_TEXT_PHONE_NUMBER', '050 301 7661', NULL, '2018-05-27 19:00:00'),
+('sv', 'CONTACT_TEXT_PHONE_NUMBER', '050 301 7661', NULL, '2018-05-27 19:00:00'),
+('en', 'CONTACT_TEXT_PHONE_NUMBER', '050 301 7661', NULL, '2018-05-27 19:00:00');
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
