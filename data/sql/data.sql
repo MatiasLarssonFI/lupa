@@ -229,6 +229,11 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (151, 'en', 'NAV_NEWS', 'News', NULL, '2016-03-11 20:00:00'),
 (152, 'sv', 'NAV_NEWS', 'News', '2017-04-02 10:20:03', '2016-03-11 20:00:00');
 
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+('fi', 'CONTACT_TEXT_PHONE_NUMBER', '050 301 7661', NULL, '2018-05-27 19:00:00'),
+('sv', 'CONTACT_TEXT_PHONE_NUMBER', '050 301 7661', NULL, '2018-05-27 19:00:00'),
+('en', 'CONTACT_TEXT_PHONE_NUMBER', '050 301 7661', NULL, '2018-05-27 19:00:00');
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
