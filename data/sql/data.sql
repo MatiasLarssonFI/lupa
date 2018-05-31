@@ -235,6 +235,12 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 ('en', 'CONTACT_TEXT_PHONE_NUMBER', '050 301 7661', NULL, '2018-05-27 19:00:00');
 
 
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+('fi', 'CONTACT_POLICY', 'Käytämme yhteystietojasi vain yhteydenpitoon. Säilytämme tietosi lakisääteisten vaatimusten mukaisesti.', NULL, '2018-05-27 19:00:00'),
+('sv', 'CONTACT_POLICY', 'Vi använder din kontaktinformation för att bara kontakta dig. Vi lagrar din information i enlighet med lagstadgade krav.', NULL, '2018-05-27 19:00:00'),
+('en', 'CONTACT_POLICY', 'We use your contact information for just contacting you. We store your information in compliance with statutory requirements.', NULL, '2018-05-27 19:00:00');
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
