@@ -77,7 +77,18 @@
                                 <div class="col-xs-12 col-sm-4">
                                     <h3><b class="text-uppercase">{{ __strings.name_short|raw }}</b></h3>
                                     {{ __strings.footer_promo|raw }}
-                                    <a href="https://www.tilaajavastuu.fi/?yt=2899706-8"><img src="https://www.tilaajavastuu.fi/wp-content/uploads/2013/10/lk_logo.png" alt="LuotettavaKumppaniyritys"/></a>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <a href="https://www.asiakastieto.fi/yritykset/fi/lansi-uudenmaan-puuapu-oy/28997068/yleiskuva" title="Asiakastieto">
+                                                <img class="img-responsive" alt="AA Luottoluokitussertifikaatti" src="https://sv-online.fi/sert/SV_AA_LOGO_Lansi_Uudenmaan_PuuApu_Oy_{{ __lang|upper }}_395401_web.jpg" />
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <a href="https://www.tilaajavastuu.fi/?yt=2899706-8">
+                                                <img class="img-responsive" src="https://www.tilaajavastuu.fi/wp-content/uploads/2013/10/lk_logo.png" alt="LuotettavaKumppaniyritys"/>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-3">
                                     <h3><b class="text-uppercase">{{ __strings.footer_navigation|raw }}</b></h3>
@@ -177,6 +188,7 @@
           })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
         
           ga('create', 'UA-97038913-1', 'auto');
+          ga('set', 'anonymizeIp', true);
           ga('send', 'pageview');
         </script>
         {% block js_link %}{% endblock %}
