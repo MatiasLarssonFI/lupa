@@ -19,9 +19,13 @@
             
             <title>{% block title %}{% endblock %} - {{ __contact_info.name }}</title>
             
-            {% for link in __all_lang_links %}
-                <link rel="alternate" href='{{ __base_uri }}/{{ link.get_language }}/{{ link.get_action }}' hreflang="{{ link.get_language }}">
-            {% endfor %}
+            {% if __all_lang_links|length > 0 %}
+                    
+                {% for link in __all_lang_links %}
+                    <link rel="alternate" href='{{ __base_uri }}/{{ link.get_language }}/{{ link.get_action }}' hreflang="{{ link.get_language }}">
+                {% endfor %}
+                    <link rel="alternate" href='{{ __base_uri }}/{{ link.get_action }}' hreflang="x-default">
+            {% endif %}
         {% endblock %}
     </head>
     <body>
