@@ -70,6 +70,11 @@ class NavLinkFactory {
     }
     
     
+    /**
+     * Returns language links excluding current langauge.
+     * 
+     * @return LangLink[]
+     **/
     public function get_lang_links() {
    		$lang = $this->_lang;
         return array_filter($this->get_all_lang_links(), function ($link) use($lang) {
@@ -78,6 +83,11 @@ class NavLinkFactory {
     }
     
     
+    /**
+     * Returns all language links.
+     * 
+     * @return LangLink[]
+     **/
     public function get_all_lang_links() {
         $action = $this->_action;
         $action_params_str = "";
