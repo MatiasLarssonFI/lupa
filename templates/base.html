@@ -17,7 +17,7 @@
             
             <link href="https://fonts.googleapis.com/css?family=Ek+Mukta" rel="stylesheet"> 
             
-            <title>{% block title %}{% endblock %} - {{ __contact_info.name }}</title>
+            <title>{{ __contact_info.name }} - {% block title %}{% endblock %}</title>
             
             {% if __all_lang_links|length > 0 %}
                 {% set __lang_link_action = "" %}

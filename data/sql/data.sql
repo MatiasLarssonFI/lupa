@@ -87,7 +87,7 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (1, 'fi', 'FRONT_PAGE_PROMO', 'Kehitämme ja valmistamme prototyypejä ja sisustusosia puusta. Hyödynnämme mm. cnc-tekniikkaa ja puun muotopuristusta.', '2016-05-15 18:35:20', '2016-03-05 22:00:00'),
 (2, 'sv', 'FRONT_PAGE_PROMO', 'Vi utvecklar och tillverkar prototyper och inredningsdetaljer av trä. Cnc-fräsning och vakumlaminering ar några av de tekniker vi tillämpar.', '2017-04-02 13:20:03', '2016-03-05 22:00:00'),
 (3, 'en', 'FRONT_PAGE_PROMO', 'We develop and manufacture prototypes and furniture parts from various wood materials. Cnc-routing and vacuum veneering are some of the technics at our disposal.', '2016-03-06 16:17:35', '2016-03-05 22:00:00'),
-(4, 'fi', 'FRONT_PAGE_TITLE', 'LUPA', '2017-01-21 15:29:37', '2016-03-05 22:00:00'),
+(4, 'fi', 'FRONT_PAGE_TITLE', 'Puunkaadot ammattitaidolla', '2017-01-21 15:29:37', '2016-03-05 22:00:00'),
 (5, 'sv', 'FRONT_PAGE_TITLE', 'LUPA', '2017-04-02 13:20:03', '2016-03-05 22:00:00'),
 (6, 'en', 'FRONT_PAGE_TITLE', 'LUPA', '2017-01-21 15:29:44', '2016-03-05 22:00:00'),
 (7, 'fi', 'EXCEPTION_PAGE_TITLE', 'Virhe', NULL, '2016-03-05 22:00:00'),
@@ -239,6 +239,13 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 ('fi', 'CONTACT_POLICY', 'Käytämme yhteystietojasi vain yhteydenpitoon. Säilytämme tietosi lakisääteisten vaatimusten mukaisesti.', NULL, '2018-05-27 19:00:00'),
 ('sv', 'CONTACT_POLICY', 'Vi använder bara dina kontaktuppgifter till att kontakta dig. Vi lagrar din information i enlighet med lagstadgade krav.', NULL, '2018-05-27 19:00:00'),
 ('en', 'CONTACT_POLICY', 'We only use your contact information to contact you. We store your information in compliance with statutory requirements.', NULL, '2018-05-27 19:00:00');
+
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'META_DESCRIPTION_FRONT_PAGE', 'Puunkaato ammattitaidolla Länsi-Uudenmaan alueella mm: Lohja ja Vihti.\nTeemme myös kantojyrsinnät, puiden istuttamiset ja hoitoleikkaamiset. Katso lisää!', NULL, '2019-03-30 19:00:00')
+, ('en', 'META_DESCRIPTION_FRONT_PAGE', '', NULL, '2019-03-30 19:00:00')
+, ('sv', 'META_DESCRIPTION_FRONT_PAGE', '', NULL, '2019-03-30 19:00:00')
+;
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
