@@ -2,7 +2,10 @@
 
 {% block head_extra %}
 <link rel="stylesheet" href="{{ __base_uri }}/lib/mediaelement-4.2.7/build/mediaelementplayer.min.css" />
-<meta name="description" content="{{ strings.page_meta_description }}">
+{% if strings.page_meta_description|length > 0 %}
+    <meta name="description" content="{{ strings.page_meta_description }}">
+{% endif %}
+
 {% endblock %}
 
 {% block title %}{{ strings.page_title }}{% endblock %}
