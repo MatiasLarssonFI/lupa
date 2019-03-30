@@ -19,9 +19,16 @@
             
             <title>{% block title %}{% endblock %} - {{ __contact_info.name }}</title>
             
-            {% for link in __all_lang_links %}
-                <link rel="alternate" href='{{ __base_uri }}/{{ link.get_language }}/{{ link.get_action }}' hreflang="{{ link.get_language }}">
-            {% endfor %}
+            {% if __all_lang_links|length > 0 %}
+                {% set __lang_link_action = "" %}
+                {% for link in __all_lang_links %}
+                    {% set __lang_link_action = link.get_action %}
+                    
+                    <link rel="alternate" href='{{ __base_uri }}/{{ link.get_language }}/{{ __lang_link_action }}' hreflang="{{ link.get_language }}">
+                {% endfor %}
+                    
+                    <link rel="alternate" href='{{ __base_uri }}/{{ __lang_link_action }}' hreflang="x-default">
+            {% endif %}
         {% endblock %}
     </head>
     <body>
@@ -80,7 +87,7 @@
                                     <div class="row">
                                         <div class="col-xs-6">
                                             <a href="https://www.asiakastieto.fi/yritykset/fi/lansi-uudenmaan-puuapu-oy/28997068/yleiskuva" title="Asiakastieto">
-                                                <img class="img-responsive" alt="AA Luottoluokitussertifikaatti" src="https://sv-online.fi/sert/SV_AA_LOGO_Lansi_Uudenmaan_PuuApu_Oy_{{ __lang|upper }}_395401_web.jpg" />
+                                                <img class="img-responsive" alt="AA Luottoluokitussertifikaatti" src="{{ __base_uri }}/data/img/SV_AA_LOGO_Lansi_Uudenmaan_PuuApu_Oy_{{ __lang|upper }}_395401_web.jpg" />
                                             </a>
                                         </div>
                                         <div class="col-xs-6">
