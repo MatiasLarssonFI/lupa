@@ -1,4 +1,4 @@
-var wp = {}
+var wp = {};
 
 var lupa = {
     onLoad: function () {
@@ -9,15 +9,15 @@ var lupa = {
             var w = btn_warp.outerWidth();
             var h = btn_warp.height();
             var banner_h = $(".fp-banner-image").height();
-            if (banner_h)  {
+            if (banner_h) {
                 banner_h += "px";
             } else {
-                banner_h = "auto"
+                banner_h = "auto";
             }
             var nav_w = 0;
             var lc = $("#layout-container");
             node.find("[data-link-text]").each(function() {
-                var len = $(this).text().length
+                var len = $(this).text().length;
                 if (len > nav_w) {
                     nav_w = len;
                 }
@@ -42,7 +42,7 @@ var lupa = {
             node.css(css);
             node.toggleClass("hidden");
         };
-        flyout_toggle = $("[data-toggle='flyout']");
+        var flyout_toggle = $("[data-toggle='flyout']");
         flyout_toggle.on("click", toggleNav);
         flyout_toggle.on("blur", function () {
             var btn = $(this);
