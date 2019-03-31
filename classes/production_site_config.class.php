@@ -38,4 +38,9 @@ class ProductionSiteConfig implements ISiteConfig {
         
         throw new RuntimeException("Cannot read db credentials");
     }
+    
+    
+    public function tracking_enabled() {
+        return true;
+    }
 }

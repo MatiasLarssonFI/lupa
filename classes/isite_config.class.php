@@ -7,4 +7,5 @@ interface ISiteConfig {
     public function default_language();
     public function db_login_params();
     public function db_table_prefix();
+    public function tracking_enabled();
 }

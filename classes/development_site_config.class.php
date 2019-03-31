@@ -33,4 +33,9 @@ class DevelopmentSiteConfig implements ISiteConfig {
             "pass" => "mtxv9uyqamehLeZm"
         );
     }
+    
+    
+    public function tracking_enabled() {
+        return false;
+    }
 }
