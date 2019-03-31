@@ -330,6 +330,30 @@ class DBIF {
     }
     
     
+    public function get_info_page_contents($cb_store_row, $language, $uri) {
+        $sql = 
+            "SELECT
+                a.id,
+                at.title,
+                at.content,
+                at.is_html
+            from {$this->_table_prefix}info_page a
+            inner join {$this->_table_prefix}info_page_content at on a.uri = at.uri
+            where at.language = :lang
+            and a.uri = :uri
+            order by at.position asc
+            ";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindParam(":lang", $language, PDO::PARAM_STR);
+        $stm->bindParam(":uri", $uri, PDO::PARAM_STR);
+        $stm->execute();
+        
+        while ($row = $stm->fetch()) {
+            $cb_store_row($row);
+        }
+    }
+    
+    
     protected function __construct() {
         $site_conf = SiteConfigFactory::get()->get_site_config();
         $db_login = $site_conf->db_login_params();
