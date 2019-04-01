@@ -24,6 +24,7 @@ class InfoFellingView extends AbstractView {
         return array(
             "strings" => array(
                 "page_title" => $this->first_title_or($contents, $text_storage->text("INFO_FELLING_PAGE_TITLE")),
+                "contact_us" => $text_storage->text("CONTACT_US"),
             ),
             "contents" => $contents,
         );
