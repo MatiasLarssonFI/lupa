@@ -60,7 +60,8 @@ header {
 
 .front-main,
 .contact,
-.faq {
+.faq,
+.felling {
     position: relative;
     z-index: 2;
 }
@@ -304,20 +305,20 @@ address {
 }
 
 
-.faq-answers {
+.faq-answers, .felling-content {
     margin-top: 5px;
 }
 
 
-.faq-answer {
+.faq-answer, .felling-content-entry {
     margin-top: 5px;
 }
 
-.faq-answer:last-child {
+.faq-answer:last-child, .felling-content-entry:last-child {
     margin-bottom: 10px;
 }
 
-.faq-title {
+.faq-title, .felling-content-entry-title {
     margin: 15px 0 0 0;
 }
 
