@@ -1,27 +1,59 @@
 {% extends "base.html" %}
 {% block title %}{{ strings.page_title }}{% endblock %}
 
+{% block head_extra %}
+<link rel="stylesheet" href="{{ __base_uri }}/lib/mediaelement-4.2.7/build/mediaelementplayer.min.css" />
+{% endblock %}
+
 {% block content %}
 <main class="felling">
     <div class="row bg-dark-blue">
         <div class="col-xs-12 felling-content content-text-padding">
             <div class="row">
-                {% for content in contents %}
+            {% set first_img_changed = false %}
+            {% set img_changed = false %}
+            {% set text_pull = "left" %}
+            {% for content in contents %}
+                
+                {% set img_changed = content.has_image or content.has_video %}
+                {% set first_img_changed = (not first_img_changed) and img_changed %}
+                
+                {% if img_changed %}
+                    {% set text_pull = text_pull == "left" ? "right" : "left" %}
+                    {% if not first_img_changed %}
+                    </div> <!-- .row -->
+                </div> <!-- .felling-content-entry -->
+                    {% endif %}
+                
                 <div class="col-xs-12 felling-content-entry">
                     <div class="row">
-                        {% if content.get_image_uri|length > 0 %}
-                        <div class="col-xs-5">
-                            <img src="{{ __base_uri }}{{ answer.get_image_uri }}" class="img-responsive" alt="">
+                    {% if content.has_image %}
+                        <div class="col-xs-4 col-sm-5 pl0 felling-content-entry-media pull-{{ text_pull == "left" ? "right" : "left" }}">
+                            <img src="{{ __base_uri }}{{ content.get_image_uri }}" class="img-responsive" alt="">
                         </div>
-                        {% endif %}
-                        <div class="col-xs-{{ content.get_image_uri|length > 0 ? "7" : "12" }}">
+                    {% elseif content.has_video %}
+                        <div class="col-xs-12 col-sm-5 felling-content-entry-media pull-{{ text_pull == "left" ? "right" : "left" }}">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <video src="{{ content.get_video.get_video_files.0.get_url }}"
+                                    data-video-player 
+                                    data-cfg-poster="{{ __base_uri }}{{ content.get_video.get_thumb_url }}"
+                                    data-cfg-plugin-path="{{ __base_uri }}/lib/mediaelement-4.2.7/build">
+                                </video>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+                        
+                        <div class="col-xs-{{ img_changed and not content.has_video ? "8" : "12" }} col-sm-7 pull-{{ text_pull }}">
+
                             {% if content.get_title|length > 0 %}
                                 {% if content.get_content|length == 0 %}
                                 <h1 class="felling-content-entry-title">{{ content.get_title }}</h1>
                                 {% else %}
-                                <h2>{{ content.get_title }}</h2>
+                                <h2 class="felling-content-entry-title">{{ content.get_title }}</h2>
                                 {% endif %}
                             {% endif %}
+
                             <div class="felling-content-entry-text">
                                 {% if not content.is_html %}
                                     <p>{{ content.get_content }}</p>
@@ -30,16 +62,20 @@
                                 {% endif %}
                             </div>
                         </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
+            {% endfor %}
+                    </div> <!-- .row -->
+                </div> <!-- .felling-content-entry -->
+            </div> <!--.row  -->
             <div class="row">
-                <div class="col-xs-12 text-center pbm">
+                <div class="col-xs-12 text-center pbm ptm">
                     <a class="btn btn-lg btn-primary bg-orange text-uppercase" href="#contact"><strong>{{ strings.contact_us }}</strong></a>
                 </div>
             </div>
         </div>
     </div>
 </main>
+{% endblock %}
+{% block js_link %}
+<script src="{{ __base_uri }}/lib/mediaelement-4.2.7/build/mediaelement-and-player.min.js"></script>
+<script src="{{ __base_uri }}/js/videos.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
 {% endblock %}

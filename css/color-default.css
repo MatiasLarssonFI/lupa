@@ -28,7 +28,7 @@ main.contact h2 {
     color: #fff;
 }
 
-.faq-title, .felling-content-entry-title {
+.faq-title, h1.felling-content-entry-title {
     font-weight: bold;
     color: #e7d95f;
     text-transform:uppercase;

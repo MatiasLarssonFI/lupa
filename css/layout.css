@@ -207,6 +207,14 @@ img.lang-flag {
     padding: 0px;
 }
 
+.pr0 {
+    padding-right: 0;
+}
+
+.pl0 {
+    padding-left: 0;
+}
+
 .some-row {
     margin-top: 14px;
 }
@@ -318,8 +326,17 @@ address {
     margin-bottom: 10px;
 }
 
-.faq-title, .felling-content-entry-title {
+.faq-title, h1.felling-content-entry-title {
     margin: 15px 0 0 0;
+}
+
+
+h2.felling-content-entry-title {
+    font-size: 24px;
+}
+
+.felling-content-entry-media {
+    margin-top: 24px;
 }
 
 .thumb-play-btn {

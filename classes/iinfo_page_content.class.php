@@ -23,10 +23,17 @@ interface IInfoPageContent {
     
     
     /**
-     * Returns the image URI.
+     * Returns the image URI, or empty string if there's no image uri.
      * @return string
      */
     public function get_image_uri();
+    
+    
+    /**
+     * Returns the video, or null if there's no video.
+     * @return  IVideo|null
+     */
+    public function get_video();
     
     
     /**
@@ -34,4 +41,18 @@ interface IInfoPageContent {
      * @return bool
      */
     public function is_html();
+    
+    
+    /**
+     * Returns true if there's an image uri.
+     * @return bool
+     */
+    public function has_image();
+    
+    
+    /**
+     * Returns true if there's a video.
+     * @return bool
+     */
+    public function has_video();
 }

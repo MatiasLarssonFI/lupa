@@ -336,7 +336,9 @@ class DBIF {
                 a.id,
                 at.title,
                 at.content,
-                at.is_html
+                at.is_html,
+                at.image_uri,
+                at.video_id
             from {$this->_table_prefix}info_page a
             inner join {$this->_table_prefix}info_page_content at on a.uri = at.uri
             where at.language = :lang
