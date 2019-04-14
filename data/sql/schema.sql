@@ -189,6 +189,52 @@ ALTER TABLE `lupa_service` ADD INDEX `sort` (`sort`);
 
 /* End of v2.2.0 */
 
+
+CREATE TABLE `lupa_info_page` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `uri` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `time_created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci COMMENT='Informational text pages';
+
+CREATE TABLE `lupa_info_page_content` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `uri` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `position` int(10) UNSIGNED NOT NULL,
+  `is_html` tinyint(1) NOT NULL,
+  `language` char(2) COLLATE utf8_swedish_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `content` longtext COLLATE utf8_swedish_ci NOT NULL,
+  `video_id` int(11) DEFAULT NULL,
+  `image_uri` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `time_created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+
+ALTER TABLE `lupa_info_page`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uniq` (`uri`);
+
+ALTER TABLE `lupa_info_page_content`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uniq` (`uri`,`language`,`position`) USING BTREE,
+  ADD KEY `language` (`language`),
+  ADD KEY `position` (`position`),
+  ADD KEY `video` (`id`),
+  ADD KEY `fk_video` (`video_id`);
+
+
+ALTER TABLE `lupa_info_page`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `lupa_info_page_content`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+ALTER TABLE `lupa_info_page_content`
+  ADD CONSTRAINT `fk_uri` FOREIGN KEY (`uri`) REFERENCES `lupa_info_page` (`uri`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_video` FOREIGN KEY (`video_id`) REFERENCES `lupa_video` (`id`) ON UPDATE CASCADE;
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
