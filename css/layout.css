@@ -531,6 +531,10 @@ h2.felling-content-entry-title {
     padding-left: 20px;
     padding-right: 20px;
 }
+
+.exception-container {
+    overflow-x: scroll;
+}
     
 @media (max-width: 1170px) { 
     .lupa-slide-content {

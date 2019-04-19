@@ -256,6 +256,12 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'INFO_FELLING_PAGE_TITLE', '', NULL, '2019-03-30 19:00:00')
 ;
 
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'GENRAL_ERROR_MESSAGE', 'Pahoittelemme, jotain meni vikaan. Voit ottaa meihin yhteyttä sähköpostilla: myynti@lu-pa.fi', NULL, '2019-03-30 19:00:00')
+, ('en', 'GENRAL_ERROR_MESSAGE', 'We\'re sorry, something went wrong. If you wish, you can contact us by email: myynti@lu-pa.fi', NULL, '2019-03-30 19:00:00')
+, ('sv', 'GENRAL_ERROR_MESSAGE', 'Vi är ledsna, något gick fel. Du kan kontakta oss via e-post: myynti@lu-pa.fi', NULL, '2019-03-30 19:00:00')
+;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

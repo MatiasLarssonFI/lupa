@@ -2,8 +2,8 @@
 {% block title %}{{ strings.page_title }}{% endblock %}
 
 {% block content %}
-    <div class="col-xs-12">
-        We're sorry, but there's been an error. Here's a bunch of random characters.
-        {{ strings.description }}
+    <div class="col-xs-12 exception-container">
+        <p>{{ strings.general_message }}</p>
+        <p>{{ strings.description }}</p>
     </div>
 {% endblock %}
