@@ -629,6 +629,10 @@ h2.felling-content-entry-title {
     .service-image__subtitle__word {
         font-size: 12px;
     }
+    
+    .felling-content-entry-image {
+        width: 33.33333333%;
+    }
 }
 
 
