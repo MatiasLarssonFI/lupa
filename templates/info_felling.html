@@ -58,7 +58,7 @@
                                 {% if not content.is_html %}
                                     <p>{{ content.get_content }}</p>
                                 {% else %}
-                                    <p>{{ content.get_content|raw }}</p>
+                                    {{ content.get_content|raw }}
                                 {% endif %}
                             </div>
                         </div>
