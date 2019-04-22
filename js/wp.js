@@ -33,7 +33,7 @@ var lupa = {
                 height: banner_h
             };
             if (lc.outerWidth() < window_width) {
-                css.left = btn_warp_os.left + "px";
+                css.left = Math.ceil(btn_warp_os.left) + "px";
                 css.right = "initial";
             } else {
                 css.right = "0px";
