@@ -10,17 +10,17 @@
     <div class="row bg-dark-blue">
         <div class="col-xs-12 felling-content content-text-padding">
             <div class="row">
-            {% set first_img_changed = false %}
+                
             {% set img_changed = false %}
-            {% set text_pull = "left" %}
+            {% set text_pull = "right" %}
             {% for content in contents %}
                 
                 {% set img_changed = content.has_image or content.has_video %}
-                {% set first_img_changed = (not first_img_changed) and img_changed %}
                 
-                {% if img_changed %}
+                {% if img_changed or loop.first %}
                     {% set text_pull = text_pull == "left" ? "right" : "left" %}
-                    {% if not first_img_changed %}
+                    {% if img_changed and (not loop.first) %}
+                
                     </div> <!-- .row -->
                 </div> <!-- .felling-content-entry -->
                     {% endif %}
