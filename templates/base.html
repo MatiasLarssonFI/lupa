@@ -19,7 +19,7 @@
             
             <title>{{ __contact_info.name }} - {% block title %}{% endblock %}</title>
             
-            {% if __all_lang_links|length > 0 %}
+            {% if __all_lang_links|length > 0 and allow_hreflang %}
                 {% set __lang_link_action = "" %}
                 {% for link in __all_lang_links %}
                     {% set __lang_link_action = link.get_action %}

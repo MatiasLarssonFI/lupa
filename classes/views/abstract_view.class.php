@@ -95,6 +95,9 @@ abstract class AbstractView implements IView {
                 "company" => "company name oy", // hidden captcha
             ];
         }
+        if (!array_key_exists("allow_hreflang", $data)) {
+            $data["allow_hreflang"] = true;
+        }
         
         echo $twig->render($this->get_template_name(), $data);
     }

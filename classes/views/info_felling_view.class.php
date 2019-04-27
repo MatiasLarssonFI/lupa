@@ -27,6 +27,7 @@ class InfoFellingView extends AbstractView {
                 "contact_us" => $text_storage->text("CONTACT_US"),
             ),
             "contents" => $contents,
+            "allow_hreflang" => false,
         );
     }
     
