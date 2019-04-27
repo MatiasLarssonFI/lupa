@@ -30,6 +30,13 @@ interface IInfoPageContent {
     
     
     /**
+     * Returns a human-readable description of the image.
+     * @return string
+     */
+    public function get_image_description();
+    
+    
+    /**
      * Returns the video, or null if there's no video.
      * @return  IVideo|null
      */

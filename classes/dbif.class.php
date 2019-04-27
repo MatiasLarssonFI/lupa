@@ -338,6 +338,7 @@ class DBIF {
                 at.content,
                 at.is_html,
                 at.image_uri,
+                at.image_description,
                 at.video_id
             from {$this->_table_prefix}info_page a
             inner join {$this->_table_prefix}info_page_content at on a.uri = at.uri

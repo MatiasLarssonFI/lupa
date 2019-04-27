@@ -7,15 +7,17 @@ class InfoFellingContent implements IInfoPageContent {
     private $_content;
     private $_id;
     private $_image_uri;
+    private $_image_description;
     private $_is_html;
     private $_video;
     
     
-    public function __construct($id, $title, $content, $image_uri, $is_html, /* IVideo */ $video = null) {
+    public function __construct($id, $title, $content, $image_uri, $image_description, $is_html, /* IVideo */ $video = null) {
         $this->_title = $title;
         $this->_content = $content;
         $this->_id = $id;
         $this->_image_uri = $image_uri;
+        $this->_image_description = $image_description;
         $this->_is_html = $is_html;
         $this->_video = $video;
     }
@@ -38,6 +40,11 @@ class InfoFellingContent implements IInfoPageContent {
     
     public function get_image_uri() {
         return $this->_image_uri;
+    }
+    
+    
+    public function get_image_description() {
+        return $this->_image_description;
     }
     
     

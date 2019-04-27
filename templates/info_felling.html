@@ -34,7 +34,7 @@
                     {% if content.has_image %}
                         
                         <div class="col-xs-3 col-sm-5 felling-content-entry-image felling-content-entry-media {{ text_pull == "left" ? "pull-right pl0" : "pull-left pr0" }}">
-                            <img src="{{ __base_uri }}{{ content.get_image_uri }}" class="img-responsive" alt="">
+                            <img src="{{ __base_uri }}{{ content.get_image_uri }}" class="img-responsive" alt="{{ content.get_image_description }}" title="{{ content.get_title }}">
                         </div>
                         
                     {% elseif content.has_video %}

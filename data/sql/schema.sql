@@ -238,3 +238,7 @@ ALTER TABLE `lupa_info_page_content`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- 190427 -
+
+ALTER TABLE `lupa_info_page_content` add column `image_description` varchar(1000) COLLATE utf8_swedish_ci NOT NULL after image_uri;

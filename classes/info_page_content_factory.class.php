@@ -40,6 +40,7 @@ class InfoPageContentFactory {
                 , $row["title"]
                 , $row["content"]
                 , $row["image_uri"]
+                , $row["image_description"]
                 , (bool)$row["is_html"]
                 , $video
             );
