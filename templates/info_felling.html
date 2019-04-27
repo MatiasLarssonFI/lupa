@@ -2,10 +2,13 @@
 {% block title %}{{ strings.page_title }}{% endblock %}
 
 {% block head_extra %}
+
 <link rel="stylesheet" href="{{ __base_uri }}/lib/mediaelement-4.2.7/build/mediaelementplayer.min.css" />
+
 {% endblock %}
 
 {% block content %}
+
 <main class="felling">
     <div class="row bg-dark-blue">
         <div class="col-xs-12 felling-content content-text-padding">
@@ -23,15 +26,19 @@
                 
                     </div> <!-- .row -->
                 </div> <!-- .felling-content-entry -->
+        
                     {% endif %}
                 
                 <div class="col-xs-12 felling-content-entry">
                     <div class="row">
                     {% if content.has_image %}
+                        
                         <div class="col-xs-3 col-sm-5 felling-content-entry-image felling-content-entry-media {{ text_pull == "left" ? "pull-right pl0" : "pull-left pr0" }}">
                             <img src="{{ __base_uri }}{{ content.get_image_uri }}" class="img-responsive" alt="">
                         </div>
+                        
                     {% elseif content.has_video %}
+                        
                         <div class="col-xs-12 col-sm-5 felling-content-entry-media pull-{{ text_pull == "left" ? "right" : "left" }}">
                             <div class="embed-responsive embed-responsive-16by9">
                                 <video src="{{ content.get_video.get_video_files.0.get_url }}"
@@ -41,6 +48,7 @@
                                 </video>
                             </div>
                         </div>
+                        
                     {% endif %}
                 {% endif %}
                         
@@ -48,25 +56,39 @@
 
                             {% if content.get_title|length > 0 %}
                                 {% if content.get_content|length == 0 %}
+                            
                                 <h1 class="felling-content-entry-title">{{ content.get_title }}</h1>
+                            
                                 {% else %}
+                            
                                 <h2 class="felling-content-entry-title">{{ content.get_title }}</h2>
+                            
                                 {% endif %}
                             {% endif %}
 
                             <div class="felling-content-entry-text">
+                                
                                 {% if not content.is_html %}
-                                    <p>{{ content.get_content }}</p>
+                                
+                                <p>{{ content.get_content }}</p>
+                                
                                 {% else %}
-                                    {{ content.get_content|raw }}
+                                
+                                {{ content.get_content|raw }}
+                                
                                 {% endif %}
+                                
                             </div>
                         </div>
+                        
             {% endfor %}
             {% if contents|length > 0 %}
+                        
                     </div> <!-- .row -->
                 </div> <!-- .felling-content-entry -->
+        
             {% endif %}
+        
             </div> <!--.row  -->
             <div class="row">
                 <div class="col-xs-12 text-center pbm ptm">
@@ -76,8 +98,11 @@
         </div>
     </div>
 </main>
+
 {% endblock %}
 {% block js_link %}
+
 <script src="{{ __base_uri }}/lib/mediaelement-4.2.7/build/mediaelement-and-player.min.js"></script>
 <script src="{{ __base_uri }}/js/videos.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
+
 {% endblock %}
