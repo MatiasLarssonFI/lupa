@@ -21,9 +21,13 @@ try {
     );
     $request["params"] = array_filter(explode("/", $request["params"]), "strlen"); // :<
     
-    $actions = [
-        "", "#news", "#contact", "faq",
-    ];
+    $actions = [ "" ]; // front page
+    
+    if (!empty(UITextStorage::get()->text("NEWS_CONTENT"))) {
+        $actions[] = "#news";
+    }
+    $actions[] = "#contact";
+    $actions[] = "faq";
     
     $nlf = new NavLinkFactory($request["action"], $request["params"], $actions, $request["language"]);
     try {
