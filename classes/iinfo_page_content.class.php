@@ -62,4 +62,11 @@ interface IInfoPageContent {
      * @return bool
      */
     public function has_video();
+    
+    
+    /**
+     * Returns the value for HTML id attribute.
+     * @return string
+     */
+    public function get_html_id();
 }

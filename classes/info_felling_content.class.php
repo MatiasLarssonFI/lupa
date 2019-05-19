@@ -66,4 +66,10 @@ class InfoFellingContent implements IInfoPageContent {
     public function has_video() {
         return $this->_video !== null;
     }
+    
+    
+    public function get_html_id() {
+        $title = str_replace([ " ", "Ä", "Ö", "Å", "ä", "ö", "å", ], [ "-", "A", "O", "A", "a", "o", "a" ], $this->_title);
+        return strtolower(preg_replace("/[^A-Za-z0-9\\-]/", "", $title));
+    }
 }
