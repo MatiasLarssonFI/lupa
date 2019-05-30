@@ -197,6 +197,7 @@ CREATE TABLE `lupa_info_page` (
   `time_created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci COMMENT='Informational text pages';
 
+
 CREATE TABLE `lupa_info_page_content` (
   `id` int(10) UNSIGNED NOT NULL,
   `uri` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
@@ -207,10 +208,10 @@ CREATE TABLE `lupa_info_page_content` (
   `content` longtext COLLATE utf8_swedish_ci NOT NULL,
   `video_id` int(11) DEFAULT NULL,
   `image_uri` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `image_description` varchar(1000) COLLATE utf8_swedish_ci NOT NULL,
   `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `time_created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
-
 
 ALTER TABLE `lupa_info_page`
   ADD PRIMARY KEY (`id`),
@@ -226,19 +227,10 @@ ALTER TABLE `lupa_info_page_content`
 
 
 ALTER TABLE `lupa_info_page`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 ALTER TABLE `lupa_info_page_content`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 ALTER TABLE `lupa_info_page_content`
   ADD CONSTRAINT `fk_uri` FOREIGN KEY (`uri`) REFERENCES `lupa_info_page` (`uri`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_video` FOREIGN KEY (`video_id`) REFERENCES `lupa_video` (`id`) ON UPDATE CASCADE;
-
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
--- 190427 -
-
-ALTER TABLE `lupa_info_page_content` add column `image_description` varchar(1000) COLLATE utf8_swedish_ci NOT NULL after image_uri;
