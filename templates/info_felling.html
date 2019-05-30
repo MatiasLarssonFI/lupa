@@ -95,6 +95,23 @@
                     <a class="btn btn-lg btn-primary bg-orange text-uppercase" href="#contact"><strong>{{ strings.contact_us }}</strong></a>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+                    <div class="row">
+                        {% for link in nav_links %}
+
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            {% set css_class = link.is_active ? " btn-bold" : "" %}
+
+                            <a class="btn btn-link pl0 text-overflow-ellipsis{{ css_class }}" title="{{ link.get_text }}" href="{{ __base_uri }}/{{ link.get_action }}">{{ link.get_text }}</a>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+                    <hr>
+                </div>
+            </div>
         </div>
     </div>
 </main>

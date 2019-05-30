@@ -5,6 +5,7 @@ namespace Views;
 require_once(dirname(__FILE__) . "/abstract_view.class.php");
 require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/../info_page_content_factory.class.php");
+require_once(dirname(__FILE__) . "/../nav_link.class.php");
 
 
 class InfoFellingView extends AbstractView {
@@ -20,13 +21,16 @@ class InfoFellingView extends AbstractView {
     
     protected function get_view_data(array $params) {
         $text_storage = \UITextStorage::get();
-        $contents = \InfoPageContentFactory::get()->get_felling_contents($params["uri"]);
+        $f = \InfoPageContentFactory::get();
+        $contents = $f->get_felling_contents($params["uri"]);
+        $all_links = $f->get_felling_page_links(new \NavLink($params["uri"], "", true));
         return array(
             "strings" => array(
                 "page_title" => $this->first_title_or($contents, $text_storage->text("INFO_FELLING_PAGE_TITLE")),
                 "contact_us" => $text_storage->text("CONTACT_US"),
             ),
             "contents" => $contents,
+            "nav_links" => $all_links,
             "allow_hreflang" => false,
         );
     }

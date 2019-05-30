@@ -2,6 +2,8 @@
 
 require_once(__DIR__ . "/info_felling_content.class.php");
 require_once(__DIR__ . "/video_factory.class.php");
+require_once(__DIR__ . "/inavigable_link.class.php");
+require_once(__DIR__ . "/nav_link.class.php");
 
 
 class InfoPageContentFactory {
@@ -21,6 +23,30 @@ class InfoPageContentFactory {
         return self::$_inst;
     }
     
+    
+    /**
+     * Returns the felling page links
+     * 
+     * @param INavigableLink $active
+     * @return INavigableLink[]
+     */
+    public function get_felling_page_links(INavigableLink $active) {
+        $ret = array();
+        $lang = UITextStorage::get()->get_language();
+        $fIsActive = function(array $row) use ($active) {
+            return $row["uri"] === $active->get_action();
+        };
+        
+        DBIF::get()->get_info_page_links(function(array $row) use (&$ret, $fIsActive) {
+            $ret[] = new NavLink(
+                  $row["uri"]
+                , $row["title"]
+                , $fIsActive($row)
+            );
+        }, $lang);
+        
+        return $ret;
+    }
     
     
     /**
