@@ -64,6 +64,7 @@ class InfoPageContentFactory {
             $ret[] = new InfoFellingContent(
                   $row["id"]
                 , $row["title"]
+                , $row["html_title"]
                 , $row["content"]
                 , $row["image_uri"]
                 , $row["image_description"]

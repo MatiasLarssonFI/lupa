@@ -9,6 +9,12 @@ interface IInfoPageContent {
     
     
     /**
+     * Returns the HTML title.
+     */
+    public function get_html_title();
+    
+    
+    /**
      * Returns the content.
      * @return string
      */

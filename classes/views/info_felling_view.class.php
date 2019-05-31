@@ -43,7 +43,7 @@ class InfoFellingView extends AbstractView {
      */
     private function first_title_or(array $contents, $str) {
         if (!empty($contents)) {
-            return $contents[0]->get_title();
+            return $contents[0]->get_html_title();
         }
         return $str;
     }

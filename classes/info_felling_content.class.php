@@ -4,6 +4,7 @@ require_once(__DIR__ . "/iinfo_page_content.class.php");
 
 class InfoFellingContent implements IInfoPageContent {
     private $_title;
+    private $_html_title;
     private $_content;
     private $_id;
     private $_image_uri;
@@ -12,8 +13,9 @@ class InfoFellingContent implements IInfoPageContent {
     private $_video;
     
     
-    public function __construct($id, $title, $content, $image_uri, $image_description, $is_html, /* IVideo */ $video = null) {
+    public function __construct($id, $title, $html_title, $content, $image_uri, $image_description, $is_html, /* IVideo */ $video = null) {
         $this->_title = $title;
+        $this->_html_title = $html_title;
         $this->_content = $content;
         $this->_id = $id;
         $this->_image_uri = $image_uri;
@@ -25,6 +27,11 @@ class InfoFellingContent implements IInfoPageContent {
     
     public function get_title() {
         return $this->_title;
+    }
+    
+    
+    public function get_html_title() {
+        return $this->_html_title;
     }
     
 

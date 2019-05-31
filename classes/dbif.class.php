@@ -335,6 +335,7 @@ class DBIF {
             "SELECT
                 a.id,
                 at.title,
+                am.html_title,
                 at.content,
                 at.is_html,
                 at.image_uri,
@@ -342,6 +343,7 @@ class DBIF {
                 at.video_id
             from {$this->_table_prefix}info_page a
             inner join {$this->_table_prefix}info_page_content at on a.uri = at.uri
+            inner join {$this->_table_prefix}info_page_meta am on a.uri = am.uri
             where at.language = :lang
             and a.uri = :uri
             order by at.position asc
