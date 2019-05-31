@@ -370,6 +370,17 @@ INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `langu
 (92, 'puunkaato/vihti', 1000, 1, 'fi', '', '<br><p>Lue myös <a href=\"https://lu-pa.fi/puunkaato/#puunkaatoluvista-yleisesti\" title=\"Puunkaatoluvista yleisesti\">puunkaatoluvista yleisesti</a>.</p>', NULL, '', '', '2019-05-26 15:37:54', '2019-05-26 18:24:53'),
 (93, 'puunkaato/espoo', 5, 1, 'fi', 'Yhteystiedot', '<strong>Puhelin</strong>\r\n<br>Teknisen ja ympäristötoimen asiakaspalvelu\r\n<br><a href=\"tel:+358981625000\">09 816 25000</a>\r\n<br><br><strong>Aukioloajat</strong>\r\n<br>Asiakaspalvelun puhelinpalvelu on avoinna ma, ke–pe klo 8.00–15.30 ja ti klo 10.00-15.30.\r\n', NULL, '', '', '2019-05-26 15:58:24', '2019-03-31 00:00:00');
 
+INSERT INTO `lupa_info_page_meta` (`id`, `uri`, `language`, `html_title`, `time_edited`, `time_created`) VALUES
+(1, 'puunkaato/espoo', 'fi', 'Puunkaato Espoossa ammattitaidolla', '2019-05-31 14:48:04', '2019-05-31 16:40:55'),
+(2, 'puunkaato/hanko', 'fi', 'Puunkaato Hangossa ammattitaidolla', '2019-05-31 14:48:07', '2019-05-31 16:40:55'),
+(3, 'puunkaato/inkoo', 'fi', 'Puunkaato Inkoossa ammattitaidolla', '2019-05-31 14:48:10', '2019-05-31 16:40:55'),
+(4, 'puunkaato/karkkila', 'fi', 'Puunkaato Karkkilassa ammattitaidolla', '2019-05-31 14:48:13', '2019-05-31 16:40:55'),
+(5, 'puunkaato/kauniainen', 'fi', 'Puunkaato Kauniaisissa ammattitaidolla', '2019-05-31 14:48:18', '2019-05-31 16:40:55'),
+(6, 'puunkaato/lohja', 'fi', 'Puunkaato Lohjalla ammattitaidolla', '2019-05-31 14:48:20', '2019-05-31 16:40:55'),
+(7, 'puunkaato/raasepori', 'fi', 'Puunkaato Raaseporissa ammattitaidolla', '2019-05-31 14:48:24', '2019-05-31 16:40:55'),
+(8, 'puunkaato/siuntio', 'fi', 'Puunkaato Siuntiossa ammattitaidolla', '2019-05-31 14:48:27', '2019-05-31 16:40:55'),
+(9, 'puunkaato/vihti', 'fi', 'Puunkaato Vihdissä ammattitaidolla', '2019-05-31 14:48:30', '2019-05-31 16:40:55');
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

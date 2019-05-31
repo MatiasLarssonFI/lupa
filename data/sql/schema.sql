@@ -234,3 +234,26 @@ ALTER TABLE `lupa_info_page_content`
 ALTER TABLE `lupa_info_page_content`
   ADD CONSTRAINT `fk_uri` FOREIGN KEY (`uri`) REFERENCES `lupa_info_page` (`uri`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_video` FOREIGN KEY (`video_id`) REFERENCES `lupa_video` (`id`) ON UPDATE CASCADE;
+  
+
+CREATE TABLE `lupa_info_page_meta` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `uri` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `language` char(2) COLLATE utf8_swedish_ci NOT NULL,
+  `html_title` varchar(1000) COLLATE utf8_swedish_ci NOT NULL,
+  `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `time_created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+ALTER TABLE `lupa_info_page_meta`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uniq` (`uri`,`language`),
+  ADD KEY `language` (`language`),
+  ADD KEY `uri` (`uri`);
+
+
+ALTER TABLE `lupa_info_page_meta`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+ALTER TABLE `lupa_info_page_meta`
+  ADD CONSTRAINT `lupa_info_page_meta_ibfk_1` FOREIGN KEY (`uri`) REFERENCES `lupa_info_page` (`uri`) ON DELETE CASCADE ON UPDATE CASCADE;
