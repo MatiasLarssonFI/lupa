@@ -36,6 +36,13 @@ interface IInfoPageContent {
     
     
     /**
+     * Returns true if the image or video is landscape oriented.
+     * @return bool
+     */
+    public function has_landscape_media();
+    
+    
+    /**
      * Returns a human-readable description of the image.
      * @return string
      */

@@ -46,7 +46,13 @@ class InfoFellingContent implements IInfoPageContent {
     
     
     public function get_image_uri() {
-        return $this->_image_uri;
+        $parts = explode(":", $this->_image_uri);
+        return $parts[0];
+    }
+    
+    
+    public function has_landscape_media() {
+        return $this->has_video() || $this->has_landscape_img();
     }
     
     
@@ -78,5 +84,14 @@ class InfoFellingContent implements IInfoPageContent {
     public function get_html_id() {
         $title = str_replace([ " ", "Ä", "Ö", "Å", "ä", "ö", "å", ], [ "-", "A", "O", "A", "a", "o", "a" ], $this->_title);
         return strtolower(preg_replace("/[^A-Za-z0-9\\-]/", "", $title));
+    }
+    
+    
+    private function has_landscape_img() {
+        if ($this->has_image()) {
+            $parts = explode(":", $this->_image_uri);
+            return isset($parts[1]) && $parts[1] === "landscape";
+        }
+        return false;
     }
 }

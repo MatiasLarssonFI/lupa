@@ -33,7 +33,15 @@
                     <div class="row">
                     {% if content.has_image %}
                         
-                        <div class="col-xs-3 col-sm-5 felling-content-entry-image felling-content-entry-media {{ text_pull == "left" ? "pull-right pl0" : "pull-left pr0" }}">
+                        {% set is_ls = content.has_landscape_media %}
+                        {% set pullPaddingClass = "" %}
+                        {% if not is_ls and text_pull == "left" %}
+                            {% set pullPaddingClass = "pl0" %}
+                        {% elseif not is_ls %}
+                            {% set pullPaddingClass = "pr0" %}
+                        {% endif %}
+                        
+                        <div class="col-xs-{{ is_ls ? "12" : "3" }} col-sm-5 felling-content-entry-image felling-content-entry-image__{{ is_ls ? "" : "not-" }}landscape felling-content-entry-media {{ text_pull == "left" ? "pull-right #{pullPaddingClass}" : "pull-left #{pullPaddingClass}" }}">
                             <img src="{{ __base_uri }}{{ content.get_image_uri }}" class="img-responsive" alt="{{ content.get_image_description }}" title="{{ content.get_title }}">
                         </div>
                         
@@ -52,7 +60,7 @@
                     {% endif %}
                 {% endif %}
                         
-                        <div class="col-xs-{{ img_changed and not content.has_video ? "8" : "12" }} col-sm-7 pull-{{ text_pull }}">
+                        <div class="col-xs-{{ img_changed and not content.has_landscape_media ? "8" : "12" }} col-sm-7 pull-{{ text_pull }}">
 
                             {% if content.get_title|length > 0 %}
                                 {% if content.get_content|length == 0 %}
