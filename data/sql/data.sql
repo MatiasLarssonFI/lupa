@@ -382,6 +382,14 @@ INSERT INTO `lupa_info_page_meta` (`id`, `uri`, `language`, `html_title`, `time_
 (9, 'puunkaato/vihti', 'fi', 'Puunkaato Vihdissä ammattitaidolla', '2019-05-31 14:48:30', '2019-05-31 16:40:55');
 
 
+-- 190615
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'INFO_FELLING_PAGE_PROMO_BOTTOM', 'Jos tarvitset ammattimaista arboristia suorittamaan puunkaadon, ota meihin yhteyttä!', NULL, '2019-06-15 12:00:00')
+, ('en', 'INFO_FELLING_PAGE_PROMO_BOTTOM', '', NULL, '2019-06-15 12:00:00')
+, ('sv', 'INFO_FELLING_PAGE_PROMO_BOTTOM', '', NULL, '2019-06-15 12:00:00')
+;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
