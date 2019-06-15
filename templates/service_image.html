@@ -1,13 +1,27 @@
 <div class="service-image">
     <div class="service-image__full-layer">
-        <img class="service-image__full-layer__img" src="{{ __base_uri }}/data/img/service-layer-nostripe.png" alt="">
+        {% if service.get_link_uri %}
+            <a href="{{ __base_uri }}{{ service.get_link_uri }}" title="{{ service.get_title }}">
+        {% endif %}
+            <img class="service-image__full-layer__img" src="{{ __base_uri }}/data/img/service-layer-nostripe.png" alt="">
+        {% if service.get_link_uri %}
+            </a>
+        {% endif %}
     </div>
     <div class="service-image__subtitle">
         <img class="service-image__subtitle__img" src="{{ __base_uri }}{{ service.get_icon_uri }}" alt="">
         <div class="service-image__subtitle__words_container">
+        {% if service.get_link_uri %}
+            <a href="{{ __base_uri }}{{ service.get_link_uri }}" title="{{ service.get_title }}">
+        {% endif %}
+                
         {% for word in service.get_subtitle_words %}
             <span class="service-image__subtitle__word">{{ word }}</span>
         {% endfor %}
+                
+        {% if service.get_link_uri %}
+            </a>
+        {% endif %}
             <hr class="service-image__subtitle__hr">
         </div>
         <hr class="service-image__subtitle__hr-full">

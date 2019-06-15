@@ -154,7 +154,8 @@ class DBIF {
                 st.title,
                 st.subtitle,
                 st.text,
-                si.image_uri
+                si.image_uri,
+                st.link_uri
             from {$this->_table_prefix}service s
             
             inner join {$this->_table_prefix}service_text st on s.id = st.service_id

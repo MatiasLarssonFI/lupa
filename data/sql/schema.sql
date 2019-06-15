@@ -257,3 +257,6 @@ ALTER TABLE `lupa_info_page_meta`
 
 ALTER TABLE `lupa_info_page_meta`
   ADD CONSTRAINT `lupa_info_page_meta_ibfk_1` FOREIGN KEY (`uri`) REFERENCES `lupa_info_page` (`uri`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+ALTER TABLE `lupa_service_text` add `link_uri` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_swedish_ci NULL DEFAULT NULL AFTER text;

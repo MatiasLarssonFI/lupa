@@ -391,6 +391,8 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'INFO_FELLING_PAGE_PROMO_BOTTOM', '', NULL, '2019-06-15 12:00:00')
 ;
 
+UPDATE `lupa_service_text` SET `link_uri` = '/puunkaato/' WHERE `lupa_service_text`.`subtitle` = "Puunkaatoa/ammattitaidolla";
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

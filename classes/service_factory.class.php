@@ -41,7 +41,8 @@ class ServiceFactory {
                     $row["title"],
                     $row["subtitle"],
                     $row["text"],
-                    $row["icon_uri"]
+                    $row["icon_uri"],
+                    $row["link_uri"]
                 );
             }
             
