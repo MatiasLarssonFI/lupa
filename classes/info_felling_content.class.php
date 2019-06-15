@@ -13,7 +13,7 @@ class InfoFellingContent implements IInfoPageContent {
     private $_video;
     
     
-    public function __construct($id, $title, $html_title, $content, $image_uri, $image_description, $is_html, /* IVideo */ $video = null) {
+    public function __construct($id, $title, $html_title, $content, $image_uri, $image_description, $is_html, IVideo $video = null) {
         $this->_title = $title;
         $this->_html_title = $html_title;
         $this->_content = $content;
