@@ -241,7 +241,7 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 ('en', 'CONTACT_POLICY', 'We only use your contact information to contact you. We store your information in compliance with statutory requirements.', NULL, '2018-05-27 19:00:00');
 
 
-// 1903 -
+-- 1903 -
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'META_DESCRIPTION_FRONT_PAGE', 'Puunkaato ammattitaidolla Länsi-Uudenmaan alueella mm: Lohja ja Vihti.\nTeemme myös kantojyrsinnät, puiden istuttamiset ja hoitoleikkaamiset. Katso lisää!', NULL, '2019-03-30 19:00:00')
@@ -251,7 +251,7 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
-  ('fi', 'INFO_FELLING_PAGE_TITLE', 'Puunkaato', NULL, '2019-03-30 19:00:00')
+  ('fi', 'INFO_FELLING_PAGE_TITLE', 'Puunkaadot ammattitaidolla', NULL, '2019-03-30 19:00:00')
 , ('en', 'INFO_FELLING_PAGE_TITLE', '', NULL, '2019-03-30 19:00:00')
 , ('sv', 'INFO_FELLING_PAGE_TITLE', '', NULL, '2019-03-30 19:00:00')
 ;
@@ -379,7 +379,8 @@ INSERT INTO `lupa_info_page_meta` (`id`, `uri`, `language`, `html_title`, `time_
 (6, 'puunkaato/lohja', 'fi', 'Puunkaato Lohjalla ammattitaidolla', '2019-05-31 14:48:20', '2019-05-31 16:40:55'),
 (7, 'puunkaato/raasepori', 'fi', 'Puunkaato Raaseporissa ammattitaidolla', '2019-05-31 14:48:24', '2019-05-31 16:40:55'),
 (8, 'puunkaato/siuntio', 'fi', 'Puunkaato Siuntiossa ammattitaidolla', '2019-05-31 14:48:27', '2019-05-31 16:40:55'),
-(9, 'puunkaato/vihti', 'fi', 'Puunkaato Vihdissä ammattitaidolla', '2019-05-31 14:48:30', '2019-05-31 16:40:55');
+(9, 'puunkaato/vihti', 'fi', 'Puunkaato Vihdissä ammattitaidolla', '2019-05-31 14:48:30', '2019-05-31 16:40:55'),
+(10, 'puunkaato/', 'fi', 'Puunkaadot ammattitaidolla', NULL, '2019-05-31 23:59:59');
 
 
 -- 190615
