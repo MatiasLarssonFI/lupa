@@ -28,12 +28,12 @@ var lupa = {
                 position: "absolute",
                 top: btn_warp_os.top + h + "px",
                 zIndex: 9999,
-                minWidth: w,
+                minWidth: w + 1,
                 width: nav_w / 1.5 + "em",
                 height: banner_h
             };
             if (lc.outerWidth() < window_width) {
-                css.left = Math.ceil(btn_warp_os.left) + "px";
+                css.left = Math.floor(btn_warp_os.left) + "px";
                 css.right = "initial";
             } else {
                 css.right = "0px";
