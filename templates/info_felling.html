@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block title %}{{ strings.page_title }}{% endblock %}
+
+{% block head_extra %}
+
+<link rel="stylesheet" href="{{ __base_uri }}/lib/mediaelement-4.2.7/build/mediaelementplayer.min.css" />
+
+{% endblock %}
+
+{% block content %}
+
+<main class="felling">
+    <div class="row bg-dark-blue">
+        <div class="col-xs-12 felling-content content-text-padding">
+            <div class="row">
+                
+            {% set img_changed = false %}
+            {% set text_pull = "right" %}
+            {% for content in contents %}
+                
+                {% set img_changed = content.has_image or content.has_video %}
+                
+                {% if img_changed or loop.first %}
+                    {% set text_pull = text_pull == "left" ? "right" : "left" %}
+                    {% if img_changed and (not loop.first) %}
+                
+                    </div> <!-- .row -->
+                </div> <!-- .felling-content-entry -->
+        
+                    {% endif %}
+                
+                <div class="col-xs-12 felling-content-entry">
+                    <div class="row">
+                    {% if content.has_image %}
+                        
+                        {% set is_ls = content.has_landscape_media %}
+                        {% set pullPaddingClass = "" %}
+                        {% if not is_ls and text_pull == "left" %}
+                            {% set pullPaddingClass = "pl0" %}
+                        {% elseif not is_ls %}
+                            {% set pullPaddingClass = "pr0" %}
+                        {% endif %}
+                        
+                        <div class="col-xs-{{ is_ls ? "12" : "3" }} col-sm-5 felling-content-entry-image felling-content-entry-image__{{ is_ls ? "" : "not-" }}landscape felling-content-entry-media {{ text_pull == "left" ? "pull-right #{pullPaddingClass}" : "pull-left #{pullPaddingClass}" }}">
+                            <img src="{{ __base_uri }}{{ content.get_image_uri }}" class="img-responsive" alt="{{ content.get_image_description }}" title="{{ content.get_title }}">
+                        </div>
+                        
+                    {% elseif content.has_video %}
+                        
+                        <div class="col-xs-12 col-sm-5 felling-content-entry-media pull-{{ text_pull == "left" ? "right" : "left" }}">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <video src="{{ content.get_video.get_video_files.0.get_url }}"
+                                    data-video-player 
+                                    data-cfg-poster="{{ __base_uri }}{{ content.get_video.get_thumb_url }}"
+                                    data-cfg-plugin-path="{{ __base_uri }}/lib/mediaelement-4.2.7/build">
+                                </video>
+                            </div>
+                        </div>
+                        
+                    {% endif %}
+                {% endif %}
+                        
+                        <div class="col-xs-{{ img_changed and not content.has_landscape_media ? "8" : "12" }} col-sm-7 pull-{{ text_pull }}">
+
+                            {% if content.get_title|length > 0 %}
+                                {% if content.get_content|length == 0 %}
+                            
+                                <h1 class="felling-content-entry-title">{{ content.get_title }}</h1>
+                            
+                                {% else %}
+                            
+                                <h2 class="felling-content-entry-title" id="{{ content.get_html_id }}">{{ content.get_title }}</h2>
+                            
+                                {% endif %}
+                            {% endif %}
+
+                            <div class="felling-content-entry-text">
+                                
+                                {% if not content.is_html %}
+                                
+                                <p>{{ content.get_content }}</p>
+                                
+                                {% else %}
+                                
+                                {{ content.get_content|raw }}
+                                
+                                {% endif %}
+                                
+                            </div>
+                        </div>
+                        
+            {% endfor %}
+            {% if contents|length > 0 %}
+                        
+                    </div> <!-- .row -->
+                </div> <!-- .felling-content-entry -->
+        
+            {% endif %}
+        
+            </div> <!--.row  -->
+            <div class="row">
+                <div class="col-xs-12 text-center pbm ptm">
+                    <a class="btn btn-lg btn-primary bg-orange text-uppercase" href="#contact"><strong>{{ strings.contact_us }}</strong></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+                    <div class="row">
+                        {% for link in nav_links %}
+
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            {% set css_class = link.is_active ? " btn-bold" : "" %}
+
+                            <a class="btn btn-link pl0 text-overflow-ellipsis{{ css_class }}" title="{{ link.get_text }}" href="{{ __base_uri }}/{{ link.get_action }}">{{ link.get_text }}</a>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+{% block js_link %}
+
+<script src="{{ __base_uri }}/lib/mediaelement-4.2.7/build/mediaelement-and-player.min.js"></script>
+<script src="{{ __base_uri }}/js/videos.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
+
+{% endblock %}

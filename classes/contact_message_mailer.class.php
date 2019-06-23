@@ -21,21 +21,24 @@ class ContactMessageMailer implements IMailer {
         $db = \DBIF::get();
         
         $mail_user = $db->get_mail_user();
-        $mail_password = $db->get_mail_password();
-        if (strlen($mail_user) > 0) { // username can also just indicate SMTP, lol
-            $mail->isSMTP(); // Set mailer to use SMTP
+        $mail->Port = 25;
+        if (strlen($mail_user) > 0) { // username can also just indicate SMTP
+            $mail->isSMTP();
             $mail->Host = $db->get_mail_server();
+            $mail_password = $db->get_mail_password();
             if (strlen($mail_password) > 0) {
                 $mail->SMTPAuth = true;
                 $mail->Username = $mail_user;
                 $mail->Password = $mail_password;
+                $mail->Port = 587;
             }
         }
         
-        $mail->Port = 587;
 
         $mail->addReplyTo($contactmsg->get_email(), $contactmsg->get_name());
-        $mail->setFrom('contactform@{$host}', 'LU-PA Contact Form');
+        // note that $mail->setFrom() does not really work
+        $mail->From = "contactform@{$host}";
+        $mail->FromName = 'Contact Form';
         $mail->addAddress($db->get_contact_email());     // Add a recipient
         $mail->isHTML(true);                                  // Set email format to HTML
     
@@ -45,6 +48,7 @@ class ContactMessageMailer implements IMailer {
         $mail->AltBody = $twig->render("contact_email.txt", array("message" => $contactmsg));
 
         if(!$mail->send()) {
+            file_put_contents(__DIR__ . "/../contact_email_error_log", "{$mail->ErrorInfo}\n", FILE_APPEND);
             throw new \RuntimeException("Failed to send contact mail. Mail error: {$mail->ErrorInfo}");
         }
     }

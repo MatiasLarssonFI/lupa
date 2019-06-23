@@ -1,6 +1,8 @@
 <?php
 
-ini_set("display_errors", 1);
+ini_set("error_log", __DIR__ . "/error_log");
+ini_set("log_errors", "1");
+ini_set("display_errors", "0");
 ini_set("error_reporting", E_ALL | E_STRICT);
 
 
@@ -21,9 +23,13 @@ try {
     );
     $request["params"] = array_filter(explode("/", $request["params"]), "strlen"); // :<
     
-    $actions = [
-        "", "#news", "#contact", "faq",
-    ];
+    $actions = [ "" ]; // front page
+    
+    if (!empty(UITextStorage::get()->text("NEWS_CONTENT"))) {
+        $actions[] = "#news";
+    }
+    $actions[] = "#contact";
+    $actions[] = "faq";
     
     $nlf = new NavLinkFactory($request["action"], $request["params"], $actions, $request["language"]);
     try {

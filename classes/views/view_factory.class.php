@@ -7,6 +7,7 @@ require_once(dirname(__FILE__) . "/service_view.class.php");
 require_once(dirname(__FILE__) . "/faq_view.class.php");
 require_once(dirname(__FILE__) . "/contact_view.class.php");
 require_once(dirname(__FILE__) . "/contact_submit_view.class.php");
+require_once(dirname(__FILE__) . "/info_felling_view.class.php");
 require_once(dirname(__FILE__) . "/../nav_link_factory.class.php");
 
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
@@ -50,6 +51,10 @@ class ViewFactory {
             return new ContactSubmitView($_POST, $nlf);
         }  else if ($action === "faq") {
             return new FAQView([], $nlf);
+        } else if ($action === "puunkaato") {
+            return new InfoFellingView([
+                "uri" => "puunkaato/{$this->optional_element(0, "", $params)}"
+            ], $nlf);
         }
         
         // Bad request: redirect to front page

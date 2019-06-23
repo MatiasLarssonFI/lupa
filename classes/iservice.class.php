@@ -39,4 +39,10 @@ interface IService {
      * @return string[]
      */
     public function get_subtitle_words();
+    
+    
+    /**
+     * @return string
+     */
+    public function get_link_uri();
 }

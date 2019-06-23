@@ -60,7 +60,8 @@ header {
 
 .front-main,
 .contact,
-.faq {
+.faq,
+.felling {
     position: relative;
     z-index: 2;
 }
@@ -206,6 +207,14 @@ img.lang-flag {
     padding: 0px;
 }
 
+.pr0 {
+    padding-right: 0;
+}
+
+.pl0 {
+    padding-left: 0;
+}
+
 .some-row {
     margin-top: 14px;
 }
@@ -304,21 +313,30 @@ address {
 }
 
 
-.faq-answers {
+.faq-answers, .felling-content {
     margin-top: 5px;
 }
 
 
-.faq-answer {
+.faq-answer, .felling-content-entry {
     margin-top: 5px;
 }
 
-.faq-answer:last-child {
+.faq-answer:last-child, .felling-content-entry:last-child {
     margin-bottom: 10px;
 }
 
-.faq-title {
+.faq-title, h1.felling-content-entry-title {
     margin: 15px 0 0 0;
+}
+
+
+h2.felling-content-entry-title {
+    font-size: 24px;
+}
+
+.felling-content-entry-media {
+    margin-top: 24px;
 }
 
 .thumb-play-btn {
@@ -513,7 +531,18 @@ address {
     padding-left: 20px;
     padding-right: 20px;
 }
-    
+
+.exception-container {
+    overflow-x: scroll;
+}
+
+.text-overflow-ellipsis {
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
 @media (max-width: 1170px) { 
     .lupa-slide-content {
         padding-top: 80px;
@@ -610,6 +639,10 @@ address {
     
     .service-image__subtitle__word {
         font-size: 12px;
+    }
+    
+    .felling-content-entry-image__not-landscape {
+        width: 33.33333333%;
     }
 }
 

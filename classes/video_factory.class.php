@@ -72,12 +72,12 @@ class VideoFactory {
     
     
     /**
-     * Returns one front page video.
+     * Returns one video.
      * 
      * @param int $id
      * @return IVideo
      */
-    public function get_front_page_video($id) {
+    public function get_video($id) {
         $lang = UITextStorage::get()->get_language();
         $video_data = array();
         $files_data = array();

@@ -154,7 +154,8 @@ class DBIF {
                 st.title,
                 st.subtitle,
                 st.text,
-                si.image_uri
+                si.image_uri,
+                st.link_uri
             from {$this->_table_prefix}service s
             
             inner join {$this->_table_prefix}service_text st on s.id = st.service_id
@@ -319,6 +320,58 @@ class DBIF {
             inner join {$this->_table_prefix}faq_answer_text at on a.id = at.faq_answer_id
             where at.language = :lang
             order by a.id
+            ";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindParam(":lang", $language, PDO::PARAM_STR);
+        $stm->execute();
+        
+        while ($row = $stm->fetch()) {
+            $cb_store_row($row);
+        }
+    }
+    
+    
+    public function get_info_page_contents($cb_store_row, $language, $uri) {
+        $sql = 
+            "SELECT
+                a.id,
+                at.title,
+                am.html_title,
+                at.content,
+                at.is_html,
+                at.image_uri,
+                at.image_description,
+                at.video_id
+            from {$this->_table_prefix}info_page a
+            inner join {$this->_table_prefix}info_page_content at on a.uri = at.uri
+            inner join {$this->_table_prefix}info_page_meta am on a.uri = am.uri
+            where at.language = :lang
+            and a.uri = :uri
+            order by at.position asc
+            ";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindParam(":lang", $language, PDO::PARAM_STR);
+        $stm->bindParam(":uri", $uri, PDO::PARAM_STR);
+        $stm->execute();
+        
+        while ($row = $stm->fetch()) {
+            $cb_store_row($row);
+        }
+    }
+    
+    
+    public function get_info_page_links($cb_store_row, $language) {
+        $sql = 
+            "SELECT
+                a.uri,
+                at.title
+            from {$this->_table_prefix}info_page a
+            inner join {$this->_table_prefix}info_page_content at
+                on a.uri = at.uri
+                and length(at.title) > 0
+                and length(at.content) = 0
+                and at.language = :lang
+            order by at.title asc
             ";
         $stm = $this->_pdo->prepare($sql);
         $stm->bindParam(":lang", $language, PDO::PARAM_STR);

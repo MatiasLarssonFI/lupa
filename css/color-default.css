@@ -24,11 +24,11 @@ main.contact h2 {
     color: #fff;
 }
 
-.faq-content {
+.faq-content, .felling-content {
     color: #fff;
 }
 
-.faq-title {
+.faq-title, h1.felling-content-entry-title {
     font-weight: bold;
     color: #e7d95f;
     text-transform:uppercase;
@@ -75,6 +75,11 @@ main.contact h2 {
 
 .btn-primary:hover {
     box-shadow: 0px 0px 15px 4px rgba(165, 227, 92,0.5);
+}
+
+
+.btn-primary.bg-orange:hover {
+    box-shadow: 0px 0px 15px 4px rgba(253, 129, 17,0.5);
 }
 
 

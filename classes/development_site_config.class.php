@@ -10,7 +10,10 @@ class DevelopmentSiteConfig implements ISiteConfig {
     
     
     public function host() {
-        if (strpos($_SERVER["REMOTE_ADDR"], "192.168.1.") === 0) return "192.168.1.8";
+        if (strpos($_SERVER["REMOTE_ADDR"], "192.168.1.") === 0 &&
+            strpos($_SERVER["SERVER_ADDR"], "192.168.1.") === 0) {
+            return $_SERVER["SERVER_ADDR"];
+        }
         return "localhost";
     }
     
@@ -32,5 +35,10 @@ class DevelopmentSiteConfig implements ISiteConfig {
             "user" => "woodparts_16",
             "pass" => "mtxv9uyqamehLeZm"
         );
+    }
+    
+    
+    public function tracking_enabled() {
+        return false;
     }
 }

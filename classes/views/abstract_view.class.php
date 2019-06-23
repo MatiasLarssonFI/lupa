@@ -42,7 +42,8 @@ abstract class AbstractView implements IView {
         
         $data = $this->get_view_data($this->_params);
         
-        $base_uri = \SiteConfigFactory::get()->get_site_config()->base_uri();
+        $site_cfg = \SiteConfigFactory::get()->get_site_config();
+        $base_uri = $site_cfg->base_uri();
         $language = $text_storage->get_language();
         $src_conf = \ResourceConfig::get();
         $dbif = \DBIF::get();
@@ -65,6 +66,7 @@ abstract class AbstractView implements IView {
         $data["__css_src_mode"] = $src_conf->get_css_src_mode();
         $data["__scale_mobile"] = $this->is_mobile_scale_enabled();
         $data["__facebook_page_url"] = \DBIF::get()->get_facebook_page_url();
+        $data["__ga"] = $site_cfg->tracking_enabled();
         
         $data["__strings"] = [
             "footer_promo" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
@@ -92,6 +94,9 @@ abstract class AbstractView implements IView {
                 "url" => "", // hidden captcha
                 "company" => "company name oy", // hidden captcha
             ];
+        }
+        if (!array_key_exists("allow_hreflang", $data)) {
+            $data["allow_hreflang"] = true;
         }
         
         echo $twig->render($this->get_template_name(), $data);

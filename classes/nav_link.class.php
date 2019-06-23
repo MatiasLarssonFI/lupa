@@ -1,7 +1,9 @@
 <?php
 
+require_once(__DIR__ . "/inavigable_link.class.php");
 
-class NavLink {
+
+class NavLink implements INavigableLink {
     private $_action;
     private $_text;
     private $_is_active;

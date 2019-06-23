@@ -45,8 +45,7 @@ RewriteRule "^/?([a-zA-Z]{3,})/?$" "/index.php?action=$1" [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule "^/?([a-zA-Z]{3,})/([^/]+)/?$" "/index.php?action=$1&params=$2" [L]
-
+RewriteRule "^/?([a-zA-Z]{3,})/(.+)/?$" "/index.php?action=$1&params=$2" [L]
 
 # BEGIN GZIP
 <ifmodule mod_deflate.c>

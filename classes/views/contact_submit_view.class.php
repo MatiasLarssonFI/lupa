@@ -57,18 +57,24 @@ class ContactSubmitView extends AbstractView {
             "__csrf_token" => function($token) use ($session) {
                 return $session->validate_csrf_token($token);
             },
-            "name" => "strlen",
+            "name" => function($str) {
+                $len = strlen($str);
+                return $len > 0 && $len <= 255;
+            },
             "email" => function($email) {
                 $at_pos = strpos($email, "@");
                 $len = strlen($email);
                 return $at_pos !== false &&
                         $at_pos !== 0 &&
                         $at_pos !== $len - 1 &&
-                        $len > 3;
+                        $len > 3 && $len <= 255;
             },
-            "subject" => "strlen",
+            "subject" => function($str) {
+                $len = strlen($str);
+                return $len > 0 && $len <= 255;
+            },
             "message" => function($message) {
-                return strlen($message) > 3;
+                return strlen($message) > 3 && strlen($message) <= 4000;
             }
         );
         
