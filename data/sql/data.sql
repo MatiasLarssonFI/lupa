@@ -205,7 +205,7 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (120, 'en', 'CONTACT_PROMPT_TEXT', 'Send us a contact request by entering your information below.', '2018-03-08 18:59:52', '2017-05-20 12:00:00'),
 (121, 'sv', 'CONTACT_PROMPT_TEXT', 'Ange din information nedan så tar vi kontakt.', '2018-03-08 19:00:01', '2017-05-20 12:00:00'),
 (122, 'fi', 'NAV_FAQ', 'Usein kysyttyä', '2018-03-08 19:33:52', '2016-03-11 20:00:00'),
-(123, 'en', 'NAV_FAQ', 'Frequently asked', '2018-03-08 19:33:54', '2016-03-11 20:00:00'),
+(123, 'en', 'NAV_FAQ', 'FAQ', '2018-03-08 19:33:54', '2016-03-11 20:00:00'),
 (124, 'sv', 'NAV_FAQ', 'Vanliga frågor', '2018-03-08 19:33:50', '2016-03-11 20:00:00'),
 (125, 'fi', 'FAQ_TITLE', 'Usein kysyttyä', NULL, '2016-03-11 20:00:00'),
 (126, 'en', 'FAQ_TITLE', 'Frequently asked', NULL, '2016-03-11 20:00:00'),
@@ -401,6 +401,15 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 ;
 
 UPDATE `lupa_service_text` SET `link_uri` = '/puunkaato/' WHERE `lupa_service_text`.`subtitle` = "Puunkaatoa/ammattitaidolla";
+
+
+-- 190630
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'INFO_PARTNERS_PAGE_TITLE', 'Kumppanit ja vastuullisuus', NULL, '2019-06-30 12:00:00')
+, ('en', 'INFO_PARTNERS_PAGE_TITLE', '', NULL, '2019-06-30 12:00:00')
+, ('sv', 'INFO_PARTNERS_PAGE_TITLE', '', NULL, '2019-06-30 12:00:00')
+;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

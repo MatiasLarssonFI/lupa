@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{ strings.page_title }}{% endblock %}
+
+{% block content %}
+<main class="partners">
+    <div class="row bg-dark-blue">
+        <div class="col-xs-12 partners-content content-text-padding">
+            <div class="row">
+                {% for content in contents %}
+                <div class="col-xs-12 partners-entry">
+                    {% if content.get_title|length > 0 %}
+                        {% if content.get_content|length == 0 %}
+
+                        <h1 class="partners-content-entry-title">{{ content.get_title }}</h1>
+
+                        {% else %}
+
+                        <h2 class="partners-content-entry-title" id="{{ content.get_html_id }}">{{ content.get_title }}</h2>
+
+                        {% endif %}
+                    {% endif %}
+                    
+                    <div class="felling-content-entry-text">
+                                
+                        {% if not content.is_html %}
+
+                        <p>{{ content.get_content }}</p>
+
+                        {% else %}
+
+                        {{ content.get_content|raw }}
+
+                        {% endif %}
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

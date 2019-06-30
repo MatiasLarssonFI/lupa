@@ -24,11 +24,13 @@ main.contact h2 {
     color: #fff;
 }
 
-.faq-content, .felling-content {
+.faq-content, .felling-content, .partners-content {
     color: #fff;
 }
 
-.faq-title, h1.felling-content-entry-title {
+.faq-title,
+h1.felling-content-entry-title,
+h1.partners-content-entry-title {
     font-weight: bold;
     color: #e7d95f;
     text-transform:uppercase;

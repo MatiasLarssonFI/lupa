@@ -360,7 +360,7 @@ class DBIF {
     }
     
     
-    public function get_info_page_links($cb_store_row, $language) {
+    public function get_info_page_links($cb_store_row, $language, $root) {
         $sql = 
             "SELECT
                 a.uri,
@@ -371,10 +371,12 @@ class DBIF {
                 and length(at.title) > 0
                 and length(at.content) = 0
                 and at.language = :lang
+            where a.uri like :root
             order by at.title asc
             ";
         $stm = $this->_pdo->prepare($sql);
         $stm->bindParam(":lang", $language, PDO::PARAM_STR);
+        $stm->bindValue(":root", "{$root}/%", PDO::PARAM_STR);
         $stm->execute();
         
         while ($row = $stm->fetch()) {
