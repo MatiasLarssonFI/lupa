@@ -27,23 +27,20 @@ var lupa = {
             
             // render node (but don't show to user yet) to get width
             node.css({
-                width: (longest_text * 1.5) + "em",
-                visibility: "hidden"
-            });
-            node.toggleClass("hidden");
-            
-            var css = {
                 position: "absolute",
                 top: btn_warp_os.top + h + "px",
                 zIndex: 9999,
                 minWidth: w + 1,
                 height: "auto",
-                left: lc.offset().left + lc.outerWidth() - node.outerWidth(),
                 right: "initial",
-                visibility: "visible" // show to user
-            };
-            
-            node.css(css);
+                width: (longest_text * 1.5) + "em",
+                opacity: 0
+            });
+            node.toggleClass("hidden");
+            node.css({
+                left: lc.offset().left + lc.outerWidth() - node.outerWidth(),
+                opacity: 1 // show to user
+            });
         };
         var flyout_toggle = $("[data-toggle='flyout']");
         flyout_toggle.on("click", toggleNav);
