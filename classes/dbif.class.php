@@ -390,7 +390,7 @@ class DBIF {
         try {
             $this->_pdo = new PDO("mysql:host={$db_login["host"]};dbname={$db_login["dbname"]}", "{$db_login["user"]}", "{$db_login["pass"]}");
         } catch (PDOException $e) {
-            die("uh, oh error " . base64_encode($e->getMessage()) . " ...sorry about that. We're fixing the problem and getting back up ASAP.");
+            die("error " . base64_encode($e->getMessage()) . " We're fixing the problem and getting back up ASAP.");
         }
 
         $this->_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
