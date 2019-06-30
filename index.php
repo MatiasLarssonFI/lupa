@@ -26,18 +26,23 @@ try {
     try {
         $ts = UITextStorage::get();
         $ts->try_change_language($request["language"]);
+        $lang = $ts->get_language();
         
         $actions = [ "" ]; // front page
     
         if (!empty(UITextStorage::get()->text("NEWS_CONTENT"))) {
             $actions[] = "#news";
         }
+        if ($lang === "fi") {
+            $actions[] = "puunkaato";
+            $actions[] = "partners";
+        }
         $actions[] = "#contact";
         $actions[] = "faq";
         
-        $nlf = new NavLinkFactory($request["action"], $request["params"], $actions, $ts->get_language());
+        $nlf = new NavLinkFactory($request["action"], $request["params"], $actions, $lang);
         
-        Views\ViewFactory::get()->get_view($request["action"], $request["params"], $ts->get_language(), $nlf)->render();
+        Views\ViewFactory::get()->get_view($request["action"], $request["params"], $lang, $nlf)->render();
     } catch (Exception $e) {
         $is_ajax = (isset($_REQUEST["is_ajax"]) ? $_REQUEST["is_ajax"] : false);
         $view = new Views\ExceptionView(array("exception" => $e, "is_ajax" => $is_ajax), $nlf);

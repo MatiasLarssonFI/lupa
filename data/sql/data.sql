@@ -411,6 +411,19 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'INFO_PARTNERS_PAGE_TITLE', '', NULL, '2019-06-30 12:00:00')
 ;
 
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'NAV_PARTNERS', 'Kumppanit', NULL, '2019-06-30 12:00:00')
+, ('en', 'NAV_PARTNERS', '', NULL, '2019-06-30 12:00:00')
+, ('sv', 'NAV_PARTNERS', '', NULL, '2019-06-30 12:00:00')
+;
+
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'NAV_PUUNKAATO', 'Puunkaato', NULL, '2019-06-30 12:00:00')
+, ('en', 'NAV_PUUNKAATO', '', NULL, '2019-06-30 12:00:00')
+, ('sv', 'NAV_PUUNKAATO', '', NULL, '2019-06-30 12:00:00')
+;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
