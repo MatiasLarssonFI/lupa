@@ -23,18 +23,21 @@ try {
     );
     $request["params"] = array_filter(explode("/", $request["params"]), "strlen"); // :<
     
-    $actions = [ "" ]; // front page
-    
-    if (!empty(UITextStorage::get()->text("NEWS_CONTENT"))) {
-        $actions[] = "#news";
-    }
-    $actions[] = "#contact";
-    $actions[] = "faq";
-    
-    $nlf = new NavLinkFactory($request["action"], $request["params"], $actions, $request["language"]);
     try {
-        UITextStorage::get()->try_change_language($request["language"]);
-        Views\ViewFactory::get()->get_view($request["action"], $request["params"], $request["language"], $nlf)->render();
+        $ts = UITextStorage::get();
+        $ts->try_change_language($request["language"]);
+        
+        $actions = [ "" ]; // front page
+    
+        if (!empty(UITextStorage::get()->text("NEWS_CONTENT"))) {
+            $actions[] = "#news";
+        }
+        $actions[] = "#contact";
+        $actions[] = "faq";
+        
+        $nlf = new NavLinkFactory($request["action"], $request["params"], $actions, $ts->get_language());
+        
+        Views\ViewFactory::get()->get_view($request["action"], $request["params"], $ts->get_language(), $nlf)->render();
     } catch (Exception $e) {
         $is_ajax = (isset($_REQUEST["is_ajax"]) ? $_REQUEST["is_ajax"] : false);
         $view = new Views\ExceptionView(array("exception" => $e, "is_ajax" => $is_ajax), $nlf);
