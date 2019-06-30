@@ -253,9 +253,19 @@ span.orange {
 }
 
 
+.lupa-nav-link:nth-child(odd) {
+    border-right: 1px dashed #fff;
+}
 
-.nav-flyout.navbar-default .navbar-nav > li:not(:last-child) {
-    border: none;
+
+.lupa-nav-link {
+    border-bottom: 1px dashed #fff;
+}
+
+
+.lupa-nav-link:nth-last-child(1),
+.lupa-nav-link:nth-last-child(2) {
+    border-bottom: none;
 }
 
 

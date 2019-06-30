@@ -144,7 +144,7 @@ img.lang-flag {
 
 
 .lupa-nav-links li > a {
-    padding: 5px 7px 5px 7px;
+    padding: 7px 9px 7px 9px;
 }
 
 
@@ -375,8 +375,8 @@ h2.felling-content-entry-title {
 
 
 .nav-flyout {
-    font-size: 18px;
-    padding: 15px;
+    font-size: 16px;
+    padding: 0;
     max-width: 100%;
     margin: 0;
 }
@@ -405,13 +405,7 @@ h2.felling-content-entry-title {
     float: right;
 }
 
-.nav-flyout .navbar-nav > li {
-    float: none;
-}
-
 .navbar-container .navbar-nav > li {
-    display: block;
-    clear: both;
     font-size: 14px;
 }
 
@@ -542,6 +536,18 @@ h2.felling-content-entry-title {
     overflow-x: hidden;
     white-space: nowrap;
 }
+
+
+li.lupa-nav-link {
+    display: inline-block;
+    float: left;
+}
+
+
+.lupa-nav-links {
+    margin: 0 auto 0 auto;
+}
+
 
 @media (max-width: 1170px) { 
     .lupa-slide-content {

@@ -8,39 +8,42 @@ var lupa = {
             var btn_warp = btn.closest(".navbar-toggle-img-btn-container");
             var w = btn_warp.outerWidth();
             var h = btn_warp.height();
-            var banner_h = $(".fp-banner-image").height();
-            if (banner_h) {
-                banner_h += "px";
-            } else {
-                banner_h = "auto";
-            }
-            var nav_w = 0;
+            var longest_text = 0;
             var lc = $("#layout-container");
-            node.find("[data-link-text]").each(function() {
-                var len = $(this).text().length;
-                if (len > nav_w) {
-                    nav_w = len;
-                }
-            });
+            
             var btn_warp_os = btn_warp.offset();
             var window_width = $(window).width();
+            
+            // get longest nav link text and use as width for all
+            node.find("[data-link-text]").each(function() {
+                var len = $(this).text().length;
+                if (len > longest_text) {
+                    longest_text = len;
+                }
+            });
+            node.find(".lupa-nav-link").each(function() {
+                $(this).css("width", (longest_text / 1.37) + "em");
+            });
+            
+            // render node (but don't show to user yet) to get width
+            node.css({
+                width: (longest_text * 1.5) + "em",
+                visibility: "hidden"
+            });
+            node.toggleClass("hidden");
+            
             var css = {
                 position: "absolute",
                 top: btn_warp_os.top + h + "px",
                 zIndex: 9999,
-                minWidth: w,
-                width: nav_w / 1.5 + "em",
-                height: banner_h
+                minWidth: w + 1,
+                height: "auto",
+                left: lc.offset().left + lc.outerWidth() - node.outerWidth(),
+                right: "initial",
+                visibility: "visible" // show to user
             };
-            if (lc.outerWidth() < window_width) {
-                css.left = Math.ceil(btn_warp_os.left) + "px";
-                css.right = "initial";
-            } else {
-                css.right = "0px";
-                css.left = "initial";
-            }
+            
             node.css(css);
-            node.toggleClass("hidden");
         };
         var flyout_toggle = $("[data-toggle='flyout']");
         flyout_toggle.on("click", toggleNav);
