@@ -86,16 +86,14 @@
                                     {{ __strings.footer_promo|raw }}
                                     <div class="row">
                                         <div class="col-xs-6 pr0">
-                                            <a href="https://www.asiakastieto.fi/yritykset/fi/lansi-uudenmaan-puuapu-oy/28997068/yleiskuva" title="Asiakastieto">
+                                            <a href="https://www.asiakastieto.fi/yritykset/fi/lansi-uudenmaan-puuapu-oy/28997068/yleiskuva" title="Asiakastieto" target="_blank">
                                                 <img class="img-responsive" alt="AA Luottoluokitussertifikaatti" src="{{ __base_uri }}/data/img/SV_AA_LOGO_Lansi_Uudenmaan_PuuApu_Oy_{{ __lang|upper }}_395401_web.jpg" />
                                             </a>
                                         </div>
                                         <div class="col-xs-6">
                                             <div class="row">
                                                 <div class="col-xs-12">
-                                                    <a href="https://www.tilaajavastuu.fi/?yt=2899706-8">
-                                                        <img class="img-responsive" src="https://www.tilaajavastuu.fi/wp-content/uploads/2013/10/lk_logo.png" alt="LuotettavaKumppaniyritys"/>
-                                                    </a>
+                                                    <img class="img-responsive" src="https://www.tilaajavastuu.fi/wp-content/uploads/2013/10/lk_logo.png" alt="LuotettavaKumppaniyritys" title="Luotettava Kumppani -yritys"/>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -150,9 +148,11 @@
                     <div class="row" id="footer">
                         <div class="col-xs-6">
                             <ul class="nav nav-pills lang">
-                            {% for link in __lang_links %}
-                                <li><a title="{{ link.get_language }}" href='{{ __base_uri }}/{{ link.get_language }}/{{ link.get_action }}'><img class="lang-flag" alt="{{ link.get_language }}" src="{{ __base_uri }}/data/img/flag-{{ link.get_language }}.png"></a></li>
-                            {% endfor %}
+                            {% if allow_hreflang %}
+                                {% for link in __lang_links %}
+                                    <li><a title="{{ link.get_language }}" href='{{ __base_uri }}/{{ link.get_language }}/{{ link.get_action }}'><img class="lang-flag" alt="{{ link.get_language }}" src="{{ __base_uri }}/data/img/flag-{{ link.get_language }}.png"></a></li>
+                                {% endfor %}
+                            {% endif %}
                             </ul>
                         </div>
                         <div class="col-xs-6 text-right">
@@ -167,7 +167,7 @@
             <ul class="nav navbar-nav lupa-nav-links">
             {% for link in __nav_links %}
                 {% set href = ( link.is_page ? [ __base_uri, __lang, link.get_action ]|join("/") : link.get_action ) %}
-                <li {{ link.is_active ? "class='active'" : "" }}>
+                <li class='{{ link.is_active ? "active " : "" }}lupa-nav-link text-center'>
                     <a href='{{ href }}' title="{{ link.get_text }}">
                         <span data-link-text>{{ link.get_text }}</span><span class="sr-only"> (current)</span>
                     </a>

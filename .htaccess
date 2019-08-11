@@ -3,6 +3,10 @@ RewriteEngine On
 # se -> sv
 RewriteRule "^/?se/?(.*)$" "/sv/$1" [L,R=301]
 
+# puunkaato/ pages only available for fi/
+RewriteRule "^/?(en|sv)/puunkaato/?(.*)$" "/puunkaato/$2" [L,R=307]
+
+
 Options -Indexes
 
 

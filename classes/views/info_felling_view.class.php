@@ -25,7 +25,7 @@ class InfoFellingView extends AbstractView {
         $f = \InfoPageContentFactory::get();
         $contents = $f->get_felling_contents($params["uri"]);
         $contents[] = $this->make_fixed_bottom_content($text_storage);
-        $all_links = $f->get_felling_page_links(new \NavLink($params["uri"], "", true));
+        $all_links = $f->get_info_page_links(new \NavLink($params["uri"], "", true));
         return array(
             "strings" => array(
                 "page_title" => $this->first_title_or($contents, $text_storage->text("INFO_FELLING_PAGE_TITLE")),

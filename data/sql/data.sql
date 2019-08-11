@@ -102,7 +102,7 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (16, 'sv', 'NAV_FRONT_PAGE', 'LUPA', '2017-04-02 13:20:03', '2016-03-11 22:00:00'),
 (17, 'fi', 'NAV_FRONT_PAGE', 'LUPA', '2017-01-21 15:29:07', '2016-03-11 22:00:00'),
 (18, 'en', 'NAV_FRONT_PAGE', 'LUPA', '2017-01-21 15:29:43', '2016-03-11 22:00:00'),
-(19, 'en', 'NAV_CONTACT', 'Contact', NULL, '2016-03-11 22:00:00'),
+(19, 'en', 'NAV_CONTACT', 'Contact us', NULL, '2016-03-11 22:00:00'),
 (20, 'sv', 'NAV_CONTACT', 'Kontakt', '2017-04-02 13:20:03', '2016-03-11 22:00:00'),
 (21, 'fi', 'NAV_CONTACT', 'Yhteydenotto', NULL, '2016-03-11 22:00:00'),
 (22, 'en', 'GALLERY_TITLE', 'Gallery', NULL, '2016-03-12 22:00:00'),
@@ -205,7 +205,7 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (120, 'en', 'CONTACT_PROMPT_TEXT', 'Send us a contact request by entering your information below.', '2018-03-08 18:59:52', '2017-05-20 12:00:00'),
 (121, 'sv', 'CONTACT_PROMPT_TEXT', 'Ange din information nedan så tar vi kontakt.', '2018-03-08 19:00:01', '2017-05-20 12:00:00'),
 (122, 'fi', 'NAV_FAQ', 'Usein kysyttyä', '2018-03-08 19:33:52', '2016-03-11 20:00:00'),
-(123, 'en', 'NAV_FAQ', 'Frequently asked', '2018-03-08 19:33:54', '2016-03-11 20:00:00'),
+(123, 'en', 'NAV_FAQ', 'FAQ', '2018-03-08 19:33:54', '2016-03-11 20:00:00'),
 (124, 'sv', 'NAV_FAQ', 'Vanliga frågor', '2018-03-08 19:33:50', '2016-03-11 20:00:00'),
 (125, 'fi', 'FAQ_TITLE', 'Usein kysyttyä', NULL, '2016-03-11 20:00:00'),
 (126, 'en', 'FAQ_TITLE', 'Frequently asked', NULL, '2016-03-11 20:00:00'),
@@ -401,6 +401,40 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 ;
 
 UPDATE `lupa_service_text` SET `link_uri` = '/puunkaato/' WHERE `lupa_service_text`.`subtitle` = "Puunkaatoa/ammattitaidolla";
+
+
+-- 190630
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'INFO_PARTNERS_PAGE_TITLE', 'Kumppanit ja vastuullisuus', NULL, '2019-06-30 12:00:00')
+, ('en', 'INFO_PARTNERS_PAGE_TITLE', '', NULL, '2019-06-30 12:00:00')
+, ('sv', 'INFO_PARTNERS_PAGE_TITLE', '', NULL, '2019-06-30 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'NAV_PARTNERS', 'Kumppanit', NULL, '2019-06-30 12:00:00')
+, ('en', 'NAV_PARTNERS', '', NULL, '2019-06-30 12:00:00')
+, ('sv', 'NAV_PARTNERS', '', NULL, '2019-06-30 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'NAV_PUUNKAATO', 'Puunkaato', NULL, '2019-06-30 12:00:00')
+, ('en', 'NAV_PUUNKAATO', '', NULL, '2019-06-30 12:00:00')
+, ('sv', 'NAV_PUUNKAATO', '', NULL, '2019-06-30 12:00:00')
+;
+
+INSERT INTO `lupa_info_page` (`id`, `uri`, `time_edited`, `time_created`) VALUES
+(11, 'partners/', NULL, '2019-06-30 00:00:00');
+
+INSERT INTO `lupa_info_page_meta` (`id`, `uri`, `language`, `html_title`, `time_edited`, `time_created`) VALUES
+(11, 'partners/', 'fi', 'Kumppanit ja vastuullisuus', NULL, '2019-06-30 00:00:00');
+
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES
+(111, 'partners/', 2, 0, 'fi', 'Kumppanit', 'Länsi-Uudenmaan PuuApu Oy on vastuullisesti verkostoitunut alan ammattilaisten kanssa. Työmaallamme on aina vähintään yksi koulutettu arboristi vastaamassa laadusta ja turvallisuudesta.', NULL, '', '', '2019-07-06 16:13:00', '2019-06-30 00:00:00'),
+(110, 'partners/', 5, 0, 'fi', '', 'Yritysasiakkaana voit tarkistaa tietomme Tilaajavastuun Luotettava Kumppani -palvelussa.', NULL, '', '', '2019-07-06 16:10:45', '2019-06-30 00:00:00'),
+(109, 'partners/', 4, 0, 'fi', 'Vastuullisuus', 'Vastuuvakuutuksemme kattaa vahingot 500.000 euroon asti.', NULL, '', '', '2019-07-06 16:10:50', '2019-06-30 00:00:00'),
+(108, 'partners/', 3, 1, 'fi', '', 'Uudenmaan Puu ja Piha Oy <a href=\"http://www.puujapiha.fi\" target=\"_blank\">http://www.puujapiha.fi</a>\r\n<br>PihaPuuPalvelut Oy <a href=\"https://pihapuupalvelut.fi\" target=\"_blank\">https://pihapuupalvelut.fi</a>\r\n<br>Meriläinen Yhtiöt Oy <a href=\"https://nostolavapalvelu.fi\" target=\"_blank\">https://nostolavapalvelu.fi</a>\r\n<br>Tmi Matti Tapio Karhu <a href=\"http://bjornbacka.net/BJORNBACKA/Puu-_ja_vihertyot.html\" target=\"_blank\">http://bjornbacka.net/BJORNBACKA/Puu-_ja_vihertyot.html</a>\r\n<br>TS Tree Service <a href=\"https://www.sahamies.fi\" target=\"_blank\">https://www.sahamies.fi</a>\r\n<br>Tmi Jouni Kvist <a href=\"http://risuveljet.com/tmi-jouni-kvist/\" target=\"_blank\">http://risuveljet.com/tmi-jouni-kvist/</a><br><br>', NULL, '', '', '2019-08-11 18:36:33', '2019-06-30 00:00:00'),
+(107, 'partners/', 1, 0, 'fi', 'Kumppanit ja vastuullisuus', '', NULL, '', '', NULL, '2019-06-30 00:00:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

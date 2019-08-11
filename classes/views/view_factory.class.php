@@ -8,8 +8,9 @@ require_once(dirname(__FILE__) . "/faq_view.class.php");
 require_once(dirname(__FILE__) . "/contact_view.class.php");
 require_once(dirname(__FILE__) . "/contact_submit_view.class.php");
 require_once(dirname(__FILE__) . "/info_felling_view.class.php");
-require_once(dirname(__FILE__) . "/../nav_link_factory.class.php");
+require_once(dirname(__FILE__) . "/info_partners_view.class.php");
 
+require_once(dirname(__FILE__) . "/../nav_link_factory.class.php");
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
 
 
@@ -55,9 +56,14 @@ class ViewFactory {
             return new InfoFellingView([
                 "uri" => "puunkaato/{$this->optional_element(0, "", $params)}"
             ], $nlf);
+        } else if ($action === "partners") {
+            return new InfoPartnersView([
+                "uri" => "partners/{$this->optional_element(0, "", $params)}"
+            ], $nlf);
         }
         
         // Bad request: redirect to front page
+        // TBD: 404 page
         
         header("HTTP/1.1 303 See Other");
         header("Location: " . \SiteConfigFactory::get()->get_site_config()->base_uri());
