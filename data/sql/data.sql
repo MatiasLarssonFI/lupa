@@ -417,12 +417,24 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'NAV_PARTNERS', '', NULL, '2019-06-30 12:00:00')
 ;
 
-
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'NAV_PUUNKAATO', 'Puunkaato', NULL, '2019-06-30 12:00:00')
 , ('en', 'NAV_PUUNKAATO', '', NULL, '2019-06-30 12:00:00')
 , ('sv', 'NAV_PUUNKAATO', '', NULL, '2019-06-30 12:00:00')
 ;
+
+INSERT INTO `lupa_info_page` (`id`, `uri`, `time_edited`, `time_created`) VALUES
+(11, 'partners/', NULL, '2019-06-30 00:00:00');
+
+INSERT INTO `lupa_info_page_meta` (`id`, `uri`, `language`, `html_title`, `time_edited`, `time_created`) VALUES
+(11, 'partners/', 'fi', 'Kumppanit ja vastuullisuus', NULL, '2019-06-30 00:00:00');
+
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES
+(111, 'partners/', 2, 0, 'fi', 'Kumppanit', 'Länsi-Uudenmaan PuuApu Oy on vastuullisesti verkostoitunut alan ammattilaisten kanssa. Työmaallamme on aina vähintään yksi koulutettu arboristi vastaamassa laadusta ja turvallisuudesta.', NULL, '', '', '2019-07-06 16:13:00', '2019-06-30 00:00:00'),
+(110, 'partners/', 5, 0, 'fi', '', 'Yritysasiakkaana voit tarkistaa tietomme Tilaajavastuun Luotettava Kumppani -palvelussa.', NULL, '', '', '2019-07-06 16:10:45', '2019-06-30 00:00:00'),
+(109, 'partners/', 4, 0, 'fi', 'Vastuullisuus', 'Vastuuvakuutuksemme kattaa vahingot 500.000 euroon asti.', NULL, '', '', '2019-07-06 16:10:50', '2019-06-30 00:00:00'),
+(108, 'partners/', 3, 1, 'fi', '', 'Uudenmaan Puu ja Piha Oy <a href=\"http://www.puujapiha.fi\" target=\"_blank\">http://www.puujapiha.fi</a>\r\n<br>PihaPuuPalvelut Oy <a href=\"https://pihapuupalvelut.fi\" target=\"_blank\">https://pihapuupalvelut.fi</a>\r\n<br>Meriläinen Yhtiöt Oy <a href=\"https://nostolavapalvelu.fi\" target=\"_blank\">https://nostolavapalvelu.fi</a>\r\n<br>Tmi Matti Tapio Karhu <a href=\"http://bjornbacka.net/BJORNBACKA/Puu-_ja_vihertyot.html\" target=\"_blank\">http://bjornbacka.net/BJORNBACKA/Puu-_ja_vihertyot.html</a>\r\n<br>TS Tree Service <a href=\"https://www.sahamies.fi\" target=\"_blank\">https://www.sahamies.fi</a>\r\n<br>Tmi Jouni Kvist <a href=\"http://risuveljet.com/tmi-jouni-kvist/\" target=\"_blank\">http://risuveljet.com/tmi-jouni-kvist/</a><br><br>', NULL, '', '', '2019-08-11 18:36:33', '2019-06-30 00:00:00'),
+(107, 'partners/', 1, 0, 'fi', 'Kumppanit ja vastuullisuus', '', NULL, '', '', NULL, '2019-06-30 00:00:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
