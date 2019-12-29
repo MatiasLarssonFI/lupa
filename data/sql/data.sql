@@ -436,6 +436,10 @@ INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `langu
 (108, 'partners/', 3, 1, 'fi', '', 'Uudenmaan Puu ja Piha Oy <a href=\"http://www.puujapiha.fi\" target=\"_blank\">http://www.puujapiha.fi</a>\r\n<br>PihaPuuPalvelut Oy <a href=\"https://pihapuupalvelut.fi\" target=\"_blank\">https://pihapuupalvelut.fi</a>\r\n<br>Meriläinen Yhtiöt Oy <a href=\"https://nostolavapalvelu.fi\" target=\"_blank\">https://nostolavapalvelu.fi</a>\r\n<br>Tmi Matti Tapio Karhu <a href=\"http://bjornbacka.net/BJORNBACKA/Puu-_ja_vihertyot.html\" target=\"_blank\">http://bjornbacka.net/BJORNBACKA/Puu-_ja_vihertyot.html</a>\r\n<br>TS Tree Service <a href=\"https://www.sahamies.fi\" target=\"_blank\">https://www.sahamies.fi</a>\r\n<br>Tmi Jouni Kvist <a href=\"http://risuveljet.com/tmi-jouni-kvist/\" target=\"_blank\">http://risuveljet.com/tmi-jouni-kvist/</a><br>Raivausyhtymä Kelloniemi & kni <a href="https://www.ryk.fi" target="_blank">https://www.ryk.fi/</a><br><br>', NULL, '', '', '2019-08-11 18:36:33', '2019-06-30 00:00:00'),
 (107, 'partners/', 1, 0, 'fi', 'Kumppanit ja vastuullisuus', '', NULL, '', '', NULL, '2019-06-30 00:00:00');
 
+-- 191229
+
+UPDATE `lupa_service_image` SET `image_uri` = '/data/img/services/puunkaato_191229.jpg' WHERE `lupa_service_image`.`id` = 8;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
