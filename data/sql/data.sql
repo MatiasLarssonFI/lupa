@@ -241,7 +241,7 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 ('en', 'CONTACT_POLICY', 'We only use your contact information to contact you. We store your information in compliance with statutory requirements.', NULL, '2018-05-27 19:00:00');
 
 
--- 1903 -
+-- 1903
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'META_DESCRIPTION_FRONT_PAGE', 'Puunkaato ammattitaidolla Länsi-Uudenmaan alueella mm: Lohja ja Vihti.\nTeemme myös kantojyrsinnät, puiden istuttamiset ja hoitoleikkaamiset. Katso lisää!', NULL, '2019-03-30 19:00:00')
@@ -262,7 +262,7 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'GENRAL_ERROR_MESSAGE', 'Vi ber om ursäkt, något gick fel. Du kan kontakta oss via e-post: myynti@lu-pa.fi', NULL, '2019-03-30 19:00:00')
 ;
 
-// 1905 -
+-- 1905
 
 INSERT INTO `lupa_info_page` (`id`, `uri`, `time_edited`, `time_created`) VALUES
 (1, 'puunkaato/', '2019-03-31 15:17:53', '2019-03-31 00:00:00'),
