@@ -438,7 +438,7 @@ INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `langu
 
 -- 191229
 
-UPDATE `lupa_service_image` SET `image_uri` = '/data/img/services/puunkaato_191229.jpg' WHERE `lupa_service_image`.`id` = 8;
+UPDATE `lupa_service_image` SET `image_uri` = '/data/img/services/puunkaato_191230.jpg' WHERE `lupa_service_image`.`id` = 8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
