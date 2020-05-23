@@ -440,6 +440,14 @@ INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `langu
 
 UPDATE `lupa_service_image` SET `image_uri` = '/data/img/services/puunkaato_191230.jpg' WHERE `lupa_service_image`.`id` = 8;
 
+-- 200523
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'PH_CONTACT_MESSAGE', 'Jos mahdollista, ilmoita kohteen kuvaus ja osoite sekä aikataulu ja puhelinnumero.', NULL, '2020-05-23 12:00:00')
+, ('en', 'PH_CONTACT_MESSAGE', 'If possible, please give a location description and address as well as the schedule and phone number.', NULL, '2020-05-23 12:00:00')
+, ('sv', 'PH_CONTACT_MESSAGE', 'Om möjligt, ge en platsbeskrivning och adress samt tidtabell och telefonnummer.', NULL, '2020-05-23 12:00:00')
+;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

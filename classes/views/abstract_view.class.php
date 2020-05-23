@@ -82,6 +82,10 @@ abstract class AbstractView implements IView {
             "field_message" => $text_storage->text("CONTACT_FIELD_MESSAGE"),
             "submit" => $text_storage->text("CONTACT_SUBMIT"),
             
+            "placeholder" => [
+                "message" => $text_storage->text("PH_CONTACT_MESSAGE"),
+            ],
+            
             "news_title" => $text_storage->text("NEWS_TITLE"),
             "news_content" => $text_storage->text("NEWS_CONTENT"),
         ];
