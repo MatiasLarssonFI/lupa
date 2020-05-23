@@ -39,11 +39,11 @@ class ContactMessageMailer implements IMailer {
         // note that $mail->setFrom() does not really work
         $mail->From = "contactform@{$host}";
         $mail->FromName = 'Contact Form';
-        $mail->addAddress($db->get_contact_email());     // Add a recipient
-        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->addAddress($db->get_contact_email());
+        $mail->isHTML(true);
     
         $mail->CharSet = 'UTF-8';
-        $mail->Subject = "LU-PA-CONTACT: {$contactmsg->get_subject()}";
+        $mail->Subject = "{$contactmsg->get_subject()} - LUPA contact";
         $mail->Body    = $twig->render("contact_email.html", array("message" => $contactmsg));
         $mail->AltBody = $twig->render("contact_email.txt", array("message" => $contactmsg));
 
