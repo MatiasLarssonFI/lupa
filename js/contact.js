@@ -33,6 +33,12 @@
                     }
                 });
             });
+            self.initHelp();
+        },
+        initHelp : function() {
+            $("[data-contact-help-btn]").off("click").on("click", function() {
+                $("[data-contact-help-content]").toggleClass("hidden");
+            });
         }
     };
 }(jQuery);

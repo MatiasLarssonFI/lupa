@@ -34,9 +34,10 @@
         </div>
     </div>
     <div class="form-group {{ errors.message is defined ? 'has-error': '' }}">
-        <label for="message" class="col-xs-12">{{ __strings.field_message }}</label>
+        <label for="message" class="col-xs-12">{{ __strings.field_message }} <button type="button" class="btn btn-link" title="{{ __strings.placeholder.message }}" data-contact-help-btn>[ ? ]</button></label>
+        <div class="hidden col-xs-12" data-contact-help-content>{{ __strings.placeholder.message }}</div>
         <div class="col-xs-12">
-            <textarea id="message" name="message" class="form-control" rows="4" minlength="4" required>{{ prefill.message }}</textarea>
+            <textarea id="message" name="message" class="form-control" rows="4" minlength="4" required placeholder="{{ __strings.placeholder.message }}">{{ prefill.message }}</textarea>
             {% if errors.message is defined %}
                 <span class="help-block">{{ errors.message }}<span>
             {% endif %}
