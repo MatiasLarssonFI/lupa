@@ -1,13 +1,1 @@
-<dl>
-    <dt>Nimi</dt>
-    <dd>{{ message.get_name }}</dd>
-    
-    <dt>Aihe</dt>
-    <dd>{{ message.get_subject }}</dd>
-    
-    <dt>Sähköposti</dt>
-    <dd>{{ message.get_email }}</dd>
-    
-    <dt>Viesti</dt>
-    <dd><p>{{ message.get_message|nl2br }}</p></dd>
-</dl>
+<p>{{ message.get_name }} / {{ message.get_subject }} / {{ message.get_email }} / {{ message.get_message }}</p>
