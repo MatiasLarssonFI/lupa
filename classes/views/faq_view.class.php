@@ -25,7 +25,6 @@ class FAQView extends AbstractView {
                 "page_title" => $text_storage->text("FAQ_TITLE"),
             ),
             "answers" => \FAQFactory::get()->get_answers(),
-            "lang" => $text_storage->get_language(),
         );
     }
 }
