@@ -559,6 +559,11 @@ li.lupa-nav-link {
 }
 
 
+.mtm {
+    margin-top: 10px;
+}
+
+
 @media (max-width: 1170px) { 
     .lupa-slide-content {
         padding-top: 80px;

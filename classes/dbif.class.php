@@ -385,6 +385,53 @@ class DBIF {
     }
     
     
+    public function yield_work_items($state_filter, $order_col, $order_direction, $cb_make_item) {
+        if ($state_filter === "STATE_NEW") {
+            // optimize for special case
+            $sql =
+                "SELECT
+                     c.id       as id
+                    ,c.name     as name
+                    ,c.email    as email
+                    ,c.subject  as subject
+                    ,c.message  as message
+                    ,c.time_created  as ts_created
+                    ,c.time_created  as ts_state
+                    
+                from lupa_contact_inbox c
+                order by {$order_col} {$order_direction}
+                ";
+        } else {
+            $sql =
+                "SELECT
+                     c.id       as id
+                    ,c.name     as name
+                    ,c.email    as email
+                    ,c.subject  as subject
+                    ,c.message  as message
+                    ,c.time_created  as ts_created
+                    ,wi.time_state_changed  as ts_state
+                    
+                from lupa_contact_inbox c
+                inner join lupa_work_item wi
+                    on wi.contact_inbox_id = c.id
+                
+                where wi.state = :state_filter
+                
+                order by {$order_col} {$order_direction}
+                ";
+            $stm->bindParam(":state_filter", $state_filter);
+        }
+        
+        $stm = $this->_pdo->prepare($sql);
+        $stm->execute();
+        
+        while ($row = $stm->fetch()) {
+            yield $cb_make_item($row);
+        }
+    }
+    
+    
     protected function __construct() {
         $site_conf = SiteConfigFactory::get()->get_site_config();
         $db_login = $site_conf->db_login_params();

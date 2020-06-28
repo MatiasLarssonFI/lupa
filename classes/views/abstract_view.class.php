@@ -50,6 +50,7 @@ abstract class AbstractView implements IView {
         
         $data["__csrf_token"] = \Session::get()->get_csrf_token();
         $data["__base_uri"] = $base_uri;
+        $data["__management_url"] = $base_uri;
         $data["__contact_info"] = $this->make_contact_info($text_storage);
         $data["__header_logo_uri"] = str_replace("{lang}", $language, $base_uri . $dbif->get_header_logo_uri());
         $data["__small_logo_uri"] = $data["__header_logo_uri"];
@@ -124,6 +125,11 @@ abstract class AbstractView implements IView {
         if (count($diff) > 0) {
             throw new \InvalidArgumentException("Missing required parameters: " . implode(", ", $diff));
         }
+        
+        $diff = array_diff($this->get_required_session_params(), array_keys($_SESSION));
+        if (count($diff) > 0) {
+            throw new \InvalidArgumentException("Missing required session parameters: " . implode(", ", $diff));
+        }
     }
     
     
@@ -138,12 +144,21 @@ abstract class AbstractView implements IView {
     
     
     /** 
+     * Returns names of the required session parameters.
+     * 
+     * @return string[]
+     */
+    protected function get_required_session_params() {
+        return [];
+    }
+    
+    
+    /** 
      * Returns names of the required parameters.
      * 
      * @return string[]
      */
     abstract protected function get_required_params();
-    
     
     /**
      * Returns the template file basename.

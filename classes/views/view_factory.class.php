@@ -10,6 +10,8 @@ require_once(dirname(__FILE__) . "/contact_submit_view.class.php");
 require_once(dirname(__FILE__) . "/info_felling_view.class.php");
 require_once(dirname(__FILE__) . "/info_partners_view.class.php");
 
+require_once(dirname(__FILE__) . "/work_list_view.class.php");
+
 require_once(dirname(__FILE__) . "/../nav_link_factory.class.php");
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
 
@@ -59,6 +61,15 @@ class ViewFactory {
         } else if ($action === "partners") {
             return new InfoPartnersView([
                 "uri" => "partners/{$this->optional_element(0, "", $params)}"
+            ], $nlf);
+        } else if ($action === "work_list") {
+            //DEBUG
+            $_SESSION["perm_work_list"] = 1;
+            
+            return new WorkListView([
+                "state_filter" => $this->optional_element(0, "STATE_NEW", $params),
+                "order_col" => $this->optional_element(1, "ts_created", $params),
+                "order_dir" => $this->optional_element(2, "desc", $params),
             ], $nlf);
         }
         
