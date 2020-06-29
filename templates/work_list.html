@@ -11,42 +11,54 @@
         <div class="col-xs-12 faq-content content-text-padding">
             <h1 class="faq-title">{{ strings.page_title }}</h1>
         </div>
-        <div class="col-xs-12 work-list-content work-items content-text-padding">
-            <table class="table table-striped bg-white mtm">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Subject</th>
-                        <th>Message</th>
-                        <th><a href="{{ __management_url }}/work_list/{{ state_filter }}/ts_created/{{ order_dir_link }}" title="{{ order_dir_title }}">Created</a></th>
-                        <th><a href="{{ __management_url }}/work_list/{{ state_filter }}/ts_state/{{ order_dir_link }}" title="{{ order_dir_title }}">Changed</a></th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in items %}
+        <div class="col-xs-12 bg-white work-list-content work-items content-text-padding">
+            {% for item in items %}
+            
+            <div class="row work-list-item">
+                <div class="col-xs-12 ptm pbm">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4">
+                            <span class="work-list-item-details__term">#</span>
+                            <span class="work-list-item-details__value">{{ item.get_id }}</span>
+                            <br>
+                            <span class="work-list-item-details__term">Name</span>
+                            <span class="work-list-item-details__value">{{ item.get_name }}</span>
+                            <br>
+                            <span class="work-list-item-details__term">Email</span>
+                            <span class="work-list-item-details__value">{{ item.get_email }}</span>
+                            <br>
+                            <span class="work-list-item-details__term">Subject</span>
+                            <span class="work-list-item-details__value">{{ item.get_subject }}</span>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <span class="work-list-item-details__term">Message</span>
+                            <span class="work-list-item-details__value" title="{{ item.get_message }}">{{ item.get_message|slice(0,16) }}&hellip;</span>
+                            <br>
+                            <span class="work-list-item-details__term"><a href="{{ __management_url }}/work_list/{{ state_filter }}/ts_created/{{ order_dir_link }}" title="{{ order_dir_title }}">Created</a></span>
+                            <span class="work-list-item-details__value">{{ item.get_datetime_created }}</span>
+                            <br>
+                            <span class="work-list-item-details__term"><a href="{{ __management_url }}/work_list/{{ state_filter }}/ts_state/{{ order_dir_link }}" title="{{ order_dir_title }}">Changed</a></span>
+                            <span class="work-list-item-details__value">{{ item.get_datetime_state }}</span>
+                        </div>
+                    </div>
                     
-                    <tr>
-                        <td>{{ item.get_id }}</td>
-                        <td>{{ item.get_name }}</td>
-                        <td>{{ item.get_email }}</td>
-                        <td>{{ item.get_subject }}</td>
-                        <td title="{{ item.get_message }}">{{ item.get_message|slice(0,10) }}&hellip;</td>
-                        <td>{{ item.get_datetime_created }}</td>
-                        <td>{{ item.get_datetime_state }}</td>
-                        <td>
+                    <div class="row mtm">
+                        <div class="col-xs-6 col-sm-4">
                             <button class="btn btn-success btn-state-action" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">{{ item.get_state_action }}</button>
-                            {% if item.is_archivable %}
-                            <button class="btn btn-warning mtm" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    
-                    {% endfor %}
-                </tbody>
-            </table>
+                        </div>
+                        
+                        {% if item.is_archivable %}
+                        
+                        <div class="col-xs-6 col-sm-4">
+                            <button class="btn btn-warning" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
+                        </div>
+                        
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            {% endfor %}
         </div>
     </div>
 </main>

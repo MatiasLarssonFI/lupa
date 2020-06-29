@@ -564,6 +564,17 @@ li.lupa-nav-link {
 }
 
 
+.work-list-item-details__term {
+    display: inline-block;
+    min-width: 5em;
+}
+
+
+.work-list-item-details__value {
+    display: inline-block;
+}
+
+
 @media (max-width: 1170px) { 
     .lupa-slide-content {
         padding-top: 80px;

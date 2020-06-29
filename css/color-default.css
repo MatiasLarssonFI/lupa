@@ -361,3 +361,13 @@ span.orange {
 .videos-title {
     color: #fff;
 }
+
+
+.work-list-item-details__term {
+    font-weight: bold;
+}
+
+
+.work-list-item:nth-child(odd) {
+    background-color: #f9f9f9;
+}

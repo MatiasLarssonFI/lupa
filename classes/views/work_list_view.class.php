@@ -8,6 +8,14 @@ require_once(dirname(__FILE__) . "/../work_item_factory.class.php");
 
 
 class WorkListView extends AbstractView {
+    private $_is_table;
+    
+    
+    public function __construct(array $params, \NavLinkFactory $nlf, $is_table) {
+        parent::__construct($params, $nlf);
+        $this->_is_table = $is_table;
+    }
+    
     protected function get_required_params() {
         return [ "state_filter", "order_col", "order_dir" ];
     }
@@ -19,7 +27,7 @@ class WorkListView extends AbstractView {
     
     
     protected function get_template_name() {
-        return "work_list.html";
+        return $this->_is_table ? "work_table.html" : "work_list.html";
     }
     
     

@@ -62,12 +62,12 @@ class ViewFactory {
             return new InfoPartnersView([
                 "uri" => "partners/{$this->optional_element(0, "", $params)}"
             ], $nlf);
-        } else if ($action === "work_list") {
+        } else if ($action === "work_list" || $action === "work_table") {
             return new WorkListView([
                 "state_filter" => $this->optional_element(0, "STATE_NEW", $params),
                 "order_col" => $this->optional_element(1, "ts_created", $params),
                 "order_dir" => $this->optional_element(2, "desc", $params),
-            ], $nlf);
+            ], $nlf, $action === "work_table");
         }
         
         // Bad request: redirect to front page
