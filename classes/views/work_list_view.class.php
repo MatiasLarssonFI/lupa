@@ -35,6 +35,7 @@ class WorkListView extends AbstractView {
             "state_filter" => $params["state_filter"],
             "order_col" => $params["order_col"],
             "order_dir" => $params["order_dir"],
+            "allow_hreflang" => false,
         ];
     }
 }
