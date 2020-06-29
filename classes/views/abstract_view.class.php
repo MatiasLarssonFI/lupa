@@ -126,9 +126,11 @@ abstract class AbstractView implements IView {
             throw new \InvalidArgumentException("Missing required parameters: " . implode(", ", $diff));
         }
         
-        $diff = array_diff($this->get_required_session_params(), array_keys($_SESSION));
-        if (count($diff) > 0) {
-            throw new \InvalidArgumentException("Missing required session parameters: " . implode(", ", $diff));
+        if (!empty($this->get_required_session_params())) {
+            $diff = array_diff($this->get_required_session_params(), array_keys(\Session::get()->get_storage_data()));
+            if (count($diff) > 0 && false) { // DEBUG
+                throw new \InvalidArgumentException("Missing required session parameters: " . implode(", ", $diff));
+            }
         }
     }
     

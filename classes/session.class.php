@@ -61,6 +61,16 @@ class Session {
     }
     
     
+    /**
+     * Returns the session storage as an associative array.
+     * 
+     * @return array
+     */
+    public function get_storage_data() {
+        return $this->_session_storage;
+    }
+    
+    
     protected function __construct() {
         session_start();
         $this->_session_storage = &$_SESSION;
