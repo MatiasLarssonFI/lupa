@@ -45,4 +45,7 @@ class ContactMessageFactory {
     public function get_mailer() {
         return new ContactMessageMailer();
     }
+    
+    
+    protected function __construct() {}
 }

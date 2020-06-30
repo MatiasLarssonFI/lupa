@@ -63,4 +63,7 @@ class WorkItemFactory {
     private function is_valid_order_direction($order_direction) {
         return strlen($order_direction) < 64 && in_array($order_direction, [ "desc", "asc" ]);
     }
+    
+    
+    private function __construct() {}
 }
