@@ -5,7 +5,7 @@ require_once(dirname(__FILE__) . "/isite_config.class.php");
 
 class DevelopmentSiteConfig implements ISiteConfig {
     public function base_uri() {
-        return "http://{$this->host()}";
+        return "https://{$this->host()}";
     }
     
     
