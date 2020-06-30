@@ -35,6 +35,8 @@ class WorkListView extends AbstractView {
         $text_storage = \UITextStorage::get();
         $wif = \WorkItemFactory::get();
         
+        // TBD: archive filter
+        
         return [
             "strings" => [
                 "page_title" => $wif->is_valid_state($params["state_filter"]) ? $text_storage->text("MANAGEMENT_WORK_LIST_TITLE_" . strtoupper($params["state_filter"])) : $text_storage->text("MANAGEMENT_WORK_LIST_TITLE"),

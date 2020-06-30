@@ -10,6 +10,15 @@
     <div class="row bg-dark-blue">
         <div class="col-xs-12 faq-content content-text-padding">
             <h1 class="faq-title">{{ strings.page_title }}</h1>
+            <div class="row">
+                <div class="col-xs-12 faq-content content-text-padding">
+                    <strong>View by state:</strong>
+                    <a href="{{ __management_url }}/work_table/STATE_NEW" class="work-state-nav-link {{ state_filter == 'STATE_NEW' ? 'active' : '' }}">New</a>
+                    <a href="{{ __management_url }}/work_table/STATE_IN_PROGRESS" class="work-state-nav-link {{ state_filter == 'STATE_IN_PROGRESS' ? 'active' : '' }}">In progress</a>
+                    <a href="{{ __management_url }}/work_table/STATE_HALTED" class="work-state-nav-link {{ state_filter == 'STATE_HALTED' ? 'active' : '' }}">Declined</a>
+                    <a href="{{ __management_url }}/work_table/ARCHIVE" class="work-state-nav-link {{ is_archive ? 'active' : '' }}">Archived</a>
+                </div>
+            </div>
         </div>
         <div class="col-xs-12 work-table-content work-items content-text-padding">
             <table class="table table-striped bg-white mtm">

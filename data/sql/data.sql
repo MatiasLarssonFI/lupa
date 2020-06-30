@@ -448,6 +448,34 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'PH_CONTACT_MESSAGE', 'Om möjligt, ge en platsbeskrivning och adress samt tidtabell och telefonnummer.', NULL, '2020-05-23 12:00:00')
 ;
 
+ -- 200630
+ 
+insert into `lupa_work_item` (contact_inbox_id, state, time_created, time_state_changed) select c.id, 'STATE_NEW', c.time_created, now() from lupa_contact_inbox c where c.time_created < @time_of_release;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_NEW', 'Työlista - uudet', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_NEW', 'Work list - new', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_NEW', 'Uppgifter - nya', NULL, '2020-06-30 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_IN_PROGRESS', 'Työlista - työn alla', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_IN_PROGRESS', 'Work list - in progress', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_IN_PROGRESS', 'Uppgifter - påbörjat', NULL, '2020-06-30 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Työlista - hylätyt', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Work list - declined', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Uppgifter - utslagen', NULL, '2020-06-30 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_ARCHIVED', 'Työlista - arkisto', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TITLE_ARCHIVED', 'Work list - archive', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_ARCHIVED', 'Uppgifter - arkiv', NULL, '2020-06-30 12:00:00')
+;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

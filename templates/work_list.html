@@ -8,57 +8,73 @@
 
 <main class="work-list">
     <div class="row bg-dark-blue">
-        <div class="col-xs-12 faq-content content-text-padding">
-            <h1 class="faq-title">{{ strings.page_title }}</h1>
-        </div>
-        <div class="col-xs-12 bg-white work-list-content work-items content-text-padding">
-            {% for item in items %}
-            
-            <div class="row work-list-item">
-                <div class="col-xs-12 ptm pbm">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-4">
-                            <span class="work-list-item-details__term">#</span>
-                            <span class="work-list-item-details__value">{{ item.get_id }}</span>
-                            <br>
-                            <span class="work-list-item-details__term">Name</span>
-                            <span class="work-list-item-details__value">{{ item.get_name }}</span>
-                            <br>
-                            <span class="work-list-item-details__term">Email</span>
-                            <span class="work-list-item-details__value">{{ item.get_email }}</span>
-                            <br>
-                            <span class="work-list-item-details__term">Subject</span>
-                            <span class="work-list-item-details__value">{{ item.get_subject }}</span>
-                        </div>
-                        <div class="col-xs-12 col-sm-4">
-                            <span class="work-list-item-details__term">Message</span>
-                            <span class="work-list-item-details__value" title="{{ item.get_message }}">{{ item.get_message|slice(0,16) }}&hellip;</span>
-                            <br>
-                            <span class="work-list-item-details__term"><a href="{{ __management_url }}/work_list/{{ state_filter }}/ts_created/{{ order_dir_link }}" title="{{ order_dir_title }}">Created</a></span>
-                            <span class="work-list-item-details__value">{{ item.get_datetime_created }}</span>
-                            <br>
-                            <span class="work-list-item-details__term"><a href="{{ __management_url }}/work_list/{{ state_filter }}/ts_state/{{ order_dir_link }}" title="{{ order_dir_title }}">Changed</a></span>
-                            <span class="work-list-item-details__value">{{ item.get_datetime_state }}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="row mtm">
-                        <div class="col-xs-6 col-sm-4">
-                            <button class="btn btn-success btn-state-action" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">{{ item.get_state_action }}</button>
-                        </div>
-                        
-                        {% if item.is_archivable %}
-                        
-                        <div class="col-xs-6 col-sm-4">
-                            <button class="btn btn-warning" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
-                        </div>
-                        
-                        {% endif %}
-                    </div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 faq-content content-text-padding">
+                    <h1 class="faq-title">{{ strings.page_title }}</h1>
                 </div>
             </div>
-            
-            {% endfor %}
+            <div class="row">
+                <div class="col-xs-12 faq-content content-text-padding">
+                    <strong>View by state:</strong>
+                    <a href="{{ __management_url }}/work_list/STATE_NEW" class="work-state-nav-link {{ state_filter == 'STATE_NEW' ? 'active' : '' }}">New</a>
+                    <a href="{{ __management_url }}/work_list/STATE_IN_PROGRESS" class="work-state-nav-link {{ state_filter == 'STATE_IN_PROGRESS' ? 'active' : '' }}">In progress</a>
+                    <a href="{{ __management_url }}/work_list/STATE_HALTED" class="work-state-nav-link {{ state_filter == 'STATE_HALTED' ? 'active' : '' }}">Declined</a>
+                    <a href="{{ __management_url }}/work_list/ARCHIVE" class="work-state-nav-link {{ is_archive ? 'active' : '' }}">Archived</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 bg-white work-list-content work-items content-text-padding">
+                    {% for item in items %}
+
+                    <div class="row work-list-item">
+                        <div class="col-xs-12 ptm pbm">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4">
+                                    <span class="work-list-item-details__term">ID number</span>
+                                    <span class="work-list-item-details__value">{{ item.get_id }}</span>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <span class="work-list-item-details__term">Name</span>
+                                    <span class="work-list-item-details__value">{{ item.get_name }}</span>
+                                    <br>
+                                    <span class="work-list-item-details__term">Email</span>
+                                    <span class="work-list-item-details__value">{{ item.get_email }}</span>
+                                    <br>
+                                    <span class="work-list-item-details__term">Subject</span>
+                                    <span class="work-list-item-details__value">{{ item.get_subject }}</span>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <span class="work-list-item-details__term">Message</span>
+                                    <span class="work-list-item-details__value" title="{{ item.get_message }}">{{ item.get_message|slice(0,16) }}&hellip;</span>
+                                    <br>
+                                    <span class="work-list-item-details__term"><a href="{{ __management_url }}/work_list/{{ state_filter }}/ts_created/{{ order_dir_link }}" title="{{ order_dir_title }}">Created</a></span>
+                                    <span class="work-list-item-details__value">{{ item.get_datetime_created }}</span>
+                                    <br>
+                                    <span class="work-list-item-details__term"><a href="{{ __management_url }}/work_list/{{ state_filter }}/ts_state/{{ order_dir_link }}" title="{{ order_dir_title }}">Changed</a></span>
+                                    <span class="work-list-item-details__value">{{ item.get_datetime_state }}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mtm">
+                                <div class="col-xs-6 col-sm-4">
+                                    <button class="btn btn-success btn-state-action" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">{{ item.get_state_action }}</button>
+                                </div>
+
+                                {% if item.is_archivable %}
+
+                                <div class="col-xs-6 col-sm-4">
+                                    <button class="btn btn-warning" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
+                                </div>
+
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </main>

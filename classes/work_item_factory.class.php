@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . "/work_item.class.php");
+require_once(__DIR__ . "/icontact_message.class.php");
 
 
 class WorkItemFactory {
@@ -8,12 +9,13 @@ class WorkItemFactory {
     
     const STATE_NEW = "STATE_NEW";
     const STATE_IN_PROGRESS = "STATE_IN_PROGRESS";
+    const STATE_HALTED = "STATE_HALTED";
     
     
     /**
      * Returns the WorkItemFactory object.
      * 
-     * @return WorkItemFactory
+     * @return \WorkItemFactory
      */
     public static function get() {
         if (self::$_inst === null) {
@@ -24,6 +26,25 @@ class WorkItemFactory {
     }
     
     
+    /**
+     * Create a work item out of a contact message.
+     *
+     * @param \IContactMessage $message
+     * @return \WorkItem
+     */
+    public function make_from_contact_message(IContactMessage $message) {
+        $now = date("Y-m-d H:i:s");
+        return new WorkItem(
+              null
+            , $message->get_name()
+            , $message->get_email()
+            , $message->get_subject()
+            , $message->get_message()
+            , $now
+            , $now
+        );
+    }
+    
     
     /**
      * Yields the work items.
@@ -31,7 +52,7 @@ class WorkItemFactory {
      * @param string $state_filter state to filter by
      * @param string $order_col column to order by
      * @param string $order_direction direction to order by
-     * @return IListableWorkItem[] or rather a Generator for those
+     * @return \IListableWorkItem[] or rather a Generator for those
      */
     public function yield_items($state_filter, $order_col, $order_direction) {
         if ($this->is_valid_state($state_filter) && $this->is_valid_order_col($order_col) && $this->is_valid_order_direction($order_direction)) {
@@ -51,7 +72,7 @@ class WorkItemFactory {
     
     
     public function is_valid_state($state_str) {
-        return strlen($state_str) < 64 && in_array($state_str, [ self::STATE_NEW, self::STATE_IN_PROGRESS ]);
+        return strlen($state_str) < 64 && in_array($state_str, [ self::STATE_NEW, self::STATE_IN_PROGRESS, self::STATE_HALTED ]);
     }
     
     

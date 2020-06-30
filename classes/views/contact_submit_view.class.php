@@ -5,6 +5,7 @@ namespace Views;
 require_once(dirname(__FILE__) . "/abstract_view.class.php");
 require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/../contact_message_factory.class.php");
+require_once(dirname(__FILE__) . "/../work_item_factory.class.php");
 require_once(dirname(__FILE__) . "/../session.class.php");
 require_once(dirname(__FILE__) . "/../dbif.class.php");
 
@@ -31,8 +32,9 @@ class ContactSubmitView extends AbstractView {
                 $f = \ContactMessageFactory::get();
                 $message = $f->make_from_values($params["name"], $params["email"], $params["subject"], $params["message"]);
                 $mailer = $f->get_mailer();
-                \DBIF::get()->insert_contact_message($message);
+                $contact_inbox_id = \DBIF::get()->insert_contact_message($message);
                 $mailer->send($message);
+                \DBIF::get()->insert_work_item(\WorkItemFactory::get()->make_from_contact_message($message), $contact_inbox_id, \WorkItemFactory::STATE_NEW);
                 $is_success = true;
             }
         }

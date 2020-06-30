@@ -301,6 +301,7 @@ class DBIF {
         $stm->bindParam(":subject", $subject, PDO::PARAM_STR);
         $stm->bindParam(":message", $msg, PDO::PARAM_STR);
         $stm->execute();
+        return $this->_pdo->lastInsertId();
     }
     
     
@@ -386,49 +387,41 @@ class DBIF {
     
     
     public function yield_work_items($state_filter, $order_col, $order_direction, $cb_make_item) {
-        if ($state_filter === "STATE_NEW") {
-            // optimize for special case
-            $sql =
-                "SELECT
-                     c.id       as id
-                    ,c.name     as name
-                    ,c.email    as email
-                    ,c.subject  as subject
-                    ,c.message  as message
-                    ,c.time_created  as ts_created
-                    ,c.time_created  as ts_state
-                    
-                from lupa_contact_inbox c
-                order by {$order_col} {$order_direction}
-                ";
-        } else {
-            $sql =
-                "SELECT
-                     c.id       as id
-                    ,c.name     as name
-                    ,c.email    as email
-                    ,c.subject  as subject
-                    ,c.message  as message
-                    ,c.time_created  as ts_created
-                    ,wi.time_state_changed  as ts_state
-                    
-                from lupa_contact_inbox c
-                inner join lupa_work_item wi
-                    on wi.contact_inbox_id = c.id
-                
-                where wi.state = :state_filter
-                
-                order by {$order_col} {$order_direction}
-                ";
-            $stm->bindParam(":state_filter", $state_filter);
-        }
+        $sql =
+            "SELECT
+                 c.id       as id
+                ,c.name     as name
+                ,c.email    as email
+                ,c.subject  as subject
+                ,c.message  as message
+                ,c.time_created  as ts_created
+                ,wi.time_state_changed  as ts_state
+
+            from {$this->_table_prefix}contact_inbox c
+            inner join {$this->_table_prefix}work_item wi
+                on wi.contact_inbox_id = c.id
+
+            where wi.state = :state_filter
+
+            order by {$order_col} {$order_direction}
+            ";
         
         $stm = $this->_pdo->prepare($sql);
+        $stm->bindParam(":state_filter", $state_filter);
         $stm->execute();
         
         while ($row = $stm->fetch()) {
             yield $cb_make_item($row);
         }
+    }
+    
+    
+    public function insert_work_item(\WorkItem $work_item, $contact_inbox_id, $state) {
+        $stm = $this->_pdo->prepare("INSERT INTO `{$this->_table_prefix}work_item` (contact_inbox_id, state, time_created, time_state_changed) VALUES(:contact_inbox_id, :state, now(), now())");
+        $stm->bindParam(":contact_inbox_id", $contact_inbox_id, PDO::PARAM_STR);
+        $stm->bindParam(":state", $state, PDO::PARAM_STR);
+        $stm->execute();
+        return $this->_pdo->lastInsertId();
     }
     
     

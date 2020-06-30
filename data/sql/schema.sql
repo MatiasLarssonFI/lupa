@@ -260,3 +260,31 @@ ALTER TABLE `lupa_info_page_meta`
 
 
 ALTER TABLE `lupa_service_text` add `link_uri` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_swedish_ci NULL DEFAULT NULL AFTER text;
+
+
+// -- 200630 --
+
+
+CREATE TABLE `lupa_work_item` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `contact_inbox_id` int(11) NOT NULL,
+  `state` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `is_archived` tinyint(1) NOT NULL DEFAULT '0',
+  `time_created` datetime NOT NULL,
+  `time_state_changed` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+
+ALTER TABLE `lupa_work_item`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `contact_inbox_id` (`contact_inbox_id`),
+  ADD KEY `state` (`state`),
+  ADD KEY `time_created` (`time_created`),
+  ADD KEY `time_state_changed` (`time_state_changed`);
+
+
+ALTER TABLE `lupa_work_item`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `lupa_work_item`
+  ADD CONSTRAINT `contact_inbox_fk` FOREIGN KEY (`contact_inbox_id`) REFERENCES `lupa_contact_inbox` (`id`) ON UPDATE CASCADE;
