@@ -46,17 +46,21 @@
                         <td>{{ item.get_datetime_created }}</td>
                         <td>{{ item.get_datetime_state }}</td>
                         <td>
-                            <button class="btn btn-success btn-state-action" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">{{ item.get_state_action }}</button>
+                            {% if item.get_state_action %}
+                            
+                            <button class="btn btn-sm btn-success btn-state-action mbm" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">{{ item.get_state_action }}</button>
+                            
+                            {% endif %}
                             
                             {% if item.is_archivable %}
                             
-                            <button class="btn btn-warning btn-state-action" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
+                            <button class="btn btn-sm btn-warning btn-state-action mbm" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
                             
                             {% endif %}
                             
                             {% if item.is_haltable %}
                             
-                            <button class="btn btn-danger btn-state-action" data-item="{{ item.get_id }}" data-item-action="halt">Halt</button>
+                            <button class="btn btn-sm btn-danger btn-state-action mbm" data-item="{{ item.get_id }}" data-item-action="halt">Halt</button>
                             
                             {% endif %}
                         </td>

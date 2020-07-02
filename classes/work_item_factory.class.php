@@ -9,6 +9,7 @@ class WorkItemFactory {
     
     const STATE_NEW = "STATE_NEW";
     const STATE_IN_PROGRESS = "STATE_IN_PROGRESS";
+    const STATE_FINISHED = "STATE_FINISHED";
     const STATE_HALTED = "STATE_HALTED";
     
     
@@ -58,12 +59,14 @@ class WorkItemFactory {
         if ($this->is_valid_state($state_filter) && $this->is_valid_order_col($order_col) && $this->is_valid_order_direction($order_direction)) {
             return DBIF::get()->yield_work_items($state_filter, $order_col, $order_direction, function(array $row) {
                 return new WorkItem(
-                      $row["id"]
+                      (int)$row["id"]
                     , $row["name"]
                     , $row["email"]
                     , $row["subject"]
                     , $row["message"]
                     , $row["notes"]
+                    , $row["state"]
+                    , (bool)$row["is_archived"]
                     , $row["ts_created"]
                     , $row["ts_state"]
                 );
@@ -73,7 +76,7 @@ class WorkItemFactory {
     
     
     public function is_valid_state($state_str) {
-        return strlen($state_str) < 64 && in_array($state_str, [ self::STATE_NEW, self::STATE_IN_PROGRESS, self::STATE_HALTED, "ARCHIVE" ]);
+        return strlen($state_str) < 64 && in_array($state_str, [ self::STATE_NEW, self::STATE_IN_PROGRESS, self::STATE_HALTED, self::STATE_FINISHED, "ARCHIVE" ]);
     }
     
     

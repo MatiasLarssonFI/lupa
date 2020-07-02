@@ -37,9 +37,14 @@
                                         </div>
                                     </div>
                                     <div class="row mtm text-center">
+                                        
+                                        {% if item.get_state_action %}
+                                        
                                         <div class="col-xs-4 col-sm-4 ptm">
                                             <button class="btn btn-success btn-state-action" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">{{ item.get_state_action }}</button>
                                         </div>
+                                        
+                                        {% endif %}
                                         
                                         {% if item.is_archivable %}
                                         
