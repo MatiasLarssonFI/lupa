@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 faq-content content-text-padding">
+                <div class="col-xs-12 faq-content content-text-padding mtm mbm">
                     <strong>View by state:</strong>
                     <a href="{{ __management_url }}/work_list/STATE_NEW" class="work-state-nav-link {{ state_filter == 'STATE_NEW' ? 'active' : '' }}">New</a>
                     <a href="{{ __management_url }}/work_list/STATE_IN_PROGRESS" class="work-state-nav-link {{ state_filter == 'STATE_IN_PROGRESS' ? 'active' : '' }}">In progress</a>
@@ -31,15 +31,19 @@
                         <div class="col-xs-12 ptm pbm">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-4">
-                                    <span>{{ item.get_name }} / {{ item.get_subject }} / {{ item.get_email }} / {{ item.get_message }}</span>
                                     <div class="row mtm">
-                                        <div class="col-xs-6 col-sm-4 ptm">
+                                        <div class="col-xs-12">
+                                            <span>{{ item.get_name }} / {{ item.get_subject }} / {{ item.get_email }} / {{ item.get_message }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mtm text-center">
+                                        <div class="col-xs-4 col-sm-4 ptm">
                                             <button class="btn btn-success btn-state-action" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">{{ item.get_state_action }}</button>
                                         </div>
                                         
                                         {% if item.is_archivable %}
                                         
-                                        <div class="col-xs-6 col-sm-4 ptm">
+                                        <div class="col-xs-4 col-sm-4 ptm">
                                             <button class="btn btn-warning btn-state-action" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
                                         </div>
                                         
