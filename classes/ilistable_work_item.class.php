@@ -44,6 +44,12 @@ interface IListableWorkItem {
     
     
     /**
+     * @return boolean
+     */
+    public function is_haltable();
+    
+    
+    /**
      * @return string
      */
     public function get_datetime_created();

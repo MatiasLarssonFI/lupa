@@ -37,7 +37,7 @@
                 <tbody>
                     {% for item in items %}
                     
-                    <tr>
+                    <tr data-work-list-item="{{ item.get_id }}">
                         <td>{{ item.get_id }}</td>
                         <td>{{ item.get_name }}</td>
                         <td>{{ item.get_email }}</td>
@@ -47,8 +47,17 @@
                         <td>{{ item.get_datetime_state }}</td>
                         <td>
                             <button class="btn btn-success btn-state-action" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">{{ item.get_state_action }}</button>
+                            
                             {% if item.is_archivable %}
-                            <button class="btn btn-warning mtm" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
+                            
+                            <button class="btn btn-warning btn-state-action" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
+                            
+                            {% endif %}
+                            
+                            {% if item.is_haltable %}
+                            
+                            <button class="btn btn-danger btn-state-action mtm" data-item="{{ item.get_id }}" data-item-action="halt">Decline</button>
+                            
                             {% endif %}
                         </td>
                     </tr>

@@ -27,12 +27,32 @@
                 <div class="col-xs-12 bg-white work-list-content work-items content-text-padding">
                     {% for item in items %}
 
-                    <div class="row work-list-item">
+                    <div class="row work-list-item" data-list-item="{{ item.get_id }}">
                         <div class="col-xs-12 ptm pbm">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-4">
-                                    <span class="work-list-item-details__term">ID number</span>
-                                    <span class="work-list-item-details__value">{{ item.get_id }}</span>
+                                    <span>{{ item.get_name }} / {{ item.get_subject }} / {{ item.get_email }} / {{ item.get_message }}</span>
+                                    <div class="row mtm">
+                                        <div class="col-xs-6 col-sm-4 ptm">
+                                            <button class="btn btn-success btn-state-action" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">{{ item.get_state_action }}</button>
+                                        </div>
+                                        
+                                        {% if item.is_archivable %}
+                                        
+                                        <div class="col-xs-6 col-sm-4 ptm">
+                                            <button class="btn btn-warning btn-state-action" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
+                                        </div>
+                                        
+                                        {% endif %}
+                                        
+                                        {% if item.is_haltable %}
+                                        
+                                        <div class="col-xs-6 col-sm-4 ptm mbm">
+                                            <button class="btn btn-danger btn-state-action" data-item="{{ item.get_id }}" data-item-action="halt">Decline</button>
+                                        </div>
+                                        
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
                                     <span class="work-list-item-details__term">Name</span>
@@ -45,8 +65,8 @@
                                     <span class="work-list-item-details__value">{{ item.get_subject }}</span>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
-                                    <span class="work-list-item-details__term">Message</span>
-                                    <span class="work-list-item-details__value" title="{{ item.get_message }}">{{ item.get_message|slice(0,16) }}&hellip;</span>
+                                    <span class="work-list-item-details__term">ID number</span>
+                                    <span class="work-list-item-details__value" title="{{ item.get_message }}">{{ item.get_id }}</span>
                                     <br>
                                     <span class="work-list-item-details__term"><a href="{{ __management_url }}/work_list/{{ state_filter }}/ts_created/{{ order_dir_link }}" title="{{ order_dir_title }}">Created</a></span>
                                     <span class="work-list-item-details__value">{{ item.get_datetime_created }}</span>
@@ -54,20 +74,6 @@
                                     <span class="work-list-item-details__term"><a href="{{ __management_url }}/work_list/{{ state_filter }}/ts_state/{{ order_dir_link }}" title="{{ order_dir_title }}">Changed</a></span>
                                     <span class="work-list-item-details__value">{{ item.get_datetime_state }}</span>
                                 </div>
-                            </div>
-
-                            <div class="row mtm">
-                                <div class="col-xs-6 col-sm-4">
-                                    <button class="btn btn-success btn-state-action" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">{{ item.get_state_action }}</button>
-                                </div>
-
-                                {% if item.is_archivable %}
-
-                                <div class="col-xs-6 col-sm-4">
-                                    <button class="btn btn-warning" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
-                                </div>
-
-                                {% endif %}
                             </div>
                         </div>
                     </div>
