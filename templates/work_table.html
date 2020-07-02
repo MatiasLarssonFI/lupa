@@ -15,7 +15,7 @@
                     <strong>View by state:</strong>
                     <a href="{{ __management_url }}/work_table/STATE_NEW" class="work-state-nav-link {{ state_filter == 'STATE_NEW' ? 'active' : '' }}">New</a>
                     <a href="{{ __management_url }}/work_table/STATE_IN_PROGRESS" class="work-state-nav-link {{ state_filter == 'STATE_IN_PROGRESS' ? 'active' : '' }}">In progress</a>
-                    <a href="{{ __management_url }}/work_table/STATE_HALTED" class="work-state-nav-link {{ state_filter == 'STATE_HALTED' ? 'active' : '' }}">Declined</a>
+                    <a href="{{ __management_url }}/work_table/STATE_HALTED" class="work-state-nav-link {{ state_filter == 'STATE_HALTED' ? 'active' : '' }}">Halted</a>
                     <a href="{{ __management_url }}/work_table/ARCHIVE" class="work-state-nav-link {{ is_archive ? 'active' : '' }}">Archived</a>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                             
                             {% if item.is_haltable %}
                             
-                            <button class="btn btn-danger btn-state-action mtm" data-item="{{ item.get_id }}" data-item-action="halt">Halt</button>
+                            <button class="btn btn-danger btn-state-action" data-item="{{ item.get_id }}" data-item-action="halt">Halt</button>
                             
                             {% endif %}
                         </td>
