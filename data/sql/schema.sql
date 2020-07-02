@@ -269,6 +269,7 @@ CREATE TABLE `lupa_work_item` (
   `id` int(10) UNSIGNED NOT NULL,
   `contact_inbox_id` int(11) NOT NULL,
   `state` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `notes` varchar(1000) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
   `is_archived` tinyint(1) NOT NULL DEFAULT '0',
   `time_created` datetime NOT NULL,
   `time_state_changed` datetime NOT NULL

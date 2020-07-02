@@ -47,22 +47,16 @@
                                         
                                         {% if item.is_haltable %}
                                         
-                                        <div class="col-xs-6 col-sm-4 ptm mbm">
-                                            <button class="btn btn-danger btn-state-action" data-item="{{ item.get_id }}" data-item-action="halt">Decline</button>
+                                        <div class="col-xs-4 col-sm-4 ptm mbm">
+                                            <button class="btn btn-danger btn-state-action" data-item="{{ item.get_id }}" data-item-action="halt">Halt</button>
                                         </div>
                                         
                                         {% endif %}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
-                                    <span class="work-list-item-details__term">Name</span>
-                                    <span class="work-list-item-details__value">{{ item.get_name }}</span>
-                                    <br>
-                                    <span class="work-list-item-details__term">Email</span>
-                                    <span class="work-list-item-details__value">{{ item.get_email }}</span>
-                                    <br>
-                                    <span class="work-list-item-details__term">Subject</span>
-                                    <span class="work-list-item-details__value">{{ item.get_subject }}</span>
+                                    <label for="notesInput">Notes</label>
+                                    <textarea class="form-control" id="notesInput" data-item-notes data-item="{{ item.get_id }}">{{ item.get_notes }}</textarea>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
                                     <span class="work-list-item-details__term">ID number</span>

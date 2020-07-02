@@ -26,6 +26,11 @@ trait ReadableWorkItem {
     }
     
     
+    public function get_notes() {
+        return $this->_notes;
+    }
+    
+    
     public function get_datetime_created() {
         return date("d.m.Y H:i:s", strtotime($this->_ts_created));
     }

@@ -33,6 +33,12 @@ interface IListableWorkItem {
     
     /**
      * @return string
+     */
+    public function get_notes();
+    
+    
+    /**
+     * @return string
      **/
     public function get_state_action();
     

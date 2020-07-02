@@ -394,6 +394,7 @@ class DBIF {
                 ,c.email    as email
                 ,c.subject  as subject
                 ,c.message  as message
+                ,wi.notes   as notes
                 ,c.time_created  as ts_created
                 ,wi.time_state_changed  as ts_state
 

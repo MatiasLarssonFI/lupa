@@ -63,6 +63,7 @@ class WorkItemFactory {
                     , $row["email"]
                     , $row["subject"]
                     , $row["message"]
+                    , $row["notes"]
                     , $row["ts_created"]
                     , $row["ts_state"]
                 );
