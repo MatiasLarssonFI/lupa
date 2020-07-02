@@ -73,7 +73,7 @@ class WorkItemFactory {
     
     
     public function is_valid_state($state_str) {
-        return strlen($state_str) < 64 && in_array($state_str, [ self::STATE_NEW, self::STATE_IN_PROGRESS, self::STATE_HALTED ]);
+        return strlen($state_str) < 64 && in_array($state_str, [ self::STATE_NEW, self::STATE_IN_PROGRESS, self::STATE_HALTED, "ARCHIVE" ]);
     }
     
     

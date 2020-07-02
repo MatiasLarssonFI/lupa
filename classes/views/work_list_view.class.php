@@ -34,15 +34,20 @@ class WorkListView extends AbstractView {
     protected function get_view_data(array $params) {
         $text_storage = \UITextStorage::get();
         $wif = \WorkItemFactory::get();
-        
-        // TBD: archive filter
+        $is_archive = $params["state_filter"] === "ARCHIVE";
+        if ($is_archive) {
+            $title = $text_storage->text("MANAGEMENT_WORK_LIST_TITLE_ARCHIVED");
+        } else {
+            $title = $wif->is_valid_state($params["state_filter"]) ? $text_storage->text("MANAGEMENT_WORK_LIST_TITLE_" . strtoupper($params["state_filter"])) : $text_storage->text("MANAGEMENT_WORK_LIST_TITLE");
+        }
         
         return [
             "strings" => [
-                "page_title" => $wif->is_valid_state($params["state_filter"]) ? $text_storage->text("MANAGEMENT_WORK_LIST_TITLE_" . strtoupper($params["state_filter"])) : $text_storage->text("MANAGEMENT_WORK_LIST_TITLE"),
+                "page_title" => $title,
             ],
             "items" => $wif->yield_items($params["state_filter"], $params["order_col"], $params["order_dir"]),
             "state_filter" => $params["state_filter"],
+            "is_archive" => $is_archive,
             "order_col" => $params["order_col"],
             "order_dir" => $params["order_dir"],
             "allow_hreflang" => false,
