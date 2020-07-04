@@ -48,19 +48,22 @@
                         <td>
                             {% if item.get_state_action %}
                             
-                            <button class="btn btn-sm btn-success btn-state-action mbm" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">{{ item.get_state_action }}</button>
+                            <img data-item-action-spinner class="ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
+                            <button class="btn btn-sm btn-success mbm" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">&#8594; {{ item.get_state_action }}</button>
                             
                             {% endif %}
                             
                             {% if item.is_archivable %}
                             
-                            <button class="btn btn-sm btn-warning btn-state-action mbm" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
+                            <img data-item-archive-spinner class="ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
+                            <button class="btn btn-sm btn-warning mbm" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
                             
                             {% endif %}
                             
                             {% if item.is_haltable %}
                             
-                            <button class="btn btn-sm btn-danger btn-state-action mbm" data-item="{{ item.get_id }}" data-item-action="halt">Halt</button>
+                            <img data-item-halt-spinner class="ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
+                            <button class="btn btn-sm btn-danger mbm" data-item="{{ item.get_id }}" data-item-action="halt">Halt</button>
                             
                             {% endif %}
                         </td>
@@ -72,4 +75,16 @@
         </div>
     </div>
 </main>
+{% endblock %}
+
+{% block js_link %}
+<script src="{{ __management_url }}/js/work_list.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
+
+<script>
+(function($) {
+    $(window).load(function() {
+        wp.workList.init("{{ __management_url }}/{{ __lang }}");
+    });
+})(jQuery);
+</script>
 {% endblock %}
