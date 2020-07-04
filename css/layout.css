@@ -584,6 +584,12 @@ li.lupa-nav-link {
 }
 
 
+.work-list-item__ajax-spinner {
+    display: none;
+    opacity: 1;
+}
+
+
 @media (max-width: 1170px) { 
     .lupa-slide-content {
         padding-top: 80px;

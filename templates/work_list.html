@@ -41,7 +41,7 @@
                                         {% if item.get_state_action %}
                                         
                                         <div class="col-xs-4 col-sm-4 ptm">
-                                            <img data-item-action-spinner class="ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
+                                            <img data-item-action-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
                                             <button class="btn btn-success" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">&#8594; {{ item.get_state_action }}</button>
                                         </div>
                                         
@@ -50,7 +50,7 @@
                                         {% if item.is_archivable %}
                                         
                                         <div class="col-xs-4 col-sm-4 ptm">
-                                            <img data-item-archive-spinner class="ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
+                                            <img data-item-archive-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
                                             <button class="btn btn-warning" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
                                         </div>
                                         
@@ -59,7 +59,7 @@
                                         {% if item.is_haltable %}
                                         
                                         <div class="col-xs-4 col-sm-4 ptm mbm">
-                                            <img data-item-halt-spinner class="ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
+                                            <img data-item-halt-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
                                             <button class="btn btn-danger" data-item="{{ item.get_id }}" data-item-action="halt">Halt</button>
                                         </div>
                                         

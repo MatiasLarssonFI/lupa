@@ -48,21 +48,21 @@
                         <td>
                             {% if item.get_state_action %}
                             
-                            <img data-item-action-spinner class="ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
+                            <img data-item-action-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
                             <button class="btn btn-sm btn-success mbm" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">&#8594; {{ item.get_state_action }}</button>
                             
                             {% endif %}
                             
                             {% if item.is_archivable %}
                             
-                            <img data-item-archive-spinner class="ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
+                            <img data-item-archive-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
                             <button class="btn btn-sm btn-warning mbm" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
                             
                             {% endif %}
                             
                             {% if item.is_haltable %}
                             
-                            <img data-item-halt-spinner class="ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
+                            <img data-item-halt-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
                             <button class="btn btn-sm btn-danger mbm" data-item="{{ item.get_id }}" data-item-action="halt">Halt</button>
                             
                             {% endif %}

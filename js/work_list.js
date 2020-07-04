@@ -16,7 +16,7 @@ wp.workList = {
                 },
                 beforeSend : function() {
                     $btn.prop("disabled", true);
-                    $spinner.animate({opacity : 1});
+                    $spinner.show();
                 },
                 success : function(html) {
                     $btn.text("DONE");
@@ -29,7 +29,7 @@ wp.workList = {
                     $btn.prop("disabled", false);
                 },
                 complete : function() {
-                    $spinner.animate({opacity : 0});
+                    $spinner.hide();
                 }
             });
         });
