@@ -12,6 +12,8 @@ class WorkItemFactory {
     const STATE_FINISHED = "STATE_FINISHED";
     const STATE_HALTED = "STATE_HALTED";
     
+    const ARCHIVE = "ARCHIVE";
+    
     
     /**
      * Returns the WorkItemFactory object.
@@ -76,7 +78,8 @@ class WorkItemFactory {
     
     
     public function is_valid_state($state_str) {
-        return strlen($state_str) < 64 && in_array($state_str, [ self::STATE_NEW, self::STATE_IN_PROGRESS, self::STATE_HALTED, self::STATE_FINISHED, "ARCHIVE" ]);
+        // note: archive is not really a state but included for convenience here
+        return strlen($state_str) < 64 && in_array($state_str, [ self::STATE_NEW, self::STATE_IN_PROGRESS, self::STATE_HALTED, self::STATE_FINISHED, \WorkItemFactory::ARCHIVE ]);
     }
     
     

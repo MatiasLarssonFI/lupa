@@ -439,6 +439,25 @@ class DBIF {
     }
     
     
+    public function count_work_items($state_filter) {
+        $sql =
+            "SELECT count(*)
+
+            from {$this->_table_prefix}contact_inbox c
+            inner join {$this->_table_prefix}work_item wi
+                on wi.contact_inbox_id = c.id
+
+            where wi.state = :state_filter
+            or (:state_filter = 'ARCHIVE' and wi.is_archived)
+            ";
+        
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindParam(":state_filter", $state_filter);
+        $stm->execute();
+        return (int)$stm->fetchColumn();
+    }
+    
+    
     protected function __construct() {
         $site_conf = SiteConfigFactory::get()->get_site_config();
         $db_login = $site_conf->db_login_params();
