@@ -3,9 +3,9 @@ wp.workList = {
         $("[data-item-action]").on("click", function() {
             var $btn = $(this)
             var action = $btn.data("item-action");
-            var spinnerClass = $.inArray(action, [ "archive", "halt" ]) ? action : "action";
+            var spinnerClass = $.inArray(action, [ "archive", "halt" ]) !== -1 ? action : "action";
             var $item = $btn.closest("[data-list-item]");
-            var $spinner = $item.find("[data-item-" + action + "-spinner]");
+            var $spinner = $item.find("[data-item-" + spinnerClass + "-spinner]");
             
             $.ajax({
                 type: "post",
@@ -20,7 +20,7 @@ wp.workList = {
                 },
                 success : function(html) {
                     $btn.text("DONE");
-                    $item.delay(500).fadeOut(600, function() {
+                    $item.delay(250).fadeOut(250, function() {
                         $item.remove();
                     });
                 },
