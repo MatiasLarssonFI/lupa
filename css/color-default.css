@@ -368,6 +368,11 @@ span.orange {
 }
 
 
+.work-list-item {
+    border-bottom: 1px solid #ddd;
+}
+
+
 .work-list-item:nth-child(odd) {
     background-color: #f9f9f9;
 }
