@@ -465,6 +465,12 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 ;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_FINISHED', 'Työlista - valmiit', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_FINISHED', 'Work list - finished', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_FINISHED', 'Uppgifter - färdiga', NULL, '2020-06-30 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Työlista - hylätyt', NULL, '2020-06-30 12:00:00')
 , ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Work list - declined', NULL, '2020-06-30 12:00:00')
 , ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Uppgifter - utslagen', NULL, '2020-06-30 12:00:00')

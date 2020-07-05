@@ -19,6 +19,7 @@
                     <strong>View by state:</strong>
                     <a href="{{ __management_url }}/work_list/STATE_NEW" class="work-state-nav-link {{ state_filter == 'STATE_NEW' ? 'active' : '' }}">New ({{ item_counts.STATE_NEW }})</a>
                     <a href="{{ __management_url }}/work_list/STATE_IN_PROGRESS" class="work-state-nav-link {{ state_filter == 'STATE_IN_PROGRESS' ? 'active' : '' }}">In progress ({{ item_counts.STATE_IN_PROGRESS }})</a>
+                    <a href="{{ __management_url }}/work_list/STATE_FINISHED" class="work-state-nav-link {{ state_filter == 'STATE_FINISHED' ? 'active' : '' }}">Finished ({{ item_counts.STATE_FINISHED }})</a>
                     <a href="{{ __management_url }}/work_list/STATE_HALTED" class="work-state-nav-link {{ state_filter == 'STATE_HALTED' ? 'active' : '' }}">Halted ({{ item_counts.STATE_HALTED }})</a>
                     <a href="{{ __management_url }}/work_list/ARCHIVE" class="work-state-nav-link {{ is_archive ? 'active' : '' }}">Archived ({{ item_counts.ARCHIVE }})</a>
                 </div>
