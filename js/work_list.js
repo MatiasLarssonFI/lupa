@@ -3,7 +3,7 @@ wp.workList = {
         $("[data-item-action]").on("click", function() {
             var $btn = $(this)
             var action = $btn.data("item-action");
-            var spinnerClass = $.inArray(action, [ "archive", "halt" ]) !== -1 ? action : "action";
+            var spinnerClass = $.inArray(action, [ "archive", "halt", "notes" ]) !== -1 ? action : "action";
             var $item = $btn.closest("[data-list-item]");
             var $spinner = $item.find("[data-item-" + spinnerClass + "-spinner]");
             
@@ -12,7 +12,8 @@ wp.workList = {
                 url : baseUrl + "/work_item_submit",
                 data : {
                     item : $btn.data("item"),
-                    action: action
+                    action: action,
+                    notes: $item.find("[data-item-notes]").val()
                 },
                 beforeSend : function() {
                     $btn.prop("disabled", true);

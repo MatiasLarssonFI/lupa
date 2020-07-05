@@ -70,6 +70,7 @@
                                 <div class="col-xs-12 col-sm-4">
                                     <label for="notesInput">Notes</label>
                                     <textarea class="form-control" id="notesInput" data-item-notes data-item="{{ item.get_id }}">{{ item.get_notes }}</textarea>
+                                    <img data-item-notes-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
                                     <span class="work-list-item-details__term">ID number</span>
