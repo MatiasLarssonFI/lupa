@@ -57,7 +57,7 @@ class Session {
      * @return boolean
      */
     public function validate_csrf_token($token) {
-        return $token === $_COOKIE["WP_csrf"];
+        return array_key_exists("WP_csrf", $_COOKIE) && $token === $_COOKIE["WP_csrf"];
     }
     
     
