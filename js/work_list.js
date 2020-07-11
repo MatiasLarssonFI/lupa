@@ -2,7 +2,7 @@ wp.workList = {
     init : function(baseUrl) {
         $("[data-item-action]").on("click", function() {
             var $btn = $(this)
-            var action = $btn.data("item-action");
+            var action = $btn.data("item-action").toLowerCase();
             var spinnerClass = $.inArray(action, [ "archive", "halt", "notes" ]) !== -1 ? action : "action";
             var $item = $btn.closest("[data-list-item]");
             var $spinner = $item.find("[data-item-" + spinnerClass + "-spinner]");
