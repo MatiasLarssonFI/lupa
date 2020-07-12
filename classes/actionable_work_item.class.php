@@ -10,7 +10,6 @@ trait ActionableWorkItem {
                 return "Start";
             case "STATE_IN_PROGRESS":
                 return "Finish";
-            case "STATE_HALTED":
             default:
                 return null;
         }

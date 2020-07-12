@@ -62,7 +62,7 @@ class WorkItemFactory {
      */
     public function yield_items($state_filter, $order_col, $order_direction) {
         if ($this->is_valid_state($state_filter) && $this->is_valid_order_col($order_col) && $this->is_valid_order_direction($order_direction)) {
-            return DBIF::get()->yield_work_items($state_filter, $order_col, $order_direction, function(array $row) {
+            return \DBIF::get()->yield_work_items($state_filter, $order_col, $order_direction, function(array $row) {
                 return new WorkItem(
                       (int)$row["id"]
                     , $row["name"]

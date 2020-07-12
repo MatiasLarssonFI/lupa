@@ -1,5 +1,7 @@
 <?php
 
+require_once(dirname(__FILE__) . "/site_config_factory.class.php");
+
 require_once(dirname(__FILE__) . "/icontact_message.class.php");
 require_once(dirname(__FILE__) . "/isavable_work_item.class.php");
 
@@ -412,7 +414,7 @@ class DBIF {
             ";
         
         $stm = $this->_pdo->prepare($sql);
-        $stm->bindParam(":state_filter", $state_filter);
+        $stm->bindParam(":state_filter", $state_filter, PDO::PARAM_STR);
         $stm->execute();
         
         while ($row = $stm->fetch()) {
@@ -490,7 +492,7 @@ class DBIF {
     
     
     protected function __construct() {
-        $site_conf = SiteConfigFactory::get()->get_site_config();
+        $site_conf = \SiteConfigFactory::get()->get_site_config();
         $db_login = $site_conf->db_login_params();
         $this->_table_prefix = $site_conf->db_table_prefix();
         try {
