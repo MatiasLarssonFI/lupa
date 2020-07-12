@@ -35,10 +35,11 @@ class WorkListView extends AbstractView {
         $text_storage = \UITextStorage::get();
         $wif = \WorkItemFactory::get();
         $is_archive = $params["state_filter"] === \WorkItemFactory::ARCHIVE;
+        $is_valid_state_filter = $wif->is_valid_state($params["state_filter"]);
         if ($is_archive) {
             $title = $text_storage->text("MANAGEMENT_WORK_LIST_TITLE_ARCHIVED");
         } else {
-            $title = $wif->is_valid_state($params["state_filter"]) ? $text_storage->text("MANAGEMENT_WORK_LIST_TITLE_" . strtoupper($params["state_filter"])) : $text_storage->text("MANAGEMENT_WORK_LIST_TITLE");
+            $title = $is_valid_state_filter ? $text_storage->text("MANAGEMENT_WORK_LIST_TITLE_" . strtoupper($params["state_filter"])) : $text_storage->text("MANAGEMENT_WORK_LIST_TITLE");
         }
         
         return [
@@ -46,7 +47,7 @@ class WorkListView extends AbstractView {
                 "page_title" => $title,
             ],
             "items" => $wif->yield_items($params["state_filter"], $params["order_col"], $params["order_dir"]),
-            "state_filter" => $params["state_filter"],
+            "state_filter" => $is_valid_state_filter ? $params["state_filter"] : "",
             "is_archive" => $is_archive,
             "item_counts" => [
                 \WorkItemFactory::STATE_NEW => \DBIF::get()->count_work_items(\WorkItemFactory::STATE_NEW),
@@ -55,8 +56,8 @@ class WorkListView extends AbstractView {
                 \WorkItemFactory::STATE_HALTED => \DBIF::get()->count_work_items(\WorkItemFactory::STATE_HALTED),
                 \WorkItemFactory::ARCHIVE => \DBIF::get()->count_work_items(\WorkItemFactory::ARCHIVE),
             ],
-            "order_col" => $params["order_col"],
-            "order_dir" => $params["order_dir"],
+            "order_col" => $wif->is_valid_order_col($params["order_col"]) ? $params["order_col"] : "",
+            "order_dir" => $wif->is_valid_order_direction($params["order_dir"]) ? $params["order_dir"] : "",
             "allow_hreflang" => false,
         ];
     }

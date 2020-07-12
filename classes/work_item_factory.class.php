@@ -113,12 +113,12 @@ class WorkItemFactory {
     }
     
     
-    private function is_valid_order_col($order_col) {
+    public function is_valid_order_col($order_col) {
         return strlen($order_col) < 64 && in_array($order_col, [ "name", "ts_created", "ts_state" ]);
     }
     
     
-    private function is_valid_order_direction($order_direction) {
+    public function is_valid_order_direction($order_direction) {
         return strlen($order_direction) < 64 && in_array($order_direction, [ "desc", "asc" ]);
     }
     
