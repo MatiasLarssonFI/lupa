@@ -11,6 +11,7 @@ require_once(dirname(__FILE__) . "/info_felling_view.class.php");
 require_once(dirname(__FILE__) . "/info_partners_view.class.php");
 
 require_once(dirname(__FILE__) . "/work_list_view.class.php");
+require_once(dirname(__FILE__) . "/work_item_submit_view.class.php");
 
 require_once(dirname(__FILE__) . "/../nav_link_factory.class.php");
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
@@ -68,6 +69,8 @@ class ViewFactory {
                 "order_col" => $this->optional_element(1, "ts_created", $params),
                 "order_dir" => $this->optional_element(2, "desc", $params),
             ], $nlf, $action === "work_table");
+        } else if ($action === "work_item_submit") {
+            return new WorkItemSubmitView($_POST, $nlf);
         }
         
         // Bad request: redirect to front page

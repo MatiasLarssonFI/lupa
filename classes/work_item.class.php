@@ -1,10 +1,11 @@
 <?php
 
 require_once(__DIR__ . "/ilistable_work_item.class.php");
+require_once(__DIR__ . "/iactionable_work_item.class.php");
 require_once(__DIR__ . "/readable_work_item.class.php");
 require_once(__DIR__ . "/actionable_work_item.class.php");
 
-class WorkItem implements IListableWorkItem {
+class WorkItem implements IListableWorkItem, IActionableWorkItem, ISavableWorkItem {
     use ReadableWorkItem;
     use ActionableWorkItem;
     

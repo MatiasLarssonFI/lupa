@@ -31,6 +31,16 @@ trait ReadableWorkItem {
     }
     
     
+    public function get_state() {
+        return $this->_state;
+    }
+    
+    
+    public function is_archived() {
+        return $this->_is_archived;
+    }
+    
+    
     public function get_datetime_created() {
         return date("d.m.Y H:i:s", strtotime($this->_ts_created));
     }

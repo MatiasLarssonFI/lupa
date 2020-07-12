@@ -17,23 +17,19 @@ trait ActionableWorkItem {
     }
     
     
-    public function perform_state_action() {
-        $action = $this->get_state_action();
-        if ($action) {
-            switch ($this->_state) {
-                case "STATE_NEW":
-                    $this->_state = "STATE_IN_PROGRESS";
-                    break;
-                case "STATE_IN_PROGRESS":
-                    $this->_state = "STATE_FINISHED";
-                    break;
-                default:
-                    return false;
-            }
-            \DBIF::get()->update_work_item($this, true);
-            return true;
+    public function try_perform_state_action() {
+        switch ($this->_state) {
+            case "STATE_NEW":
+                $this->_state = "STATE_IN_PROGRESS";
+                break;
+            case "STATE_IN_PROGRESS":
+                $this->_state = "STATE_FINISHED";
+                break;
+            default:
+                return false;
         }
-        return false;
+        \DBIF::get()->update_work_item($this, true);
+        return true;
     }
     
     
@@ -41,6 +37,7 @@ trait ActionableWorkItem {
         if ($this->is_archivable()) {
             $this->_is_archived = true;
             \DBIF::get()->update_work_item($this, true);
+            return true;
         }
         return false;
     }
@@ -50,6 +47,7 @@ trait ActionableWorkItem {
         if ($this->is_haltable()) {
             $this->_state = "STATE_HALTED";
             \DBIF::get()->update_work_item($this, true);
+            return true;
         }
         return false;
     }
@@ -62,5 +60,10 @@ trait ActionableWorkItem {
     
     public function is_haltable() {
         return ($this->_state == "STATE_NEW" || $this->_state == "STATE_IN_PROGRESS") && !$this->_is_archived;
+    }
+    
+    
+    public function set_notes($notes) {
+        $this->_notes = $notes;
     }
 }

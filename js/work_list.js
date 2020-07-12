@@ -13,7 +13,8 @@ wp.workList = {
                 data : {
                     item : $btn.data("item"),
                     action: action,
-                    notes: $item.find("[data-item-notes]").val()
+                    notes: $item.find("[data-item-notes]").val(),
+                    is_ajax: true
                 },
                 beforeSend : function() {
                     $btn.prop("disabled", true);

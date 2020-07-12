@@ -43,6 +43,9 @@ class WorkItemFactory {
             , $message->get_email()
             , $message->get_subject()
             , $message->get_message()
+            , ""
+            , self::STATE_NEW
+            , false
             , $now
             , $now
         );
@@ -73,6 +76,33 @@ class WorkItemFactory {
                     , $row["ts_state"]
                 );
             });
+        }
+    }
+    
+    
+    /**
+     * Returns an actionable work item by ID.
+     * 
+     * @param int $id
+     * @return \IActionableWorkItem
+     */
+    public function getActionableItem($id) {
+        $row = \DBIF::get()->get_work_item($id);
+        if (is_array($row)) {
+            return new WorkItem(
+                  (int)$row["id"]
+                , $row["name"]
+                , $row["email"]
+                , $row["subject"]
+                , $row["message"]
+                , $row["notes"]
+                , $row["state"]
+                , (bool)$row["is_archived"]
+                , $row["ts_created"]
+                , $row["ts_state"]
+            );
+        } else {
+            throw new \LogicException("Requested item not found");
         }
     }
     

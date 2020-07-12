@@ -1,6 +1,7 @@
 <?php
 
 require_once(dirname(__FILE__) . "/icontact_message.class.php");
+require_once(dirname(__FILE__) . "/isavable_work_item.class.php");
 
 
 /**
@@ -389,7 +390,7 @@ class DBIF {
     public function yield_work_items($state_filter, $order_col, $order_direction, $cb_make_item) {
         $sql =
             "SELECT
-                 c.id                   as id
+                 wi.id                  as id
                 ,c.name                 as name
                 ,c.email                as email
                 ,c.subject              as subject
@@ -420,20 +421,50 @@ class DBIF {
     }
     
     
-    public function insert_work_item(\WorkItem $work_item, $contact_inbox_id, $state) {
+    public function get_work_item($id) {
+        $sql =
+            "SELECT
+                 wi.id                  as id
+                ,c.name                 as name
+                ,c.email                as email
+                ,c.subject              as subject
+                ,c.message              as message
+                ,wi.notes               as notes
+                ,wi.state               as state
+                ,wi.is_archived         as is_archived
+                ,c.time_created         as ts_created
+                ,wi.time_state_changed  as ts_state
+
+            from {$this->_table_prefix}contact_inbox c
+            inner join {$this->_table_prefix}work_item wi
+                on wi.contact_inbox_id = c.id
+
+            where wi.id = :id
+            ";
+        
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindParam(":id", $id, PDO::PARAM_INT);
+        $stm->execute();
+        return $stm->fetch();
+    }
+    
+    
+    public function insert_work_item(\ISavableWorkItem $work_item, $contact_inbox_id) {
         $stm = $this->_pdo->prepare("INSERT INTO `{$this->_table_prefix}work_item` (contact_inbox_id, state, time_created, time_state_changed) VALUES(:contact_inbox_id, :state, now(), now())");
-        $stm->bindParam(":contact_inbox_id", $contact_inbox_id, PDO::PARAM_INT);
-        $stm->bindParam(":state", $state, PDO::PARAM_STR);
+        $stm->bindValue(":contact_inbox_id", $contact_inbox_id, PDO::PARAM_INT);
+        $stm->bindValue(":state", $work_item->get_state(), PDO::PARAM_STR);
         $stm->execute();
         return $this->_pdo->lastInsertId();
     }
     
     
-    public function update_work_item(\WorkItem $work_item, $record_history) {
+    public function update_work_item(\ISavableWorkItem $work_item, $record_history) {
         //TBD: record history
-        $stm = $this->_pdo->prepare("UPDATE `{$this->_table_prefix}work_item` SET state = :state, is_archived = :is_archived, time_state_changed = now()");
-        $stm->bindParam(":state", $state, PDO::PARAM_STR);
-        $stm->bindParam(":is_archived", $is_archived, PDO::PARAM_STR);
+        $stm = $this->_pdo->prepare("UPDATE `{$this->_table_prefix}work_item` SET state = :state, is_archived = :is_archived, notes = :notes, time_state_changed = now() where id = :id");
+        $stm->bindValue(":state", $work_item->get_state(), PDO::PARAM_STR);
+        $stm->bindValue(":notes", $work_item->get_notes(), PDO::PARAM_STR);
+        $stm->bindValue(":is_archived", $work_item->is_archived() ? 1 : 0, PDO::PARAM_INT);
+        $stm->bindValue(":id", $work_item->get_id(), PDO::PARAM_INT);
         $stm->execute();
         return $work_item->get_id();
     }
