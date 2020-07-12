@@ -407,7 +407,7 @@ class DBIF {
             inner join {$this->_table_prefix}work_item wi
                 on wi.contact_inbox_id = c.id
 
-            where wi.state = :state_filter
+            where (wi.state = :state_filter and not wi.is_archived)
             or (:state_filter = 'ARCHIVE' and wi.is_archived)
 
             order by {$order_col} {$order_direction}
