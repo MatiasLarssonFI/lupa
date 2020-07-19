@@ -1,4 +1,4 @@
-wp.workList = {
+lupa.workList = {
     init : function(baseUrl) {
         $("[data-item-action]").on("click", function() {
             var $btn = $(this)
