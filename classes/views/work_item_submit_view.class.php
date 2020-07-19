@@ -3,13 +3,14 @@
 namespace Views;
 
 require_once(dirname(__FILE__) . "/abstract_view.class.php");
+require_once(dirname(__FILE__) . "/../session.class.php");
 require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/../work_item_factory.class.php");
 
 
 class WorkItemSubmitView extends AbstractView {
     protected function get_required_params() {
-        return [ "item", "action", "notes", "is_ajax" ];
+        return [ "item", "action", "notes", "is_ajax", "__csrf_token" ];
     }
     
     
@@ -25,20 +26,25 @@ class WorkItemSubmitView extends AbstractView {
     
     protected function get_view_data(array $params) {
         $text_storage = \UITextStorage::get();
-        $wif = \WorkItemFactory::get();
-        $action = $params["action"];
-        $notes = $params["notes"];
-        
         $is_success = false;
-        $item = $wif->getActionableItem((int)$params["item"]);
-        if (strlen($notes) > 0 && mb_strlen($notes) < 2048) {
-            $item->set_notes($notes);
+        
+        if (\Session::get()->validate_csrf_token($params["__csrf_token"])) {
+            $wif = \WorkItemFactory::get();
+            $action = $params["action"];
+            $notes = $params["notes"];
+            
+            $item = $wif->getActionableItem((int)$params["item"]);
+            if (strlen($notes) > 0 && mb_strlen($notes) < 2048) {
+                $item->set_notes($notes);
+            }
+            if ($action === strtolower($item->get_state_action())) {
+                $is_success = $item->try_perform_state_action();
+            } else if (in_array($action, [ "halt", "archive" ])) {
+                $is_success = $action === "halt" ? $item->try_perform_halt() : $item->try_perform_archive();
+            }
         }
-        if ($action === strtolower($item->get_state_action())) {
-            $is_success = $item->try_perform_state_action();
-        } else if (in_array($action, [ "halt", "archive" ])) {
-            $is_success = $action === "halt" ? $item->try_perform_halt() : $item->try_perform_archive();
-        }
+        
+        header("Content-Type: application/json");
         
         return [
             "json" => json_encode([

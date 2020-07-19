@@ -176,7 +176,9 @@
             </ul>
         </div>
         
-        <script src="{{ __base_uri }}/lib/jquery-3.5.1.min.js"></script>
+        <span data-csrf-token="{{ __csrf_token }}"></span>
+        
+        <script src="{{ __base_uri }}/lib/jquery-2.2.4.min.js"></script>
         <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
         <script src="{{ __base_uri }}/js/wp.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
         <script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>

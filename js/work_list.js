@@ -7,28 +7,38 @@ wp.workList = {
             var $item = $btn.closest("[data-list-item]");
             var $spinner = $item.find("[data-item-" + spinnerClass + "-spinner]");
             
+            var onErr = function() {
+                alert("Sorry, but an error has occured. Please try again or refresh the page.");
+                $btn.prop("disabled", false);
+            };
+            
             $.ajax({
                 type: "post",
                 url : baseUrl + "/work_item_submit",
+                dataType: "json",
                 data : {
                     item : $btn.data("item"),
                     action: action,
                     notes: $item.find("[data-item-notes]").val(),
-                    is_ajax: true
+                    is_ajax: true,
+                    __csrf_token: lupa.antiCSRFToken()
                 },
                 beforeSend : function() {
                     $btn.prop("disabled", true);
                     $spinner.show();
                 },
-                success : function(html) {
-                    $btn.text("DONE");
-                    $item.delay(250).fadeOut(250, function() {
-                        $item.remove();
-                    });
+                success : function(response) {
+                    if (response.is_success) {
+                        $btn.text("DONE");
+                        $item.delay(250).fadeOut(250, function() {
+                            $item.remove();
+                        });
+                    } else {
+                        onErr();
+                    }
                 },
                 error : function() {
-                    alert("Sorry, but an error has occured. Please try again later.");
-                    $btn.prop("disabled", false);
+                    onErr();
                 },
                 complete : function() {
                     $spinner.hide();

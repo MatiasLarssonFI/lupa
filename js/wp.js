@@ -51,6 +51,9 @@ var lupa = {
                 node.addClass("hidden");
             }, 100);
         });
+    },
+    antiCSRFToken: function() {
+        return $("[data-csrf-token]").data("csrfToken");
     }
 };
 
