@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__ . "/site_config_factory.class.php");
+
 
 /**
  * Singleton.
@@ -44,7 +46,7 @@ class Session {
     private function try_generate_csrf_token() {
         if (!array_key_exists("WP_csrf", $_COOKIE)) {
             $this->_request_storage["csrf_token"] = hash("sha256", bin2hex(openssl_random_pseudo_bytes(4)) . "Houston, we have woodparts.");
-            setcookie("WP_csrf", $this->_request_storage["csrf_token"]);
+            setcookie("WP_csrf", $this->_request_storage["csrf_token"], time() + 3600, "/", SiteConfigFactory::get()->get_site_config()->host(), true, true);
         } else if (!array_key_exists("csrf_token", $this->_request_storage)) {
             $this->_request_storage["csrf_token"] = $_COOKIE["WP_csrf"];
         }
