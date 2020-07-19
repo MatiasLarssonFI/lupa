@@ -6,13 +6,13 @@ var lupa = {
             var btn = $(this);
             var node = $(btn.data("target"));
             var btn_warp = btn.closest(".navbar-toggle-img-btn-container");
-            var w = btn_warp.outerWidth();
-            var h = btn_warp.height();
+            var w = parseInt(btn_warp.outerWidth());
+            var h = parseInt(btn_warp.height());
             var longest_text = 0;
             var lc = $("#layout-container");
             
             var btn_warp_os = btn_warp.offset();
-            var window_width = $(window).width();
+            var window_width = parseInt($(window).width());
             
             // get longest nav link text and use as width for all
             node.find("[data-link-text]").each(function() {
@@ -38,7 +38,7 @@ var lupa = {
             });
             node.toggleClass("hidden");
             node.css({
-                left: lc.offset().left + lc.outerWidth() - node.outerWidth(),
+                left: lc.offset().left + parseInt(lc.outerWidth()) - parseInt(node.outerWidth()),
                 opacity: 1 // show to user
             });
         };
