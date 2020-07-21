@@ -48,7 +48,8 @@ class ContactMessageMailer implements IMailer {
         $mail->AltBody = $twig->render("contact_email.txt", array("message" => $contactmsg));
 
         if(!$mail->send()) {
-            file_put_contents(__DIR__ . "/../contact_email_error_log", "{$mail->ErrorInfo}\n", FILE_APPEND);
+            $dt = date("Y-m-d H:i:s");
+            file_put_contents(__DIR__ . "/../contact_email_error_log", "[{$dt}] {$mail->ErrorInfo}" . PHP_EOL, FILE_APPEND);
             throw new \RuntimeException("Failed to send contact mail. Mail error: {$mail->ErrorInfo}");
         }
     }
