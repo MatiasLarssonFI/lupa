@@ -43,7 +43,7 @@
                                         
                                         {% if item.get_state_action %}
                                         
-                                        <div class="col-xs-4 col-sm-4 ptm">
+                                        <div class="col-xs-4 col-sm-4 ptm mbm">
                                             <img data-item-action-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
                                             <button class="btn btn-success" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">&#8594; {{ item.get_state_action_text }}</button>
                                         </div>
@@ -61,7 +61,7 @@
                                         
                                         {% if item.is_archivable %}
                                         
-                                        <div class="col-xs-4 col-sm-4 ptm">
+                                        <div class="col-xs-4 col-sm-4 ptm mbm">
                                             <img data-item-archive-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
                                             <button class="btn btn-warning" data-item="{{ item.get_id }}" data-item-action="archive">{{ strings.action.archive }}</button>
                                         </div>
@@ -69,7 +69,7 @@
                                         {% endif %}
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-xs-12 col-sm-4 pbm">
                                     <label for="notesInput">Notes</label>
                                     <span data-notes-status class="orange">&nbsp;</span>
                                     <textarea class="form-control" id="notesInput" data-item-notes data-item="{{ item.get_id }}">{{ item.get_notes }}</textarea>
