@@ -459,21 +459,21 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 ;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
-  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_IN_PROGRESS', 'Työlista - työn alla', NULL, '2020-06-30 12:00:00')
-, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_IN_PROGRESS', 'Work list - in progress', NULL, '2020-06-30 12:00:00')
-, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_IN_PROGRESS', 'Uppgifter - påbörjat', NULL, '2020-06-30 12:00:00')
+  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_IN_PROGRESS', 'Työlista - tarjouspyynnöt', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_IN_PROGRESS', 'Work list - requests for quote', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_IN_PROGRESS', 'Uppgifter - anbudsbegäranden', NULL, '2020-06-30 12:00:00')
 ;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
-  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_FINISHED', 'Työlista - valmiit', NULL, '2020-06-30 12:00:00')
-, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_FINISHED', 'Work list - finished', NULL, '2020-06-30 12:00:00')
-, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_FINISHED', 'Uppgifter - färdiga', NULL, '2020-06-30 12:00:00')
+  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_FINISHED', 'Työlista - tarjottu', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_FINISHED', 'Work list - quoted', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_FINISHED', 'Uppgifter - bjudit', NULL, '2020-06-30 12:00:00')
 ;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
-  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Työlista - hylätyt', NULL, '2020-06-30 12:00:00')
-, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Work list - declined', NULL, '2020-06-30 12:00:00')
-, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Uppgifter - utslagen', NULL, '2020-06-30 12:00:00')
+  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Työlista - ohitetut', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Work list - skipped', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Uppgifter - skippat', NULL, '2020-06-30 12:00:00')
 ;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
@@ -481,6 +481,50 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('en', 'MANAGEMENT_WORK_LIST_TITLE_ARCHIVED', 'Work list - archive', NULL, '2020-06-30 12:00:00')
 , ('sv', 'MANAGEMENT_WORK_LIST_TITLE_ARCHIVED', 'Uppgifter - arkiv', NULL, '2020-06-30 12:00:00')
 ;
+
+-- 200725
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_STATE_NEW', 'Uusi', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE_NEW', 'New', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE_NEW', 'Ny', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_STATE_IN_PROGRESS', 'Tarjouspyyntö', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE_IN_PROGRESS', 'Request for quote', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE_IN_PROGRESS', 'Anbudsbegäranden', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_STATE_FINISHED', 'Tarjottu', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE_FINISHED', 'Quoted', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE_FINISHED', 'Bjudit', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_STATE_HALTED', 'Ohitettu', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE_HALTED', 'Skipped', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE_HALTED', 'Skippat', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_STATE_ARCHIVED', 'Arkistoitu', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE_ARCHIVED', 'Archived', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE_ARCHIVED', 'Arkiverat', NULL, '2020-06-30 12:00:00')
+;
+
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_ACTION_START', 'TP', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ACTION_START', 'RQ', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ACTION_START', 'AB', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_ACTION_FINISH', 'Tarjottu', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ACTION_FINISH', 'Quoted', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ACTION_FINISH', 'Bjudit', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_ACTION_HALT', 'Ohita', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ACTION_HALT', 'Skip', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ACTION_HALT', 'Skippa', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_ACTION_ARCHIVE', 'Arkistoi', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ACTION_ARCHIVE', 'Archive', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ACTION_ARCHIVE', 'Arkivera', NULL, '2020-06-30 12:00:00')
+;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,6 +1,7 @@
 <?php
 
-require_once (__DIR__ . "/dbif.class.php");
+require_once(__DIR__ . "/dbif.class.php");
+require_once(__DIR__ . "/ui_text_storage.class.php");
 
 
 trait ActionableWorkItem {
@@ -13,6 +14,15 @@ trait ActionableWorkItem {
             default:
                 return null;
         }
+    }
+    
+    
+    public function get_state_action_text() {
+        if ($action = $this->get_state_action()) {
+            $action = strtoupper($action);
+            return \UITextStorage::get()->text("MANAGEMENT_WORK_LIST_ACTION_{$action}");
+        }
+        return "";
     }
     
     

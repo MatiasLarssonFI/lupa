@@ -13,11 +13,11 @@
             <div class="row">
                 <div class="col-xs-12 faq-content mtm">
                     <strong>View by state:</strong>
-                    <a href="{{ __management_url }}/work_table/STATE_NEW" class="work-state-nav-link {{ state_filter == 'STATE_NEW' ? 'active' : '' }}">New (<span data-item-count-new>{{ item_counts.STATE_NEW }}</span>)</a>
-                    <a href="{{ __management_url }}/work_table/STATE_IN_PROGRESS" class="work-state-nav-link {{ state_filter == 'STATE_IN_PROGRESS' ? 'active' : '' }}">In progress (<span data-item-count-in_progress>{{ item_counts.STATE_IN_PROGRESS }}</span>)</a>
-                    <a href="{{ __management_url }}/work_list/STATE_FINISHED" class="work-state-nav-link {{ state_filter == 'STATE_FINISHED' ? 'active' : '' }}">Finished (<span data-item-count-finished>{{ item_counts.STATE_FINISHED }}</span>)</a>
-                    <a href="{{ __management_url }}/work_table/STATE_HALTED" class="work-state-nav-link {{ state_filter == 'STATE_HALTED' ? 'active' : '' }}">Halted (<span data-item-count-halted>{{ item_counts.STATE_HALTED }}</span>)</a>
-                    <a href="{{ __management_url }}/work_table/ARCHIVE" class="work-state-nav-link {{ is_archive ? 'active' : '' }}">Archived (<span data-item-count-archive>{{ item_counts.ARCHIVE }}</span>)</a>
+                    <a href="{{ __management_url }}/work_table/STATE_NEW" class="work-state-nav-link {{ state_filter == 'STATE_NEW' ? 'active' : '' }}">{{ strings.state.new }} (<span data-item-count-new>{{ item_counts.STATE_NEW }}</span>)</a>
+                    <a href="{{ __management_url }}/work_table/STATE_IN_PROGRESS" class="work-state-nav-link {{ state_filter == 'STATE_IN_PROGRESS' ? 'active' : '' }}">{{ strings.state.in_progress }} (<span data-item-count-in_progress>{{ item_counts.STATE_IN_PROGRESS }}</span>)</a>
+                    <a href="{{ __management_url }}/work_table/STATE_FINISHED" class="work-state-nav-link {{ state_filter == 'STATE_FINISHED' ? 'active' : '' }}">{{ strings.state.finished }}(<span data-item-count-finished>{{ item_counts.STATE_FINISHED }}</span>)</a>
+                    <a href="{{ __management_url }}/work_table/STATE_HALTED" class="work-state-nav-link {{ state_filter == 'STATE_HALTED' ? 'active' : '' }}">{{ strings.state.halted }} (<span data-item-count-halted>{{ item_counts.STATE_HALTED }}</span>)</a>
+                    <a href="{{ __management_url }}/work_table/ARCHIVE" class="work-state-nav-link {{ is_archive ? 'active' : '' }}">{{ strings.state.archived }} (<span data-item-count-archive>{{ item_counts.ARCHIVE }}</span>)</a>
                 </div>
             </div>
         </div>
@@ -55,21 +55,21 @@
                             {% if item.get_state_action %}
                             
                             <img data-item-action-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
-                            <button class="btn btn-sm btn-success mbm" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">&#8594; {{ item.get_state_action }}</button>
+                            <button class="btn btn-sm btn-success mbm" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">&#8594; {{ item.get_state_action_text }}</button>
                             
                             {% endif %}
                             
                             {% if item.is_archivable %}
                             
                             <img data-item-archive-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
-                            <button class="btn btn-sm btn-warning mbm" data-item="{{ item.get_id }}" data-item-action="archive">Archive</button>
+                            <button class="btn btn-sm btn-warning mbm" data-item="{{ item.get_id }}" data-item-action="archive">{{ strings.action.archive }}</button>
                             
                             {% endif %}
                             
                             {% if item.is_haltable %}
                             
                             <img data-item-halt-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
-                            <button class="btn btn-sm btn-danger mbm" data-item="{{ item.get_id }}" data-item-action="halt">Halt</button>
+                            <button class="btn btn-sm btn-danger mbm" data-item="{{ item.get_id }}" data-item-action="halt">{{ strings.action.halt }}</button>
                             
                             {% endif %}
                         </td>

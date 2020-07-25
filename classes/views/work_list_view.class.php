@@ -2,9 +2,10 @@
 
 namespace Views;
 
-require_once(dirname(__FILE__) . "/abstract_view.class.php");
-require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
-require_once(dirname(__FILE__) . "/../work_item_factory.class.php");
+require_once(__DIR__ . "/abstract_view.class.php");
+require_once(__DIR__ . "/../ui_text_storage.class.php");
+require_once(__DIR__ . "/../work_item_factory.class.php");
+require_once(__DIR__ . "/../dbif.class.php");
 
 
 class WorkListView extends AbstractView {
@@ -39,12 +40,25 @@ class WorkListView extends AbstractView {
         if ($is_archive) {
             $title = $text_storage->text("MANAGEMENT_WORK_LIST_TITLE_ARCHIVED");
         } else {
-            $title = $is_valid_state_filter ? $text_storage->text("MANAGEMENT_WORK_LIST_TITLE_" . strtoupper($params["state_filter"])) : $text_storage->text("MANAGEMENT_WORK_LIST_TITLE");
+            $title = $is_valid_state_filter ?
+                $text_storage->text("MANAGEMENT_WORK_LIST_TITLE_" . strtoupper($params["state_filter"]))
+                : $text_storage->text("MANAGEMENT_WORK_LIST_TITLE");
         }
         
         return [
             "strings" => [
                 "page_title" => $title,
+                "state" => [
+                    "new" => $text_storage->text("MANAGEMENT_WORK_LIST_STATE_NEW"),
+                    "in_progress" => $text_storage->text("MANAGEMENT_WORK_LIST_STATE_IN_PROGRESS"),
+                    "finished" => $text_storage->text("MANAGEMENT_WORK_LIST_STATE_FINISHED"),
+                    "halted" => $text_storage->text("MANAGEMENT_WORK_LIST_STATE_HALTED"),
+                    "archived" => $text_storage->text("MANAGEMENT_WORK_LIST_STATE_ARCHIVED"),
+                ],
+                "action" => [
+                    "archive" => $text_storage->text("MANAGEMENT_WORK_LIST_ACTION_ARCHIVE"),
+                    "halt" => $text_storage->text("MANAGEMENT_WORK_LIST_ACTION_HALT"),
+                ]
             ],
             "items" => $wif->yield_items($params["state_filter"], $params["order_col"], $params["order_dir"]),
             "state_filter" => $is_valid_state_filter ? $params["state_filter"] : "",
@@ -58,7 +72,6 @@ class WorkListView extends AbstractView {
             ],
             "order_col" => $wif->is_valid_order_col($params["order_col"]) ? $params["order_col"] : "",
             "order_dir" => $wif->is_valid_order_direction($params["order_dir"]) ? $params["order_dir"] : "",
-            "allow_hreflang" => false,
         ];
     }
 }

@@ -44,6 +44,12 @@ interface IListableWorkItem {
     
     
     /**
+     * @return string
+     */
+    public function get_state_action_text();
+    
+    
+    /**
      * @return boolean
      */
     public function is_archivable();
