@@ -46,7 +46,7 @@
                         <td>{{ item.get_subject }}</td>
                         <td title="{{ item.get_message }}">{{ item.get_message|slice(0,10) }}&hellip;</td>
                         <td>
-                            <span data-notes-status class="orange"></span>
+                            <span data-notes-status class="orange">&nbsp;</span>
                             <textarea class="form-control" id="notesInput" data-item-notes data-item="{{ item.get_id }}">{{ item.get_notes }}</textarea>
                         </td>
                         <td>{{ item.get_datetime_created }}</td>
