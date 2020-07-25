@@ -27,6 +27,9 @@ trait ActionableWorkItem {
             default:
                 return false;
         }
+        if ($this->_is_archived) {
+            $this->_is_archived = false;
+        }
         \DBIF::get()->update_work_item($this, true);
         return true;
     }
