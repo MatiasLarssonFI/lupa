@@ -32,6 +32,11 @@ class WorkListView extends AbstractView {
     }
     
     
+    protected function allow_tracking() {
+        return false;
+    }
+    
+    
     protected function get_view_data(array $params) {
         $text_storage = \UITextStorage::get();
         $wif = \WorkItemFactory::get();

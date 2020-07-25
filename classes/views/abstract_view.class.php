@@ -67,7 +67,7 @@ abstract class AbstractView implements IView {
         $data["__css_src_mode"] = $src_conf->get_css_src_mode();
         $data["__scale_mobile"] = $this->is_mobile_scale_enabled();
         $data["__facebook_page_url"] = \DBIF::get()->get_facebook_page_url();
-        $data["__ga"] = $site_cfg->tracking_enabled();
+        $data["__ga"] = $site_cfg->tracking_enabled() && $this->allow_tracking();
         
         $data["__strings"] = [
             "footer_promo" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
@@ -152,6 +152,16 @@ abstract class AbstractView implements IView {
      */
     protected function get_required_session_params() {
         return [];
+    }
+    
+    
+    /**
+     * Returns true if tracking scripts are allowed.
+     *
+     * @return boolean
+     */
+    protected function allow_tracking() {
+        return true;
     }
     
     
