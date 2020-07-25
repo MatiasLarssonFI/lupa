@@ -29,4 +29,10 @@ interface IActionableWorkItem {
      * @param string $notes
      */
     public function set_notes($notes);
+    
+    
+    /**
+     * @return string
+     */
+    public function get_notes();
 }

@@ -34,13 +34,18 @@ class WorkItemSubmitView extends AbstractView {
             $notes = $params["notes"];
             
             $item = $wif->getActionableItem((int)$params["item"]);
-            if (strlen($notes) > 0 && mb_strlen($notes) < 2048) {
+            $notes_success = $notes === $item->get_notes();
+            if (!$notes_success && mb_strlen($notes) < 2048) {
                 $item->set_notes($notes);
+                $notes_success = true;
             }
             if ($action === strtolower($item->get_state_action())) {
                 $is_success = $item->try_perform_state_action();
             } else if (in_array($action, [ "halt", "archive" ])) {
                 $is_success = $action === "halt" ? $item->try_perform_halt() : $item->try_perform_archive();
+            } else if ($action === "notes") {
+                $is_success = $notes_success;
+                \DBIF::get()->update_work_item($item, false);
             }
         }
         
@@ -57,6 +62,7 @@ class WorkItemSubmitView extends AbstractView {
                     \WorkItemFactory::ARCHIVE => \DBIF::get()->count_work_items(\WorkItemFactory::ARCHIVE),
                 ],
                 "is_success" => $is_success,
+                "notes_success" => $notes_success,
             ])
         ];
     }

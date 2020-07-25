@@ -1,6 +1,9 @@
 lupa.workList = {
-    // TBD: notes separate save
     init : function(baseUrl) {
+        this.initStateForm(baseUrl);
+        this.initNotesForm(baseUrl);
+    },
+    initStateForm : function(baseUrl) {
         var self = this;
         
         $("[data-item-action]").on("click", function() {
@@ -41,16 +44,61 @@ lupa.workList = {
             });
         });
     },
+    initNotesForm : function(baseUrl) {
+        var self = this;
+        
+        $("[data-item-notes]").on("input", function() {
+            $(this).closest("[data-list-item]").find("[data-notes-status]").text(" edited");
+        });
+        
+        $("[data-item-notes]").on("blur", function() {
+            var $input = $(this);
+            var $item = $input.closest("[data-list-item]");
+            
+            $.ajax({
+                type: "post",
+                url : baseUrl + "/work_item_submit",
+                dataType: "json",
+                data : {
+                    item : $input.data("item"),
+                    action: "notes",
+                    notes: $input.val(),
+                    is_ajax: true,
+                    __csrf_token: lupa.antiCSRFToken()
+                },
+                success : function(response) {
+                    if (response.is_success) {
+                        self.onItemNotesSuccess($item);
+                    } else {
+                        self.onItemNotesError();
+                    }
+                },
+                error : function() {
+                    self.onItemNotesError();
+                },
+            });
+        });
+    },
     onItemSubmitSuccess : function($btn, $item, response) {
         $btn.text("DONE");
         $item.delay(250).fadeOut(250, function() {
             $item.remove();
         });
         this.updateItemCounts(response.item_counts);
+        if (!response.notes_success) {
+            alert("Progress was saved successfully but notes failed.");
+        }
     },
     onItemSubmitError : function($btn) {
         window.alert("Sorry, but an error has occured. Please try again, and refresh the page first.");
         $btn.prop("disabled", false);
+    },
+    onItemNotesSuccess : function($item) {
+        var $node = $item.find("[data-notes-status]");
+        $node.text(" saved.");
+    },
+    onItemNotesError : function() {
+        window.alert("Failed to save notes. Please try again, and refresh the page first.");
     },
     updateItemCounts : function(counts) {
         for (state in counts) {

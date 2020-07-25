@@ -46,8 +46,8 @@
                         <td>{{ item.get_subject }}</td>
                         <td title="{{ item.get_message }}">{{ item.get_message|slice(0,10) }}&hellip;</td>
                         <td>
+                            <span data-notes-status class="orange"></span>
                             <textarea class="form-control" id="notesInput" data-item-notes data-item="{{ item.get_id }}">{{ item.get_notes }}</textarea>
-                            <img data-item-notes-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
                         </td>
                         <td>{{ item.get_datetime_created }}</td>
                         <td>{{ item.get_datetime_state }}</td>
