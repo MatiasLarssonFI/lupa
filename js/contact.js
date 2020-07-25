@@ -25,7 +25,7 @@
                         });
                     },
                     error : function() {
-                        alert("We're sorry, but an error has occured. Please try again later.");
+                        alert("We're sorry, but an error has occurred. Please try again later.");
                         submit_btn.prop("disabled", false);
                     },
                     complete : function() {

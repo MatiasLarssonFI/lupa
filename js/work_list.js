@@ -90,7 +90,7 @@ lupa.workList = {
         }
     },
     onItemSubmitError : function($btn) {
-        window.alert("Sorry, but an error has occured. Please try again, and refresh the page first.");
+        window.alert("Sorry, but an error has occurred. Please try again, and refresh the page first.");
         $btn.prop("disabled", false);
     },
     onItemNotesSuccess : function($item) {
