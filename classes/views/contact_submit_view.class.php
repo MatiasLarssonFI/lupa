@@ -12,7 +12,7 @@ require_once(dirname(__FILE__) . "/../dbif.class.php");
 
 class ContactSubmitView extends AbstractView {
     protected function get_required_params() {
-        return array("__csrf_token", "name", "email", "subject", "message", "is_ajax", "url");
+        return array("__csrf_token", "name", "email", "subject", "message", "is_ajax", "url", "company");
     }
     
     
@@ -26,7 +26,7 @@ class ContactSubmitView extends AbstractView {
         $text_storage = \UITextStorage::get();
         $errors = array();
         if (strlen($params["url"]) === 0 && // url is actually a hidden captcha field, not to be filled
-            strlen($params["company"] === "company name oy")) { // hidden captcha as well
+            $params["company"] === "company name oy") { // hidden captcha as well
             $errors = $this->get_form_errors($params, $text_storage);
             if (empty($errors)) {
                 $f = \ContactMessageFactory::get();
