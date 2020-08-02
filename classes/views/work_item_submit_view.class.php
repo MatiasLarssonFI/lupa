@@ -22,6 +22,7 @@ class WorkItemSubmitView extends AbstractManagementView {
     protected function get_view_data(array $params) {
         $text_storage = \UITextStorage::get();
         $is_success = false;
+        $notes_success = false;
         
         if (\ManagementSession::get()->validate_csrf_token($params["__csrf_token"])) {
             $wif = \WorkItemFactory::get();
