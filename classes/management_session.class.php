@@ -31,7 +31,6 @@ class ManagementSession implements ISession {
     
     // cookie names
     
-    const ANTI_CSRF_NAME = "lupaCsrf";
     const SESSION_NAME = "lupaSession";
     
     // time limits
@@ -77,14 +76,14 @@ class ManagementSession implements ISession {
      * Generates the CSRF token if not generated already for the session.
      */
     private function try_generate_csrf_token() {
-        if (!array_key_exists(self::ANTI_CSRF_NAME, $this->_session_storage) && $this->_started) {
+        if (!array_key_exists("csrf_token", $this->_session_storage) && $this->_started) {
             $this->_session_storage["csrf_token"] = hash("sha256", bin2hex(openssl_random_pseudo_bytes(4)) . substr(session_id(), 0, 6) . "Flkj)I9HU#sd%43");
         }
     }
     
     
     public function validate_csrf_token($token) {
-        return array_key_exists(self::ANTI_CSRF_NAME, $this->_session_storage) && $token === $this->_session_storage[self::ANTI_CSRF_NAME];
+        return array_key_exists("csrf_token", $this->_session_storage) && $token === $this->_session_storage["csrf_token"];
     }
     
     
