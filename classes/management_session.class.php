@@ -190,9 +190,6 @@ class ManagementSession implements ISession {
             $this->_session_storage["ip_address"] = $ipaddr;
             $this->_session_storage["refresh"] = time() + self::SEC_UNTIL_REFRESH;
             $this->_session_storage["expire"] = $expire;
-            foreach ([ "invalidated", "new_sid", ] as $key) {
-                unset($this->_session_storage[$key]);
-            }
         } else {
             $this->log(self::L_REFRESH_ERROR, $this->_session_storage);
             $this->destroy();
@@ -240,9 +237,8 @@ class ManagementSession implements ISession {
     
     
     private function handle_invalidated_access($mask) {
-        /* Set the proper session ID in an attempt to prevent
-         * subsequent usage of the invalidated session because
-         * it will expire soon. Open the proper session. */
+        /* Open the proper session. The proper session ID cookie
+         * will be sent to client. */
         
         session_write_close();
         
@@ -252,9 +248,6 @@ class ManagementSession implements ISession {
         
         if ($this->_started) {
             $this->_session_storage = &$_SESSION;
-            foreach ([ "invalidated", "new_sid", ] as $key) {
-                unset($this->_session_storage[$key]);
-            }
         } else {
             $mask |= self::L_SID_CORRECT_ERROR;
         }
