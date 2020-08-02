@@ -1,8 +1,10 @@
 lupa.managementLogin = {
+    _baseUrl: undefined,
     init : function(baseUrl) {
-        this.initLoginForm(baseUrl);
+        this._baseUrl = baseUrl;
+        this.initLoginForm();
     },
-    initLoginForm : function(baseUrl) {
+    initLoginForm : function() {
         var self = this;
         
         $("[data-login-form]").off("submit").on("submit", function(e) { e.preventDefault(); });
@@ -19,7 +21,7 @@ lupa.managementLogin = {
             
             $.ajax({
                 type: "post",
-                url : baseUrl + "/management_login_submit",
+                url : self._baseUrl + "/management_login_submit",
                 data : data,
                 beforeSend : function() {
                     $btn.prop("disabled", true);
