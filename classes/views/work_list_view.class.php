@@ -2,13 +2,13 @@
 
 namespace Views;
 
-require_once(__DIR__ . "/abstract_view.class.php");
+require_once(__DIR__ . "/abstract_management_view.class.php");
 require_once(__DIR__ . "/../ui_text_storage.class.php");
 require_once(__DIR__ . "/../work_item_factory.class.php");
 require_once(__DIR__ . "/../dbif.class.php");
 
 
-class WorkListView extends AbstractView {
+class WorkListView extends AbstractManagementView {
     private $_is_table;
     
     
@@ -22,18 +22,8 @@ class WorkListView extends AbstractView {
     }
     
     
-    protected function get_required_session_params() {
-        return [ "perm_work_list" ];
-    }
-    
-    
     protected function get_template_name() {
         return $this->_is_table ? "work_table.html" : "work_list.html";
-    }
-    
-    
-    protected function allow_tracking() {
-        return false;
     }
     
     

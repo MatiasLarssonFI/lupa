@@ -10,6 +10,8 @@ require_once(dirname(__FILE__) . "/contact_submit_view.class.php");
 require_once(dirname(__FILE__) . "/info_felling_view.class.php");
 require_once(dirname(__FILE__) . "/info_partners_view.class.php");
 
+require_once(dirname(__FILE__) . "/management_login_view.class.php");
+require_once(dirname(__FILE__) . "/management_login_submit_view.class.php");
 require_once(dirname(__FILE__) . "/work_list_view.class.php");
 require_once(dirname(__FILE__) . "/work_item_submit_view.class.php");
 
@@ -71,6 +73,10 @@ class ViewFactory {
             ], $nlf, $action === "work_table");
         } else if ($action === "work_item_submit") {
             return new WorkItemSubmitView($_POST, $nlf);
+        } else if ($action === "management_login") {
+            return new ManagementLoginView([], $nlf);
+        } else if ($action === "management_login_submit") {
+            return new ManagementLoginSubmitView($_POST, $nlf);
         }
         
         // Bad request: redirect to front page

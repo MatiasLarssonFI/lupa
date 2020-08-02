@@ -251,6 +251,18 @@ class DBIF {
     
     
     /**
+     * Returns the session notifications mask.
+     * 
+     * @return int
+     */
+    public function get_session_notifications_mask() {
+        $stm = $this->_pdo->prepare("SELECT `value` from {$this->_table_prefix}config where `key` = 'session_notifications'");
+        $stm->execute();
+        return (int)$stm->fetchColumn();
+    }
+    
+    
+    /**
      * Returns URI of the header logo image.
      * 
      * @return string

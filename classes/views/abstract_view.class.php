@@ -48,7 +48,7 @@ abstract class AbstractView implements IView {
         $src_conf = \ResourceConfig::get();
         $dbif = \DBIF::get();
         
-        $data["__csrf_token"] = \Session::get()->get_csrf_token();
+        $data["__csrf_token"] = $this->get_session()->get_csrf_token();
         $data["__base_uri"] = $base_uri;
         $data["__management_url"] = $base_uri;
         $data["__contact_info"] = $this->make_contact_info($text_storage);
@@ -127,8 +127,14 @@ abstract class AbstractView implements IView {
         }
         
         if (!empty($this->get_required_session_params())) {
-            $diff = array_diff($this->get_required_session_params(), array_keys(\Session::get()->get_storage_data()));
-            if (count($diff) > 0 && false) { // DEBUG
+            $diff = array_diff($this->get_required_session_params(), array_keys($this->get_session()->get_storage_data()));
+            if (count($diff) > 0) {
+                if ($rd = $this->get_session_redirect_uri()) {
+                    $language = \UITextStorage::get()->get_language();
+                    header("HTTP/1.1 303 See Other");
+                    header("Location: " . \SiteConfigFactory::get()->get_site_config()->base_uri() . "/{$language}{$rd}");
+                }
+                
                 throw new \InvalidArgumentException("Missing required session parameters: " . implode(", ", $diff));
             }
         }
@@ -162,6 +168,24 @@ abstract class AbstractView implements IView {
      */
     protected function allow_tracking() {
         return true;
+    }
+    
+    
+    /**
+     * Returns a URI to redirect to on missing session parameter.
+     * 
+     * @return string e.g. "/login"
+     */
+    protected function get_session_redirect_uri() {
+        return null;
+    }
+    
+    
+    /**
+     * @return \ISession
+     */
+    protected function get_session() {
+        return \Session::get();
     }
     
     

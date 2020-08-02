@@ -80,13 +80,14 @@ lupa.workList = {
         });
     },
     onItemSubmitSuccess : function($btn, $item, response) {
+        var notes = $item.find("[data-item-notes]").val();
         $btn.text("DONE");
         $item.delay(250).fadeOut(250, function() {
             $item.remove();
         });
         this.updateItemCounts(response.item_counts);
         if (!response.notes_success) {
-            alert("Progress was saved successfully but notes failed.");
+            window.alert("Progress was saved successfully but notes failed. Notes: " + notes);
         }
     },
     onItemSubmitError : function($btn) {

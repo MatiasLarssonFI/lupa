@@ -2,20 +2,15 @@
 
 namespace Views;
 
-require_once(dirname(__FILE__) . "/abstract_view.class.php");
-require_once(dirname(__FILE__) . "/../session.class.php");
+require_once(dirname(__FILE__) . "/abstract_management_view.class.php");
+require_once(dirname(__FILE__) . "/../management_session.class.php");
 require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/../work_item_factory.class.php");
 
 
-class WorkItemSubmitView extends AbstractView {
+class WorkItemSubmitView extends AbstractManagementView {
     protected function get_required_params() {
         return [ "item", "action", "notes", "is_ajax", "__csrf_token" ];
-    }
-    
-    
-    protected function get_required_session_params() {
-        return [ "perm_work_list" ];
     }
     
     
@@ -24,16 +19,11 @@ class WorkItemSubmitView extends AbstractView {
     }
     
     
-    protected function allow_tracking() {
-        return false;
-    }
-    
-    
     protected function get_view_data(array $params) {
         $text_storage = \UITextStorage::get();
         $is_success = false;
         
-        if (\Session::get()->validate_csrf_token($params["__csrf_token"])) {
+        if (\ManagementSession::get()->validate_csrf_token($params["__csrf_token"])) {
             $wif = \WorkItemFactory::get();
             $action = $params["action"];
             $notes = $params["notes"];

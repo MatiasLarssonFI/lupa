@@ -1,0 +1,25 @@
+{% if errors.__csrf_token is defined %}
+<div class="alert alert-danger">{{ errors.__csrf_token }}</div>
+{% endif %}
+
+<form method="post" action="{{ __base_uri }}/{{ __lang }}/management_login_submit" class="form-horizontal" data-login-form>
+    <input type="hidden" data-is-ajax-input name="is_ajax" value="0">
+    <input type="text" name="url" class="contact-url" value="{{ prefill.url }}" autocomplete="off">
+    <div class="form-group {{ errors.password is defined ? 'has-error': '' }}">
+        <label for="password" class="col-xs-12 col-sm-4">{{ strings.field_password }}</label>
+        <div class="col-xs-12 col-sm-8">
+            <input type="password" name="password" class="form-control" required>
+            {% if errors.password is defined %}
+                <span class="help-block">{{ errors.password }}<span>
+            {% endif %}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-4">
+            <input type="text" name="company" class="contact-url" value="{{ prefill.company }}" autocomplete="off">
+            
+            <button data-login-button type="submit" class="btn btn-primary bg-green text-uppercase"><b>{{ strings.submit }}</b></button>
+            <img data-ajax-spinner class="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif" alt="">
+        </div>
+    </div>
+</form>

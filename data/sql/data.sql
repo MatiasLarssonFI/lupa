@@ -526,6 +526,47 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 ;
 
 
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_LOGIN_FIELD_PASSWORD', 'Salasana', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_PASSWORD', 'Password', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_PASSWORD', 'Lösenord', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_LOGIN_FIELD_ERROR_PASSWORD', 'Väärä salasana.', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_ERROR_PASSWORD', 'Wrong password.', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_ERROR_PASSWORD', 'Fel lösenord.', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_LOGIN_SUCCESS', 'Tervetuloa.', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_SUCCESS', 'Welcome.', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_SUCCESS', 'Välkommen.', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_LOGIN_SELECT_PROMPT', 'Valitse näkymä.', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_SELECT_PROMPT', 'Please select a view.', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_SELECT_PROMPT', 'Välj vy.', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_LOGIN_TITLE', 'Sisäänkirjaus', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_TITLE', 'Login', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_TITLE', 'Login', NULL, '2020-06-30 12:00:00')
+;
+
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_LOGIN_SUBMIT', 'Kirjaudu', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_SUBMIT', 'Log in', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_SUBMIT', 'Logga in', NULL, '2020-06-30 12:00:00')
+;
+
+
+INSERT INTO `lupa_config` (`key`, `value`, `time_edited`, `time_created`) VALUES
+('session_notifications', '0', NULL, '2020-08-01 12:00:00');
+
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_LOGIN_FIELD_ERROR__CSRF_TOKEN', 'Lomake on vanhentunut. Ole hyvä ja yritä uudelleen.', NULL, '2020-08-02 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_ERROR__CSRF_TOKEN', 'The form has expired. Please try again.', NULL, '2020-08-02 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_ERROR__CSRF_TOKEN', 'Formen har löpt ut. Var god försök igen.', NULL, '2020-08-02 12:00:00')
+;
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
