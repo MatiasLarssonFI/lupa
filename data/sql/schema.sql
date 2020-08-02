@@ -289,3 +289,7 @@ ALTER TABLE `lupa_work_item`
 
 ALTER TABLE `lupa_work_item`
   ADD CONSTRAINT `contact_inbox_fk` FOREIGN KEY (`contact_inbox_id`) REFERENCES `lupa_contact_inbox` (`id`) ON UPDATE CASCADE;
+
+
+ALTER TABLE `lupa_config` CHANGE `time_created` `time_created` DATETIME NOT NULL;
+ALTER TABLE `lupa_config` ADD UNIQUE(`key`);
