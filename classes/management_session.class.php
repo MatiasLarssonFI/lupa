@@ -13,6 +13,7 @@ require_once(__DIR__ . "/dbif.class.php");
  * 
  * Security features:
  *   - timestamp-based session management
+ *   - network/user error tolerant session ID regeneration
  *   - strong anti-CSRF token
  *   - strong session cookie security in terms of cryptography and cookie attributes
  *   - prevent access from changed client IP address
@@ -37,7 +38,7 @@ class ManagementSession implements ISession {
     
     const SEC_UNTIL_REFRESH = 60 * 15; // regenerate session ID if older than 15 minutes
     const SEC_UNTIL_EXPIRE = 3600 * 4; // stop using session if older than 4 hours
-    const SEC_EXPIRE_MARGIN = 60 * 2;  // explicitly invalidated sessions will be valid for 2 more minutes
+    const SEC_EXPIRE_MARGIN = 60 * 5;  // explicitly invalidated sessions will be valid for 5 more minutes
     
     // bits for the log mask, used for selecting which events are to be logged
     
@@ -47,7 +48,9 @@ class ManagementSession implements ISession {
     const L_BAD_IPADDR_ACCESS = 1 << 3; // access of an existing session with changed client IP address
     const L_EXPIRED_ACCESS =    1 << 4; // access of an existing expired session
     const L_DELETED_ACCESS =    1 << 5; // access of a nonexistent session
-    const L_REFRESH_ERROR =     1 << 6; // failure during session ID regeneration
+    const L_INVALIDATED_ACCESS =1 << 6; // access of an invalidated session
+    const L_REFRESH_ERROR =     1 << 7; // failure during session ID regeneration
+    const L_SID_CORRECT_ERROR = 1 << 8; // failure during session ID correction when accessing an invalidated session
     
     const LOG_FILE = __DIR__ . "/../session_log";
     
@@ -102,15 +105,15 @@ class ManagementSession implements ISession {
          * bool $new_session. First make sure that any already opened session
          * is invalidated before creating a new one so that later access to it 
          * will be denied. Open the session file and either create or validate
-         * the data. Regenerate the session ID if needed. An expired session
-         * will be destroyed immediately on access. */
+         * the data. Regenerate or correct the session ID if needed. An expired
+         * session will be destroyed immediately on access. */
         
         if ($new_session) {
             $this->invalidate();
         }
         
         if (!$this->_started) {
-            $this->_started = session_start($this->make_session_config());
+            $this->_started = session_start($this->make_session_config(true));
         }
         
         $success = false;
@@ -124,8 +127,13 @@ class ManagementSession implements ISession {
                 $success = true;
             } else {
                 $logmask = $this->validate();
-                if ($logmask == 0) {
-                    $logmask = self::L_NORMAL_ACCESS;
+                $ok = !$logmask;
+                if ($logmask === self::L_INVALIDATED_ACCESS) { // only if this is the one and only validation error
+                    $logmask = $this->handle_invalidated_access($logmask);
+                    $ok = true;
+                }
+                if ($ok) {
+                    $logmask |= self::L_NORMAL_ACCESS;
                     $success = true;
                     if ($this->should_refresh()) {
                         $this->refresh();
@@ -159,17 +167,32 @@ class ManagementSession implements ISession {
     
     
     private function refresh() {
-        /* Regenerate session ID. Invalidate current session first so access
-         * with old session ID will be denied later. Then recover expiration
-         * timestamp and remove invalidated-flag for new session ID. */
+        /* Regenerate session ID. Add new session ID info to the invalidated
+         * session so it can be corrected if it's accessed before expiration.
+         * Write and close the session and start a new one with a new ID. */
         
         $expire = $this->_session_storage["expire"];
+        $ipaddr = $this->_session_storage["ip_address"];
+        
         $this->invalidate();
-        $this->_started = session_regenerate_id();
+        
+        $new_sid = session_create_id();
+        $this->_session_storage["new_sid"] = $new_sid;
+        
+        session_write_close();
+        
+        session_id($new_sid);
+        $this->_started = session_start($this->make_session_config(false));
+        
         if ($this->_started) {
+            $this->_session_storage = &$_SESSION;
+            $this->_session_storage["p_mngmnt"] = 1;
+            $this->_session_storage["ip_address"] = $ipaddr;
             $this->_session_storage["refresh"] = time() + self::SEC_UNTIL_REFRESH;
             $this->_session_storage["expire"] = $expire;
-            unset($this->_session_storage["invalidated"]);
+            foreach ([ "invalidated", "new_sid", ] as $key) {
+                unset($this->_session_storage[$key]);
+            }
         } else {
             $this->log(self::L_REFRESH_ERROR, $this->_session_storage);
             $this->destroy();
@@ -187,7 +210,7 @@ class ManagementSession implements ISession {
     
     
     private function destroy() {
-        foreach ([ "p_mngmnt", "ip_address", "expire", "refresh" ] as $key) {
+        foreach ([ "p_mngmnt", "ip_address", "expire", "refresh", ] as $key) {
             if (array_key_exists($key, $this->_session_storage)) {
                 unset($this->_session_storage[$key]);
             }
@@ -196,14 +219,18 @@ class ManagementSession implements ISession {
     
     
     private function validate() {
-        foreach ([ "expire", "ip_address" ] as $key) {
+        foreach ([ "expire", "ip_address", ] as $key) {
             if (!array_key_exists($key, $this->_session_storage)) {
                 return self::L_DELETED_ACCESS;
             }
         }
         
-        if (time() > $this->_session_storage["expire"])                         return self::L_EXPIRED_ACCESS;
-        if ($this->_session_storage["ip_address"] !== $_SERVER["REMOTE_ADDR"])  return self::L_BAD_IPADDR_ACCESS;
+        $mask = 0;
+        if (time() > $this->_session_storage["expire"])                         $mask |= self::L_EXPIRED_ACCESS;
+        if ($this->_session_storage["ip_address"] !== $_SERVER["REMOTE_ADDR"])  $mask |= self::L_BAD_IPADDR_ACCESS;
+        if (array_key_exists("invalidated", $this->_session_storage))           $mask |= self::L_INVALIDATED_ACCESS;
+        
+        return $mask;
     }
     
     
@@ -212,18 +239,41 @@ class ManagementSession implements ISession {
     }
     
     
-    private function make_session_config() {
+    private function handle_invalidated_access($mask) {
+        /* Set the proper session ID in an attempt to prevent
+         * subsequent usage of the invalidated session because
+         * it will expire soon. Open the proper session. */
+        
+        session_write_close();
+        
+        // open proper session
+        session_id($this->_session_storage["new_sid"]);
+        $this->_started = session_start($this->make_session_config(true));
+        
+        if ($this->_started) {
+            $this->_session_storage = &$_SESSION;
+            foreach ([ "invalidated", "new_sid", ] as $key) {
+                unset($this->_session_storage[$key]);
+            }
+        } else {
+            $mask |= self::L_SID_CORRECT_ERROR;
+        }
+        return $mask;
+    }
+    
+    
+    private function make_session_config($strict_mode) {
         // following the recommendations at https://www.php.net/manual/en/session.security.php
         $sess_conf = [
             "name" => self::SESSION_NAME,
-            "use_strict_mode" => 1,
+            "use_strict_mode" => $strict_mode,
             "cookie_path" => "/",
             "cookie_domain" => \SiteConfigFactory::get()->get_site_config()->host(),
-            "cookie_secure" => 1,
-            "cookie_httponly" => 1,
+            "cookie_secure" => true,
+            "cookie_httponly" => true,
             "cookie_lifetime" => 0,
-            "use_cookies" => 1,
-            "use_only_cookies" => 1,
+            "use_cookies" => true,
+            "use_only_cookies" => true,
             "sid_length" => 48,
             "sid_bits_per_character" => 6,
             "cache_limiter" => "nocache",
