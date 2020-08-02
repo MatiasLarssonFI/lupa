@@ -7,12 +7,10 @@ lupa.managementLogin = {
     initLoginForm : function() {
         var self = this;
         
-        $("[data-login-form]").off("submit").on("submit", function(e) { e.preventDefault(); });
-        
-        $("[data-login-button]").off("click").on("click", function(e) {
+        $("[data-login-form]").off("submit").on("submit", function(e) {
             e.preventDefault();
             
-            var $btn = $(this)
+            var $btn = $(this).find("[data-login-button]");
             var $form = $btn.closest("form");
             var $spinner = $form.find("[data-login-spinner]");
             $form.find("[data-is-ajax-input]").val(1);
@@ -41,7 +39,8 @@ lupa.managementLogin = {
     },
     onLoginSuccess : function($form, html) {
         var self = this;
-        $form.slideUp(200, function() {
+        $form.fadeOut(200, function() {
+            $("[data-csrf-token]").remove(); // updated in html
             $output = $("[data-form-content] [data-login-feedback]");
             $output.css("opacity", 0).html(html).animate({opacity : 1});
             $output = $("[data-form-content] [data-login-feedback]"); // re-evaluate the node

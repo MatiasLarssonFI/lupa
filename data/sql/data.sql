@@ -561,9 +561,9 @@ INSERT INTO `lupa_config` (`key`, `value`, `time_edited`, `time_created`) VALUES
 
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
-  ('fi', 'MANAGEMENT_LOGIN_FIELD_ERROR__CSRF_TOKEN', 'Lomake on vanhentunut. Ole hyvä ja yritä uudelleen.', NULL, '2020-08-02 12:00:00')
-, ('en', 'MANAGEMENT_LOGIN_FIELD_ERROR__CSRF_TOKEN', 'The form has expired. Please try again.', NULL, '2020-08-02 12:00:00')
-, ('sv', 'MANAGEMENT_LOGIN_FIELD_ERROR__CSRF_TOKEN', 'Formen har löpt ut. Var god försök igen.', NULL, '2020-08-02 12:00:00')
+  ('fi', 'MANAGEMENT_LOGIN_FIELD_ERROR___CSRF_TOKEN', 'Lomake on vanhentunut. Ole hyvä ja yritä uudelleen.', NULL, '2020-08-02 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_ERROR___CSRF_TOKEN', 'The form has expired. Please try again.', NULL, '2020-08-02 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_ERROR___CSRF_TOKEN', 'Formen har löpt ut. Var god försök igen.', NULL, '2020-08-02 12:00:00')
 ;
 
 
