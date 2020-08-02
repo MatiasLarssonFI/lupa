@@ -26,12 +26,6 @@ class Session {
     }
     
     
-    
-    /**
-     * Returns the CSRF token.
-     * 
-     * @return string
-     */
     public function get_csrf_token() {
         $this->try_generate_csrf_token();
         return $this->_request_storage["csrf_token"];

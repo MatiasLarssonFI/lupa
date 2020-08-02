@@ -1,6 +1,5 @@
 <?php
 
-
 interface ISiteConfig {
     public function base_uri();
     public function host();
