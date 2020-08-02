@@ -87,7 +87,7 @@ lupa.workList = {
         });
         this.updateItemCounts(response.item_counts);
         if (!response.notes_success) {
-            window.alert("Progress was saved successfully but notes failed. Notes: " + notes);
+            window.alert("Progress was saved successfully but notes failed. Notes (copy them now because they will be lost): " + notes);
         }
     },
     onItemSubmitError : function($btn) {
