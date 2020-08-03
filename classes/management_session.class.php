@@ -13,7 +13,7 @@ require_once(__DIR__ . "/dbif.class.php");
  * 
  * Security features:
  *   - timestamp-based session management
- *   - network/user error tolerant session ID regeneration
+ *   - network-/user-error-tolerant session ID regeneration
  *   - strong anti-CSRF token
  *   - strong session cookie security in terms of cryptography and cookie attributes
  *   - prevent access from changed client IP address
@@ -102,11 +102,11 @@ class ManagementSession implements ISession {
     
     public function login($new_session) {
         /* Either open an existing session or create a new one, depending on
-         * bool $new_session. First make sure that any already opened session
-         * is invalidated before creating a new one so that later access to it 
-         * will be denied. Open the session file and either create or validate
-         * the data. Regenerate or correct the session ID if needed. An expired
-         * session will be destroyed immediately on access. */
+         * bool $new_session. First invalidate any already opened session before
+         * creating a new one ensuring that later access to it will be denied.
+         * Open the session file and either create or validate the data. Correct
+         * and regenerate the session ID if needed. If the session is expired or
+         * the IP address has changed, session data is cleared. */
         
         if ($new_session) {
             $this->invalidate();
@@ -169,7 +169,7 @@ class ManagementSession implements ISession {
     private function refresh() {
         /* Regenerate session ID. Add new session ID info to the invalidated
          * session so it can be corrected if it's accessed before expiration.
-         * Write and close the session and start a new one with a new ID. */
+         * Write and close the session and start a new one with the new ID. */
         
         $expire = $this->_session_storage["expire"];
         $ipaddr = $this->_session_storage["ip_address"];
@@ -301,6 +301,7 @@ class ManagementSession implements ISession {
             throw new \LogicException("PHP 7.1.0 or newer is required.");
         }
         
+        $this->_session_storage = [];
         $this->_started = false;
         $this->_log_mask = \DBIF::get()->get_session_notifications_mask();
         $this->login(false);
