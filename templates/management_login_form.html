@@ -2,6 +2,10 @@
 <div class="alert alert-danger">{{ errors.__csrf_token }}</div>
 {% endif %}
 
+{% if errors.generic is defined %}
+<div class="alert alert-danger">{{ errors.generic }}</div>
+{% endif %}
+
 <form method="post" action="{{ __base_uri }}/{{ __lang }}/management_login_submit" class="form-horizontal" data-login-form>
     <input type="hidden" data-is-ajax-input name="is_ajax" value="0">
     <input type="text" name="url" class="contact-url" value="{{ prefill.url }}" autocomplete="off">

@@ -567,6 +567,12 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 ;
 
 
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_LOGIN_GENERIC_ERROR', 'Järjestelmävirhe istunnon tallennuksessa.', NULL, '2020-08-02 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_GENERIC_ERROR', 'System error when saving the session.', NULL, '2020-08-02 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_GENERIC_ERROR', 'Systemfel vid session lagring.', NULL, '2020-08-02 12:00:00')
+;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
