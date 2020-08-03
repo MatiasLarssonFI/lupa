@@ -120,32 +120,36 @@ class ManagementSession implements ISession {
         
         if ($this->_started) {
             $this->_session_storage = &$_SESSION;
+            $logmask = 0;
+            $is_valid = true;
             
             if ($new_session) {
                 $this->create();
-                $this->log(self::L_CREATED, $this->_session_storage);
+                $logmask = self::L_CREATED;
                 $success = true;
             } else {
                 $logmask = $this->validate();
-                $ok = !$logmask;
+                $is_valid = !$logmask;
                 if ($logmask === self::L_INVALIDATED_ACCESS) { // only if this is the one and only validation error
-                    $logmask = $this->handle_invalidated_access($logmask);
-                    $ok = true;
+                    $logmask |= $this->handle_invalidated_access();
+                    $is_valid = true;
                 }
-                if ($ok) {
+                if ($is_valid) {
                     $logmask |= self::L_NORMAL_ACCESS;
                     $success = true;
                     if ($this->should_refresh()) {
-                        $this->refresh();
-                        $logmask |= self::L_REFRESHED;
+                        $logmask |= $this->refresh();
+                        if ($logmask & self::L_REFRESH_ERROR) {
+                            $success = false;
+                            $is_valid = false; // clear session also if failed to refresh
+                        }
                     }
-                    $this->log($logmask, $this->_session_storage);
-                } else {
-                    // Access to an expired session, or changed IP address.
-                    // Remove all data from session.
-                    $this->log($logmask, $this->_session_storage);
-                    $this->destroy();
                 }
+            }
+            
+            $this->log($logmask, $this->_session_storage);
+            if (!$is_valid) {
+                $this->clear();
             }
         }
         
@@ -190,9 +194,10 @@ class ManagementSession implements ISession {
             $this->_session_storage["ip_address"] = $ipaddr;
             $this->_session_storage["refresh"] = time() + self::SEC_UNTIL_REFRESH;
             $this->_session_storage["expire"] = $expire;
+            
+            return self::L_REFRESHED;
         } else {
-            $this->log(self::L_REFRESH_ERROR, $this->_session_storage);
-            $this->destroy();
+            return self::L_REFRESH_ERROR;
         }
     }
     
@@ -206,7 +211,7 @@ class ManagementSession implements ISession {
     }
     
     
-    private function destroy() {
+    private function clear() {
         foreach ([ "p_mngmnt", "ip_address", "expire", "refresh", ] as $key) {
             if (array_key_exists($key, $this->_session_storage)) {
                 unset($this->_session_storage[$key]);
@@ -236,9 +241,9 @@ class ManagementSession implements ISession {
     }
     
     
-    private function handle_invalidated_access($mask) {
-        /* Open the proper session. The proper session ID cookie
-         * will be sent to client. */
+    private function handle_invalidated_access() {
+        /* Open the proper session which invalidated this one.
+         * The proper session ID cookie will be sent to client. */
         
         session_write_close();
         
@@ -246,6 +251,7 @@ class ManagementSession implements ISession {
         session_id($this->_session_storage["new_sid"]);
         $this->_started = session_start($this->make_session_config(true));
         
+        $mask = 0;
         if ($this->_started) {
             $this->_session_storage = &$_SESSION;
         } else {
