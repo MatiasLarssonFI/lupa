@@ -291,7 +291,7 @@ class ManagementSession implements ISession {
                 $data_str = json_encode($data);
                 $dt = date("Y-m-d H:i:s");
                 $sid = substr(session_id(), 0, 64); // substr just for input sanitation
-                file_put_contents(self::LOG_FILE, "[{$dt}] [{$sid}] [0x{$mask_str}] {$data_str}" . PHP_EOL, FILE_APPEND);
+                file_put_contents(self::LOG_FILE, "[{$dt}] [{$sid}] [{$_SERVER["REMOTE_ADDR"]}] [0x{$mask_str}] {$data_str}" . PHP_EOL, FILE_APPEND);
             } else {
                 $f = self::LOG_FILE;
                 $d = dirname(self::LOG_FILE);
