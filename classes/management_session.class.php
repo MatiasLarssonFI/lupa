@@ -124,6 +124,7 @@ class ManagementSession implements ISession {
             $is_valid = true;
             
             if ($new_session) {
+                $this->clear();
                 $this->create();
                 $logmask = self::L_CREATED;
                 $success = true;
@@ -164,9 +165,6 @@ class ManagementSession implements ISession {
         $this->_session_storage["ip_address"] = $_SERVER["REMOTE_ADDR"];
         $this->_session_storage["expire"] = $t + self::SEC_UNTIL_EXPIRE;
         $this->_session_storage["refresh"] = $t + self::SEC_UNTIL_REFRESH;
-        if (array_key_exists("invalidated", $this->_session_storage)) {
-            unset($this->_session_storage["invalidated"]);
-        }
     }
     
     
@@ -212,7 +210,7 @@ class ManagementSession implements ISession {
     
     
     private function clear() {
-        foreach ([ "p_mngmnt", "ip_address", "expire", "refresh", ] as $key) {
+        foreach ([ "p_mngmnt", "ip_address", "expire", "refresh", "invalidated", "new_sid", "csrf_token" ] as $key) {
             if (array_key_exists($key, $this->_session_storage)) {
                 unset($this->_session_storage[$key]);
             }
