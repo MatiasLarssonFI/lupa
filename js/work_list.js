@@ -1,3 +1,7 @@
+lupa.antiCSRFToken = function() {
+    return $("[data-csrf-token]").data("csrfToken");
+};
+
 lupa.workList = {
     init : function(baseUrl) {
         this.initStateForm(baseUrl);

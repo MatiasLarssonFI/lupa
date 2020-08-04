@@ -1,3 +1,7 @@
+lupa.antiCSRFToken = function() {
+    return $("[data-csrf-token]").data("csrfToken");
+};
+
 lupa.managementLogin = {
     _baseUrl: undefined,
     init : function(baseUrl) {
@@ -40,7 +44,7 @@ lupa.managementLogin = {
     onLoginSuccess : function($form, html) {
         var self = this;
         $form.fadeOut(100, function() {
-            $("[data-csrf-token]").remove(); // updated in html
+            $("[data-csrf-token]").remove(); // included in form (html)
             $output = $("[data-form-content] [data-login-feedback]");
             $output.css("opacity", 0).html(html).animate({opacity : 1});
             $output = $("[data-form-content] [data-login-feedback]"); // re-evaluate the node

@@ -43,7 +43,9 @@ class Session implements ISession {
      */
     private function try_generate_csrf_token() {
         if (!array_key_exists(self::ANTI_CSRF_NAME, $_COOKIE)) {
-            $this->_request_storage["csrf_token"] = hash("sha256", bin2hex(openssl_random_pseudo_bytes(4)) . "Houston, we have woodparts.");
+            if (!array_key_exists("csrf_token", $this->_request_storage)) {
+                $this->_request_storage["csrf_token"] = hash("sha256", bin2hex(openssl_random_pseudo_bytes(4)) . "Houston, we have woodparts.");
+            }
             if (PHP_VERSION_ID >= 70300) {
                 setcookie(self::ANTI_CSRF_NAME, $this->_request_storage["csrf_token"], $this->make_cookie_options());
             } else {
