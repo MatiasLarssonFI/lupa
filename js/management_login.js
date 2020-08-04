@@ -39,7 +39,7 @@ lupa.managementLogin = {
     },
     onLoginSuccess : function($form, html) {
         var self = this;
-        $form.fadeOut(200, function() {
+        $form.fadeOut(100, function() {
             $("[data-csrf-token]").remove(); // updated in html
             $output = $("[data-form-content] [data-login-feedback]");
             $output.css("opacity", 0).html(html).animate({opacity : 1});
