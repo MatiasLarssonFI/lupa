@@ -36,7 +36,7 @@ class ManagementSession implements ISession {
     
     // time limits
     
-    const SEC_UNTIL_REFRESH = 60 * 15; // regenerate session ID if older than 15 minutes
+    const SEC_UNTIL_REFRESH = 10; // regenerate session ID if older than 15 minutes
     const SEC_UNTIL_EXPIRE = 3600 * 4; // stop using session if older than 4 hours
     const SEC_EXPIRE_MARGIN = 60 * 5;  // explicitly invalidated sessions will be valid for 5 more minutes
     
@@ -245,9 +245,13 @@ class ManagementSession implements ISession {
         
         session_write_close();
         
-        // open proper session
-        session_id($this->_session_storage["new_sid"]);
-        $this->_started = session_start($this->make_session_config(true));
+        if (array_key_exists("new_sid", $this->_session_storage)) {
+            // open proper session
+            session_id($this->_session_storage["new_sid"]);
+            $this->_started = session_start($this->make_session_config(true));
+        } else {
+            $this->_started = false;
+        }
         
         $mask = 0;
         if ($this->_started) {
