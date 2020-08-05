@@ -36,7 +36,7 @@ class ManagementSession implements ISession {
     
     // time limits
     
-    const SEC_UNTIL_REFRESH = 10; // regenerate session ID if older than 15 minutes
+    const SEC_UNTIL_REFRESH = 60 * 15; // regenerate session ID if older than 15 minutes
     const SEC_UNTIL_EXPIRE = 3600 * 4; // stop using session if older than 4 hours
     const SEC_EXPIRE_MARGIN = 60 * 5;  // explicitly invalidated sessions will be valid for 5 more minutes
     
