@@ -133,7 +133,7 @@ class ManagementSession implements ISession {
                 $is_valid = !$logmask;
                 if ($logmask === self::L_INVALIDATED_ACCESS) { // only if this is the one and only validation error
                     $logmask |= $this->handle_invalidated_access();
-                    $is_valid = true;
+                    $is_valid = ($logmask & self::L_SID_CORRECT_ERROR) == 0; // clear session also if failed to correct
                 }
                 if ($is_valid) {
                     $logmask |= self::L_NORMAL_ACCESS;
