@@ -80,7 +80,7 @@ class ManagementSession implements ISession {
      */
     private function try_generate_csrf_token() {
         if (!array_key_exists("csrf_token", $this->_session_storage) && $this->_started) {
-            $this->_session_storage["csrf_token"] = hash("sha256", bin2hex(openssl_random_pseudo_bytes(4)) . substr(session_id(), 0, 6) . "Flkj)I9HU#sd%43");
+            $this->_session_storage["csrf_token"] = bin2hex(random_bytes(256 / 8));
         }
     }
     
