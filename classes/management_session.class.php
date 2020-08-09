@@ -288,16 +288,17 @@ class ManagementSession implements ISession {
     
     private function log($mask, array $data) {
         if ($this->_log_mask & $mask) {
-            if (is_writable(self::LOG_FILE) || is_writable(dirname(self::LOG_FILE))) {
+            if (is_writable(self::LOG_FILE) || (!file_exists(self::LOG_FILE) && is_writable(dirname(self::LOG_FILE)))) {
                 $mask_str = dechex($mask);
                 $data_str = json_encode($data);
                 $dt = date("Y-m-d H:i:s");
                 $sid = substr(session_id(), 0, 64); // substr just for input sanitation
+                // TBD: fix ip address deduction
                 file_put_contents(self::LOG_FILE, "[{$dt}] [{$sid}] [{$_SERVER["REMOTE_ADDR"]}] [0x{$mask_str}] {$data_str}" . PHP_EOL, FILE_APPEND);
             } else {
                 $f = self::LOG_FILE;
                 $d = dirname(self::LOG_FILE);
-                trigger_error("Failed to log session event: output file {$f} and parent directory {$d} not writable.");
+                trigger_error("Failed to log session event: output file {$f} not writable");
                 // or throw new \RuntimeException(...) if you dare
             }
         }
