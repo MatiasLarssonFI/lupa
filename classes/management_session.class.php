@@ -32,25 +32,25 @@ class ManagementSession implements ISession {
     
     // cookie names
     
-    const SESSION_NAME = "lupaSession";
+    private const SESSION_NAME = "lupaSession";
     
     // time limits
     
-    const SEC_UNTIL_REFRESH = 60 * 15; // regenerate session ID if older than 15 minutes
-    const SEC_UNTIL_EXPIRE = 3600 * 4; // stop using session if older than 4 hours
-    const SEC_EXPIRE_MARGIN = 60 * 5;  // explicitly invalidated sessions will be valid for 5 more minutes
+    private const SEC_UNTIL_REFRESH = 60 * 15; // regenerate session ID if older than 15 minutes
+    private const SEC_UNTIL_EXPIRE = 3600 * 4; // stop using session if older than 4 hours
+    private const SEC_EXPIRE_MARGIN = 60 * 5;  // explicitly invalidated sessions will be valid for 5 more minutes
     
     // bits for the log mask, used for selecting which events are to be logged
     
-    const L_CREATED =           1 << 0; // created a new session
-    const L_REFRESHED =         1 << 1; // regenerated the session ID for an exsisting session
-    const L_NORMAL_ACCESS =     1 << 2; // good access of an existing session
-    const L_BAD_IPADDR_ACCESS = 1 << 3; // access of an existing session with changed client IP address
-    const L_EXPIRED_ACCESS =    1 << 4; // access of an existing expired session
-    const L_DELETED_ACCESS =    1 << 5; // access of a nonexistent session
-    const L_INVALIDATED_ACCESS =1 << 6; // access of an invalidated session
-    const L_REFRESH_ERROR =     1 << 7; // failure during session ID regeneration
-    const L_SID_CORRECT_ERROR = 1 << 8; // failure during session ID correction when accessing an invalidated session
+    private const L_CREATED =           1 << 0; // created a new session
+    private const L_REFRESHED =         1 << 1; // regenerated the session ID for an exsisting session
+    private const L_NORMAL_ACCESS =     1 << 2; // good access of an existing session
+    private const L_BAD_IPADDR_ACCESS = 1 << 3; // access of an existing session with changed client IP address
+    private const L_EXPIRED_ACCESS =    1 << 4; // access of an existing expired session
+    private const L_DELETED_ACCESS =    1 << 5; // access of a nonexistent session
+    private const L_INVALIDATED_ACCESS =1 << 6; // access of an invalidated session
+    private const L_REFRESH_ERROR =     1 << 7; // failure during session ID regeneration
+    private const L_SID_CORRECT_ERROR = 1 << 8; // failure during session ID correction when accessing an invalidated session
     
     const LOG_FILE = __DIR__ . "/../session_log";
     
