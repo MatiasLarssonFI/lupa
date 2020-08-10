@@ -2,10 +2,11 @@
 
 namespace Views;
 
-require_once(dirname(__FILE__) . "/abstract_view.class.php");
-require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
-require_once(dirname(__FILE__) . "/../management_session.class.php");
-require_once(dirname(__FILE__) . "/../session.class.php");
+require_once(__DIR__ . "/abstract_view.class.php");
+require_once(__DIR__ . "/../session_var.class.php");
+require_once(__DIR__ . "/../ui_text_storage.class.php");
+require_once(__DIR__ . "/../management_session.class.php");
+require_once(__DIR__ . "/../session.class.php");
 
 
 class ManagementLoginSubmitView extends AbstractView {
