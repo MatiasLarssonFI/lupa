@@ -90,8 +90,18 @@ class ManagementSession implements ISession {
     }
     
     
-    public function get_storage_data() {
-        return $this->_session_storage;
+    public function set_data($key, $value) {
+        $this->_session_storage["user_{$key}"] = $value;
+    }
+    
+    
+    public function get_data($key) {
+        return $this->_session_storage["user_{$key}"] ?? null;
+    }
+    
+    
+    public function has_data($key) {
+        return array_key_exists("user_{$key}", $this->_session_storage);
     }
     
     
@@ -102,6 +112,17 @@ class ManagementSession implements ISession {
     
     public function login() {
         return $this->access(true);
+    }
+    
+    
+    private function get_user_data() {
+        $ret = [];
+        foreach ($this->_session_storage as $key => $value) {
+            if (substr($key, 0, 5) === "user_") {
+                $ret[$key] = $value;
+            }
+        }
+        return $ret;
     }
     
     
@@ -166,7 +187,7 @@ class ManagementSession implements ISession {
     private function create() {
         session_regenerate_id();
         $t = time();
-        $this->_session_storage["p_mngmnt"] = 1; // 'permission' flag checked by controller
+        // TBD: fix ip address deduction
         $this->_session_storage["ip_address"] = $_SERVER["REMOTE_ADDR"];
         $this->_session_storage["expire"] = $t + self::SEC_UNTIL_EXPIRE;
         $this->_session_storage["refresh"] = $t + self::SEC_UNTIL_REFRESH;
@@ -180,6 +201,7 @@ class ManagementSession implements ISession {
         
         $expire = $this->_session_storage["expire"];
         $ipaddr = $this->_session_storage["ip_address"];
+        $user_data = $this->get_user_data();
         
         $this->invalidate();
         
@@ -193,7 +215,9 @@ class ManagementSession implements ISession {
         
         if ($this->_started) {
             $this->_session_storage = &$_SESSION;
-            $this->_session_storage["p_mngmnt"] = 1;
+            foreach($user_data as $usr_key => $usr_value) {
+                $this->_session_storage[$usr_key] = $usr_value;
+            }
             $this->_session_storage["ip_address"] = $ipaddr;
             $this->_session_storage["refresh"] = time() + self::SEC_UNTIL_REFRESH;
             $this->_session_storage["expire"] = $expire;
@@ -215,8 +239,13 @@ class ManagementSession implements ISession {
     
     
     private function clear() {
-        foreach ([ "p_mngmnt", "ip_address", "expire", "refresh", "invalidated", "new_sid", "csrf_token" ] as $key) {
+        foreach ([ "ip_address", "expire", "refresh", "invalidated", "new_sid", "csrf_token" ] as $key) {
             if (array_key_exists($key, $this->_session_storage)) {
+                unset($this->_session_storage[$key]);
+            }
+        }
+        foreach ($this->_session_storage as $key => $value) {
+            if (substr($key, 0, 5) === "user_") {
                 unset($this->_session_storage[$key]);
             }
         }
@@ -232,6 +261,7 @@ class ManagementSession implements ISession {
         
         $mask = 0;
         if (time() > $this->_session_storage["expire"])                         $mask |= self::L_EXPIRED_ACCESS;
+        // TBD: fix ip address deduction
         if ($this->_session_storage["ip_address"] !== $_SERVER["REMOTE_ADDR"])  $mask |= self::L_BAD_IPADDR_ACCESS;
         if (array_key_exists("invalidated", $this->_session_storage))           $mask |= self::L_INVALIDATED_ACCESS;
         

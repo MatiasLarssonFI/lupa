@@ -4,6 +4,7 @@ namespace Views;
 
 require_once(__DIR__ . "/abstract_view.class.php");
 require_once(__DIR__ . "/../management_session.class.php");
+require_once(__DIR__ . "/../session_var.class.php");
 
 
 /**
@@ -11,7 +12,7 @@ require_once(__DIR__ . "/../management_session.class.php");
  */
 abstract class AbstractManagementView extends AbstractView {
     protected function get_required_session_params() {
-        return [ "p_mngmnt" ];
+        return [ \SessionVar::MANAGEMENT_PERMISSION ];
     }
     
     

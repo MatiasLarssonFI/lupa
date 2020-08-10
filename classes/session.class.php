@@ -73,10 +73,20 @@ class Session implements ISession {
             "samesite" => "Strict",
         ];
     }
+
+    
+    public function set_data($key, $value) {
+        $this->_request_storage["user_{$key}"] = $value;
+    }
     
     
-    public function get_storage_data() {
-        return [];
+    public function get_data($key) {
+        return $this->_request_storage["user_{$key}"] ?? null;
+    }
+    
+    
+    public function has_data($key) {
+        return array_key_exists("user_{$key}", $this->_request_storage);
     }
     
     
