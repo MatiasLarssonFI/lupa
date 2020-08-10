@@ -83,8 +83,8 @@ class Session implements ISession {
     public function logout() {}
     
     
-    public function login($new_session) {
-        return !$new_session;
+    public function login() {
+        return true;
     }
     
     

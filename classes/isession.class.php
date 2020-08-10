@@ -35,8 +35,7 @@ interface ISession {
     /**
      * Start a new session.
      *
-     * @param bool $new_session
      * @return bool True on success
      */
-    public function login($new_session);
+    public function login();
 }

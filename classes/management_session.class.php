@@ -100,7 +100,12 @@ class ManagementSession implements ISession {
     }
     
     
-    public function login($new_session) {
+    public function login() {
+        return $this->access(true);
+    }
+    
+    
+    private function access($new_session) {
         /* Either open an existing session or create a new one, depending on
          * bool $new_session. First invalidate any already opened session before
          * creating a new one ensuring that later access to it will be denied.
@@ -313,6 +318,6 @@ class ManagementSession implements ISession {
         $this->_session_storage = [];
         $this->_started = false;
         $this->_log_mask = \DBIF::get()->get_session_notifications_mask();
-        $this->login(false);
+        $this->access(false);
     }
 }

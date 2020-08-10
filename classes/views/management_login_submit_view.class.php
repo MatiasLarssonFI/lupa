@@ -35,7 +35,7 @@ class ManagementLoginSubmitView extends AbstractView {
                 \Session::get()->logout();
                 $ms = \ManagementSession::get();
                 $ms->logout();
-                $is_success = $ms->login(true);
+                $is_success = $ms->login();
                 if (!$is_success) {
                     $errors["generic"] = $text_storage->text("MANAGEMENT_LOGIN_GENERIC_ERROR");
                 }
