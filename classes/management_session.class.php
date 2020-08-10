@@ -71,7 +71,7 @@ class ManagementSession implements ISession {
     
     public function get_csrf_token() {
         $this->try_generate_csrf_token();
-        return isset($this->_session_storage["csrf_token"]) ? $this->_session_storage["csrf_token"] : null;
+        return $this->_session_storage["csrf_token"] ?? null;
     }
     
     
