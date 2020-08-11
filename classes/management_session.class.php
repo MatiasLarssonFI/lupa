@@ -1,8 +1,6 @@
 <?php
 
 require_once(__DIR__ . "/isession.class.php");
-require_once(__DIR__ . "/site_config_factory.class.php");
-require_once(__DIR__ . "/dbif.class.php");
 require_once(__DIR__ . "/client_info.class.php");
 
 
@@ -27,13 +25,12 @@ require_once(__DIR__ . "/client_info.class.php");
 class ManagementSession implements ISession {
     private $_session_storage; // $_SESSION
     private $_started;
-    private $_log_mask;
     
     private static $_inst = null;
-    
-    // cookie names
-    
-    private const SESSION_NAME = "lupaSession";
+    private static $_log_mask = 0x0;
+    private static $_log_file = null;
+    private static $_cookie_domain = "";
+    private static $_cookie_name = "sid";
     
     // time limits
     
@@ -43,17 +40,15 @@ class ManagementSession implements ISession {
     
     // bits for the log mask, used for selecting which events are to be logged
     
-    private const L_CREATED =           1 << 0; // created a new session
-    private const L_REFRESHED =         1 << 1; // regenerated the session ID for an exsisting session
-    private const L_NORMAL_ACCESS =     1 << 2; // good access of an existing session
-    private const L_BAD_IPADDR_ACCESS = 1 << 3; // access of an existing session with changed client IP address
-    private const L_EXPIRED_ACCESS =    1 << 4; // access of an existing expired session
-    private const L_DELETED_ACCESS =    1 << 5; // access of a nonexistent session
-    private const L_INVALIDATED_ACCESS =1 << 6; // access of an invalidated session
-    private const L_REFRESH_ERROR =     1 << 7; // failure during session ID regeneration
-    private const L_SID_CORRECT_ERROR = 1 << 8; // failure during session ID correction when accessing an invalidated session
-    
-    const LOG_FILE = __DIR__ . "/../session_log";
+    const L_CREATED =           1 << 0; // created a new session
+    const L_REFRESHED =         1 << 1; // regenerated the session ID for an exsisting session
+    const L_NORMAL_ACCESS =     1 << 2; // good access of an existing session
+    const L_BAD_IPADDR_ACCESS = 1 << 3; // access of an existing session with changed client IP address
+    const L_EXPIRED_ACCESS =    1 << 4; // access of an existing expired session
+    const L_DELETED_ACCESS =    1 << 5; // access of a nonexistent session
+    const L_INVALIDATED_ACCESS =1 << 6; // access of an invalidated session
+    const L_REFRESH_ERROR =     1 << 7; // failure during session ID regeneration
+    const L_SID_CORRECT_ERROR = 1 << 8; // failure during session ID correction when accessing an invalidated session
     
     /**
      * Returns the Session object.
@@ -68,6 +63,31 @@ class ManagementSession implements ISession {
         return self::$_inst;
     }
     
+    
+    /**
+     * Configure the session log.
+     *
+     * Mask selects events to be logged.
+     * 
+     * @param string $file The log file, e.g. "/media/wwwuser/logs/session_log"
+     * @param int $mask Events to be logged, e.g. ManagementSession::L_BAD_IPADDR_ACCESS | ManagementSession::L_DELETED_ACCESS
+     */
+    public static function configure_log($file, $mask) {
+        self::$_log_file = $file;
+        self::$_log_mask = $mask;
+    }
+    
+    
+    /**
+     * Configure the session cookie.
+     * 
+     * @param string $name The cookie name, e.g. "sid"
+     * @param string $domain The cookie domain, e.g. "my-site.com"
+     */
+    public static function configure_cookie($name, $domain) {
+        self::$_cookie_name = $name;
+        self::$_cookie_domain = $domain;
+    }
     
     
     public function get_csrf_token() {
@@ -301,10 +321,10 @@ class ManagementSession implements ISession {
     private function make_session_config($strict_mode) {
         // following the recommendations at https://www.php.net/manual/en/session.security.php
         $sess_conf = [
-            "name" => self::SESSION_NAME,
+            "name" => self::$_cookie_name,
             "use_strict_mode" => $strict_mode,
             "cookie_path" => "/",
-            "cookie_domain" => \SiteConfigFactory::get()->get_site_config()->host(),
+            "cookie_domain" => self::$_cookie_domain,
             "cookie_secure" => true,
             "cookie_httponly" => true,
             "cookie_lifetime" => 0,
@@ -330,17 +350,16 @@ class ManagementSession implements ISession {
     
     
     private function log($mask, array $data) {
-        if ($this->_log_mask & $mask) {
-            if (is_writable(self::LOG_FILE) || (!file_exists(self::LOG_FILE) && is_writable(dirname(self::LOG_FILE)))) {
+        if (self::$_log_mask & $mask) {
+            if (self::$_log_file && (is_writable(self::$_log_file) || (!file_exists(self::$_log_file) && is_writable(dirname(self::$_log_file))))) {
                 $mask_str = dechex($mask);
                 $data_str = json_encode($data);
                 $dt = date("Y-m-d H:i:s");
                 $sid = substr(session_id(), 0, 64); // substr just for input sanitation
-                file_put_contents(self::LOG_FILE, "[{$dt}] [{$sid}] [{$this->make_client_address_string()}] [0x{$mask_str}] {$data_str}" . PHP_EOL, FILE_APPEND);
+                file_put_contents(self::$_log_file, "[{$dt}] [{$sid}] [{$this->make_client_address_string()}] [0x{$mask_str}] {$data_str}" . PHP_EOL, FILE_APPEND);
             } else {
-                $f = self::LOG_FILE;
-                $d = dirname(self::LOG_FILE);
-                trigger_error("Failed to log session event: output file {$f} not writable");
+                $strfile = self::$_log_file ?? "(null)";
+                trigger_error("Failed to log session event: output file {$strfile} not writable");
                 // or throw new \RuntimeException(...) if you dare
             }
         }
@@ -354,7 +373,6 @@ class ManagementSession implements ISession {
         
         $this->_session_storage = [];
         $this->_started = false;
-        $this->_log_mask = \DBIF::get()->get_session_notifications_mask();
         $this->access(false);
     }
 }

@@ -11,8 +11,12 @@ require_once(dirname(__FILE__) . "/classes/ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/classes/site_config_factory.class.php");
 require_once(dirname(__FILE__) . "/classes/views/exception_view.class.php");
 require_once(dirname(__FILE__) . "/classes/nav_link_factory.class.php");
+require_once(dirname(__FILE__) . "/classes/management_session.class.php");
 
 try {
+    \ManagementSession::configure_log(__DIR__ . "/session_log", \DBIF::get()->get_session_notifications_mask());
+    \ManagementSession::configure_cookie("lupaSession", \SiteConfigFactory::get()->get_site_config()->host());
+    
     $request = array_merge(
             array(
                 "action" => "", 
