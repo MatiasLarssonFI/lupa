@@ -3,6 +3,7 @@
 require_once(__DIR__ . "/isession.class.php");
 require_once(__DIR__ . "/site_config_factory.class.php");
 require_once(__DIR__ . "/dbif.class.php");
+require_once(__DIR__ . "/client_info.class.php");
 
 
 /**
@@ -182,8 +183,7 @@ class ManagementSession implements ISession {
     private function create() {
         session_regenerate_id();
         $t = time();
-        // TBD: fix ip address deduction
-        $this->_session_storage["ip_address"] = $_SERVER["REMOTE_ADDR"];
+        $this->_session_storage["ip_address"] = $this->make_client_address_string();
         $this->_session_storage["expire"] = $t + self::SEC_UNTIL_EXPIRE;
         $this->_session_storage["refresh"] = $t + self::SEC_UNTIL_REFRESH;
     }
@@ -255,10 +255,15 @@ class ManagementSession implements ISession {
         }
         
         $mask = 0;
-        if (time() > $this->_session_storage["expire"])                         $mask |= self::L_EXPIRED_ACCESS;
-        // TBD: fix ip address deduction
-        if ($this->_session_storage["ip_address"] !== $_SERVER["REMOTE_ADDR"])  $mask |= self::L_BAD_IPADDR_ACCESS;
-        if (array_key_exists("invalidated", $this->_session_storage))           $mask |= self::L_INVALIDATED_ACCESS;
+        if (time() > $this->_session_storage["expire"]) {
+            $mask |= self::L_EXPIRED_ACCESS;
+        }
+        if ($this->_session_storage["ip_address"] !== $this->make_client_address_string()) {
+            $mask |= self::L_BAD_IPADDR_ACCESS;
+        }
+        if (array_key_exists("invalidated", $this->_session_storage)) {
+            $mask |= self::L_INVALIDATED_ACCESS;
+        }
         
         return $mask;
     }
@@ -316,6 +321,14 @@ class ManagementSession implements ISession {
     }
     
     
+    private function make_client_address_string() {
+        $addrs = (new \ClientInfo())->get_ip_addresses();
+        return implode("_", array_map(function($ipaddr, $key) {
+            return "{$key}:{$ipaddr}";
+        }, $addrs, array_keys($addrs)));
+    }
+    
+    
     private function log($mask, array $data) {
         if ($this->_log_mask & $mask) {
             if (is_writable(self::LOG_FILE) || (!file_exists(self::LOG_FILE) && is_writable(dirname(self::LOG_FILE)))) {
@@ -323,8 +336,7 @@ class ManagementSession implements ISession {
                 $data_str = json_encode($data);
                 $dt = date("Y-m-d H:i:s");
                 $sid = substr(session_id(), 0, 64); // substr just for input sanitation
-                // TBD: fix ip address deduction
-                file_put_contents(self::LOG_FILE, "[{$dt}] [{$sid}] [{$_SERVER["REMOTE_ADDR"]}] [0x{$mask_str}] {$data_str}" . PHP_EOL, FILE_APPEND);
+                file_put_contents(self::LOG_FILE, "[{$dt}] [{$sid}] [{$this->make_client_address_string()}] [0x{$mask_str}] {$data_str}" . PHP_EOL, FILE_APPEND);
             } else {
                 $f = self::LOG_FILE;
                 $d = dirname(self::LOG_FILE);
