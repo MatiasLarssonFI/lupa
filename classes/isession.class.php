@@ -22,6 +22,8 @@ interface ISession {
     /**
      * Returns true if the data exists.
      *
+     * The data must have been previously set with set_data().
+     *
      * @param string $key
      * @return bool True if the data exists.
      */
@@ -29,7 +31,9 @@ interface ISession {
     
     
     /**
-     * Get data from session previously set with set_data().
+     * Get data from session.
+     *
+     * The data must have been previously set with set_data().
      *
      * @param string $key
      * @return mixed
