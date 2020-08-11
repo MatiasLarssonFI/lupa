@@ -44,7 +44,7 @@ class Session implements ISession {
     private function try_generate_csrf_token() {
         if (!array_key_exists(self::ANTI_CSRF_NAME, $_COOKIE)) {
             if (!array_key_exists("csrf_token", $this->_request_storage)) {
-                $this->_request_storage["csrf_token"] = hash("sha256", bin2hex(openssl_random_pseudo_bytes(4)) . "Houston, we have woodparts.");
+                $this->_request_storage["csrf_token"] = bin2hex(random_bytes(256 / 8)); // 256-bit
             }
             if (PHP_VERSION_ID >= 70300) {
                 setcookie(self::ANTI_CSRF_NAME, $this->_request_storage["csrf_token"], $this->make_cookie_options());
@@ -55,11 +55,6 @@ class Session implements ISession {
         } else if (!array_key_exists("csrf_token", $this->_request_storage)) {
             $this->_request_storage["csrf_token"] = $_COOKIE[self::ANTI_CSRF_NAME];
         }
-    }
-    
-    
-    public function validate_csrf_token($token) {
-        return array_key_exists(self::ANTI_CSRF_NAME, $_COOKIE) && $token === $_COOKIE[self::ANTI_CSRF_NAME];
     }
     
     
@@ -90,7 +85,11 @@ class Session implements ISession {
     }
     
     
-    public function logout() {}
+    public function logout() {
+        if (array_key_exists(self::ANTI_CSRF_NAME, $_COOKIE)) {
+            setcookie(self::ANTI_CSRF_NAME, "", time() - (3600*24), "/", SiteConfigFactory::get()->get_site_config()->host(), true, true);
+        }
+    }
     
     
     public function login() {

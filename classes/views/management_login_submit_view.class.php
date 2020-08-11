@@ -66,7 +66,7 @@ class ManagementLoginSubmitView extends AbstractView {
         $session = \Session::get();
         $validators = array(
             "__csrf_token" => function($token) use ($session) {
-                return $session->validate_csrf_token($token);
+                return strlen($token) > 16 && $token === $session->get_csrf_token();
             },
             "password" => function($str) {
                 $len = strlen($str);

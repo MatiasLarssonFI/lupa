@@ -3,9 +3,9 @@
 namespace Views;
 
 require_once(dirname(__FILE__) . "/abstract_management_view.class.php");
-require_once(dirname(__FILE__) . "/../management_session.class.php");
 require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/../work_item_factory.class.php");
+//require_once(dirname(__FILE__) . "/../anti_csrf_ops.class.php");
 
 
 class WorkItemSubmitView extends AbstractManagementView {
@@ -24,7 +24,7 @@ class WorkItemSubmitView extends AbstractManagementView {
         $is_success = false;
         $notes_success = false;
         
-        if (\ManagementSession::get()->validate_csrf_token($params["__csrf_token"])) {
+        if ($this->validate_csrf_token($params["__csrf_token"])) {
             $wif = \WorkItemFactory::get();
             $action = $params["action"];
             $notes = $params["notes"];
@@ -43,6 +43,9 @@ class WorkItemSubmitView extends AbstractManagementView {
                 $is_success = $notes_success;
                 \DBIF::get()->update_work_item($item, false);
             }
+        } else {
+            //TBD: handle CSRF attack
+            //\AntiCSRFOps::get()->handle_attack("Work item submit", $this->get_session());
         }
         
         header("Content-Type: application/json");
@@ -61,5 +64,10 @@ class WorkItemSubmitView extends AbstractManagementView {
                 "notes_success" => $notes_success,
             ])
         ];
+    }
+    
+    
+    private function validate_csrf_token($token) {
+        return strlen($token) > 16 && $token === $this->get_session()->get_csrf_token();
     }
 }

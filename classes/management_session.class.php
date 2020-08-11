@@ -85,11 +85,6 @@ class ManagementSession implements ISession {
     }
     
     
-    public function validate_csrf_token($token) {
-        return array_key_exists("csrf_token", $this->_session_storage) && $token === $this->_session_storage["csrf_token"];
-    }
-    
-    
     public function set_data($key, $value) {
         $this->_session_storage["user_{$key}"] = $value;
     }

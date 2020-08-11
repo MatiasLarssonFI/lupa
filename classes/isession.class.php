@@ -11,14 +11,6 @@ interface ISession {
     
     
     /**
-     * Returns true if the given token is the valid CSRF token.
-     * 
-     * @return boolean
-     */
-    public function validate_csrf_token($token);
-    
-    
-    /**
      * Set data to session.
      *
      * @param string $key
