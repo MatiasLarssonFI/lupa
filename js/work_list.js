@@ -74,11 +74,11 @@ lupa.workList = {
                     if (response.is_success) {
                         self.onItemNotesSuccess($item);
                     } else {
-                        self.onItemNotesError();
+                        self.onItemNotesError($item);
                     }
                 },
                 error : function() {
-                    self.onItemNotesError();
+                    self.onItemNotesError($item);
                 },
             });
         });
@@ -102,8 +102,9 @@ lupa.workList = {
         var $node = $item.find("[data-notes-status]");
         $node.text(" saved.");
     },
-    onItemNotesError : function() {
-        window.alert("Failed to save notes. Please try again, and refresh the page first.");
+    onItemNotesError : function($item) {
+        var notes = $item.find("[data-item-notes]").val();
+        window.alert("Failed to save notes. Please try again, and refresh the page first. Notes (copy them now because they will be lost): " + notes);
     },
     updateItemCounts : function(counts) {
         for (state in counts) {
