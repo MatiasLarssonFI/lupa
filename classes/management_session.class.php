@@ -25,6 +25,7 @@ require_once(__DIR__ . "/client_info.class.php");
 class ManagementSession implements ISession {
     private $_session_storage; // $_SESSION
     private $_started;
+    private $_client_info;
     
     private static $_inst = null;
     private static $_log_mask = 0x0;
@@ -342,7 +343,7 @@ class ManagementSession implements ISession {
     
     
     private function make_client_address_string() {
-        $addrs = (new \ClientInfo())->get_ip_addresses();
+        $addrs = $this->_client_info->get_ip_addresses();
         return implode("_", array_map(function($ipaddr, $key) {
             return "{$key}:{$ipaddr}";
         }, $addrs, array_keys($addrs)));
@@ -373,6 +374,7 @@ class ManagementSession implements ISession {
         
         $this->_session_storage = [];
         $this->_started = false;
+        $this->_client_info = new \ClientInfo();
         $this->access(false);
     }
 }
