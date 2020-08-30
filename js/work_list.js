@@ -102,7 +102,7 @@ lupa.workList = {
     onItemNotesError : function($item, baseUrl) {
         lupa.refreshAntiCSRFToken(baseUrl);
         var notes = $item.find("[data-item-notes]").val();
-        window.alert("Failed to save notes. Please try again, and refresh the page first. Notes (copy them now because they will be lost): " + notes);
+        window.alert("Failed to save notes. Please try again and if the problem persists, refresh the page. Notes (copy them now because they will be lost): " + notes);
     },
     updateItemCounts : function(counts) {
         for (state in counts) {
