@@ -1,7 +1,3 @@
-lupa.antiCSRFToken = function() {
-    return $("[data-csrf-token]").data("csrfToken");
-};
-
 lupa.managementLogin = {
     _baseUrl: undefined,
     init : function(baseUrl) {

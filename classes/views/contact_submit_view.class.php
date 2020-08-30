@@ -7,6 +7,7 @@ require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/../contact_message_factory.class.php");
 require_once(dirname(__FILE__) . "/../work_item_factory.class.php");
 require_once(dirname(__FILE__) . "/../session.class.php");
+require_once(dirname(__FILE__) . "/../management_session.class.php");
 require_once(dirname(__FILE__) . "/../dbif.class.php");
 
 
@@ -54,7 +55,8 @@ class ContactSubmitView extends AbstractView {
     
     private function get_form_errors(array $form, \UITextStorage $text_storage) {
         $errors = array();
-        $session = \Session::get();
+        $ms = \ManagementSession::get();
+        $session = $ms->has_data(\SessionVar::MANAGEMENT_PERMISSION) ? $ms : \Session::get();
         $validators = array(
             "__csrf_token" => function($token) use ($session) {
                 return strlen($token) > 16 && $token === $session->get_csrf_token();

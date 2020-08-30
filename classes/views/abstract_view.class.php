@@ -48,7 +48,6 @@ abstract class AbstractView implements IView {
         $src_conf = \ResourceConfig::get();
         $dbif = \DBIF::get();
         
-        $data["__csrf_token"] = $this->get_session()->get_csrf_token();
         $data["__base_uri"] = $base_uri;
         $data["__management_url"] = $base_uri;
         $data["__contact_info"] = $this->make_contact_info($text_storage);
@@ -102,6 +101,14 @@ abstract class AbstractView implements IView {
         }
         if (!array_key_exists("allow_hreflang", $data)) {
             $data["allow_hreflang"] = true;
+        }
+        
+        if ($this->allow_cache()) {
+            header("Cache-Control: max-age=7200, must-revalidate");
+        } else {
+            header("Cache-Control: max-age=0, no-store, no-cache, must-revalidate");
+            header("Expires: Thu, 19 Nov 1981 08:52:00 GMT");
+            header("Pragma: no-cache");
         }
         
         echo $twig->render($this->get_template_name(), $data);
@@ -193,6 +200,14 @@ abstract class AbstractView implements IView {
      */
     protected function get_session() {
         return \Session::get();
+    }
+    
+    
+    /**
+     * @return boolean If the view output may be cached
+     */
+    protected function allow_cache() {
+        return false;
     }
     
     

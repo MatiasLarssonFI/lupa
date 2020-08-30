@@ -20,6 +20,11 @@ class InfoFellingView extends AbstractView {
     }
     
     
+    protected function allow_cache() {
+        return true;
+    }
+    
+    
     protected function get_view_data(array $params) {
         $text_storage = \UITextStorage::get();
         $f = \InfoPageContentFactory::get();

@@ -1,7 +1,3 @@
-lupa.antiCSRFToken = function() {
-    return $("[data-csrf-token]").data("csrfToken");
-};
-
 lupa.workList = {
     init : function(baseUrl) {
         this.initStateForm(baseUrl);
@@ -36,11 +32,11 @@ lupa.workList = {
                     if (response.is_success) {
                         self.onItemSubmitSuccess($btn, $item, response);
                     } else {
-                        self.onItemSubmitError($btn);
+                        self.onItemSubmitError($btn, baseUrl);
                     }
                 },
                 error : function() {
-                    self.onItemSubmitError($btn);
+                    self.onItemSubmitError($btn, baseUrl);
                 },
                 complete : function() {
                     $spinner.hide();
@@ -74,11 +70,11 @@ lupa.workList = {
                     if (response.is_success) {
                         self.onItemNotesSuccess($item);
                     } else {
-                        self.onItemNotesError($item);
+                        self.onItemNotesError($item, baseUrl);
                     }
                 },
                 error : function() {
-                    self.onItemNotesError($item);
+                    self.onItemNotesError($item, baseUrl);
                 },
             });
         });
@@ -94,15 +90,17 @@ lupa.workList = {
             window.alert("Progress was saved successfully but notes failed. Notes (copy them now because they will be lost): " + notes);
         }
     },
-    onItemSubmitError : function($btn) {
-        window.alert("Sorry, but an error has occurred. Please try again, and refresh the page first.");
+    onItemSubmitError : function($btn, baseUrl) {
+        lupa.refreshAntiCSRFToken(baseUrl);
+        window.alert("Sorry, but an error has occurred. Please try again and if the problem persists, refresh the page.");
         $btn.prop("disabled", false);
     },
     onItemNotesSuccess : function($item) {
         var $node = $item.find("[data-notes-status]");
         $node.text(" saved.");
     },
-    onItemNotesError : function($item) {
+    onItemNotesError : function($item, baseUrl) {
+        lupa.refreshAntiCSRFToken(baseUrl);
         var notes = $item.find("[data-item-notes]").val();
         window.alert("Failed to save notes. Please try again, and refresh the page first. Notes (copy them now because they will be lost): " + notes);
     },

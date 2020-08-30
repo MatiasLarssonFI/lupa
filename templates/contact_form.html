@@ -3,7 +3,7 @@
 {% endif %}
 
 <form method="post" action="{{ __base_uri }}/{{ __lang }}/contact_submit" class="form-horizontal" data-contact-form>
-    <input type="hidden" name="__csrf_token" value="{{ __csrf_token }}">
+    <input type="hidden" name="__csrf_token" value="" data-csrf-token>
     <input type="hidden" data-is-ajax-input name="is_ajax" value="0">
     <input type="text" name="url" class="contact-url" value="{{ prefill.url }}" autocomplete="off">
     <div class="form-group {{ errors.name is defined ? 'has-error': '' }}">

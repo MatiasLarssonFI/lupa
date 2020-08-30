@@ -1,5 +1,3 @@
-var wp = {};
-
 var lupa = {
     onLoad: function () {
         var toggleNav = function() {
@@ -51,6 +49,24 @@ var lupa = {
                 node.addClass("hidden");
             }, 100);
         });
+    },
+    
+    _antiCSRFToken: undefined,
+    
+    refreshAntiCSRFToken: function(baseUrl) {
+        var self = this;
+        $.ajax({
+            type: "get",
+            url : baseUrl + "/anti_csrf_token",
+            dataType: "json",
+            success : function(response) {
+                self._antiCSRFToken = response.token;
+            }
+        });
+    },
+    
+    antiCSRFToken: function() {
+        return this._antiCSRFToken;
     }
 };
 

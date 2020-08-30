@@ -1,6 +1,6 @@
 !function($) {
-    wp.contact = {
-        init : function() {
+    lupa.contact = {
+        init : function(baseUrl) {
             var self = this;
             $("[data-contact-form]").off("submit").submit(function(e) {
                 e.preventDefault();
@@ -10,6 +10,8 @@
                 var spinner = form.find("[data-ajax-spinner]");
                 
                 form.find("[data-is-ajax-input]").val(1);
+                var $csrfToken = form.find("[data-csrf-token]").val(lupa.antiCSRFToken());
+                
                 $.ajax({
                     type: "post",
                     url : form.attr("action"),
@@ -21,7 +23,8 @@
                     success : function(html) {
                         form.slideUp(600, function() {
                             $("[data-form-content] [data-contact-feedback]").css("opacity", 0).html(html).animate({opacity : 1});
-                            self.init();
+                            lupa.refreshAntiCSRFToken(baseUrl);
+                            self.init(baseUrl);
                         });
                     },
                     error : function() {

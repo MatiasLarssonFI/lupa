@@ -178,7 +178,7 @@
         
         <script src="{{ __base_uri }}/lib/jquery-2.2.4.min.js"></script>
         <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-        <script src="{{ __base_uri }}/js/wp.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
+        <script src="{{ __base_uri }}/js/lupa.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
         <script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
         <script>
             // all AJAX shall actually be asynchronous (duh)
@@ -199,7 +199,8 @@
             
             !function($) {
                 $(document).ready(function() {
-                    wp.contact.init();
+                    lupa.refreshAntiCSRFToken("{{ __base_uri }}");
+                    lupa.contact.init("{{ __base_uri }}");
                 });
             }(jQuery);
         </script>
