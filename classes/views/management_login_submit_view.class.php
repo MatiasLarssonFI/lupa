@@ -66,15 +66,18 @@ class ManagementLoginSubmitView extends AbstractView {
         $errors = array();
         $session = \Session::get();
         $user_ok = false;
+        $csrf_ok = false;
         $user = $form["user"] ?? "";
         $last_failed_ts = 0;
         $retry_delay_s = 10;
         
         $validators = [
-            "__csrf_token" => function($token) use ($session) {
-                return strlen($token) > 16 && $token === $session->get_csrf_token();
+            "__csrf_token" => function($token) use ($session, &$csrf_ok) {
+                return $csrf_ok = (strlen($token) > 16 && $token === $session->get_csrf_token());
             },
-            "user" => function($str) use (&$user_ok, &$last_failed_ts, $retry_delay_s) {
+            "user" => function($str) use (&$user_ok, &$last_failed_ts, $retry_delay_s, &$csrf_ok) {
+                if (!$csrf_ok) return true;
+                
                 // enforce delay between login retries
                 
                 $len = strlen($str);
@@ -90,7 +93,9 @@ class ManagementLoginSubmitView extends AbstractView {
                 $user_ok = true;
                 return true;
             },
-            "password" => function($str) use (&$user_ok, &$user) {
+            "password" => function($str) use (&$user_ok, &$user, &$csrf_ok) {
+                if (!$csrf_ok) return true;
+                
                 // validate user existence and password (only if retry delay was OK)
                 
                 $len = strlen($str);
