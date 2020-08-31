@@ -30,7 +30,7 @@ lupa.workList = {
                 },
                 success : function(response) {
                     if (response.is_success) {
-                        self.onItemSubmitSuccess($btn, $item, response);
+                        self.onItemSubmitSuccess($btn, $item, response, baseUrl);
                     } else {
                         self.onItemSubmitError($btn, baseUrl);
                     }
@@ -68,7 +68,7 @@ lupa.workList = {
                 },
                 success : function(response) {
                     if (response.is_success) {
-                        self.onItemNotesSuccess($item);
+                        self.onItemNotesSuccess($item, baseUrl);
                     } else {
                         self.onItemNotesError($item, baseUrl);
                     }
@@ -79,7 +79,8 @@ lupa.workList = {
             });
         });
     },
-    onItemSubmitSuccess : function($btn, $item, response) {
+    onItemSubmitSuccess : function($btn, $item, response, baseUrl) {
+        lupa.refreshAntiCSRFToken(baseUrl);
         var notes = $item.find("[data-item-notes]").val();
         $btn.text("DONE");
         $item.delay(250).fadeOut(250, function() {
@@ -95,7 +96,8 @@ lupa.workList = {
         window.alert("Sorry, but an error has occurred. Please try again and if the problem persists, refresh the page.");
         $btn.prop("disabled", false);
     },
-    onItemNotesSuccess : function($item) {
+    onItemNotesSuccess : function($item, baseUrl) {
+        lupa.refreshAntiCSRFToken(baseUrl);
         var $node = $item.find("[data-notes-status]");
         $node.text(" saved.");
     },
