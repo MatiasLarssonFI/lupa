@@ -531,9 +531,9 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('en', 'MANAGEMENT_LOGIN_FIELD_PASSWORD', 'Password', NULL, '2020-06-30 12:00:00')
 , ('sv', 'MANAGEMENT_LOGIN_FIELD_PASSWORD', 'Lösenord', NULL, '2020-06-30 12:00:00')
 
-, ('fi', 'MANAGEMENT_LOGIN_FIELD_ERROR_PASSWORD', 'Väärä salasana.', NULL, '2020-06-30 12:00:00')
-, ('en', 'MANAGEMENT_LOGIN_FIELD_ERROR_PASSWORD', 'Wrong password.', NULL, '2020-06-30 12:00:00')
-, ('sv', 'MANAGEMENT_LOGIN_FIELD_ERROR_PASSWORD', 'Fel lösenord.', NULL, '2020-06-30 12:00:00')
+, ('fi', 'MANAGEMENT_LOGIN_FIELD_ERROR_PASSWORD', 'Väärä käyttäjänimi tai salasana.', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_ERROR_PASSWORD', 'Wrong password or username.', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_ERROR_PASSWORD', 'Fel användarnamn eller lösenord.', NULL, '2020-06-30 12:00:00')
 
 , ('fi', 'MANAGEMENT_LOGIN_SUCCESS', 'Tervetuloa.', NULL, '2020-06-30 12:00:00')
 , ('en', 'MANAGEMENT_LOGIN_SUCCESS', 'Welcome.', NULL, '2020-06-30 12:00:00')
@@ -571,6 +571,16 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
   ('fi', 'MANAGEMENT_LOGIN_GENERIC_ERROR', 'Järjestelmävirhe istunnon tallennuksessa.', NULL, '2020-08-02 12:00:00')
 , ('en', 'MANAGEMENT_LOGIN_GENERIC_ERROR', 'System error when saving the session.', NULL, '2020-08-02 12:00:00')
 , ('sv', 'MANAGEMENT_LOGIN_GENERIC_ERROR', 'Systemfel vid session lagring.', NULL, '2020-08-02 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_LOGIN_FIELD_USER', 'Käyttäjä', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_USER', 'User', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_USER', 'Användare', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_LOGIN_FIELD_ERROR_USER', 'Odota %s sekuntia ennen kuin yrität uudelleen.', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_ERROR_USER', 'Please wait for %s seconds before trying again.', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_ERROR_USER', 'Vänta %s sekunder innan du försöker igen.', NULL, '2020-06-30 12:00:00')
 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

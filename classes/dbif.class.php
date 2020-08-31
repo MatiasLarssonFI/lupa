@@ -503,6 +503,41 @@ class DBIF {
     }
     
     
+    public function get_user_last_failed_login_ts($user) {
+        $sql =
+                "SELECT last_failed
+                 from {$this->_table_prefix}auth
+                 where name = :user";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindValue(":user", $user, PDO::PARAM_STR);
+        $stm->execute();
+        return $stm->fetchColumn();
+    }
+    
+    
+    public function get_user_password_hash($user) {
+        $sql =
+                "SELECT password
+                 from {$this->_table_prefix}auth
+                 where name = :user";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindValue(":user", $user, PDO::PARAM_STR);
+        $stm->execute();
+        return $stm->fetchColumn();
+    }
+    
+    
+    public function update_user_last_failed_login_ts($user) {
+        $sql =
+                "UPDATE {$this->_table_prefix}auth
+                 SET last_failed = now()
+                 where name = :user";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindValue(":user", $user, PDO::PARAM_STR);
+        $stm->execute();
+    }
+    
+    
     protected function __construct() {
         $site_conf = \SiteConfigFactory::get()->get_site_config();
         $db_login = $site_conf->db_login_params();

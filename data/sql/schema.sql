@@ -293,3 +293,23 @@ ALTER TABLE `lupa_work_item`
 
 ALTER TABLE `lupa_config` CHANGE `time_created` `time_created` DATETIME NOT NULL;
 ALTER TABLE `lupa_config` ADD UNIQUE(`key`);
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+CREATE TABLE `lupa_auth` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `password` varchar(1023) COLLATE utf8_swedish_ci NOT NULL,
+  `last_failed` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+
+ALTER TABLE `lupa_auth`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
+
+
+ALTER TABLE `lupa_auth`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;

@@ -35,6 +35,7 @@ class ManagementLoginView extends AbstractView {
                 "login_form_title" => $text_storage->text("MANAGEMENT_LOGIN_TITLE"),
                 "submit" => $text_storage->text("MANAGEMENT_LOGIN_SUBMIT"),
                 "field_password" => $text_storage->text("MANAGEMENT_LOGIN_FIELD_PASSWORD"),
+                "field_user" => $text_storage->text("MANAGEMENT_LOGIN_FIELD_USER"),
             ],
             "lang" => $text_storage->get_language(),
         ];
