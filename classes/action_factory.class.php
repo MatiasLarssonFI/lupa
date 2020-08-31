@@ -47,5 +47,15 @@ class ActionFactory {
     }
     
     
+    /**
+     * Returns the primary action when accessing management site.
+     * 
+     * @return string
+     */
+    public function get_primary_management_action() {
+        return "work_list";
+    }
+    
+    
     protected function __construct() {}
 }
