@@ -39,6 +39,7 @@ lupa.managementLogin = {
     },
     onLoginSuccess : function($form, html) {
         var self = this;
+        lupa.refreshAntiCSRFToken(self._baseUrl);
         $form.fadeOut(100, function() {
             $("[data-csrf-token]").remove(); // included in form (html)
             $output = $("[data-form-content] [data-login-feedback]");
