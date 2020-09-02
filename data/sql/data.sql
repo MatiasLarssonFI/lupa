@@ -583,6 +583,38 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'MANAGEMENT_LOGIN_FIELD_ERROR_USER', 'Vänta %s sekunder innan du försöker igen.', NULL, '2020-06-30 12:00:00')
 ;
 
+update lupa_ui_text set `content` = '<span class="orange">Lähetä</span> tarjouspyyntö'
+    where `code` = 'CONTACT_INFO_FP_TITLE' and `language` = 'fi';
+update lupa_ui_text set `content` = '<span class="orange">Begär</span> offert'
+    where `code` = 'CONTACT_INFO_FP_TITLE' and `language` = 'sv';
+update lupa_ui_text set `content` = '<span class="orange">Request</span> a quote'
+    where `code` = 'CONTACT_INFO_FP_TITLE' and `language` = 'en';
+
+update lupa_ui_text set `content` = 'Lähetä meille tarjouspyyntö antamalla tietosi alla olevaan lomakkeeseen.'
+    where `code` = 'CONTACT_PROMPT_TEXT' and `language` = 'fi';
+update lupa_ui_text set `content` = 'Ange din information nedan så tar vi kontakt.'
+    where `code` = 'CONTACT_PROMPT_TEXT' and `language` = 'sv';
+update lupa_ui_text set `content` = 'Send us a quote request by entering your information below.'
+    where `code` = 'CONTACT_PROMPT_TEXT' and `language` = 'en';
+
+update lupa_ui_text set `content` = 'Tarjouspyyntö'
+    where `code` = 'NAV_CONTACT' and `language` = 'fi';
+update lupa_ui_text set `content` = 'Anbudsbegäran'
+    where `code` = 'NAV_CONTACT' and `language` = 'sv';
+update lupa_ui_text set `content` = 'Request a quote'
+    where `code` = 'NAV_CONTACT' and `language` = 'en';
+
+update lupa_ui_text set `content` = 'Tarjouspyyntö'
+    where `code` = 'CONTACT_TITLE' and `language` = 'fi';
+update lupa_ui_text set `content` = 'Anbudsbegäran'
+    where `code` = 'CONTACT_TITLE' and `language` = 'sv';
+update lupa_ui_text set `content` = 'Request a quote'
+    where `code` = 'CONTACT_TITLE' and `language` = 'en';
+
+update lupa_ui_text set `content` = 'Kiitos tarjouspyynnöstäsi. Olemme sinuun yhteydessä pian.'
+    where `code` = 'CONTACT_SUBMIT_TEXT' and `language` = 'fi';
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
