@@ -11,7 +11,7 @@ require_once(__DIR__ . "/../session.class.php");
 
 class ManagementLoginSubmitView extends AbstractView {
     protected function get_required_params() {
-        return [ "__csrf_token", "password", "user", "is_ajax", "url", "company" ];
+        return [ "__csrf_token", "password", "username", "is_ajax", "url", "company" ];
     }
     
     
@@ -67,7 +67,7 @@ class ManagementLoginSubmitView extends AbstractView {
         $session = \Session::get();
         $user_ok = false;
         $csrf_ok = false;
-        $user = $form["user"] ?? "";
+        $user = $form["username"] ?? "";
         $last_failed_ts = 0;
         $retry_delay_s = 10;
         
@@ -75,7 +75,7 @@ class ManagementLoginSubmitView extends AbstractView {
             "__csrf_token" => function($token) use ($session, &$csrf_ok) {
                 return $csrf_ok = (strlen($token) > 16 && $token === $session->get_csrf_token());
             },
-            "user" => function($str) use (&$user_ok, &$last_failed_ts, $retry_delay_s, &$csrf_ok) {
+            "username" => function($str) use (&$user_ok, &$last_failed_ts, $retry_delay_s, &$csrf_ok) {
                 if (!$csrf_ok) return true;
                 
                 // enforce delay between login retries
@@ -111,7 +111,7 @@ class ManagementLoginSubmitView extends AbstractView {
             },
         ];
         $formatters = [
-            "user" => function($msg) use(&$last_failed_ts, $retry_delay_s) {
+            "username" => function($msg) use(&$last_failed_ts, $retry_delay_s) {
                 return sprintf($msg, (strtotime($last_failed_ts) + $retry_delay_s) - time());
             },
         ];
