@@ -169,7 +169,10 @@
                 {% set href = ( link.is_page ? [ __base_uri, __lang, link.get_action ]|join("/") : link.get_action ) %}
                 <li class='{{ link.is_active ? "active " : "" }}lupa-nav-link text-center'>
                     <a href='{{ href }}' title="{{ link.get_text }}">
-                        <span data-link-text>{{ link.get_text }}</span><span class="sr-only"> (current)</span>
+                        <span data-link-text>{{ link.get_text }}</span>
+                        {% if link.is_active %}
+                        <span class="sr-only"> (current)</span>
+                        {% endif %}
                     </a>
                 </li>
             {% endfor %}
