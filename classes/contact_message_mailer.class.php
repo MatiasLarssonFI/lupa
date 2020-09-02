@@ -61,7 +61,7 @@ class ContactMessageMailer implements IMailer {
         $mail->isHTML(true);
     
         $mail->CharSet = PHPMailer::CHARSET_UTF8;
-        $mail->Subject = "{$contactmsg->get_subject()} - LUPA contact";
+        $mail->Subject = "{$contactmsg->get_subject()} - {$host} contact";
         $mail->Body    = $twig->render("contact_email.html", array("message" => $contactmsg));
         $mail->AltBody = $twig->render("contact_email.txt", array("message" => $contactmsg));
 
