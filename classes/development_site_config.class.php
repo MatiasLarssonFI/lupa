@@ -18,6 +18,11 @@ class DevelopmentSiteConfig implements ISiteConfig {
     }
     
     
+    public function email_address_host() {
+        return "lu-pa.fi";
+    }
+    
+    
     public function default_language() {
         return "fi";
     }

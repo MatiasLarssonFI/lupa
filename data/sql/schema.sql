@@ -264,10 +264,10 @@ ALTER TABLE `lupa_service_text` add `link_uri` VARCHAR(255) CHARACTER SET utf8 C
 
 // -- 200630 --
 
-
 CREATE TABLE `lupa_work_item` (
   `id` int(10) UNSIGNED NOT NULL,
   `contact_inbox_id` int(11) NOT NULL,
+  `s_reference` varchar(255) COLLATE utf8_swedish_ci NOT NULL COMMENT 'Subject reference',
   `state` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
   `notes` varchar(2048) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
   `is_archived` tinyint(1) NOT NULL DEFAULT '0',
@@ -278,6 +278,7 @@ CREATE TABLE `lupa_work_item` (
 
 ALTER TABLE `lupa_work_item`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `s_reference` (`s_reference`),
   ADD KEY `contact_inbox_id` (`contact_inbox_id`),
   ADD KEY `state` (`state`),
   ADD KEY `time_created` (`time_created`),

@@ -33,12 +33,14 @@ class WorkItemFactory {
      * Create a work item out of a contact message.
      *
      * @param \IContactMessage $message
+     * @param int $contact_inbox_id
      * @return \WorkItem
      */
-    public function make_from_contact_message(IContactMessage $message) {
+    public function make_from_contact_message(IContactMessage $message, $contact_inbox_id) {
         $now = date("Y-m-d H:i:s");
         return new WorkItem(
               null
+            , date("Ymd") . $contact_inbox_id
             , $message->get_name()
             , $message->get_email()
             , $message->get_subject()
@@ -65,6 +67,7 @@ class WorkItemFactory {
             return \DBIF::get()->yield_work_items($state_filter, $order_col, $order_direction, function(array $row) {
                 return new WorkItem(
                       (int)$row["id"]
+                    , $row["s_reference"]
                     , $row["name"]
                     , $row["email"]
                     , $row["subject"]
@@ -86,11 +89,33 @@ class WorkItemFactory {
      * @param int $id
      * @return \IActionableWorkItem
      */
-    public function getActionableItem($id) {
+    public function get_actionable_item($id) {
+        return $this->get_work_item($id);
+    }
+    
+    
+    /**
+     * Returns a confirmable work item by ID.
+     * 
+     * @param  int $id
+     * @return \IEmailConfirmable
+     */
+    public function get_email_confirmable_item($id) {
+        return $this->get_work_item($id);
+    }
+    
+    
+    /**
+     * Returns the WorkItem.
+     * @param  int $id Database ID.
+     * @return \WorkItem
+     */
+    private function get_work_item($id) {
         $row = \DBIF::get()->get_work_item($id);
         if (is_array($row)) {
             return new WorkItem(
                   (int)$row["id"]
+                , $row["s_reference"]
                 , $row["name"]
                 , $row["email"]
                 , $row["subject"]

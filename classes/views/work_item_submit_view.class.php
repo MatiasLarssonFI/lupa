@@ -29,7 +29,7 @@ class WorkItemSubmitView extends AbstractManagementView {
             $action = $params["action"];
             $notes = $params["notes"];
             
-            $item = $wif->getActionableItem((int)$params["item"]);
+            $item = $wif->get_actionable_item((int)$params["item"]);
             $notes_success = $notes === $item->get_notes();
             if (!$notes_success && mb_strlen($notes) < 2048) {
                 $item->set_notes($notes);

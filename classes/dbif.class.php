@@ -227,6 +227,18 @@ class DBIF {
     
     
     /**
+     * Returns the contact person name.
+     * 
+     * @return string
+     */
+    public function get_contact_person() {
+        $stm = $this->_pdo->prepare("SELECT `value` from {$this->_table_prefix}config where `key` = 'contact_person'");
+        $stm->execute();
+        return $stm->fetchColumn();
+    }
+    
+    
+    /**
      * Returns the mail server URI.
      * 
      * @return string
@@ -405,6 +417,7 @@ class DBIF {
         $sql =
             "SELECT
                  wi.id                  as id
+                ,wi.s_reference         as s_reference
                 ,c.name                 as name
                 ,c.email                as email
                 ,c.subject              as subject
@@ -439,6 +452,7 @@ class DBIF {
         $sql =
             "SELECT
                  wi.id                  as id
+                ,wi.s_reference         as s_reference
                 ,c.name                 as name
                 ,c.email                as email
                 ,c.subject              as subject
@@ -464,8 +478,9 @@ class DBIF {
     
     
     public function insert_work_item(\ISavableWorkItem $work_item, $contact_inbox_id) {
-        $stm = $this->_pdo->prepare("INSERT INTO `{$this->_table_prefix}work_item` (contact_inbox_id, state, time_created, time_state_changed) VALUES(:contact_inbox_id, :state, now(), now())");
+        $stm = $this->_pdo->prepare("INSERT INTO `{$this->_table_prefix}work_item` (contact_inbox_id, s_reference, state, time_created, time_state_changed) VALUES(:contact_inbox_id, :s_reference, :state, now(), now())");
         $stm->bindValue(":contact_inbox_id", $contact_inbox_id, PDO::PARAM_INT);
+        $stm->bindValue(":s_reference", $work_item->get_subject_reference(), PDO::PARAM_STR);
         $stm->bindValue(":state", $work_item->get_state(), PDO::PARAM_STR);
         $stm->execute();
         return $this->_pdo->lastInsertId();

@@ -449,8 +449,10 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 ;
 
  -- 200630
- 
-insert into `lupa_work_item` (contact_inbox_id, state, time_created, time_state_changed) select c.id, 'STATE_NEW', c.time_created, now() from lupa_contact_inbox c where c.time_created < @time_of_release;
+
+# set @time_of_release = '2020-09-06 12:00:00';
+
+insert into `lupa_work_item` (contact_inbox_id, s_reference, state, time_created, time_state_changed) select c.id, concat_ws('/', c.contact_inbox_id, c.time_created), 'STATE_NEW', c.time_created, now() from lupa_contact_inbox c where c.time_created < @time_of_release;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_NEW', 'Työlista - uudet', NULL, '2020-06-30 12:00:00')
@@ -613,6 +615,30 @@ update lupa_ui_text set `content` = 'Request a quote'
 
 update lupa_ui_text set `content` = 'Kiitos tarjouspyynnöstäsi. Olemme sinuun yhteydessä pian.'
     where `code` = 'CONTACT_SUBMIT_TEXT' and `language` = 'fi';
+
+update lupa_ui_text set `content` = 'Länsi-Uudenmaan PuuApu Oy'
+    where `code` = 'CONTACT_TEXT_NAME' and `language` = 'fi';
+update lupa_ui_text set `content` = 'Länsi-Uudenmaan PuuApu Oy'
+    where `code` = 'CONTACT_TEXT_NAME' and `language` = 'en';
+update lupa_ui_text set `content` = 'Nyländska TrädHjälpen Ab'
+    where `code` = 'CONTACT_TEXT_NAME' and `language` = 'sv';
+
+INSERT INTO `lupa_config` (`key`, `value`, `time_edited`, `time_created`) VALUES
+('contact_person', '', NULL, '2020-09-03 12:00:00');
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'CONTACT_CONFIRMATION_BODY', 'Kiitos tarjouspyynnöstäsi. Jos sinulla on lisättävää tai kysymyksiä, ole hyvä ja vastaa tähän viestiin.', NULL, '2020-09-02 12:00:00')
+, ('en', 'CONTACT_CONFIRMATION_BODY', 'Thank you for your message. If you\'d like to add or ask something, please reply to this message.', NULL, '2020-09-02 12:00:00')
+, ('sv', 'CONTACT_CONFIRMATION_BODY', 'Tack för ditt meddelande. Vill du tillägga eller fråga någonting, var god och svara på det här meddelandet.', NULL, '2020-09-02 12:00:00')
+
+, ('fi', 'CONTACT_CONFIRMATION_GREET', 'Hei,', NULL, '2020-09-02 12:00:00')
+, ('en', 'CONTACT_CONFIRMATION_GREET', 'Hello,', NULL, '2020-09-02 12:00:00')
+, ('sv', 'CONTACT_CONFIRMATION_GREET', 'Hej,', NULL, '2020-09-02 12:00:00')
+
+, ('fi', 'CONTACT_CONFIRMATION_BR', 'Terveisin,', NULL, '2020-09-02 12:00:00')
+, ('en', 'CONTACT_CONFIRMATION_BR', 'Best regards,', NULL, '2020-09-02 12:00:00')
+, ('sv', 'CONTACT_CONFIRMATION_BR', 'Med vänlig hälsning,', NULL, '2020-09-02 12:00:00')
+;
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

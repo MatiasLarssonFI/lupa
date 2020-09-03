@@ -6,6 +6,11 @@ trait ReadableWorkItem {
     }
     
     
+    public function get_subject_reference() {
+        return $this->_subject_reference;
+    }
+    
+    
     public function get_name() {
         return $this->_name;
     }

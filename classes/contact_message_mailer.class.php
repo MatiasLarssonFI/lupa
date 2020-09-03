@@ -53,17 +53,17 @@ class ContactMessageMailer implements IMailer {
         }
         
 
-        $mail->addReplyTo($contactmsg->get_email(), $contactmsg->get_name());
-        // note that $mail->setFrom() does not really work
-        $mail->From = "contactform@{$host}";
-        $mail->FromName = 'Contact Form';
-        $mail->addAddress($db->get_contact_email());
+        $mail->addReplyTo($contactmsg->get_reply_to_address(), $contactmsg->get_reply_to_name());
+        // note that $mail->setFrom() does not really work (on PHPMailer 5.2 anyway)
+        $mail->From = $contactmsg->get_sender_address();
+        $mail->FromName = $contactmsg->get_sender_name();
+        $mail->addAddress($contactmsg->get_recipient_address());
         $mail->isHTML(true);
     
         $mail->CharSet = PHPMailer::CHARSET_UTF8;
-        $mail->Subject = "{$contactmsg->get_subject()} - {$host} contact";
-        $mail->Body    = $twig->render("contact_email.html", array("message" => $contactmsg));
-        $mail->AltBody = $twig->render("contact_email.txt", array("message" => $contactmsg));
+        $mail->Subject = $contactmsg->get_subject_line();
+        $mail->Body    = $twig->render($contactmsg->get_html_template_name(), [ "message" => $contactmsg->get_message_data() ]);
+        $mail->AltBody = $twig->render($contactmsg->get_text_template_name(), [ "message" => $contactmsg->get_message_data() ]);
 
         if(!$mail->send()) {
             throw new \RuntimeException("Failed to send contact form e-mail.");

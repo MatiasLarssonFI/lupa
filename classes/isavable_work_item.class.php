@@ -10,6 +10,12 @@ interface ISavableWorkItem {
     /**
      * @return string
      */
+    public function get_subject_reference();
+    
+    
+    /**
+     * @return string
+     */
     public function get_state();
     
     

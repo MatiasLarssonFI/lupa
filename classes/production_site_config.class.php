@@ -14,6 +14,11 @@ class ProductionSiteConfig implements ISiteConfig {
     }
     
     
+    public function email_address_host() {
+        return $this->host();
+    }
+    
+    
     public function default_language() {
         return "fi";
     }

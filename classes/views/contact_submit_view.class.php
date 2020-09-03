@@ -31,11 +31,16 @@ class ContactSubmitView extends AbstractView {
             $errors = $this->get_form_errors($params, $text_storage);
             if (empty($errors)) {
                 $f = \ContactMessageFactory::get();
+                $wif = \WorkItemFactory::get();
+                
                 $message = $f->make_from_values($params["name"], $params["email"], $params["subject"], $params["message"]);
                 $mailer = $f->get_mailer();
                 $contact_inbox_id = \DBIF::get()->insert_contact_message($message);
+                $work_item_id = \DBIF::get()->insert_work_item(\WorkItemFactory::get()->make_from_contact_message($message, $contact_inbox_id), $contact_inbox_id);
+                
                 $mailer->send($message);
-                \DBIF::get()->insert_work_item(\WorkItemFactory::get()->make_from_contact_message($message), $contact_inbox_id);
+                $mailer->send($f->make_confirmation($wif->get_email_confirmable_item($work_item_id)));
+                
                 $is_success = true;
             }
         }
@@ -78,7 +83,7 @@ class ContactSubmitView extends AbstractView {
                 return $len > 0 && $len <= 255;
             },
             "message" => function($message) {
-                return strlen($message) > 3 && strlen($message) <= 4000;
+                return mb_strlen($message) > 3 && mb_strlen($message) <= 4000;
             }
         );
         

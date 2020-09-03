@@ -1,0 +1,6 @@
+{{ greet|raw }}
+
+{{ body|raw }}
+
+{{ br|raw }}
+{{ contact_person|raw }} / {{ contact_company|raw }}
