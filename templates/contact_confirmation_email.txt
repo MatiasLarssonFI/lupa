@@ -2,5 +2,7 @@
 
 {{ message.body|raw }}
 
+{{ message.subject_reference }}
+
 {{ message.br|raw }}
 {{ message.contact_person|raw }} / {{ message.contact_company|raw }}

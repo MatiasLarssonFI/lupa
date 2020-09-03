@@ -4,6 +4,7 @@ require_once(dirname(__FILE__) . "/icontact_message.class.php");
 require_once(dirname(__FILE__) . "/iemail_message.class.php");
 require_once(dirname(__FILE__) . "/dbif.class.php");
 require_once(dirname(__FILE__) . "/site_config_factory.class.php");
+require_once(dirname(__FILE__) . "/ui_text_storage.class.php");
 
 
 class ContactMessage implements IContactMessage, IEmailMessage {
@@ -36,7 +37,8 @@ class ContactMessage implements IContactMessage, IEmailMessage {
     
     public function get_subject() {
         $host = \SiteConfigFactory::get()->get_site_config()->host();
-        return "{$this->_subject} - {$host} contact";
+        $ts = \UITextStorage::get();
+        return "{$this->_subject} - {$host} {$ts->text("CONTACT_TITLE")}";
     }
     
     

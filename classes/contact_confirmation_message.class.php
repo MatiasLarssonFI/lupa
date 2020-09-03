@@ -42,12 +42,12 @@ class ContactConfirmationMessage implements IEmailMessage {
     public function get_message_data() {
         return [
             "name" => $this->_name,
-            "subject_reference" => $this->_subject_reference,
             "contact_person" => \DBIF::get()->get_contact_person(),
             "contact_company" => \UITextStorage::get()->text("CONTACT_TEXT_NAME"),
             "body" => \UITextStorage::get()->text("CONTACT_CONFIRMATION_BODY"),
             "greet" => \UITextStorage::get()->text("CONTACT_CONFIRMATION_GREET"),
             "br" => \UITextStorage::get()->text("CONTACT_CONFIRMATION_BR"),
+            "subject_reference" => sprintf(\UITextStorage::get()->text("CONTACT_CONFIRMATION_SUBJECT_REFERENCE_TMPL"), $this->_subject_reference),
         ];
     }
     

@@ -640,6 +640,12 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'CONTACT_CONFIRMATION_BR', 'Med vänlig hälsning,', NULL, '2020-09-02 12:00:00')
 ;
 
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'CONTACT_CONFIRMATION_SUBJECT_REFERENCE_TMPL', 'Tarjouspyyntönumerosi on %s.', NULL, '2020-09-02 12:00:00')
+, ('en', 'CONTACT_CONFIRMATION_SUBJECT_REFERENCE_TMPL', 'Your quote request number is %s.', NULL, '2020-09-02 12:00:00')
+, ('sv', 'CONTACT_CONFIRMATION_SUBJECT_REFERENCE_TMPL', 'Ditt anbudsbegärannummer är %s.', NULL, '2020-09-02 12:00:00')
+;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

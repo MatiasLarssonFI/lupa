@@ -40,7 +40,7 @@ class WorkItemFactory {
         $now = date("Y-m-d H:i:s");
         return new WorkItem(
               null
-            , date("Ymd") . $contact_inbox_id
+            , date("Ymd") . "20{$contact_inbox_id}"
             , $message->get_name()
             , $message->get_email()
             , $message->get_subject()
