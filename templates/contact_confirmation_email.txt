@@ -1,6 +1,6 @@
-{{ greet|raw }}
+{{ message.greet|raw }}
 
-{{ body|raw }}
+{{ message.body|raw }}
 
-{{ br|raw }}
-{{ contact_person|raw }} / {{ contact_company|raw }}
+{{ message.br|raw }}
+{{ message.contact_person|raw }} / {{ message.contact_company|raw }}
