@@ -6,6 +6,7 @@ require_once(__DIR__ . "/abstract_management_view.class.php");
 require_once(__DIR__ . "/../ui_text_storage.class.php");
 require_once(__DIR__ . "/../work_item_factory.class.php");
 require_once(__DIR__ . "/../dbif.class.php");
+require_once(__DIR__ . "/../action_factory.class.php");
 
 
 class WorkListView extends AbstractManagementView {
@@ -67,6 +68,7 @@ class WorkListView extends AbstractManagementView {
             ],
             "order_col" => $wif->is_valid_order_col($params["order_col"]) ? $params["order_col"] : "",
             "order_dir" => $wif->is_valid_order_direction($params["order_dir"]) ? $params["order_dir"] : "",
+            "logout_action" => \ActionFactory::get()->get_management_logout_submit_action(),
         ];
     }
 }

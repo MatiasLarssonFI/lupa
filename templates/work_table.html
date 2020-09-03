@@ -23,6 +23,10 @@
                 </div>
                 <div class="col-xs-12 col-sm-4 faq-content content-text-padding mtm mbm text-right">
                     <a class="work-state-nav-link" href="{{ base_url_lang }}/work_list/{{ state_filter }}" title="Switch to list view">List view</a>
+                    <form method="post" action="{{ base_url_lang }}/{{ logout_action }}" data-logout-form class="logout-form">
+                        <input type="hidden" name="__csrf_token" value="" data-csrf-token>
+                        <button class="btn btn-sm btn-default" title="Log out">Log out</button>
+                    </form>
                 </div>
             </div>
         </div>

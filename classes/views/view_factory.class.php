@@ -12,6 +12,8 @@ require_once(dirname(__FILE__) . "/info_partners_view.class.php");
 
 require_once(dirname(__FILE__) . "/management_login_view.class.php");
 require_once(dirname(__FILE__) . "/management_login_submit_view.class.php");
+require_once(dirname(__FILE__) . "/management_logout_submit_view.class.php");
+
 require_once(dirname(__FILE__) . "/work_list_view.class.php");
 require_once(dirname(__FILE__) . "/work_item_submit_view.class.php");
 require_once(dirname(__FILE__) . "/anti_csrf_token_view.class.php");
@@ -78,6 +80,8 @@ class ViewFactory {
             return new ManagementLoginView([], $nlf);
         } else if ($action === "management_login_submit") {
             return new ManagementLoginSubmitView($_POST, $nlf);
+        } else if ($action === "management_logout_submit") {
+            return new ManagementLogoutSubmitView($_POST, $nlf);
         } else if ($action === "anti_csrf_token") {
             return new AntiCSRFTokenView([], $nlf);
         }

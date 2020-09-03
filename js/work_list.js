@@ -2,6 +2,7 @@ lupa.workList = {
     init : function(baseUrl) {
         this.initStateForm(baseUrl);
         this.initNotesForm(baseUrl);
+        this.initLogoutForm();
     },
     initStateForm : function(baseUrl) {
         var self = this;
@@ -118,5 +119,10 @@ lupa.workList = {
         }
         // clear highlights with a delay
         setTimeout(function() { $(".work-list-highlight").removeClass("orange work-list-highlight"); }, 1000);
+    },
+    initLogoutForm : function() {
+        $("[data-logout-form]").off("submit").on("submit", function() {
+            $(this).find("[data-csrf-token]").val(lupa.antiCSRFToken());
+        });
     }
 };

@@ -57,5 +57,24 @@ class ActionFactory {
     }
     
     
+    /**
+     * Returns the action when accessing management site login.
+     * 
+     * @return string
+     */
+    public function get_management_login_action() {
+        return "management_login";
+    }
+    
+    
+    /**
+     * Returns the action to submit logout to.
+     * @return string
+     */
+    public function get_management_logout_submit_action() {
+        return "management_logout_submit";
+    }
+    
+    
     protected function __construct() {}
 }
