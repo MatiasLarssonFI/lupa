@@ -7,6 +7,7 @@
 {% set order_dir_title = order_dir_link == "desc" ? "Click to order latest first" : "Click to order oldest first" %}
 
 {% set base_url_lang = __management_url ~ "/" ~ __lang %}
+{% set base_url_lang_view = base_url_lang ~ "/work_list" %}
 
 <main class="work-list">
     <div class="row bg-dark-blue">
@@ -19,18 +20,11 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 faq-content content-text-padding mtm mbm">
                     <strong>View by state:</strong>
-                    <a href="{{ base_url_lang }}/work_list/STATE_NEW" class="work-state-nav-link {{ state_filter == 'STATE_NEW' ? 'active' : '' }}">{{ strings.state.new }} (<span data-item-count-new>{{ item_counts.STATE_NEW }}</span>)</a>
-                    <a href="{{ base_url_lang }}/work_list/STATE_HALTED" class="work-state-nav-link {{ state_filter == 'STATE_HALTED' ? 'active' : '' }}">{{ strings.state.halted }} (<span data-item-count-halted>{{ item_counts.STATE_HALTED }}</span>)</a>
-                    <a href="{{ base_url_lang }}/work_list/STATE_IN_PROGRESS" class="work-state-nav-link {{ state_filter == 'STATE_IN_PROGRESS' ? 'active' : '' }}">{{ strings.state.in_progress }} (<span data-item-count-in_progress>{{ item_counts.STATE_IN_PROGRESS }}</span>)</a>
-                    <a href="{{ base_url_lang }}/work_list/STATE_FINISHED" class="work-state-nav-link {{ state_filter == 'STATE_FINISHED' ? 'active' : '' }}">{{ strings.state.finished }} (<span data-item-count-finished>{{ item_counts.STATE_FINISHED }}</span>)</a>
-                    <a href="{{ base_url_lang }}/work_list/ARCHIVE" class="work-state-nav-link {{ is_archive ? 'active' : '' }}">{{ strings.state.archived }} (<span data-item-count-archive>{{ item_counts.ARCHIVE }}</span>)</a>
+                    {% include "work_list_state_links.html" %}
                 </div>
                 <div class="col-xs-12 col-sm-4 faq-content content-text-padding mtm mbm text-right">
                     <a class="work-state-nav-link" href="{{ base_url_lang }}/work_table/{{ state_filter }}" title="Switch to table view">Table view</a>
-                    <form method="post" action="{{ base_url_lang }}/{{ logout_action }}" data-logout-form class="logout-form">
-                        <input type="hidden" name="__csrf_token" value="" data-csrf-token>
-                        <button class="btn btn-sm btn-default" title="Log out">Log out</button>
-                    </form>
+                    {% include "management_logout_form_inline.html" %}
                 </div>
             </div>
             <div class="row">
@@ -104,13 +98,5 @@
 {% endblock %}
 
 {% block js_link %}
-<script src="{{ __management_url }}/js/work_list.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
-
-<script>
-(function($) {
-    $(window).load(function() {
-        lupa.workList.init("{{ __management_url }}/{{ __lang }}");
-    });
-})(jQuery);
-</script>
+{% include "work_list_js.html" %}
 {% endblock %}

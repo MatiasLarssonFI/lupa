@@ -1,0 +1,9 @@
+<script src="{{ __management_url }}/js/work_list.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
+
+<script>
+(function($) {
+    $(window).load(function() {
+        lupa.workList.init("{{ base_url_lang }}");
+    });
+})(jQuery);
+</script>
