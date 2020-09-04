@@ -452,7 +452,15 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 
 # set @time_of_release = '2020-09-06 12:00:00';
 
-insert into `lupa_work_item` (contact_inbox_id, s_reference, state, time_created, time_state_changed) select c.id, concat_ws('/', c.contact_inbox_id, c.time_created), 'STATE_NEW', c.time_created, now() from lupa_contact_inbox c where c.time_created < @time_of_release;
+insert into `lupa_work_item` (contact_inbox_id, s_reference, state, time_created, time_state_changed)
+    select
+        c.id,
+        concat(date_format(c.time_created, '%Y%m%d'), "20", c.id),
+        'STATE_NEW',
+        c.time_created,
+        now()
+    from lupa_contact_inbox c
+    where c.time_created < @time_of_release;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_NEW', 'Työlista - uudet', NULL, '2020-06-30 12:00:00')
@@ -644,6 +652,13 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
   ('fi', 'CONTACT_CONFIRMATION_SUBJECT_REFERENCE_TMPL', 'Tarjouspyyntönumerosi on %s.', NULL, '2020-09-02 12:00:00')
 , ('en', 'CONTACT_CONFIRMATION_SUBJECT_REFERENCE_TMPL', 'Your quote request number is %s.', NULL, '2020-09-02 12:00:00')
 , ('sv', 'CONTACT_CONFIRMATION_SUBJECT_REFERENCE_TMPL', 'Ditt anbudsbegärannummer är %s.', NULL, '2020-09-02 12:00:00')
+;
+
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_SUBJECT_REFERENCE_LABEL_SHORT', 'TP-numero', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_SUBJECT_REFERENCE_LABEL_SHORT', 'QR-number', NULL, '2020-09-02 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_SUBJECT_REFERENCE_LABEL_SHORT', 'AB-nummer', NULL, '2020-09-02 12:00:00')
 ;
 
 

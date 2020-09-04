@@ -54,7 +54,8 @@ class WorkListView extends AbstractManagementView {
                 "action" => [
                     "archive" => $text_storage->text("MANAGEMENT_WORK_LIST_ACTION_ARCHIVE"),
                     "halt" => $text_storage->text("MANAGEMENT_WORK_LIST_ACTION_HALT"),
-                ]
+                ],
+                "subject_reference_short" => $text_storage->text("MANAGEMENT_WORK_LIST_SUBJECT_REFERENCE_LABEL_SHORT"),
             ],
             "items" => $wif->yield_items($params["state_filter"], $params["order_col"], $params["order_dir"]),
             "state_filter" => $is_valid_state_filter ? $params["state_filter"] : "",

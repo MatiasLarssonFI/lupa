@@ -76,13 +76,13 @@
                                     <textarea class="form-control" id="notesInput" data-item-notes data-item="{{ item.get_id }}" maxlength="2047">{{ item.get_notes }}</textarea>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
-                                    <span class="work-list-item-details__term">ID number</span>
-                                    <span class="work-list-item-details__value" title="{{ item.get_message }}">{{ item.get_id }}</span>
+                                    <span class="work-list-item-details__term"><a href="{{ base_url_lang_view }}/{{ state_filter }}/s_reference/{{ order_dir_link }}" title="{{ order_dir_title }}">{{ strings.subject_reference_short }}</a></span>
+                                    <span class="work-list-item-details__value">{{ item.get_subject_reference }}</span>
                                     <br>
-                                    <span class="work-list-item-details__term"><a href="{{ base_url_lang }}/work_list/{{ state_filter }}/ts_created/{{ order_dir_link }}" title="{{ order_dir_title }}">Created</a></span>
+                                    <span class="work-list-item-details__term"><a href="{{ base_url_lang_view }}/{{ state_filter }}/ts_created/{{ order_dir_link }}" title="{{ order_dir_title }}">Created</a></span>
                                     <span class="work-list-item-details__value">{{ item.get_datetime_created }}</span>
                                     <br>
-                                    <span class="work-list-item-details__term"><a href="{{ base_url_lang }}/work_list/{{ state_filter }}/ts_state/{{ order_dir_link }}" title="{{ order_dir_title }}">Changed</a></span>
+                                    <span class="work-list-item-details__term"><a href="{{ base_url_lang_view }}/{{ state_filter }}/ts_state/{{ order_dir_link }}" title="{{ order_dir_title }}">Changed</a></span>
                                     <span class="work-list-item-details__value">{{ item.get_datetime_state }}</span>
                                 </div>
                             </div>

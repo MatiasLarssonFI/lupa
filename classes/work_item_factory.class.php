@@ -134,17 +134,17 @@ class WorkItemFactory {
     
     public function is_valid_state($state_str) {
         // note: archive is not really a state but included for convenience here
-        return strlen($state_str) < 64 && in_array($state_str, [ self::STATE_NEW, self::STATE_IN_PROGRESS, self::STATE_HALTED, self::STATE_FINISHED, \WorkItemFactory::ARCHIVE ]);
+        return in_array($state_str, [ self::STATE_NEW, self::STATE_IN_PROGRESS, self::STATE_HALTED, self::STATE_FINISHED, \WorkItemFactory::ARCHIVE ]);
     }
     
     
     public function is_valid_order_col($order_col) {
-        return strlen($order_col) < 64 && in_array($order_col, [ "name", "ts_created", "ts_state" ]);
+        return in_array($order_col, [ "name", "ts_created", "ts_state", "s_reference" ]);
     }
     
     
     public function is_valid_order_direction($order_direction) {
-        return strlen($order_direction) < 64 && in_array($order_direction, [ "desc", "asc" ]);
+        return in_array($order_direction, [ "desc", "asc" ]);
     }
     
     

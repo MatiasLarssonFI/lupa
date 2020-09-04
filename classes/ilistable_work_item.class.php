@@ -71,4 +71,10 @@ interface IListableWorkItem {
      * @return string
      */
     public function get_datetime_state();
+    
+    
+    /**
+     * @return string
+     */
+    public function get_subject_reference();
 }
