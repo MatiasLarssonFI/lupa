@@ -368,6 +368,8 @@ class ManagementSession implements ISession {
     
     
     protected function __construct() {
+        ini_set("session.gc_maxlifetime", self::SEC_UNTIL_EXPIRE);
+        
         if (PHP_VERSION_ID < 70100) {
             throw new \LogicException("PHP 7.1.0 or newer is required.");
         }
