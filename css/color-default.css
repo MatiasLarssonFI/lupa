@@ -381,3 +381,10 @@ span.orange {
 .work-state-nav-link.active {
     font-weight: bold;
 }
+
+
+.work-list-item-disabled > td:first-child,
+.work-list-item-disabled > td:nth-child(2) {
+    opacity: 0.6;
+}
+

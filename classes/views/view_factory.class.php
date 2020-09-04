@@ -16,6 +16,7 @@ require_once(dirname(__FILE__) . "/management_logout_submit_view.class.php");
 
 require_once(dirname(__FILE__) . "/work_list_view.class.php");
 require_once(dirname(__FILE__) . "/work_item_submit_view.class.php");
+require_once(dirname(__FILE__) . "/work_item_mass_submit_view.class.php");
 require_once(dirname(__FILE__) . "/anti_csrf_token_view.class.php");
 
 require_once(dirname(__FILE__) . "/../nav_link_factory.class.php");
@@ -76,6 +77,8 @@ class ViewFactory {
             ], $nlf, $action === "work_table");
         } else if ($action === "work_item_submit") {
             return new WorkItemSubmitView($_POST, $nlf);
+        } else if ($action === "work_item_mass_submit") {
+            return new WorkItemMassSubmitView($_POST, $nlf);
         } else if ($action === "management_login") {
             return new ManagementLoginView([], $nlf);
         } else if ($action === "management_login_submit") {

@@ -148,5 +148,27 @@ class WorkItemFactory {
     }
     
     
+    public static function state_actions() {
+        return [
+            [
+                "action" => "Start",
+                "text" => "→" . \UITextStorage::get()->text("MANAGEMENT_WORK_LIST_ACTION_START")
+            ],
+            [
+                "action" => "Finish",
+                "text" => "→" . \UITextStorage::get()->text("MANAGEMENT_WORK_LIST_ACTION_FINISH")
+            ],
+            [
+                "action" => "Halt",
+                "text" => \UITextStorage::get()->text("MANAGEMENT_WORK_LIST_ACTION_HALT")
+            ],
+            [
+                "action" => "Archive",
+                "text" => \UITextStorage::get()->text("MANAGEMENT_WORK_LIST_ACTION_ARCHIVE")
+            ],
+        ];
+    }
+    
+    
     private function __construct() {}
 }

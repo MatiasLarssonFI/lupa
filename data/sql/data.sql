@@ -519,7 +519,7 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'MANAGEMENT_WORK_LIST_ACTION_START', 'TP', NULL, '2020-06-30 12:00:00')
-, ('en', 'MANAGEMENT_WORK_LIST_ACTION_START', 'RQ', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ACTION_START', 'QR', NULL, '2020-06-30 12:00:00')
 , ('sv', 'MANAGEMENT_WORK_LIST_ACTION_START', 'AB', NULL, '2020-06-30 12:00:00')
 
 , ('fi', 'MANAGEMENT_WORK_LIST_ACTION_FINISH', 'Tarjottu', NULL, '2020-06-30 12:00:00')
@@ -661,6 +661,53 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'MANAGEMENT_WORK_LIST_SUBJECT_REFERENCE_LABEL_SHORT', 'AB-nummer', NULL, '2020-09-02 12:00:00')
 ;
 
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_MASS_ACTION_LABEL', 'Toiminto', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_MASS_ACTION_LABEL', 'Action', NULL, '2020-09-02 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_MASS_ACTION_LABEL', 'Funktion', NULL, '2020-09-02 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_MASS_ACTION_SUBMIT', 'Suorita', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_MASS_ACTION_SUBMIT', 'Execute', NULL, '2020-09-02 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_MASS_ACTION_SUBMIT', 'Utför', NULL, '2020-09-02 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_STATE_LINKS_LABEL', 'Näytä tilan mukaan', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE_LINKS_LABEL', 'View by state', NULL, '2020-09-02 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE_LINKS_LABEL', 'Visa efter status', NULL, '2020-09-02 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_NAME'     , 'Nimi'           , NULL , '2020-09-04 12:00:00')
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_EMAIL'    , 'Email'          , NULL , '2020-09-04 12:00:00')
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_SUBJECT'  , 'Aihe'           , NULL , '2020-09-04 12:00:00')
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_MESSAGE'  , 'Viesti'         , NULL , '2020-09-04 12:00:00')
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_NOTES'    , 'Muistiinpanot'  , NULL , '2020-09-04 12:00:00')
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CREATED'  , 'Luotu'          , NULL , '2020-09-04 12:00:00')
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CHANGED'  , 'Muokattu'       , NULL , '2020-09-04 12:00:00')
+
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_NAME'     , 'Name'           , NULL , '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_EMAIL'    , 'Email'          , NULL , '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_SUBJECT'  , 'Subject'        , NULL , '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_MESSAGE'  , 'Message'        , NULL , '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_NOTES'    , 'Notes'          , NULL , '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CREATED'  , 'Created'        , NULL , '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CHANGED'  , 'Changed'        , NULL , '2020-09-04 12:00:00')
+
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_NAME'     , 'Namn'           , NULL , '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_EMAIL'    , 'Email'          , NULL , '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_SUBJECT'  , 'Ämne'           , NULL , '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_MESSAGE'  , 'Meddelande'     , NULL , '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_NOTES'    , 'Anteckning'     , NULL , '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CREATED'  , 'Skapat'         , NULL , '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CHANGED'  , 'Ädrat'          , NULL , '2020-09-04 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_TABLE_VIEW', 'Taulukkonäkymä', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TABLE_VIEW', 'Table view', NULL, '2020-09-02 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TABLE_VIEW', 'Visa tabell', NULL, '2020-09-02 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_LIST_VIEW', 'Listanäkymä', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_LIST_VIEW', 'List view', NULL, '2020-09-02 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_LIST_VIEW', 'Visa list', NULL, '2020-09-02 12:00:00')
+;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

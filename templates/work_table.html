@@ -15,12 +15,30 @@
             <h1 class="faq-title">{{ strings.page_title }}</h1>
             <div class="row">
                 <div class="col-xs-12 col-sm-8 faq-content mtm">
-                    <strong>View by state:</strong>
+                    <strong>{{ strings.state_links_label }}:</strong>
                     {% include "work_list_state_links.html" %}
                 </div>
                 <div class="col-xs-12 col-sm-4 faq-content content-text-padding mtm mbm text-right">
-                    <a class="work-state-nav-link" href="{{ base_url_lang }}/work_list/{{ state_filter }}" title="Switch to list view">List view</a>
+                    <a class="work-state-nav-link" href="{{ base_url_lang }}/work_list/{{ state_filter }}" title="Switch to list view">{{ strings.list_view }}</a>
                     {% include "management_logout_form_inline.html" %}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 faq-content">
+            <div class="row">
+                <div class="col-xs-6 col-sm-4">
+                    <strong>{{ strings.mass_action_label }}</strong>
+                    <select class="form-control" data-mass-action-select>
+                        <option value="none">-
+                        {% for state_action in state_actions %}
+                            <option value="{{ state_action.action }}">{{ state_action.text }}
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-xs-6 col-sm-4">
+                    <span>&nbsp;</span><br>
+                    <button class="btn btn-success mbm" data-mass-action-submit>{{ strings.mass_submit_button }}</button>
+                    <img data-mass-action-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
                 </div>
             </div>
         </div>
@@ -28,54 +46,42 @@
             <table class="table table-condensed table-striped bg-white mtm">
                 <thead>
                     <tr>
+                        <th></th>
                         <th><a href="{{ base_url_lang_view }}/{{ state_filter }}/s_reference/{{ order_dir_link }}" title="{{ order_dir_title }}">{{ strings.subject_reference_short }}</a></th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Subject</th>
-                        <th>Message</th>
-                        <th>Notes</th>
-                        <th><a href="{{ base_url_lang_view }}/{{ state_filter }}/ts_created/{{ order_dir_link }}" title="{{ order_dir_title }}">Created</a></th>
-                        <th><a href="{{ base_url_lang_view }}/{{ state_filter }}/ts_state/{{ order_dir_link }}" title="{{ order_dir_title }}">Changed</a></th>
-                        <th>Action</th>
+                        <th>{{ strings.label_name }}</th>
+                        <th>{{ strings.label_email }}</th>
+                        <th>{{ strings.label_subject }}</th>
+                        <th>{{ strings.label_message }}</th>
+                        <th>{{ strings.label_notes }}</th>
+                        <th><a href="{{ base_url_lang_view }}/{{ state_filter }}/ts_created/{{ order_dir_link }}" title="{{ order_dir_title }}">{{ strings.label_created }}</a></th>
+                        <th><a href="{{ base_url_lang_view }}/{{ state_filter }}/ts_state/{{ order_dir_link }}" title="{{ order_dir_title }}">{{ strings.label_changed }}</a></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in items %}
                     
                     <tr data-list-item="{{ item.get_id }}">
-                        <td>{{ item.get_subject_reference }}</td>
+                        <td>
+                            <input
+                                   type="checkbox"
+                                   data-mass-action-checkbox="{{ item.get_id }}"
+                                   data-item-state-action="{{ item.get_state_action ? item.get_state_action : '' }}"
+                                   data-is-haltable="{{ item.is_haltable ? '1' : '0' }}"
+                                   data-is-archivable="{{ item.is_archivable ? '1' : '0' }}">
+                            
+                            <strong data-error-message></strong>
+                        </td>
+                        <td data-select-checkbox>{{ item.get_subject_reference }}</td>
                         <td>{{ item.get_name }}</td>
                         <td>{{ item.get_email }}</td>
                         <td>{{ item.get_subject }}</td>
                         <td title="{{ item.get_message }}">{{ item.get_message|slice(0,10) }}&hellip;</td>
                         <td>
                             <span data-notes-status class="orange">&nbsp;</span>
-                            <textarea class="form-control" id="notesInput" data-item-notes data-item="{{ item.get_id }}" maxlength="2047">{{ item.get_notes }}</textarea>
+                            <textarea rows="1" class="form-control" id="notesInput" data-item-notes data-item="{{ item.get_id }}" maxlength="2047">{{ item.get_notes }}</textarea>
                         </td>
                         <td>{{ item.get_datetime_created }}</td>
                         <td>{{ item.get_datetime_state }}</td>
-                        <td>
-                            {% if item.get_state_action %}
-                            
-                            <img data-item-action-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
-                            <button class="btn btn-sm btn-success mbm" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">&#8594; {{ item.get_state_action_text }}</button>
-                            
-                            {% endif %}
-                            
-                            {% if item.is_haltable %}
-                            
-                            <img data-item-halt-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
-                            <button class="btn btn-sm btn-danger mbm" data-item="{{ item.get_id }}" data-item-action="halt">{{ strings.action.halt }}</button>
-                            
-                            {% endif %}
-                            
-                            {% if item.is_archivable %}
-                            
-                            <img data-item-archive-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
-                            <button class="btn btn-sm btn-warning mbm" data-item="{{ item.get_id }}" data-item-action="archive">{{ strings.action.archive }}</button>
-                            
-                            {% endif %}
-                        </td>
                     </tr>
                     
                     {% endfor %}
