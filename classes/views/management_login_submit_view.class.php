@@ -28,7 +28,7 @@ class ManagementLoginSubmitView extends AbstractView {
     protected function get_view_data(array $params) {
         $is_success = false;
         $text_storage = \UITextStorage::get();
-        $errors = array();
+        $errors = [];
         if (strlen($params["url"]) === 0 && // url is actually a hidden captcha field, not to be filled
             $params["company"] === "company name oy") { // hidden captcha as well
             $errors = $this->get_form_errors($params, $text_storage);
@@ -45,25 +45,27 @@ class ManagementLoginSubmitView extends AbstractView {
             }
         }
         
-        return array(
-            "strings" => array(
+        return [
+            "strings" => [
                 "page_title" => $text_storage->text("MANAGEMENT_LOGIN_TITLE"),
                 "success_text" => $text_storage->text("MANAGEMENT_LOGIN_SUCCESS"),
                 "select_prompt" => $text_storage->text("MANAGEMENT_LOGIN_SELECT_PROMPT"),
                 "submit" => $text_storage->text("MANAGEMENT_LOGIN_SUBMIT"),
                 "field_password" => $text_storage->text("MANAGEMENT_LOGIN_FIELD_PASSWORD"),
                 "field_user" => $text_storage->text("MANAGEMENT_LOGIN_FIELD_USERNAME"),
-            ),
+                "table_view" => $text_storage->text("MANAGEMENT_WORK_LIST_TABLE_VIEW"),
+                "list_view" => $text_storage->text("MANAGEMENT_WORK_LIST_LIST_VIEW"),
+            ],
             "prefill" => $params,
             "errors" => $errors,
             "is_ajax" => (bool)$params["is_ajax"],
             "is_success" => $is_success,
-        );
+        ];
     }
     
     
     private function get_form_errors(array $form, \UITextStorage $text_storage) {
-        $errors = array();
+        $errors = [];
         $session = \Session::get();
         $user_ok = false;
         $csrf_ok = false;
@@ -116,7 +118,7 @@ class ManagementLoginSubmitView extends AbstractView {
             },
         ];
         
-        $errstr = array();
+        $errstr = [];
         foreach ($this->get_required_params() as $param) {
             $param_upper = strtoupper($param);
             $errstr[$param] = $text_storage->text("MANAGEMENT_LOGIN_FIELD_ERROR_{$param_upper}");
