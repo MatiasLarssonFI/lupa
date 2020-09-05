@@ -1,6 +1,8 @@
 lupa.workList = {
     init : function(baseUrl) {
-        this.initMassStateForm(baseUrl);
+        if ($("[data-mass-action-submit]").length > 0) {
+            this.initMassStateForm(baseUrl);
+        }
         this.initStateForm(baseUrl);
         this.initNotesForm(baseUrl);
         this.initLogoutForm();
