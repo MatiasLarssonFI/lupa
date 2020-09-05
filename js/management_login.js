@@ -50,17 +50,18 @@ lupa.managementLogin = {
                 var s = 4;
                 var txt = $link.text();
                 $link.text(txt + " (" + s + " s)");
+                var iv = undefined;
                 var updateAutoNav = function() {
                     if (s > 0) {
                         s -= 1;
                         $link.text(txt + " (" + s + " s)");
-                        setTimeout(updateAutoNav, s*1000);
                     }
                     else {
+                        clearInterval(iv);
                         window.location = $link.attr("href");
                     }
                 };
-                updateAutoNav();
+                iv = setInterval(updateAutoNav, 1000);
             } else {
                 self.initLoginForm();
             }
