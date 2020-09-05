@@ -52,7 +52,7 @@ class ManagementLoginSubmitView extends AbstractView {
                 "select_prompt" => $text_storage->text("MANAGEMENT_LOGIN_SELECT_PROMPT"),
                 "submit" => $text_storage->text("MANAGEMENT_LOGIN_SUBMIT"),
                 "field_password" => $text_storage->text("MANAGEMENT_LOGIN_FIELD_PASSWORD"),
-                "field_user" => $text_storage->text("MANAGEMENT_LOGIN_FIELD_USER"),
+                "field_user" => $text_storage->text("MANAGEMENT_LOGIN_FIELD_USERNAME"),
             ),
             "prefill" => $params,
             "errors" => $errors,

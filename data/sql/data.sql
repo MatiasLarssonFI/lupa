@@ -584,13 +584,13 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 ;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
-  ('fi', 'MANAGEMENT_LOGIN_FIELD_USER', 'Käyttäjä', NULL, '2020-06-30 12:00:00')
-, ('en', 'MANAGEMENT_LOGIN_FIELD_USER', 'User', NULL, '2020-06-30 12:00:00')
-, ('sv', 'MANAGEMENT_LOGIN_FIELD_USER', 'Användare', NULL, '2020-06-30 12:00:00')
+  ('fi', 'MANAGEMENT_LOGIN_FIELD_USERNAME', 'Käyttäjä', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_USERNAME', 'User', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_USERNAME', 'Användare', NULL, '2020-06-30 12:00:00')
 
-, ('fi', 'MANAGEMENT_LOGIN_FIELD_ERROR_USER', 'Odota %s sekuntia ennen kuin yrität uudelleen.', NULL, '2020-06-30 12:00:00')
-, ('en', 'MANAGEMENT_LOGIN_FIELD_ERROR_USER', 'Please wait for %s seconds before trying again.', NULL, '2020-06-30 12:00:00')
-, ('sv', 'MANAGEMENT_LOGIN_FIELD_ERROR_USER', 'Vänta %s sekunder innan du försöker igen.', NULL, '2020-06-30 12:00:00')
+, ('fi', 'MANAGEMENT_LOGIN_FIELD_ERROR_USERNAME', 'Odota %s sekuntia ennen kuin yrität uudelleen.', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_ERROR_USERNAME', 'Please wait for %s seconds before trying again.', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_ERROR_USERNAME', 'Vänta %s sekunder innan du försöker igen.', NULL, '2020-06-30 12:00:00')
 ;
 
 update lupa_ui_text set `content` = '<span class="orange">Lähetä</span> tarjouspyyntö'

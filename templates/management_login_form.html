@@ -9,12 +9,12 @@
 <form method="post" action="{{ __base_uri }}/{{ __lang }}/management_login_submit" class="form-horizontal" data-login-form>
     <input type="hidden" data-is-ajax-input name="is_ajax" value="0">
     <input type="text" name="url" class="contact-url" value="{{ prefill.url }}" autocomplete="off">
-    <div class="form-group {{ errors.user is defined ? 'has-error': '' }}">
+    <div class="form-group {{ errors.username is defined ? 'has-error': '' }}">
         <label for="userInput" class="col-xs-12 col-sm-4">{{ strings.field_user }}</label>
         <div class="col-xs-12 col-sm-8">
             <input id="userInput" type="text" name="username" class="form-control" required>
-            {% if errors.user is defined %}
-                <span class="help-block">{{ errors.user }}<span>
+            {% if errors.username is defined %}
+                <span class="help-block">{{ errors.username }}<span>
             {% endif %}
         </div>
     </div>
