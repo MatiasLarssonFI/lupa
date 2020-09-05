@@ -74,6 +74,7 @@ class ViewFactory {
                 "state_filter" => $this->optional_element(0, "STATE_NEW", $params),
                 "order_col" => $this->optional_element(1, "ts_created", $params),
                 "order_dir" => $this->optional_element(2, "desc", $params),
+                "page" => $this->optional_element(3, "1", $params),
             ], $nlf, $action === "work_table");
         } else if ($action === "work_item_submit") {
             return new WorkItemSubmitView($_POST, $nlf);

@@ -413,7 +413,9 @@ class DBIF {
     }
     
     
-    public function yield_work_items($state_filter, $order_col, $order_direction, $cb_make_item) {
+    public function yield_work_items($state_filter, $order_col, $order_direction, $offset, $count, $cb_make_item) {
+        $offset_sql = (int)$offset;
+        $count_sql = (int)$count;
         $sql =
             "SELECT
                  wi.id                  as id
@@ -436,6 +438,7 @@ class DBIF {
             or (:state_filter = 'ARCHIVE' and wi.is_archived)
 
             order by {$order_col} {$order_direction}
+            limit {$offset_sql}, {$count_sql}
             ";
         
         $stm = $this->_pdo->prepare($sql);

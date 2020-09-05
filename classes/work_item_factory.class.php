@@ -11,8 +11,9 @@ class WorkItemFactory {
     const STATE_IN_PROGRESS = "STATE_IN_PROGRESS";
     const STATE_FINISHED = "STATE_FINISHED";
     const STATE_HALTED = "STATE_HALTED";
-    
     const ARCHIVE = "ARCHIVE";
+    
+    const PAGE_SIZE = 60;
     
     
     /**
@@ -60,11 +61,14 @@ class WorkItemFactory {
      * @param string $state_filter state to filter by
      * @param string $order_col column to order by
      * @param string $order_direction direction to order by
+     * @param int $page Page number
      * @return \IListableWorkItem[] or rather a Generator for those
      */
-    public function yield_items($state_filter, $order_col, $order_direction) {
+    public function yield_items($state_filter, $order_col, $order_direction, $page) {
+        $offset = ($page - 1) * self::PAGE_SIZE;
+        $count = self::PAGE_SIZE;
         if ($this->is_valid_state($state_filter) && $this->is_valid_order_col($order_col) && $this->is_valid_order_direction($order_direction)) {
-            return \DBIF::get()->yield_work_items($state_filter, $order_col, $order_direction, function(array $row) {
+            return \DBIF::get()->yield_work_items($state_filter, $order_col, $order_direction, $offset, $count, function(array $row) {
                 return new WorkItem(
                       (int)$row["id"]
                     , $row["s_reference"]

@@ -709,6 +709,12 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'MANAGEMENT_WORK_LIST_LIST_VIEW', 'Visa list', NULL, '2020-09-02 12:00:00')
 ;
 
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_PAGE_NUMBER', 'Sivu', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_PAGE_NUMBER', 'Page', NULL, '2020-09-02 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_PAGE_NUMBER', 'Sida', NULL, '2020-09-02 12:00:00')
+;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
