@@ -7,6 +7,9 @@ require_once(dirname(__FILE__) . "/site_config_factory.class.php");
 require_once(dirname(__FILE__) . "/ui_text_storage.class.php");
 
 
+/**
+ * Message sent to the personnel.
+ */
 class ContactMessage implements IContactMessage, IEmailMessage {
     /**
      * Constructor.
@@ -36,9 +39,7 @@ class ContactMessage implements IContactMessage, IEmailMessage {
     
     
     public function get_subject() {
-        $host = \SiteConfigFactory::get()->get_site_config()->host();
-        $ts = \UITextStorage::get();
-        return "{$this->_subject} - {$host} {$ts->text("CONTACT_TITLE")}";
+        return $this->_subject;
     }
     
     
@@ -50,7 +51,9 @@ class ContactMessage implements IContactMessage, IEmailMessage {
     // IEmailMessage
     
     public function get_subject_line() {
-        return $this->get_subject();
+        $host = \SiteConfigFactory::get()->get_site_config()->host();
+        $ts = \UITextStorage::get();
+        return "{$this->_subject} - {$host} {$ts->text("CONTACT_TITLE")}";
     }
     
     

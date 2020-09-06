@@ -6,6 +6,9 @@ require_once(dirname(__FILE__) . "/ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/dbif.class.php");
 
 
+/**
+ * Confirmation message sent to the user.
+ */
 class ContactConfirmationMessage implements IEmailMessage {
     private $_name;
     private $_email;
@@ -35,7 +38,9 @@ class ContactConfirmationMessage implements IEmailMessage {
     
     
     public function get_subject_line() {
-        return "[{$this->_subject_reference}] {$this->_subject}";
+        $host = \SiteConfigFactory::get()->get_site_config()->host();
+        $ts = \UITextStorage::get();
+        return "[{$this->_subject_reference}] {$this->_subject} - {$host} {$ts->text("CONTACT_TITLE")}";
     }
     
     

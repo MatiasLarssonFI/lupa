@@ -40,6 +40,10 @@ class ContactMessageFactory {
     
     /**
      * Creates an IEMailMessage object out of an IEMailConfirmable object.
+     * 
+     * The returned IEMailMessage is inteded as a confirmation to be sent
+     * to the user.
+     * 
      * @param \IEMailConfirmable $item
      * @return \IEMailMessage
      */
