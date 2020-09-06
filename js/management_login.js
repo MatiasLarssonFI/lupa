@@ -7,6 +7,8 @@ lupa.managementLogin = {
     initLoginForm : function() {
         var self = this;
         
+        $(".contact-url").attr("tabindex", "-1");
+        
         $("[data-login-form]").off("submit").on("submit", function(e) {
             e.preventDefault();
             

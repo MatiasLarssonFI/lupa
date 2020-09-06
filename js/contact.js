@@ -2,6 +2,9 @@
     lupa.contact = {
         init : function(baseUrl) {
             var self = this;
+            
+            $(".contact-url").attr("tabindex", "-1");
+            
             $("[data-contact-form]").off("submit").submit(function(e) {
                 e.preventDefault();
                 
