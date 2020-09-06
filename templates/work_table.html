@@ -61,7 +61,7 @@
                     {% for item in items %}
                     
                     <tr data-list-item="{{ item.get_id }}">
-                        <td>
+                        <td class=".work-list-checkbox-container">
                             <input
                                    type="checkbox"
                                    data-mass-action-checkbox="{{ item.get_id }}"
@@ -71,7 +71,7 @@
                             
                             <strong data-error-message></strong>
                         </td>
-                        <td data-select-checkbox>{{ item.get_subject_reference }}</td>
+                        <td data-select-checkbox class="work-list-clickable">{{ item.get_subject_reference }}</td>
                         <td>{{ item.get_name }}</td>
                         <td>{{ item.get_email }}</td>
                         <td>{{ item.get_subject }}</td>

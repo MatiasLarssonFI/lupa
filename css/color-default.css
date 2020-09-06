@@ -383,8 +383,12 @@ span.orange {
 }
 
 
-.work-list-item-disabled > td:first-child,
-.work-list-item-disabled > td:nth-child(2) {
+.work-list-item-disabled .work-list-checkbox-container,
+.work-list-item-disabled .work-list-clickable {
     opacity: 0.6;
 }
 
+
+.work-list-clickable {
+    cursor: pointer;
+}
