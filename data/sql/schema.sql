@@ -295,9 +295,6 @@ ALTER TABLE `lupa_work_item`
 ALTER TABLE `lupa_config` CHANGE `time_created` `time_created` DATETIME NOT NULL;
 ALTER TABLE `lupa_config` ADD UNIQUE(`key`);
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
 
 CREATE TABLE `lupa_auth` (
   `id` int(10) UNSIGNED NOT NULL,
@@ -314,3 +311,25 @@ ALTER TABLE `lupa_auth`
 
 ALTER TABLE `lupa_auth`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+
+CREATE TABLE `lupa_work_item_history` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `work_item_id` int(10) UNSIGNED NOT NULL,
+  `change_mask` INT UNSIGNED NOT NULL COMMENT 'Mask of changes made',
+  `old_state` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `new_state` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+
+ALTER TABLE `lupa_work_item_history`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `work_item` (`work_item_id`);
+
+
+ALTER TABLE `lupa_work_item_history`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `lupa_work_item_history`
+  ADD CONSTRAINT `fk_work_item` FOREIGN KEY (`work_item_id`) REFERENCES `lupa_work_item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

@@ -491,14 +491,31 @@ class DBIF {
     
     
     public function update_work_item(\ISavableWorkItem $work_item, $record_history) {
-        //TBD: record history
         $stm = $this->_pdo->prepare("UPDATE `{$this->_table_prefix}work_item` SET state = :state, is_archived = :is_archived, notes = :notes, time_state_changed = now() where id = :id");
         $stm->bindValue(":state", $work_item->get_state(), PDO::PARAM_STR);
         $stm->bindValue(":notes", $work_item->get_notes(), PDO::PARAM_STR);
         $stm->bindValue(":is_archived", $work_item->is_archived() ? 1 : 0, PDO::PARAM_INT);
         $stm->bindValue(":id", $work_item->get_id(), PDO::PARAM_INT);
         $stm->execute();
+        
+        if ($record_history) {
+            $this->insert_work_item_history($work_item);
+        }
+        
         return $work_item->get_id();
+    }
+    
+    
+    private function insert_work_item_history(\ISavableWorkItem $work_item) {
+        $sql = "INSERT INTO `{$this->_table_prefix}work_item_history`
+           (work_item_id, change_mask, old_state, new_state, created)
+            VALUES (:work_item_id, :change_mask, :old_state, :new_state, now())";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindValue(":work_item_id", $work_item->get_id(), PDO::PARAM_INT);
+        $stm->bindValue(":old_state", $work_item->get_previous_state(), PDO::PARAM_STR);
+        $stm->bindValue(":new_state", $work_item->get_state(), PDO::PARAM_STR);
+        $stm->bindValue(":change_mask", $work_item->get_change_mask(), PDO::PARAM_STR);
+        $stm->execute();
     }
     
     

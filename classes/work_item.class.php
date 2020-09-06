@@ -6,10 +6,12 @@ require_once(__DIR__ . "/iemail_confirmable.class.php");
 
 require_once(__DIR__ . "/readable_work_item.class.php");
 require_once(__DIR__ . "/actionable_work_item.class.php");
+require_once(__DIR__ . "/recordable_work_item.class.php");
 
 class WorkItem implements IListableWorkItem, IActionableWorkItem, ISavableWorkItem, IEmailConfirmable {
     use ReadableWorkItem;
     use ActionableWorkItem;
+    use RecordableWorkItem;
     
     private $_id;
     private $_subject_reference;
