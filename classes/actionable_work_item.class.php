@@ -62,6 +62,7 @@ trait ActionableWorkItem {
     
     public function try_perform_halt() {
         if ($this->is_haltable()) {
+            $this->set_previous_state($this->_state);
             $this->_state = "STATE_HALTED";
             $this->add_change(\ISavableWorkItem::CM_STATE_CHANGED);
             \DBIF::get()->update_work_item($this, true);
