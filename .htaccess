@@ -1,5 +1,11 @@
 RewriteEngine On
 
+# Maintenance
+#RewriteCond %{REQUEST_URI} !/maintenance.html$ [NC]
+#RewriteCond %{REQUEST_URI} !\.(jpe?g?|png|gif) [NC]
+#Header set Content-Type "text/html; charset=utf-8"
+#RewriteRule .* /maintenance.html [R=302,L]
+
 # se -> sv
 RewriteRule "^/?se/?(.*)$" "/sv/$1" [L,R=301]
 
