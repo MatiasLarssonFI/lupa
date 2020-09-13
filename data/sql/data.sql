@@ -448,6 +448,273 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'PH_CONTACT_MESSAGE', 'Om möjligt, ge en platsbeskrivning och adress samt tidtabell och telefonnummer.', NULL, '2020-05-23 12:00:00')
 ;
 
+ -- 200630
+
+set @old_messages = "2020-06-01 00:00:00";
+
+insert into `lupa_work_item` (contact_inbox_id, s_reference, state, time_created, time_state_changed)
+    select
+        c.id,
+        concat(date_format(c.time_created, '%Y%m%d'), "20", c.id),
+        'STATE_NEW',
+        c.time_created,
+        now()
+    from lupa_contact_inbox c
+    where c.time_created >= @old_messages;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_NEW', 'Työlista - uudet', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_NEW', 'Work list - new', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_NEW', 'Uppgifter - nya', NULL, '2020-06-30 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_IN_PROGRESS', 'Työlista - tarjouspyynnöt', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_IN_PROGRESS', 'Work list - requests for quote', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_IN_PROGRESS', 'Uppgifter - anbudsbegäranden', NULL, '2020-06-30 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_FINISHED', 'Työlista - tarjottu', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_FINISHED', 'Work list - quoted', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_FINISHED', 'Uppgifter - bjudit', NULL, '2020-06-30 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Työlista - ohitetut', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Work list - skipped', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_STATE_HALTED', 'Uppgifter - skippat', NULL, '2020-06-30 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_TITLE_ARCHIVED', 'Työlista - arkisto', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TITLE_ARCHIVED', 'Work list - archive', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TITLE_ARCHIVED', 'Uppgifter - arkiv', NULL, '2020-06-30 12:00:00')
+;
+
+-- 200725
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_STATE_NEW', 'Uusi', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE_NEW', 'New', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE_NEW', 'Ny', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_STATE_IN_PROGRESS', 'Tarjouspyyntö', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE_IN_PROGRESS', 'Request for quote', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE_IN_PROGRESS', 'Anbudsbegäranden', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_STATE_FINISHED', 'Tarjottu', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE_FINISHED', 'Quoted', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE_FINISHED', 'Bjudit', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_STATE_HALTED', 'Ohitettu', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE_HALTED', 'Skipped', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE_HALTED', 'Skippat', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_STATE_ARCHIVED', 'Arkistoitu', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE_ARCHIVED', 'Archived', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE_ARCHIVED', 'Arkiverat', NULL, '2020-06-30 12:00:00')
+;
+
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_ACTION_START', 'TP', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ACTION_START', 'QR', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ACTION_START', 'AB', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_ACTION_FINISH', 'Tarjottu', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ACTION_FINISH', 'Quoted', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ACTION_FINISH', 'Bjudit', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_ACTION_HALT', 'Ohita', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ACTION_HALT', 'Skip', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ACTION_HALT', 'Skippa', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_ACTION_ARCHIVE', 'Arkistoi', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ACTION_ARCHIVE', 'Archive', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ACTION_ARCHIVE', 'Arkivera', NULL, '2020-06-30 12:00:00')
+;
+
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_LOGIN_FIELD_PASSWORD', 'Salasana', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_PASSWORD', 'Password', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_PASSWORD', 'Lösenord', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_LOGIN_FIELD_ERROR_PASSWORD', 'Väärä käyttäjänimi tai salasana.', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_ERROR_PASSWORD', 'Wrong password or username.', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_ERROR_PASSWORD', 'Fel användarnamn eller lösenord.', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_LOGIN_SUCCESS', 'Tervetuloa.', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_SUCCESS', 'Welcome.', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_SUCCESS', 'Välkommen.', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_LOGIN_SELECT_PROMPT', 'Valitse näkymä.', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_SELECT_PROMPT', 'Please select a view.', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_SELECT_PROMPT', 'Välj vy.', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_LOGIN_TITLE', 'Sisäänkirjaus', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_TITLE', 'Login', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_TITLE', 'Login', NULL, '2020-06-30 12:00:00')
+;
+
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_LOGIN_SUBMIT', 'Kirjaudu', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_SUBMIT', 'Log in', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_SUBMIT', 'Logga in', NULL, '2020-06-30 12:00:00')
+;
+
+
+INSERT INTO `lupa_config` (`key`, `value`, `time_edited`, `time_created`) VALUES
+('session_notifications', '0', NULL, '2020-08-01 12:00:00');
+
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_LOGIN_FIELD_ERROR___CSRF_TOKEN', 'Lomake on vanhentunut. Ole hyvä ja yritä uudelleen.', NULL, '2020-08-02 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_ERROR___CSRF_TOKEN', 'The form has expired. Please try again.', NULL, '2020-08-02 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_ERROR___CSRF_TOKEN', 'Formen har löpt ut. Var god försök igen.', NULL, '2020-08-02 12:00:00')
+;
+
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_LOGIN_GENERIC_ERROR', 'Järjestelmävirhe istunnon tallennuksessa.', NULL, '2020-08-02 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_GENERIC_ERROR', 'System error when saving the session.', NULL, '2020-08-02 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_GENERIC_ERROR', 'Systemfel vid session lagring.', NULL, '2020-08-02 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_LOGIN_FIELD_USERNAME', 'Käyttäjä', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_USERNAME', 'User', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_USERNAME', 'Användare', NULL, '2020-06-30 12:00:00')
+
+, ('fi', 'MANAGEMENT_LOGIN_FIELD_ERROR_USERNAME', 'Odota %s sekuntia ennen kuin yrität uudelleen.', NULL, '2020-06-30 12:00:00')
+, ('en', 'MANAGEMENT_LOGIN_FIELD_ERROR_USERNAME', 'Please wait for %s seconds before trying again.', NULL, '2020-06-30 12:00:00')
+, ('sv', 'MANAGEMENT_LOGIN_FIELD_ERROR_USERNAME', 'Vänta %s sekunder innan du försöker igen.', NULL, '2020-06-30 12:00:00')
+;
+
+update lupa_ui_text set `content` = '<span class="orange">Lähetä</span> tarjouspyyntö'
+    where `code` = 'CONTACT_INFO_FP_TITLE' and `language` = 'fi';
+update lupa_ui_text set `content` = '<span class="orange">Begär</span> offert'
+    where `code` = 'CONTACT_INFO_FP_TITLE' and `language` = 'sv';
+update lupa_ui_text set `content` = '<span class="orange">Request</span> a quote'
+    where `code` = 'CONTACT_INFO_FP_TITLE' and `language` = 'en';
+
+update lupa_ui_text set `content` = 'Lähetä meille tarjouspyyntö antamalla tietosi alla olevaan lomakkeeseen.'
+    where `code` = 'CONTACT_PROMPT_TEXT' and `language` = 'fi';
+update lupa_ui_text set `content` = 'Ange din information nedan så tar vi kontakt.'
+    where `code` = 'CONTACT_PROMPT_TEXT' and `language` = 'sv';
+update lupa_ui_text set `content` = 'Send us a quote request by entering your information below.'
+    where `code` = 'CONTACT_PROMPT_TEXT' and `language` = 'en';
+
+update lupa_ui_text set `content` = 'Tarjouspyyntö'
+    where `code` = 'NAV_CONTACT' and `language` = 'fi';
+update lupa_ui_text set `content` = 'Anbudsbegäran'
+    where `code` = 'NAV_CONTACT' and `language` = 'sv';
+update lupa_ui_text set `content` = 'Request a quote'
+    where `code` = 'NAV_CONTACT' and `language` = 'en';
+
+update lupa_ui_text set `content` = 'Tarjouspyyntö'
+    where `code` = 'CONTACT_TITLE' and `language` = 'fi';
+update lupa_ui_text set `content` = 'Anbudsbegäran'
+    where `code` = 'CONTACT_TITLE' and `language` = 'sv';
+update lupa_ui_text set `content` = 'Request a quote'
+    where `code` = 'CONTACT_TITLE' and `language` = 'en';
+
+update lupa_ui_text set `content` = 'Kiitos tarjouspyynnöstäsi. Olemme sinuun yhteydessä pian.'
+    where `code` = 'CONTACT_SUBMIT_TEXT' and `language` = 'fi';
+
+update lupa_ui_text set `content` = 'Länsi-Uudenmaan PuuApu'
+    where `code` = 'CONTACT_TEXT_NAME' and `language` = 'fi';
+update lupa_ui_text set `content` = 'Länsi-Uudenmaan PuuApu'
+    where `code` = 'CONTACT_TEXT_NAME' and `language` = 'en';
+update lupa_ui_text set `content` = 'Nyländska TrädHjälpen'
+    where `code` = 'CONTACT_TEXT_NAME' and `language` = 'sv';
+
+INSERT INTO `lupa_config` (`key`, `value`, `time_edited`, `time_created`) VALUES
+('contact_person', '', NULL, '2020-09-03 12:00:00');
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'CONTACT_CONFIRMATION_BODY', 'Kiitos tarjouspyynnöstäsi. Jos sinulla on lisättävää tai kysymyksiä, ole hyvä ja vastaa tähän viestiin.', NULL, '2020-09-02 12:00:00')
+, ('en', 'CONTACT_CONFIRMATION_BODY', 'Thank you for your message. If you\'d like to add or ask something, please reply to this message.', NULL, '2020-09-02 12:00:00')
+, ('sv', 'CONTACT_CONFIRMATION_BODY', 'Tack för ditt meddelande. Vill du tillägga eller fråga någonting, var god och svara på det här meddelandet.', NULL, '2020-09-02 12:00:00')
+
+, ('fi', 'CONTACT_CONFIRMATION_GREET', 'Hei,', NULL, '2020-09-02 12:00:00')
+, ('en', 'CONTACT_CONFIRMATION_GREET', 'Hello,', NULL, '2020-09-02 12:00:00')
+, ('sv', 'CONTACT_CONFIRMATION_GREET', 'Hej,', NULL, '2020-09-02 12:00:00')
+
+, ('fi', 'CONTACT_CONFIRMATION_BR', 'Terveisin,', NULL, '2020-09-02 12:00:00')
+, ('en', 'CONTACT_CONFIRMATION_BR', 'Best regards,', NULL, '2020-09-02 12:00:00')
+, ('sv', 'CONTACT_CONFIRMATION_BR', 'Med vänlig hälsning,', NULL, '2020-09-02 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'CONTACT_CONFIRMATION_SUBJECT_REFERENCE_TMPL', 'Tarjouspyyntönumerosi on %s.', NULL, '2020-09-02 12:00:00')
+, ('en', 'CONTACT_CONFIRMATION_SUBJECT_REFERENCE_TMPL', 'Your quote request number is %s.', NULL, '2020-09-02 12:00:00')
+, ('sv', 'CONTACT_CONFIRMATION_SUBJECT_REFERENCE_TMPL', 'Ditt anbudsbegärannummer är %s.', NULL, '2020-09-02 12:00:00')
+;
+
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_SUBJECT_REFERENCE_LABEL_SHORT', 'TP-numero', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_SUBJECT_REFERENCE_LABEL_SHORT', 'QR-number', NULL, '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_SUBJECT_REFERENCE_LABEL_SHORT', 'AB-nummer', NULL, '2020-09-04 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_MASS_ACTION_LABEL', 'Toiminto', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_MASS_ACTION_LABEL', 'Action', NULL, '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_MASS_ACTION_LABEL', 'Funktion', NULL, '2020-09-04 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_MASS_ACTION_SUBMIT', 'Suorita', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_MASS_ACTION_SUBMIT', 'Execute', NULL, '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_MASS_ACTION_SUBMIT', 'Utför', NULL, '2020-09-04 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_STATE_LINKS_LABEL', 'Näytä tilan mukaan', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE_LINKS_LABEL', 'View by state', NULL, '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE_LINKS_LABEL', 'Visa efter status', NULL, '2020-09-04 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_NAME'     , 'Nimi'           , NULL , '2020-09-04 12:00:00')
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_EMAIL'    , 'Email'          , NULL , '2020-09-04 12:00:00')
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_SUBJECT'  , 'Aihe'           , NULL , '2020-09-04 12:00:00')
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_MESSAGE'  , 'Viesti'         , NULL , '2020-09-04 12:00:00')
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_NOTES'    , 'Muistiinpanot'  , NULL , '2020-09-04 12:00:00')
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CREATED'  , 'Luotu'          , NULL , '2020-09-04 12:00:00')
+, ('fi', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CHANGED'  , 'Muokattu'       , NULL , '2020-09-04 12:00:00')
+
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_NAME'     , 'Name'           , NULL , '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_EMAIL'    , 'Email'          , NULL , '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_SUBJECT'  , 'Subject'        , NULL , '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_MESSAGE'  , 'Message'        , NULL , '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_NOTES'    , 'Notes'          , NULL , '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CREATED'  , 'Created'        , NULL , '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CHANGED'  , 'Changed'        , NULL , '2020-09-04 12:00:00')
+
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_NAME'     , 'Namn'           , NULL , '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_EMAIL'    , 'Email'          , NULL , '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_SUBJECT'  , 'Ämne'           , NULL , '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_MESSAGE'  , 'Meddelande'     , NULL , '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_NOTES'    , 'Anteckning'     , NULL , '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CREATED'  , 'Skapat'         , NULL , '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CHANGED'  , 'Ädrat'          , NULL , '2020-09-04 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_TABLE_VIEW', 'Taulukkonäkymä', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_TABLE_VIEW', 'Table view', NULL, '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_TABLE_VIEW', 'Visa tabell', NULL, '2020-09-04 12:00:00')
+
+, ('fi', 'MANAGEMENT_WORK_LIST_LIST_VIEW', 'Listanäkymä', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_LIST_VIEW', 'List view', NULL, '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_LIST_VIEW', 'Visa lista', NULL, '2020-09-04 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_PAGE_NUMBER', 'Sivu', NULL, '2020-09-04 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_PAGE_NUMBER', 'Page', NULL, '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_PAGE_NUMBER', 'Sida', NULL, '2020-09-04 12:00:00')
+;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

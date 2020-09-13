@@ -54,7 +54,7 @@
     var updateServiceImgH = function() {
         $(".service-image").each(function() {
             var parent = $(this);
-            var h = parent.height();
+            var h = parseInt(parent.height());
             parent.find(".service-image__full-layer__img").css("height", h + 1);
         });
     };

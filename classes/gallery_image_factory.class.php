@@ -84,4 +84,7 @@ class GalleryImageFactory {
         
         return $ret;
     }
+    
+    
+    protected function __construct() {}
 }

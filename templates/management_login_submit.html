@@ -1,0 +1,5 @@
+{% extends is_ajax ? "base_ajax.html" : "base.html" %}
+{% block title %}{{ strings.page_title }}{% endblock %}
+{% block content %}
+    {% include is_success ? "management_login_submit_success.html" : "management_login_form.html" %}
+{% endblock %}

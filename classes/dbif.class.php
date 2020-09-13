@@ -1,6 +1,9 @@
 <?php
 
+require_once(dirname(__FILE__) . "/site_config_factory.class.php");
+
 require_once(dirname(__FILE__) . "/icontact_message.class.php");
+require_once(dirname(__FILE__) . "/isavable_work_item.class.php");
 
 
 /**
@@ -224,6 +227,18 @@ class DBIF {
     
     
     /**
+     * Returns the contact person name.
+     * 
+     * @return string
+     */
+    public function get_contact_person() {
+        $stm = $this->_pdo->prepare("SELECT `value` from {$this->_table_prefix}config where `key` = 'contact_person'");
+        $stm->execute();
+        return $stm->fetchColumn();
+    }
+    
+    
+    /**
      * Returns the mail server URI.
      * 
      * @return string
@@ -244,6 +259,18 @@ class DBIF {
         $stm = $this->_pdo->prepare("SELECT `value` from {$this->_table_prefix}config where `key` = 'mail_user'");
         $stm->execute();
         return $stm->fetchColumn();
+    }
+    
+    
+    /**
+     * Returns the session notifications mask.
+     * 
+     * @return int
+     */
+    public function get_session_notifications_mask() {
+        $stm = $this->_pdo->prepare("SELECT `value` from {$this->_table_prefix}config where `key` = 'session_notifications'");
+        $stm->execute();
+        return (int)$stm->fetchColumn();
     }
     
     
@@ -301,6 +328,7 @@ class DBIF {
         $stm->bindParam(":subject", $subject, PDO::PARAM_STR);
         $stm->bindParam(":message", $msg, PDO::PARAM_STR);
         $stm->execute();
+        return $this->_pdo->lastInsertId();
     }
     
     
@@ -385,8 +413,168 @@ class DBIF {
     }
     
     
+    public function yield_work_items($state_filter, $order_col, $order_direction, $offset, $count, $cb_make_item) {
+        $offset_sql = (int)$offset;
+        $count_sql = (int)$count;
+        $sql =
+            "SELECT
+                 wi.id                  as id
+                ,wi.s_reference         as s_reference
+                ,c.name                 as name
+                ,c.email                as email
+                ,c.subject              as subject
+                ,c.message              as message
+                ,wi.notes               as notes
+                ,wi.state               as state
+                ,wi.is_archived         as is_archived
+                ,c.time_created         as ts_created
+                ,wi.time_state_changed  as ts_state
+
+            from {$this->_table_prefix}contact_inbox c
+            inner join {$this->_table_prefix}work_item wi
+                on wi.contact_inbox_id = c.id
+
+            where (wi.state = :state_filter and not wi.is_archived)
+            or (:state_filter = 'ARCHIVE' and wi.is_archived)
+
+            order by {$order_col} {$order_direction}
+            limit {$offset_sql}, {$count_sql}
+            ";
+        
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindParam(":state_filter", $state_filter, PDO::PARAM_STR);
+        $stm->execute();
+        
+        while ($row = $stm->fetch()) {
+            yield $cb_make_item($row);
+        }
+    }
+    
+    
+    public function get_work_item($id) {
+        $sql =
+            "SELECT
+                 wi.id                  as id
+                ,wi.s_reference         as s_reference
+                ,c.name                 as name
+                ,c.email                as email
+                ,c.subject              as subject
+                ,c.message              as message
+                ,wi.notes               as notes
+                ,wi.state               as state
+                ,wi.is_archived         as is_archived
+                ,c.time_created         as ts_created
+                ,wi.time_state_changed  as ts_state
+
+            from {$this->_table_prefix}contact_inbox c
+            inner join {$this->_table_prefix}work_item wi
+                on wi.contact_inbox_id = c.id
+
+            where wi.id = :id
+            ";
+        
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindParam(":id", $id, PDO::PARAM_INT);
+        $stm->execute();
+        return $stm->fetch();
+    }
+    
+    
+    public function insert_work_item(\ISavableWorkItem $work_item, $contact_inbox_id) {
+        $stm = $this->_pdo->prepare("INSERT INTO `{$this->_table_prefix}work_item` (contact_inbox_id, s_reference, state, time_created, time_state_changed) VALUES(:contact_inbox_id, :s_reference, :state, now(), now())");
+        $stm->bindValue(":contact_inbox_id", $contact_inbox_id, PDO::PARAM_INT);
+        $stm->bindValue(":s_reference", $work_item->get_subject_reference(), PDO::PARAM_STR);
+        $stm->bindValue(":state", $work_item->get_state(), PDO::PARAM_STR);
+        $stm->execute();
+        return $this->_pdo->lastInsertId();
+    }
+    
+    
+    public function update_work_item(\ISavableWorkItem $work_item, $record_history) {
+        $stm = $this->_pdo->prepare("UPDATE `{$this->_table_prefix}work_item` SET state = :state, is_archived = :is_archived, notes = :notes, time_state_changed = now() where id = :id");
+        $stm->bindValue(":state", $work_item->get_state(), PDO::PARAM_STR);
+        $stm->bindValue(":notes", $work_item->get_notes(), PDO::PARAM_STR);
+        $stm->bindValue(":is_archived", $work_item->is_archived() ? 1 : 0, PDO::PARAM_INT);
+        $stm->bindValue(":id", $work_item->get_id(), PDO::PARAM_INT);
+        $stm->execute();
+        
+        if ($record_history) {
+            $this->insert_work_item_history($work_item);
+        }
+        
+        return $work_item->get_id();
+    }
+    
+    
+    private function insert_work_item_history(\ISavableWorkItem $work_item) {
+        $sql = "INSERT INTO `{$this->_table_prefix}work_item_history`
+           (work_item_id, change_mask, old_state, new_state, created)
+            VALUES (:work_item_id, :change_mask, :old_state, :new_state, now())";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindValue(":work_item_id", $work_item->get_id(), PDO::PARAM_INT);
+        $stm->bindValue(":old_state", $work_item->get_previous_state(), PDO::PARAM_STR);
+        $stm->bindValue(":new_state", $work_item->get_state(), PDO::PARAM_STR);
+        $stm->bindValue(":change_mask", $work_item->get_change_mask(), PDO::PARAM_STR);
+        $stm->execute();
+    }
+    
+    
+    public function count_work_items($state_filter) {
+        $sql =
+            "SELECT count(*)
+
+            from {$this->_table_prefix}contact_inbox c
+            inner join {$this->_table_prefix}work_item wi
+                on wi.contact_inbox_id = c.id
+
+            where (wi.state = :state_filter and not wi.is_archived)
+            or (:state_filter = 'ARCHIVE' and wi.is_archived)
+            ";
+        
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindParam(":state_filter", $state_filter);
+        $stm->execute();
+        return (int)$stm->fetchColumn();
+    }
+    
+    
+    public function get_user_last_failed_login_ts($user) {
+        $sql =
+                "SELECT last_failed
+                 from {$this->_table_prefix}auth
+                 where name = :user";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindValue(":user", $user, PDO::PARAM_STR);
+        $stm->execute();
+        return $stm->fetchColumn();
+    }
+    
+    
+    public function get_user_password_hash($user) {
+        $sql =
+                "SELECT password
+                 from {$this->_table_prefix}auth
+                 where name = :user";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindValue(":user", $user, PDO::PARAM_STR);
+        $stm->execute();
+        return $stm->fetchColumn();
+    }
+    
+    
+    public function update_user_last_failed_login_ts($user) {
+        $sql =
+                "UPDATE {$this->_table_prefix}auth
+                 SET last_failed = now()
+                 where name = :user";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindValue(":user", $user, PDO::PARAM_STR);
+        $stm->execute();
+    }
+    
+    
     protected function __construct() {
-        $site_conf = SiteConfigFactory::get()->get_site_config();
+        $site_conf = \SiteConfigFactory::get()->get_site_config();
         $db_login = $site_conf->db_login_params();
         $this->_table_prefix = $site_conf->db_table_prefix();
         try {

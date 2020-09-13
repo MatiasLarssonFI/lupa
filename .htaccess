@@ -1,14 +1,23 @@
 RewriteEngine On
 
+# Maintenance
+#RewriteCond %{REQUEST_URI} !/maintenance.html$ [NC]
+#RewriteCond %{REQUEST_URI} !\.(jpe?g?|png|gif) [NC]
+#Header set Content-Type "text/html; charset=utf-8"
+#RewriteRule .* /maintenance.html [R=302,L]
+
 # se -> sv
 RewriteRule "^/?se/?(.*)$" "/sv/$1" [L,R=301]
 
 # puunkaato/ pages only available for fi/
 RewriteRule "^/?(en|sv)/puunkaato/?(.*)$" "/puunkaato/$2" [L,R=307]
 
+<FilesMatch "^((error_log)|(session_log))$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
 
 Options -Indexes
-
 
 # The rewrite rules:
 # 
@@ -45,11 +54,12 @@ RewriteRule "^/?([a-zA-Z]{2})/([^/]+)/(.+)/?$" "/index.php?language=$1&action=$2
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule "^/?([a-zA-Z]{3,})/?$" "/index.php?action=$1" [L]
+RewriteRule "^/?([a-zA-Z_]{3,})/?$" "/index.php?action=$1" [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule "^/?([a-zA-Z]{3,})/(.+)/?$" "/index.php?action=$1&params=$2" [L]
+RewriteRule "^/?([a-zA-Z_]{3,})/(.+)/?$" "/index.php?action=$1&params=$2" [L]
+
 
 # BEGIN GZIP
 <ifmodule mod_deflate.c>
@@ -92,31 +102,27 @@ Header set Connection keep-alive
 
 # Cache-control headers
     # 2 HOURS
-    #<filesMatch "*">
-        Header set Cache-Control "max-age=7200, must-revalidate"
-    #</filesMatch>
+    #Header set Cache-Control "max-age=7200, must-revalidate"
 
-    # 480 weeks - 290304000
     # 2 WEEKS
-    <filesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|swf)$">
+    <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|swf)$">
         Header set Cache-Control "max-age=1209600, public"
-    </filesMatch>
+    </FilesMatch>
 
     # 1 DAY
-    <filesMatch "\.(css)$">
+    <FilesMatch "\.(css)$">
         Header set Cache-Control "max-age=86400, public, must-revalidate"
-        #Header set Cache-Control "max-age=0, public, must-revalidate"
-    </filesMatch>
+    </FilesMatch>
 
     # 2 DAYS
-    <filesMatch "\.(xml|txt)$">
+    <FilesMatch "\.(xml|txt)$">
         Header set Cache-Control "max-age=172800, public, must-revalidate"
-    </filesMatch>
+    </FilesMatch>
 
     # 2 HOURS
-    <filesMatch "\.(html|htm)$">
+    <FilesMatch "\.(html|htm)$">
         Header set Cache-Control "max-age=7200, must-revalidate"
-    </filesMatch>
+    </FilesMatch>
 
     <FilesMatch "\.(gif|jpg|png|ico|css|js|pdf|txt)$">
         Header append Cache-Control "public"

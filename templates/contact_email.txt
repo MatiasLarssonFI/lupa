@@ -1,1 +1,1 @@
-{{ message.get_name|raw }} / {{ message.get_subject|raw }} / {{ message.get_email|raw }} / {{ message.get_message|raw }}
+{{ message.name|raw }} / {{ message.subject|raw }} / {{ message.email|raw }} / {{ message.message|raw }}

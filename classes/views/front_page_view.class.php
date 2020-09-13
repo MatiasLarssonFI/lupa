@@ -16,6 +16,11 @@ class FrontPageView extends AbstractView {
     }
     
     
+    protected function allow_cache() {
+        return true;
+    }
+    
+    
     protected function get_template_name() {
         return "front_page.html";
     }

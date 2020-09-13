@@ -1,13 +1,19 @@
 <?php
 
+require_once(__DIR__ . "/isession.class.php");
+require_once(__DIR__ . "/site_config_factory.class.php");
+
 
 /**
  * Singleton.
+ *
+ * Guest session - doesn't actually start any session.
  */
-class Session {
-    private $_session_storage;
+class Session implements ISession {
     private $_request_storage;
     private static $_inst = null;
+    
+    const ANTI_CSRF_NAME = "lupaCsrf";
     
     
     /**
@@ -24,12 +30,6 @@ class Session {
     }
     
     
-    
-    /**
-     * Returns the CSRF token.
-     * 
-     * @return string
-     */
     public function get_csrf_token() {
         $this->try_generate_csrf_token();
         return $this->_request_storage["csrf_token"];
@@ -42,28 +42,65 @@ class Session {
      * Also ensures that the token is accessible from this->_request_storage.
      */
     private function try_generate_csrf_token() {
-        if (!array_key_exists("WP_csrf", $_COOKIE)) {
-            $this->_request_storage["csrf_token"] = hash("sha256", bin2hex(openssl_random_pseudo_bytes(4)) . "Houston, we have woodparts.");
-            setcookie("WP_csrf", $this->_request_storage["csrf_token"]);
+        if (!array_key_exists(self::ANTI_CSRF_NAME, $_COOKIE)) {
+            if (!array_key_exists("csrf_token", $this->_request_storage)) {
+                $this->_request_storage["csrf_token"] = bin2hex(random_bytes(256 / 8)); // 256-bit
+            }
+            if (PHP_VERSION_ID >= 70300) {
+                setcookie(self::ANTI_CSRF_NAME, $this->_request_storage["csrf_token"], $this->make_cookie_options());
+            } else {
+                // legacy, missing SameSite attribute
+                setcookie(self::ANTI_CSRF_NAME, $this->_request_storage["csrf_token"], 0, "/", SiteConfigFactory::get()->get_site_config()->host(), true, true);
+            }
         } else if (!array_key_exists("csrf_token", $this->_request_storage)) {
-            $this->_request_storage["csrf_token"] = $_COOKIE["WP_csrf"];
+            $this->_request_storage["csrf_token"] = $_COOKIE[self::ANTI_CSRF_NAME];
         }
     }
     
     
-    /**
-     * Returns true if the given token is the valid CSRF token.
-     * 
-     * @return boolean
-     */
-    public function validate_csrf_token($token) {
-        return $token === $_COOKIE["WP_csrf"];
+    private function make_cookie_options() {
+        return [
+            "expires" => 0,
+            "path" => "/",
+            "domain" => SiteConfigFactory::get()->get_site_config()->host(),
+            "secure" => true,
+            "httponly" => true,
+            "samesite" => "Strict",
+        ];
+    }
+
+    
+    public function set_data($key, $value) {
+        $this->_request_storage["user_{$key}"] = $value;
     }
     
     
+    public function get_data($key) {
+        return $this->_request_storage["user_{$key}"] ?? null;
+    }
+    
+    
+    public function has_data($key) {
+        return array_key_exists("user_{$key}", $this->_request_storage);
+    }
+    
+    
+    public function logout() {
+        if (array_key_exists(self::ANTI_CSRF_NAME, $_COOKIE)) {
+            setcookie(self::ANTI_CSRF_NAME, "", time() - (3600*24), "/", SiteConfigFactory::get()->get_site_config()->host(), true, true);
+        }
+    }
+    
+    
+    public function login() {
+        return true;
+    }
+    
+    
+    private function clear() {}
+    
+    
     protected function __construct() {
-        session_start();
-        $this->_session_storage = &$_SESSION;
-        $this->_request_storage = array();
+        $this->_request_storage = [];
     }
 }

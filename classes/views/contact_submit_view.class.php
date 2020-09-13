@@ -5,13 +5,15 @@ namespace Views;
 require_once(dirname(__FILE__) . "/abstract_view.class.php");
 require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/../contact_message_factory.class.php");
+require_once(dirname(__FILE__) . "/../work_item_factory.class.php");
 require_once(dirname(__FILE__) . "/../session.class.php");
+require_once(dirname(__FILE__) . "/../management_session.class.php");
 require_once(dirname(__FILE__) . "/../dbif.class.php");
 
 
 class ContactSubmitView extends AbstractView {
     protected function get_required_params() {
-        return array("__csrf_token", "name", "email", "subject", "message", "is_ajax", "url");
+        return array("__csrf_token", "name", "email", "subject", "message", "is_ajax", "url", "company");
     }
     
     
@@ -25,14 +27,20 @@ class ContactSubmitView extends AbstractView {
         $text_storage = \UITextStorage::get();
         $errors = array();
         if (strlen($params["url"]) === 0 && // url is actually a hidden captcha field, not to be filled
-            strlen($params["company"] === "company name oy")) { // hidden captcha as well
+            $params["company"] === "company name oy") { // hidden captcha as well
             $errors = $this->get_form_errors($params, $text_storage);
             if (empty($errors)) {
                 $f = \ContactMessageFactory::get();
+                $wif = \WorkItemFactory::get();
+                
                 $message = $f->make_from_values($params["name"], $params["email"], $params["subject"], $params["message"]);
                 $mailer = $f->get_mailer();
-                \DBIF::get()->insert_contact_message($message);
+                $contact_inbox_id = \DBIF::get()->insert_contact_message($message);
+                $work_item_id = \DBIF::get()->insert_work_item(\WorkItemFactory::get()->make_from_contact_message($message, $contact_inbox_id), $contact_inbox_id);
+                
                 $mailer->send($message);
+                $mailer->send($f->make_confirmation($wif->get_email_confirmable_item($work_item_id)));
+                
                 $is_success = true;
             }
         }
@@ -52,10 +60,11 @@ class ContactSubmitView extends AbstractView {
     
     private function get_form_errors(array $form, \UITextStorage $text_storage) {
         $errors = array();
-        $session = \Session::get();
+        $ms = \ManagementSession::get();
+        $session = $ms->has_data(\SessionVar::MANAGEMENT_PERMISSION) ? $ms : \Session::get();
         $validators = array(
             "__csrf_token" => function($token) use ($session) {
-                return $session->validate_csrf_token($token);
+                return strlen($token) > 16 && $token === $session->get_csrf_token();
             },
             "name" => function($str) {
                 $len = strlen($str);
@@ -74,7 +83,7 @@ class ContactSubmitView extends AbstractView {
                 return $len > 0 && $len <= 255;
             },
             "message" => function($message) {
-                return strlen($message) > 3 && strlen($message) <= 4000;
+                return mb_strlen($message) > 3 && mb_strlen($message) <= 4000;
             }
         );
         

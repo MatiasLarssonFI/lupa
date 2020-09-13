@@ -2,25 +2,55 @@
 
 interface IEmailMessage {
     /**
-     * Returns the message body.
+     * @return array Data for the template
      */
-    public function get_message();
+    public function get_message_data();
     
     
     /**
-     * Returns the message subject.
+     * @return string
      */
-    public function get_subject();
+    public function get_subject_line();
+    
+
+    /**
+     * @return string
+     */
+    public function get_recipient_address();
     
     
     /**
-     * Returns the message sender name.
+     * @return string
      */
-    public function get_name();
+    public function get_sender_name();
     
     
     /**
-     * Returns the message sender email address.
+     * @return string
      */
-    public function get_email();
+    public function get_sender_address();
+    
+    
+    /**
+     * @return string
+     */
+    public function get_reply_to_address();
+    
+    
+    /**
+     * @return string
+     */
+    public function get_reply_to_name();
+    
+    
+    /**
+     * @return string
+     */
+    public function get_html_template_name();
+    
+    
+    /**
+     * @return string
+     */
+    public function get_text_template_name();
 }
