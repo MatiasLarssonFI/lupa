@@ -624,11 +624,11 @@ update lupa_ui_text set `content` = 'Request a quote'
 update lupa_ui_text set `content` = 'Kiitos tarjouspyynnöstäsi. Olemme sinuun yhteydessä pian.'
     where `code` = 'CONTACT_SUBMIT_TEXT' and `language` = 'fi';
 
-update lupa_ui_text set `content` = 'Länsi-Uudenmaan PuuApu Oy'
+update lupa_ui_text set `content` = 'Länsi-Uudenmaan PuuApu'
     where `code` = 'CONTACT_TEXT_NAME' and `language` = 'fi';
-update lupa_ui_text set `content` = 'Länsi-Uudenmaan PuuApu Oy'
+update lupa_ui_text set `content` = 'Länsi-Uudenmaan PuuApu'
     where `code` = 'CONTACT_TEXT_NAME' and `language` = 'en';
-update lupa_ui_text set `content` = 'Nyländska TrädHjälpen Ab'
+update lupa_ui_text set `content` = 'Nyländska TrädHjälpen'
     where `code` = 'CONTACT_TEXT_NAME' and `language` = 'sv';
 
 INSERT INTO `lupa_config` (`key`, `value`, `time_edited`, `time_created`) VALUES
