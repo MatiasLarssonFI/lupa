@@ -450,7 +450,7 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 
  -- 200630
 
-# set @time_of_release = '2020-09-06 12:00:00';
+set @old_messages = "2020-06-01 00:00:00";
 
 insert into `lupa_work_item` (contact_inbox_id, s_reference, state, time_created, time_state_changed)
     select
@@ -460,7 +460,7 @@ insert into `lupa_work_item` (contact_inbox_id, s_reference, state, time_created
         c.time_created,
         now()
     from lupa_contact_inbox c
-    where c.time_created < @time_of_release;
+    where c.time_created >= @old_messages;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'MANAGEMENT_WORK_LIST_TITLE_STATE_NEW', 'Työlista - uudet', NULL, '2020-06-30 12:00:00')
