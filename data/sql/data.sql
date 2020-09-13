@@ -706,7 +706,7 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 
 , ('fi', 'MANAGEMENT_WORK_LIST_LIST_VIEW', 'Listanäkymä', NULL, '2020-09-04 12:00:00')
 , ('en', 'MANAGEMENT_WORK_LIST_LIST_VIEW', 'List view', NULL, '2020-09-04 12:00:00')
-, ('sv', 'MANAGEMENT_WORK_LIST_LIST_VIEW', 'Visa list', NULL, '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_LIST_VIEW', 'Visa lista', NULL, '2020-09-04 12:00:00')
 ;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
