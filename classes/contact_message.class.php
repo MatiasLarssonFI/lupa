@@ -2,8 +2,14 @@
 
 require_once(dirname(__FILE__) . "/icontact_message.class.php");
 require_once(dirname(__FILE__) . "/iemail_message.class.php");
+require_once(dirname(__FILE__) . "/dbif.class.php");
+require_once(dirname(__FILE__) . "/site_config_factory.class.php");
+require_once(dirname(__FILE__) . "/ui_text_storage.class.php");
 
 
+/**
+ * Message sent to the personnel.
+ */
 class ContactMessage implements IContactMessage, IEmailMessage {
     /**
      * Constructor.
@@ -20,6 +26,7 @@ class ContactMessage implements IContactMessage, IEmailMessage {
         $this->_message = $message;
     }
     
+    // IContactMessage
     
     public function get_name() {
         return $this->_name;
@@ -38,5 +45,59 @@ class ContactMessage implements IContactMessage, IEmailMessage {
     
     public function get_message() {
         return $this->_message;
+    }
+
+    
+    // IEmailMessage
+    
+    public function get_subject_line() {
+        $host = \SiteConfigFactory::get()->get_site_config()->host();
+        $ts = \UITextStorage::get();
+        return "{$this->_subject} - {$host} {$ts->text("CONTACT_TITLE")}";
+    }
+    
+    
+    public function get_recipient_address() {
+        return \DBIF::get()->get_contact_email();
+    }
+    
+    
+    public function get_message_data() {
+        return [
+            "message" => $this->_message,
+            "email" => $this->_email,
+            "subject" => $this->_subject,
+            "name" => $this->_name,
+        ];
+    }
+    
+    
+    public function get_sender_name() {
+        return "Contact Form";
+    }
+    
+    
+    public function get_sender_address() {
+        return "contactform@" . \SiteConfigFactory::get()->get_site_config()->email_address_host();
+    }
+    
+    
+    public function get_reply_to_address() {
+        return $this->get_email();
+    }
+    
+    
+    public function get_reply_to_name() {
+        return $this->get_name();
+    }
+    
+    
+    public function get_html_template_name() {
+        return "contact_email.html";
+    }
+    
+    
+    public function get_text_template_name() {
+        return "contact_email.txt";
     }
 }

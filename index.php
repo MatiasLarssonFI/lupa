@@ -11,8 +11,13 @@ require_once(dirname(__FILE__) . "/classes/ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/classes/site_config_factory.class.php");
 require_once(dirname(__FILE__) . "/classes/views/exception_view.class.php");
 require_once(dirname(__FILE__) . "/classes/nav_link_factory.class.php");
+require_once(dirname(__FILE__) . "/classes/management_session.class.php");
+require_once(dirname(__FILE__) . "/classes/action_factory.class.php");
 
 try {
+    \ManagementSession::configure_log(__DIR__ . "/session_log", \DBIF::get()->get_session_notifications_mask());
+    \ManagementSession::configure_cookie("lupaSession", \SiteConfigFactory::get()->get_site_config()->host());
+    
     $request = array_merge(
             array(
                 "action" => "", 
@@ -27,21 +32,7 @@ try {
         $ts = UITextStorage::get();
         $ts->try_change_language($request["language"]);
         $lang = $ts->get_language();
-        
-        $actions = [ "" ]; // front page
-    
-        if (!empty(UITextStorage::get()->text("NEWS_CONTENT"))) {
-            $actions[] = "#news";
-        }
-        if ($lang === "fi") {
-            $actions[] = "puunkaato";
-            $actions[] = "partners";
-        }
-        $actions[] = "#contact";
-        $actions[] = "faq";
-        
-        $nlf = new NavLinkFactory($request["action"], $request["params"], $actions, $lang);
-        
+        $nlf = new NavLinkFactory($request["action"], $request["params"], ActionFactory::get()->get_nav_actions(), $lang);
         Views\ViewFactory::get()->get_view($request["action"], $request["params"], $lang, $nlf)->render();
     } catch (Exception $e) {
         $is_ajax = (isset($_REQUEST["is_ajax"]) ? $_REQUEST["is_ajax"] : false);

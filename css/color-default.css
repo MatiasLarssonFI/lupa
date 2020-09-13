@@ -361,3 +361,34 @@ span.orange {
 .videos-title {
     color: #fff;
 }
+
+
+.work-list-item-details__term {
+    font-weight: bold;
+}
+
+
+.work-list-item {
+    border-bottom: 1px solid #ddd;
+}
+
+
+.work-list-item:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+
+.work-state-nav-link.active {
+    font-weight: bold;
+}
+
+
+.work-list-item-disabled .work-list-checkbox-container,
+.work-list-item-disabled .work-list-clickable {
+    opacity: 0.6;
+}
+
+
+.work-list-clickable {
+    cursor: pointer;
+}

@@ -48,8 +48,8 @@ abstract class AbstractView implements IView {
         $src_conf = \ResourceConfig::get();
         $dbif = \DBIF::get();
         
-        $data["__csrf_token"] = \Session::get()->get_csrf_token();
         $data["__base_uri"] = $base_uri;
+        $data["__management_url"] = $base_uri;
         $data["__contact_info"] = $this->make_contact_info($text_storage);
         $data["__header_logo_uri"] = str_replace("{lang}", $language, $base_uri . $dbif->get_header_logo_uri());
         $data["__small_logo_uri"] = $data["__header_logo_uri"];
@@ -66,7 +66,7 @@ abstract class AbstractView implements IView {
         $data["__css_src_mode"] = $src_conf->get_css_src_mode();
         $data["__scale_mobile"] = $this->is_mobile_scale_enabled();
         $data["__facebook_page_url"] = \DBIF::get()->get_facebook_page_url();
-        $data["__ga"] = $site_cfg->tracking_enabled();
+        $data["__ga"] = $site_cfg->tracking_enabled() && $this->allow_tracking();
         
         $data["__strings"] = [
             "footer_promo" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
@@ -103,6 +103,14 @@ abstract class AbstractView implements IView {
             $data["allow_hreflang"] = true;
         }
         
+        if ($this->allow_cache()) {
+            header("Cache-Control: max-age=7200, must-revalidate");
+        } else {
+            header("Cache-Control: max-age=0, no-store, no-cache, must-revalidate");
+            header("Expires: Thu, 19 Nov 1981 08:52:00 GMT");
+            header("Pragma: no-cache");
+        }
+        
         echo $twig->render($this->get_template_name(), $data);
     }
     
@@ -124,6 +132,26 @@ abstract class AbstractView implements IView {
         if (count($diff) > 0) {
             throw new \InvalidArgumentException("Missing required parameters: " . implode(", ", $diff));
         }
+        
+        $req_sess_params = $this->get_required_session_params();
+        if (!empty($req_sess_params)) {
+            $diff = [];
+            $session = $this->get_session();
+            foreach ($req_sess_params as $key) {
+                if (!$session->has_data($key)) {
+                    $diff[] = $key;
+                }
+            }
+            if (count($diff) > 0) {
+                if ($rd = $this->get_session_redirect_uri()) {
+                    $language = \UITextStorage::get()->get_language();
+                    header("HTTP/1.1 303 See Other");
+                    header("Location: " . \SiteConfigFactory::get()->get_site_config()->base_uri() . "/{$language}{$rd}");
+                }
+                
+                throw new \InvalidArgumentException("Missing required session parameters: " . implode(", ", $diff));
+            }
+        }
     }
     
     
@@ -138,12 +166,57 @@ abstract class AbstractView implements IView {
     
     
     /** 
+     * Returns names of the required session parameters.
+     * 
+     * @return string[]
+     */
+    protected function get_required_session_params() {
+        return [];
+    }
+    
+    
+    /**
+     * Returns true if tracking scripts are allowed.
+     *
+     * @return boolean
+     */
+    protected function allow_tracking() {
+        return true;
+    }
+    
+    
+    /**
+     * Returns a URI to redirect to on missing session parameter.
+     * 
+     * @return string e.g. "/login"
+     */
+    protected function get_session_redirect_uri() {
+        return null;
+    }
+    
+    
+    /**
+     * @return \ISession
+     */
+    protected function get_session() {
+        return \Session::get();
+    }
+    
+    
+    /**
+     * @return boolean If the view output may be cached
+     */
+    protected function allow_cache() {
+        return false;
+    }
+    
+    
+    /** 
      * Returns names of the required parameters.
      * 
      * @return string[]
      */
     abstract protected function get_required_params();
-    
     
     /**
      * Returns the template file basename.

@@ -42,4 +42,7 @@ class FAQFactory {
         
         return $ret;
     }
+    
+    
+    protected function __construct() {}
 }

@@ -10,6 +10,15 @@ require_once(dirname(__FILE__) . "/contact_submit_view.class.php");
 require_once(dirname(__FILE__) . "/info_felling_view.class.php");
 require_once(dirname(__FILE__) . "/info_partners_view.class.php");
 
+require_once(dirname(__FILE__) . "/management_login_view.class.php");
+require_once(dirname(__FILE__) . "/management_login_submit_view.class.php");
+require_once(dirname(__FILE__) . "/management_logout_submit_view.class.php");
+
+require_once(dirname(__FILE__) . "/work_list_view.class.php");
+require_once(dirname(__FILE__) . "/work_item_submit_view.class.php");
+require_once(dirname(__FILE__) . "/work_item_mass_submit_view.class.php");
+require_once(dirname(__FILE__) . "/anti_csrf_token_view.class.php");
+
 require_once(dirname(__FILE__) . "/../nav_link_factory.class.php");
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
 
@@ -60,6 +69,25 @@ class ViewFactory {
             return new InfoPartnersView([
                 "uri" => "partners/{$this->optional_element(0, "", $params)}"
             ], $nlf);
+        } else if ($action === "work_list" || $action === "work_table") {
+            return new WorkListView([
+                "state_filter" => $this->optional_element(0, "STATE_NEW", $params),
+                "order_col" => $this->optional_element(1, "ts_created", $params),
+                "order_dir" => $this->optional_element(2, "desc", $params),
+                "page" => $this->optional_element(3, "1", $params),
+            ], $nlf, $action === "work_table");
+        } else if ($action === "work_item_submit") {
+            return new WorkItemSubmitView($_POST, $nlf);
+        } else if ($action === "work_item_mass_submit") {
+            return new WorkItemMassSubmitView($_POST, $nlf);
+        } else if ($action === "management_login") {
+            return new ManagementLoginView([], $nlf);
+        } else if ($action === "management_login_submit") {
+            return new ManagementLoginSubmitView($_POST, $nlf);
+        } else if ($action === "management_logout_submit") {
+            return new ManagementLogoutSubmitView($_POST, $nlf);
+        } else if ($action === "anti_csrf_token") {
+            return new AntiCSRFTokenView([], $nlf);
         }
         
         // Bad request: redirect to front page

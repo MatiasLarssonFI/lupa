@@ -105,4 +105,7 @@ class InfoPageContentFactory {
         
         return $ret;
     }
+    
+    
+    protected function __construct() {}
 }

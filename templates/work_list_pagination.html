@@ -1,0 +1,31 @@
+<nav aria-label="Page navigation" class="text-center">
+    <ul class="pagination">
+        <li class="{{ page < 2 ? 'disabled' : '' }}">
+        {% if page > 1 %}
+            <a href="{{ base_url_lang_view }}/{{ state_filter }}/{{ order_col }}/{{ order_dir }}/{{ page - 1 }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        {% else %}
+            <span><span aria-hidden="true">&laquo;</span></span>
+        {% endif %}
+        </li>
+{% for pagenum in 1..page_count %}
+        <li class="{{ pagenum == page ? 'active' : '' }}">
+            {% if pagenum == page %}
+            <span><span>{{ pagenum }}</span><span class="sr-only">(current)</span></span>
+            {% else %}
+            <a href="{{ base_url_lang_view }}/{{ state_filter }}/{{ order_col }}/{{ order_dir }}/{{ pagenum }}">{{ pagenum }}</a>
+            {% endif %}
+        </li>
+{% endfor %}
+        <li class="{{ page >= page_count ? 'disabled' : '' }}">
+        {% if page < page_count %}
+            <a href="{{ base_url_lang_view }}/{{ state_filter }}/{{ order_col }}/{{ order_dir }}/{{ page + 1 }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        {% else %}
+            <span><span aria-hidden="true">&raquo;</span></span>
+        {% endif %}
+        </li>
+    </ul>
+</nav>

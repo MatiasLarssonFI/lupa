@@ -169,16 +169,19 @@
                 {% set href = ( link.is_page ? [ __base_uri, __lang, link.get_action ]|join("/") : link.get_action ) %}
                 <li class='{{ link.is_active ? "active " : "" }}lupa-nav-link text-center'>
                     <a href='{{ href }}' title="{{ link.get_text }}">
-                        <span data-link-text>{{ link.get_text }}</span><span class="sr-only"> (current)</span>
+                        <span data-link-text>{{ link.get_text }}</span>
+                        {% if link.is_active %}
+                        <span class="sr-only"> (current)</span>
+                        {% endif %}
                     </a>
                 </li>
             {% endfor %}
             </ul>
         </div>
         
-        <script src="{{ __base_uri }}/lib/jquery-1.12.1/jquery-1.12.1.min.js"></script>
+        <script src="{{ __base_uri }}/lib/jquery-2.2.4.min.js"></script>
         <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-        <script src="{{ __base_uri }}/js/wp.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
+        <script src="{{ __base_uri }}/js/lupa.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
         <script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
         <script>
             // all AJAX shall actually be asynchronous (duh)
@@ -199,13 +202,14 @@
             
             !function($) {
                 $(document).ready(function() {
-                    wp.contact.init();
+                    lupa.refreshAntiCSRFToken("{{ __base_uri }}");
+                    lupa.contact.init("{{ __base_uri }}");
                 });
             }(jQuery);
         </script>
         
-        <!-- Google Analytics -->
         {% if __ga %}
+        <!-- Google Analytics -->
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -216,6 +220,8 @@
           ga('set', 'anonymizeIp', true);
           ga('send', 'pageview');
         </script>
+        {% else %}
+        <!-- No Google Analytics -->
         {% endif %}
         {% block js_link %}{% endblock %}
     </body>

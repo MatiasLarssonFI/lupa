@@ -1,0 +1,104 @@
+{% extends "base_management.html" %}
+{% block title %}{{ strings.page_title }}{% endblock %}
+
+{% block content %}
+
+{% set order_dir_link = order_dir == "desc" ? "asc" : "desc" %}
+{% set order_dir_title = order_dir_link == "desc" ? "Click to order latest first" : "Click to order oldest first" %}
+
+{% set base_url_lang = __management_url ~ "/" ~ __lang %}
+{% set base_url_lang_view = base_url_lang ~ "/work_list" %}
+
+<main class="work-list">
+    <div class="row bg-dark-blue">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 faq-content content-text-padding">
+                    <h1 class="faq-title">{{ strings.page_title }} <small>{{ strings.label_page_number }} {{ page }}/{{ page_count }}</small></h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 faq-content content-text-padding mtm mbm">
+                    <strong>{{ strings.state_links_label }}:</strong>
+                    {% include "work_list_state_links.html" %}
+                </div>
+                <div class="col-xs-12 col-sm-4 faq-content content-text-padding mtm mbm text-right">
+                    <a class="work-state-nav-link" href="{{ base_url_lang }}/work_table/{{ state_filter }}" title="Switch to table view">{{ strings.table_view }}</a>
+                    {% include "management_logout_form_inline.html" %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 bg-white work-list-content work-items content-text-padding">
+                    {% for item in items %}
+
+                    <div class="row work-list-item" data-list-item="{{ item.get_id }}">
+                        <div class="col-xs-12 ptm pbm">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="row mtm">
+                                        <div class="col-xs-12">
+                                            <span>{{ item.get_name }} / {{ item.get_subject }} / {{ item.get_email }} / {{ item.get_message }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mtm text-center">
+                                        
+                                        {% if item.get_state_action %}
+                                        
+                                        <div class="col-xs-4 col-sm-4 ptm mbm">
+                                            <img data-item-action-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
+                                            <button class="btn btn-success" data-item="{{ item.get_id }}" data-item-action="{{ item.get_state_action }}">&#8594; {{ item.get_state_action_text }}</button>
+                                        </div>
+                                        
+                                        {% endif %}
+                                        
+                                        {% if item.is_haltable %}
+                                        
+                                        <div class="col-xs-4 col-sm-4 ptm mbm">
+                                            <img data-item-halt-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
+                                            <button class="btn btn-danger" data-item="{{ item.get_id }}" data-item-action="halt">{{ strings.action.halt }}</button>
+                                        </div>
+                                        
+                                        {% endif %}
+                                        
+                                        {% if item.is_archivable %}
+                                        
+                                        <div class="col-xs-4 col-sm-4 ptm mbm">
+                                            <img data-item-archive-spinner class="work-list-item__ajax-spinner" src="{{ __management_url }}/data/img/ajax-spinner.gif" alt="">
+                                            <button class="btn btn-warning" data-item="{{ item.get_id }}" data-item-action="archive">{{ strings.action.archive }}</button>
+                                        </div>
+                                        
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 pbm">
+                                    <label for="notesInput">{{ strings.label_notes }}</label>
+                                    <span data-notes-status class="orange">&nbsp;</span>
+                                    <textarea class="form-control" id="notesInput" data-item-notes data-item="{{ item.get_id }}" maxlength="2047">{{ item.get_notes }}</textarea>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <span class="work-list-item-details__term"><a href="{{ base_url_lang_view }}/{{ state_filter }}/s_reference/{{ order_dir_link }}" title="{{ order_dir_title }}">{{ strings.subject_reference_short }}</a></span>
+                                    <span class="work-list-item-details__value">{{ item.get_subject_reference }}</span>
+                                    <br>
+                                    <span class="work-list-item-details__term"><a href="{{ base_url_lang_view }}/{{ state_filter }}/ts_created/{{ order_dir_link }}" title="{{ order_dir_title }}">{{ strings.label_created }}</a></span>
+                                    <span class="work-list-item-details__value">{{ item.get_datetime_created }}</span>
+                                    <br>
+                                    <span class="work-list-item-details__term"><a href="{{ base_url_lang_view }}/{{ state_filter }}/ts_state/{{ order_dir_link }}" title="{{ order_dir_title }}">{{ strings.label_changed }}</a></span>
+                                    <span class="work-list-item-details__value">{{ item.get_datetime_state }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                    
+                    {% include 'work_list_pagination.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block js_link %}
+{% include "work_list_js.html" %}
+{% endblock %}
