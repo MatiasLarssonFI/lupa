@@ -696,7 +696,7 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_MESSAGE'  , 'Meddelande'     , NULL , '2020-09-04 12:00:00')
 , ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_NOTES'    , 'Anteckning'     , NULL , '2020-09-04 12:00:00')
 , ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CREATED'  , 'Skapat'         , NULL , '2020-09-04 12:00:00')
-, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CHANGED'  , 'Ädrat'          , NULL , '2020-09-04 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_ITEM_LABEL_CHANGED'  , 'Ändrat'         , NULL , '2020-09-04 12:00:00')
 ;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
