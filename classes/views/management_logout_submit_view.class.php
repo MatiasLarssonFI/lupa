@@ -5,7 +5,7 @@ namespace Views;
 require_once(dirname(__FILE__) . "/abstract_management_view.class.php");
 require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/../action_factory.class.php");
-//require_once(dirname(__FILE__) . "/../anti_csrf_ops.class.php");
+require_once(dirname(__FILE__) . "/../counter_attack.class.php");
 
 
 class ManagementLogoutSubmitView extends AbstractManagementView {
@@ -26,8 +26,7 @@ class ManagementLogoutSubmitView extends AbstractManagementView {
         if ($this->validate_csrf_token($params["__csrf_token"])) {
             $this->get_session()->logout();
         } else {
-            //TBD: handle CSRF attack
-            //\AntiCSRFOps::get()->handle_attack("Logout", $this->get_session());
+            \CounterAttack::get()->handle(new \Attack\CSRF("Logout", $this->get_session(), $params));
         }
         
         header("HTTP/1.1 303 See Other");

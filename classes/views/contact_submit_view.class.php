@@ -8,6 +8,7 @@ require_once(dirname(__FILE__) . "/../contact_message_factory.class.php");
 require_once(dirname(__FILE__) . "/../work_item_factory.class.php");
 require_once(dirname(__FILE__) . "/../session.class.php");
 require_once(dirname(__FILE__) . "/../management_session.class.php");
+require_once(dirname(__FILE__) . "/../counter_attack.class.php");
 require_once(dirname(__FILE__) . "/../dbif.class.php");
 
 
@@ -43,6 +44,8 @@ class ContactSubmitView extends AbstractView {
                 
                 $is_success = true;
             }
+        } else {
+            \CounterAttack::get()->handle(new \Attack\CaptchaFail("Contact submit", $this->get_session(), $params));
         }
         
         return array(
@@ -63,8 +66,12 @@ class ContactSubmitView extends AbstractView {
         $ms = \ManagementSession::get();
         $session = $ms->has_data(\SessionVar::MANAGEMENT_PERMISSION) ? $ms : \Session::get();
         $validators = array(
-            "__csrf_token" => function($token) use ($session) {
-                return strlen($token) > 16 && $token === $session->get_csrf_token();
+            "__csrf_token" => function($token) use ($session, $form) {
+                $ok = strlen($token) > 16 && $token === $session->get_csrf_token();
+                if (!$ok) {
+                    \CounterAttack::get()->handle(new \Attack\CSRF("Contact submit", $session, $form));
+                }
+                return $ok;
             },
             "name" => function($str) {
                 $len = strlen($str);

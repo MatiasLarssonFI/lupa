@@ -122,6 +122,16 @@ class ManagementSession implements ISession {
     }
     
     
+    public function get_all_data() {
+        return $this->get_user_data();
+    }
+    
+    
+    public function get_session_id() {
+        return $this->_started ? session_id() : "(none)";
+    }
+    
+    
     public function logout() {
         $this->invalidate();
     }
