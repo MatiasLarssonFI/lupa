@@ -4,6 +4,15 @@
 
 <p>{{ message.subject_reference }}</p>
 
+<p>{{ message.contact_message_label }}</p>
+
+<table>
+    <tr><td>{{ message.contact_message.get_name }}</td></tr>
+    <tr><td>{{ message.contact_message.get_subject }}</td></tr>
+    <tr><td>{{ message.contact_message.get_email }}</td></tr>
+    <tr><td>{{ message.contact_message.get_message|nl2br }}</td></tr>
+</table>
+
 <p>
     {{ message.br }}<br>
     {{ message.contact_person }} / {{ message.contact_company }}

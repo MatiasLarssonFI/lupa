@@ -715,6 +715,20 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'MANAGEMENT_WORK_LIST_PAGE_NUMBER', 'Sida', NULL, '2020-09-04 12:00:00')
 ;
 
+-- 202221
+
+UPDATE lupa_ui_text set `content` = 'Kiitos tarjouspyynnöstäsi. Jos sinulla on lisättävää tai kysymyksiä, vastaa tähän viestiin. Vastatessasi tähän viestiin, pidä ystävällisesti viestin aihekenttä samana.' where `code` = 'CONTACT_CONFIRMATION_BODY' and `language` = "fi";
+
+UPDATE lupa_ui_text set `content` = 'Tack för ditt meddelande. Vill du tillägga eller fråga någonting, var god och svara på det här meddelandet. När du skriver till oss, vänligen använd samma ämnesrad som i detta meddelande.' where `code` = 'CONTACT_CONFIRMATION_BODY' and `language` = "sv";
+
+UPDATE lupa_ui_text set `content` = 'Thank you for your message. If you\'d like to add or ask something, please reply to this message. When replying to this message, please keep the original subject line.' where `code` = 'CONTACT_CONFIRMATION_BODY' and `language` = "en";
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'CONTACT_CONFIRMATION_CONTACT_MESSAGE_LABEL', 'Alla näet tiedot, jotka lähetit meille.', NULL, '2020-11-21 12:00:00')
+, ('en', 'CONTACT_CONFIRMATION_CONTACT_MESSAGE_LABEL', 'See the information we received below.', NULL, '2020-11-21 12:00:00')
+, ('sv', 'CONTACT_CONFIRMATION_CONTACT_MESSAGE_LABEL', 'Se uppgifterna du skickade oss nedan.', NULL, '2020-11-21 12:00:00')
+;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

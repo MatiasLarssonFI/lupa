@@ -2,7 +2,15 @@
 
 {{ message.body|raw }}
 
-{{ message.subject_reference }}
+{{ message.subject_reference|raw }}
+
+{{ message.contact_message_label|raw }}
+
+{{ message.contact_message.get_name|raw }}
+{{ message.contact_message.get_subject|raw }}
+{{ message.contact_message.get_email|raw }}
+
+{{ message.contact_message.get_message|raw }}
 
 {{ message.br|raw }}
 {{ message.contact_person|raw }} / {{ message.contact_company|raw }}

@@ -3,6 +3,7 @@
 require_once(dirname(__FILE__) . "/contact_message.class.php");
 require_once(dirname(__FILE__) . "/contact_confirmation_message.class.php");
 require_once(dirname(__FILE__) . "/contact_message_mailer.class.php");
+require_once(dirname(__FILE__) . "/icontact_message.class.php");
 
 
 class ContactMessageFactory {
@@ -45,10 +46,11 @@ class ContactMessageFactory {
      * to the user.
      * 
      * @param \IEMailConfirmable $item
+     * @param \IContactMessage   $contact_message
      * @return \IEMailMessage
      */
-    public function make_confirmation(\IEMailConfirmable $item) {
-        return new ContactConfirmationMessage($item->get_name(), $item->get_email(), $item->get_subject(), $item->get_subject_reference());
+    public function make_confirmation(\IEMailConfirmable $item, \IContactMessage $contact_message) {
+        return new ContactConfirmationMessage($item->get_name(), $item->get_email(), $item->get_subject(), $item->get_subject_reference(), $contact_message);
     }
     
     
