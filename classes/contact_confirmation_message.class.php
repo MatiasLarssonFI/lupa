@@ -44,7 +44,7 @@ class ContactConfirmationMessage implements IEmailMessage {
     public function get_subject_line() {
         $host = \SiteConfigFactory::get()->get_site_config()->host();
         $ts = \UITextStorage::get();
-        return "[{$this->_subject_reference}] {$this->_subject} - {$host} {$ts->text("CONTACT_TITLE")}";
+        return "#{$this->_subject_reference} {$this->_subject}";
     }
     
     
