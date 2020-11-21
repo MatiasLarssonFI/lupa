@@ -481,12 +481,15 @@ class DBIF {
     
     
     public function insert_work_item(\ISavableWorkItem $work_item, $contact_inbox_id) {
-        $stm = $this->_pdo->prepare("INSERT INTO `{$this->_table_prefix}work_item` (contact_inbox_id, s_reference, state, time_created, time_state_changed) VALUES(:contact_inbox_id, :s_reference, :state, now(), now())");
+        $stm = $this->_pdo->prepare("INSERT INTO `{$this->_table_prefix}work_item` (contact_inbox_id, s_reference, state, time_created, time_state_changed) VALUES(:contact_inbox_id, '', :state, now(), now())");
         $stm->bindValue(":contact_inbox_id", $contact_inbox_id, PDO::PARAM_INT);
-        $stm->bindValue(":s_reference", $work_item->get_subject_reference(), PDO::PARAM_STR);
         $stm->bindValue(":state", $work_item->get_state(), PDO::PARAM_STR);
         $stm->execute();
-        return $this->_pdo->lastInsertId();
+        
+        $insert_id = $this->_pdo->lastInsertId();
+        $this->update_work_item_subject_reference($work_item->make_subject_reference($insert_id), $insert_id);
+        
+        return $insert_id;
     }
     
     
@@ -503,6 +506,14 @@ class DBIF {
         }
         
         return $work_item->get_id();
+    }
+    
+    
+    private function update_work_item_subject_reference($subject_reference, $id) {
+        $stm = $this->_pdo->prepare("UPDATE `{$this->_table_prefix}work_item` SET s_reference = :s_reference where id = :id");
+        $stm->bindValue(":s_reference", $subject_reference, PDO::PARAM_STR);
+        $stm->bindValue(":id", $id, PDO::PARAM_INT);
+        $stm->execute();
     }
     
     

@@ -37,7 +37,7 @@ class ContactSubmitView extends AbstractView {
                 $message = $f->make_from_values($params["name"], $params["email"], $params["subject"], $params["message"]);
                 $mailer = $f->get_mailer();
                 $contact_inbox_id = \DBIF::get()->insert_contact_message($message);
-                $work_item_id = \DBIF::get()->insert_work_item(\WorkItemFactory::get()->make_from_contact_message($message, $contact_inbox_id), $contact_inbox_id);
+                $work_item_id = \DBIF::get()->insert_work_item(\WorkItemFactory::get()->make_from_contact_message($message), $contact_inbox_id);
                 
                 $mailer->send($message);
                 $mailer->send($f->make_confirmation($wif->get_email_confirmable_item($work_item_id), $message));

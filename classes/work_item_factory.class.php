@@ -34,14 +34,13 @@ class WorkItemFactory {
      * Create a work item out of a contact message.
      *
      * @param \IContactMessage $message
-     * @param int $contact_inbox_id
      * @return \WorkItem
      */
-    public function make_from_contact_message(IContactMessage $message, $contact_inbox_id) {
+    public function make_from_contact_message(IContactMessage $message) {
         $now = date("Y-m-d H:i:s");
         return new WorkItem(
               null
-            , date("Ymd") . "20{$contact_inbox_id}"
+            , ""
             , $message->get_name()
             , $message->get_email()
             , $message->get_subject()

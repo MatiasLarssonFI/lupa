@@ -38,4 +38,23 @@ class WorkItem implements IListableWorkItem, IActionableWorkItem, ISavableWorkIt
         $this->_ts_created = $ts_created;
         $this->_ts_state = $ts_state;
     }
+    
+    
+    public function make_subject_reference($id) {
+        // pad to at least four characters (digits)
+        $min_four_chars = "" . (1000 + $id);
+        $ret = "";
+        $len = strlen($min_four_chars);
+        
+        // add dashes every two digits ("12-34" and so on)
+        for ($i = 0; $i < $len; ++$i) {
+            if ($i > 0 && $i % 2 === 0) {
+                $ret .= "-";
+            }
+            
+            $ret .= $min_four_chars[$i];
+        }
+        
+        return $ret;
+    }
 }
