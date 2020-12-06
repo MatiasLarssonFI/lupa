@@ -5,6 +5,7 @@ interface ISavableWorkItem {
     const CM_ARCHIVED      = 1 << 0;
     const CM_UNARCHIVED    = 1 << 1;
     const CM_STATE_CHANGED = 1 << 2;
+    const CM_HOUSEKEEPER   = 1 << 3;
     
     
     /**

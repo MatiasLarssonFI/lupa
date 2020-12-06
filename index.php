@@ -14,6 +14,9 @@ require_once(dirname(__FILE__) . "/classes/nav_link_factory.class.php");
 require_once(dirname(__FILE__) . "/classes/management_session.class.php");
 require_once(dirname(__FILE__) . "/classes/action_factory.class.php");
 require_once(dirname(__FILE__) . "/classes/counter_attack.class.php");
+require_once(dirname(__FILE__) . "/classes/housekeeper/housekeeper.class.php");
+require_once(dirname(__FILE__) . "/classes/hook/mediator.class.php");
+
 
 try {
     \ManagementSession::configure_log(__DIR__ . "/session_log", \DBIF::get()->get_session_notifications_mask());
@@ -21,15 +24,17 @@ try {
     
     \CounterAttack::configure_log(__DIR__ . "/attack_log");
     
+    \WorkItemHousekeeper::enable(\Hook\Mediator::get());
+    
     $request = array_merge(
             array(
-                "action" => "", 
+                "action" => "",
                 "params" => "",
                 "language" => SiteConfigFactory::get()->get_site_config()->default_language()
             ),
         $_GET
     );
-    $request["params"] = array_filter(explode("/", $request["params"]), "strlen"); // :<
+    $request["params"] = array_filter(explode("/", $request["params"]), "strlen");
     
     try {
         $ts = UITextStorage::get();

@@ -530,6 +530,18 @@ class DBIF {
     }
     
     
+    public function delete_work_item(\ISavableWorkItem $work_item) {
+        $sql = "DELETE ci, wi
+                from `{$this->_table_prefix}work_item wi`
+                inner join `{$this->_table_prefix}contact_inbox` ci
+                    on ci.id = wi.contact_inbox_id
+                where wi.id = :id";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindValue(":id", $work_item->get_id(), PDO::PARAM_INT);
+        $stm->execute();
+    }
+    
+    
     public function count_work_items($state_filter) {
         $sql =
             "SELECT count(*)

@@ -13,7 +13,7 @@ interface IActionableWorkItem {
     public function try_perform_state_action();
     
     
-        /**
+    /**
      * @return boolean
      **/
     public function try_perform_archive();

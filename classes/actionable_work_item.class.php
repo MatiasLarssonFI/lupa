@@ -60,6 +60,12 @@ trait ActionableWorkItem {
     }
     
     
+    public function try_perform_delete() {
+        \DBIF::get()->delete_work_item($this, true);
+        return true;
+    }
+    
+    
     public function try_perform_halt() {
         if ($this->is_haltable()) {
             $this->set_previous_state($this->_state);
