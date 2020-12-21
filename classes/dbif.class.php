@@ -451,6 +451,44 @@ class DBIF {
     }
     
     
+    public function yield_work_items_cm_before($unix_timestamp, $change_mask) {
+        $sql =
+            "SELECT
+                 wi.id                  as id
+                ,wi.s_reference         as s_reference
+                ,c.name                 as name
+                ,c.email                as email
+                ,c.subject              as subject
+                ,c.message              as message
+                ,wi.notes               as notes
+                ,wi.state               as state
+                ,wi.is_archived         as is_archived
+                ,c.time_created         as ts_created
+                ,wi.time_state_changed  as ts_state
+
+            from {$this->_table_prefix}contact_inbox c
+            inner join {$this->_table_prefix}work_item wi
+                on wi.contact_inbox_id = c.id
+            inner join {$this->_table_prefix}work_item_history wih
+                on wih.work_item_id = wi.id
+
+            where (wih.change_mask & :cm) = :cm
+            and UNIX_TIMESTAMP(wih.created) < :ts
+            
+            group by wi.id
+            ";
+        
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindParam(":cm", $change_mask, PDO::PARAM_INT);
+        $stm->bindParam(":ts", $unix_timestamp, PDO::PARAM_INT);
+        $stm->execute();
+        
+        while ($row = $stm->fetch()) {
+            yield $cb_make_item($row);
+        }
+    }
+    
+    
     public function get_work_item($id) {
         $sql =
             "SELECT

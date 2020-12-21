@@ -39,12 +39,12 @@ class Housekeeper implements \Hook\IObserver {
         $del_visitor = new DeleteVisitor();
         $arch_visitor = new ArchiveVisitor();
         
-        $this->_wif->yield_visitable_archived_before(strtotime("18 months"), function(\IManagementItem $mi) use ($del_visitor) {
+        $this->_wif->mi()->each_archived_before(strtotime("18 months"), function(\IManagementItem $mi) use ($del_visitor) {
             $mi->accept_management($del_visitor);
         });
         
         
-        \DBIF::get()->yield_visitable_offered_before(strtotime("3 months"), function(\IManagementItem $mi) use ($arch_visitor) {
+        $this->_wif->mi()->each_finished_before(strtotime("3 months"), function(\IManagementItem $mi) use ($arch_visitor) {
             $mi->accept_management($arch_visitor);
         });
         

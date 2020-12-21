@@ -36,6 +36,7 @@ trait ActionableWorkItem {
             case "STATE_IN_PROGRESS":
                 $this->_state = "STATE_FINISHED";
                 $this->add_change(\ISavableWorkItem::CM_STATE_CHANGED);
+                $this->add_change(\ISavableWorkItem::CM_FINISHED);
                 break;
             default:
                 return false;
