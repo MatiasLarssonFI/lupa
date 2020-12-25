@@ -1,6 +1,6 @@
 <?php
 
-interface IManagementIterfaceContext {
+interface IManagementInterfaceContext {
     /**
      * Returns a WorkItem based on the DB row.
      * 

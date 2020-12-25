@@ -20,7 +20,7 @@ class Housekeeper implements \Hook\IObserver {
     
     
     /**
-     * @return WorkItemHousekeeper
+     * @return Housekeeper
      */
     public static function get() {
         if (!self::$_inst) {
@@ -30,7 +30,7 @@ class Housekeeper implements \Hook\IObserver {
     }
     
     
-    public static function enable(IHookService $hs) {
+    public static function enable(\Hook\IHookService $hs) {
         $hs->subscribe("login.management.success", self::get());
     }
     

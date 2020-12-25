@@ -5,7 +5,7 @@ namespace Housekeeper;
 require_once(__DIR__ . "/../imanagement_visitor.class.php");
 
 
-class ArchiveVisitor implements IManagementVisitor {
+class ArchiveVisitor implements \IManagementVisitor {
     private $_ts;
     private $_msg_items;
     

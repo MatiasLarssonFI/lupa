@@ -1,5 +1,7 @@
 <?php
 
+namespace Hook;
+
 require_once(__DIR__ . "/iobserver.class.php");
 
 

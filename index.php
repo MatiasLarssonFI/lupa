@@ -24,7 +24,7 @@ try {
     
     \CounterAttack::configure_log(__DIR__ . "/attack_log");
     
-    \WorkItemHousekeeper::enable(\Hook\Mediator::get());
+    \Housekeeper\Housekeeper::enable(\Hook\Mediator::get());
     
     $request = array_merge(
             array(

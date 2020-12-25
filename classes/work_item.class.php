@@ -3,6 +3,7 @@
 require_once(__DIR__ . "/ilistable_work_item.class.php");
 require_once(__DIR__ . "/iactionable_work_item.class.php");
 require_once(__DIR__ . "/iemail_confirmable.class.php");
+require_once(__DIR__ . "/imanagement_item.class.php");
 
 require_once(__DIR__ . "/readable_work_item.class.php");
 require_once(__DIR__ . "/actionable_work_item.class.php");

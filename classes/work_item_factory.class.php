@@ -2,8 +2,9 @@
 
 require_once(__DIR__ . "/imanagement_interface_context.class.php");
 require_once(__DIR__ . "/work_item.class.php");
-require_once(__DIR__ . "/management_interface.php");
+require_once(__DIR__ . "/management_interface.class.php");
 require_once(__DIR__ . "/icontact_message.class.php");
+require_once(__DIR__ . "/imanagement_interface_context.class.php");
 
 
 class WorkItemFactory implements \IManagementInterfaceContext {
