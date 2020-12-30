@@ -72,7 +72,16 @@ class ManagementLoginSubmitView extends AbstractView {
     
     
     private function make_login_messages() {
-        return \Hook\Mediator::get()->notify("login.management.success")->get_messages();
+        $msgs = \Hook\Mediator::get()->notify("login.management.success")->get_messages();
+        $ret = [];
+        
+        foreach ($msgs as $msg) {
+            foreach (explode(PHP_EOL, $msg) as $line) {
+                $ret[] = $line;
+            }
+        }
+        
+        return $ret;
     }
     
     

@@ -6,6 +6,7 @@ require_once(__DIR__ . "/../hook/iobserver.class.php");
 require_once(__DIR__ . "/../hook/ihook_service.class.php");
 
 require_once(__DIR__ . "/../work_item_factory.class.php");
+require_once(__DIR__ . "/../ui_text_storage.class.php");
 require_once(__DIR__ . "/../imanagement_item.class.php");
 require_once(__DIR__ . "/../imanagement_visitor.class.php");
 
@@ -36,15 +37,15 @@ class Housekeeper implements \Hook\IObserver {
     
     
     public function notify() {
-        $del_visitor = new DeleteVisitor();
-        $arch_visitor = new ArchiveVisitor();
+        $del_visitor = new DeleteVisitor(\UITextStorage::get());
+        $arch_visitor = new ArchiveVisitor(\UITextStorage::get());
         
-        $this->_wif->mi()->each_archived_before(strtotime("18 months"), function(\IManagementItem $mi) use ($del_visitor) {
+        $this->_wif->mi()->each_archived_before(strtotime("18 months ago"), function(\IManagementItem $mi) use ($del_visitor) {
             $mi->accept_management($del_visitor);
         });
         
         
-        $this->_wif->mi()->each_finished_before(strtotime("3 months"), function(\IManagementItem $mi) use ($arch_visitor) {
+        $this->_wif->mi()->each_finished_before(strtotime("3 months ago"), function(\IManagementItem $mi) use ($arch_visitor) {
             $mi->accept_management($arch_visitor);
         });
         

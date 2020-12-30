@@ -3,8 +3,15 @@
         <p>
             <span aria-hidden="true" class="glyphicon glyphicon-ok"></span> {{ strings.success_text }}
         </p>
+        {% if login_messages|length > 0 %}
+        <ul>
+            {% for message in login_messages %}
+            <li data-login-message>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
         <p>
-            {{ strings.select_prompt }}
+            <strong>{{ strings.select_prompt }}</strong>
         </p>
         <div class="mbm">
             <a class="btn btn-default" data-login-success href="{{ __management_url }}/{{ __lang }}/work_list">{{ strings.list_view }}</a>

@@ -28,8 +28,8 @@ class NotifyResult {
      * @return string[]
      */
     public function get_messages() {
-        return array_map(function(CallbackResult $cb) {
+        return array_filter(array_map(function(CallbackResult $cb) {
             return $cb->get_message();
-        }, $this->_cb_res);
+        }, $this->_cb_res), "strlen");
     }
 }

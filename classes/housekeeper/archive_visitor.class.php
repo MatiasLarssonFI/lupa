@@ -25,6 +25,8 @@ class ArchiveVisitor implements \IManagementVisitor {
     
     
     public function get_message() {
-        return sprintf($this->_ts->text("HK_WORK_ITEMS_ARCIVED"), count($this->_msg_items), implode(", ", $this->_msg_items));
+        return count($this->_msg_items) > 0 ?
+               sprintf($this->_ts->text("HK_WORK_ITEMS_ARCHIVED"), count($this->_msg_items), implode(", ", $this->_msg_items))
+               : "";
     }
 }

@@ -715,7 +715,7 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'MANAGEMENT_WORK_LIST_PAGE_NUMBER', 'Sida', NULL, '2020-09-04 12:00:00')
 ;
 
--- 202221
+-- 201121 ->
 
 UPDATE lupa_ui_text set `content` = 'Kiitos tarjouspyynnöstäsi. Jos sinulla on lisättävää tai kysymyksiä, vastaa tähän viestiin. Vastatessasi tähän viestiin, pidä ystävällisesti viestin aihekenttä samana.' where `code` = 'CONTACT_CONFIRMATION_BODY' and `language` = "fi";
 
@@ -728,6 +728,19 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('en', 'CONTACT_CONFIRMATION_CONTACT_MESSAGE_LABEL', 'See the information we received below.', NULL, '2020-11-21 12:00:00')
 , ('sv', 'CONTACT_CONFIRMATION_CONTACT_MESSAGE_LABEL', 'Se uppgifterna du skickade oss nedan.', NULL, '2020-11-21 12:00:00')
 ;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'HK_WORK_ITEMS_ARCHIVED', 'Arkistoitu %u vanhaa tarjousta: %s', NULL, '2020-12-30 12:00:00')
+, ('en', 'HK_WORK_ITEMS_ARCHIVED', 'Archived %u old offers: %s', NULL, '2020-12-30 12:00:00')
+, ('sv', 'HK_WORK_ITEMS_ARCHIVED', 'Arkiverade %u gamla offerter: %s', NULL, '2020-12-30 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'HK_WORK_ITEMS_DELETED', 'Poistettu %u vanhaa arkistoitua tarjousta: %s', NULL, '2020-12-30 12:00:00')
+, ('en', 'HK_WORK_ITEMS_DELETED', 'Deleted %u old archived offers: %s', NULL, '2020-12-30 12:00:00')
+, ('sv', 'HK_WORK_ITEMS_DELETED', 'Raderade %u gamla arkiverade offerter: %s', NULL, '2020-12-30 12:00:00')
+;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
