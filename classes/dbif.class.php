@@ -472,7 +472,7 @@ class DBIF {
             inner join {$this->_table_prefix}work_item_history wih
                 on wih.work_item_id = wi.id
 
-            where (wih.change_mask & :cm) = :cm
+            where (wih.change_mask & :cm)
             and UNIX_TIMESTAMP(wih.created) < :ts
             
             group by wi.id
