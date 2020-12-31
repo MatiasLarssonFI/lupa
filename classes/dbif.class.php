@@ -451,7 +451,7 @@ class DBIF {
     }
     
     
-    public function yield_work_items_cm_before($unix_timestamp, $change_mask) {
+    public function yield_work_item_rows_cm_before($unix_timestamp, $change_mask) {
         $sql =
             "SELECT
                  wi.id                  as id
@@ -484,7 +484,7 @@ class DBIF {
         $stm->execute();
         
         while ($row = $stm->fetch()) {
-            yield $cb_make_item($row);
+            yield $row;
         }
     }
     
@@ -570,7 +570,7 @@ class DBIF {
     
     public function delete_work_item(\ISavableWorkItem $work_item) {
         $sql = "DELETE ci, wi
-                from `{$this->_table_prefix}work_item wi`
+                from `{$this->_table_prefix}work_item` wi
                 inner join `{$this->_table_prefix}contact_inbox` ci
                     on ci.id = wi.contact_inbox_id
                 where wi.id = :id";
