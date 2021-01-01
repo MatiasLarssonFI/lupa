@@ -51,8 +51,9 @@ class Housekeeper implements \Hook\IObserver {
         
         $msg_del = $del_visitor->get_message();
         $msg_arch = $arch_visitor->get_message();
+        $sep = strlen($msg_del) > 0 && strlen($msg_arch) > 0 ? PHP_EOL : "";
         
-        return new \Hook\CallbackResult( (strlen($msg_del) > 0 ? ($msg_del . PHP_EOL) : "") . $msg_arch );
+        return new \Hook\CallbackResult("{$msg_del}{$sep}{$msg_arch}");
     }
     
     
