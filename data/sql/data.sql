@@ -743,7 +743,7 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 
 UPDATE lupa_work_item_history
     SET change_mask = (change_mask | (1 << 4))
-    where old_state != '(none)' and old_state != 'STATE_FINISHED' and new_state = 'state_finished';
+    where old_state != '(none)' and old_state != 'STATE_FINISHED' and new_state = 'STATE_FINISHED';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
