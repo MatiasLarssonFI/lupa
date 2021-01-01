@@ -465,6 +465,8 @@ class DBIF {
                 ,wi.is_archived         as is_archived
                 ,c.time_created         as ts_created
                 ,wi.time_state_changed  as ts_state
+                
+                ,MAX(UNIX_TIMESTAMP(wih.created)) as unix_ts_change
 
             from {$this->_table_prefix}contact_inbox c
             inner join {$this->_table_prefix}work_item wi
@@ -473,9 +475,9 @@ class DBIF {
                 on wih.work_item_id = wi.id
 
             where (wih.change_mask & :cm)
-            and UNIX_TIMESTAMP(wih.created) < :ts
             
             group by wi.id
+            having unix_ts_change < :ts
             ";
         
         $stm = $this->_pdo->prepare($sql);

@@ -17,9 +17,11 @@ class ArchiveVisitor implements \IManagementVisitor {
     
     
     public function visit_work_item(\WorkItem $wi) {
-        $wi->add_change(\ISavableWorkItem::CM_HOUSEKEEPER);
-        if ($wi->try_perform_archive()) {
-            $this->_msg_items[] = "{$wi->get_subject_reference()}/{$wi->get_name()}";
+        if (!$wi->is_archived()) {
+            $wi->add_change(\ISavableWorkItem::CM_HOUSEKEEPER);
+            if ($wi->try_perform_archive()) {
+                $this->_msg_items[] = "{$wi->get_subject_reference()}/{$wi->get_email()}";
+            }
         }
     }
     

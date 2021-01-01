@@ -19,7 +19,7 @@ class DeleteVisitor implements \IManagementVisitor {
     public function visit_work_item(\WorkItem $wi) {
         $wi->add_change(\ISavableWorkItem::CM_HOUSEKEEPER);
         if ($wi->try_perform_delete()) {
-            $this->_msg_items[] = "{$wi->get_subject_reference()}/{$wi->get_name()}";
+            $this->_msg_items[] = "{$wi->get_subject_reference()}/{$wi->get_email()}";
         }
     }
     
