@@ -85,6 +85,22 @@ class Session implements ISession {
     }
     
     
+    public function get_all_data() {
+        $ret = [];
+        foreach ($this->_request_storage as $key => $value) {
+            if (substr($key, 0, 5) === "user_") {
+                $ret[$key] = $value;
+            }
+        }
+        return $ret;
+    }
+    
+    
+    public function get_session_id() {
+        return "(none)";
+    }
+    
+    
     public function logout() {
         if (array_key_exists(self::ANTI_CSRF_NAME, $_COOKIE)) {
             setcookie(self::ANTI_CSRF_NAME, "", time() - (3600*24), "/", SiteConfigFactory::get()->get_site_config()->host(), true, true);

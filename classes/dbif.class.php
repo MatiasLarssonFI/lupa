@@ -451,6 +451,46 @@ class DBIF {
     }
     
     
+    public function yield_work_item_rows_cm_before($unix_timestamp, $change_mask) {
+        $sql =
+            "SELECT
+                 wi.id                  as id
+                ,wi.s_reference         as s_reference
+                ,c.name                 as name
+                ,c.email                as email
+                ,c.subject              as subject
+                ,c.message              as message
+                ,wi.notes               as notes
+                ,wi.state               as state
+                ,wi.is_archived         as is_archived
+                ,c.time_created         as ts_created
+                ,wi.time_state_changed  as ts_state
+                
+                ,MAX(UNIX_TIMESTAMP(wih.created)) as unix_ts_change
+
+            from {$this->_table_prefix}contact_inbox c
+            inner join {$this->_table_prefix}work_item wi
+                on wi.contact_inbox_id = c.id
+            inner join {$this->_table_prefix}work_item_history wih
+                on wih.work_item_id = wi.id
+
+            where (wih.change_mask & :cm)
+            
+            group by wi.id
+            having unix_ts_change < :ts
+            ";
+        
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindParam(":cm", $change_mask, PDO::PARAM_INT);
+        $stm->bindParam(":ts", $unix_timestamp, PDO::PARAM_INT);
+        $stm->execute();
+        
+        while ($row = $stm->fetch()) {
+            yield $row;
+        }
+    }
+    
+    
     public function get_work_item($id) {
         $sql =
             "SELECT
@@ -481,12 +521,15 @@ class DBIF {
     
     
     public function insert_work_item(\ISavableWorkItem $work_item, $contact_inbox_id) {
-        $stm = $this->_pdo->prepare("INSERT INTO `{$this->_table_prefix}work_item` (contact_inbox_id, s_reference, state, time_created, time_state_changed) VALUES(:contact_inbox_id, :s_reference, :state, now(), now())");
+        $stm = $this->_pdo->prepare("INSERT INTO `{$this->_table_prefix}work_item` (contact_inbox_id, s_reference, state, time_created, time_state_changed) VALUES(:contact_inbox_id, '', :state, now(), now())");
         $stm->bindValue(":contact_inbox_id", $contact_inbox_id, PDO::PARAM_INT);
-        $stm->bindValue(":s_reference", $work_item->get_subject_reference(), PDO::PARAM_STR);
         $stm->bindValue(":state", $work_item->get_state(), PDO::PARAM_STR);
         $stm->execute();
-        return $this->_pdo->lastInsertId();
+        
+        $insert_id = $this->_pdo->lastInsertId();
+        $this->update_work_item_subject_reference($work_item->make_subject_reference($insert_id), $insert_id);
+        
+        return $insert_id;
     }
     
     
@@ -506,6 +549,14 @@ class DBIF {
     }
     
     
+    private function update_work_item_subject_reference($subject_reference, $id) {
+        $stm = $this->_pdo->prepare("UPDATE `{$this->_table_prefix}work_item` SET s_reference = :s_reference where id = :id");
+        $stm->bindValue(":s_reference", $subject_reference, PDO::PARAM_STR);
+        $stm->bindValue(":id", $id, PDO::PARAM_INT);
+        $stm->execute();
+    }
+    
+    
     private function insert_work_item_history(\ISavableWorkItem $work_item) {
         $sql = "INSERT INTO `{$this->_table_prefix}work_item_history`
            (work_item_id, change_mask, old_state, new_state, created)
@@ -515,6 +566,18 @@ class DBIF {
         $stm->bindValue(":old_state", $work_item->get_previous_state(), PDO::PARAM_STR);
         $stm->bindValue(":new_state", $work_item->get_state(), PDO::PARAM_STR);
         $stm->bindValue(":change_mask", $work_item->get_change_mask(), PDO::PARAM_STR);
+        $stm->execute();
+    }
+    
+    
+    public function delete_work_item(\ISavableWorkItem $work_item) {
+        $sql = "DELETE ci, wi
+                from `{$this->_table_prefix}work_item` wi
+                inner join `{$this->_table_prefix}contact_inbox` ci
+                    on ci.id = wi.contact_inbox_id
+                where wi.id = :id";
+        $stm = $this->_pdo->prepare($sql);
+        $stm->bindValue(":id", $work_item->get_id(), PDO::PARAM_INT);
         $stm->execute();
     }
     

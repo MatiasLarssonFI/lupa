@@ -3,15 +3,18 @@
 require_once(__DIR__ . "/ilistable_work_item.class.php");
 require_once(__DIR__ . "/iactionable_work_item.class.php");
 require_once(__DIR__ . "/iemail_confirmable.class.php");
+require_once(__DIR__ . "/imanagement_item.class.php");
 
 require_once(__DIR__ . "/readable_work_item.class.php");
 require_once(__DIR__ . "/actionable_work_item.class.php");
 require_once(__DIR__ . "/recordable_work_item.class.php");
+require_once(__DIR__ . "/management_work_item.class.php");
 
-class WorkItem implements IListableWorkItem, IActionableWorkItem, ISavableWorkItem, IEmailConfirmable {
+class WorkItem implements IListableWorkItem, IActionableWorkItem, ISavableWorkItem, IEmailConfirmable, IManagementItem {
     use ReadableWorkItem;
     use ActionableWorkItem;
     use RecordableWorkItem;
+    use ManagementWorkItem;
     
     private $_id;
     private $_subject_reference;
@@ -37,5 +40,24 @@ class WorkItem implements IListableWorkItem, IActionableWorkItem, ISavableWorkIt
         $this->_is_archived = $is_archived;
         $this->_ts_created = $ts_created;
         $this->_ts_state = $ts_state;
+    }
+    
+    
+    public function make_subject_reference($id) {
+        // pad to at least four characters (digits)
+        $min_four_chars = "" . (1000 + $id);
+        $ret = "";
+        $len = strlen($min_four_chars);
+        
+        // add dashes every two digits ("12-34" and so on)
+        for ($i = 0; $i < $len; ++$i) {
+            if ($i > 0 && $i % 2 === 0) {
+                $ret .= "-";
+            }
+            
+            $ret .= $min_four_chars[$i];
+        }
+        
+        return $ret;
     }
 }

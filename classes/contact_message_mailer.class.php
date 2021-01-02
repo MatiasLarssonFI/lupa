@@ -5,7 +5,7 @@ require_once(__DIR__ . "/imailer.class.php");
 require_once(__DIR__ . "/dbif.class.php");
 require_once(__DIR__ . "/site_config_factory.class.php");
 
-require_once(__DIR__ . "/../lib/Twig-1.24.0/Twig-1.24.0/lib/Twig/Autoloader.php");
+require_once(__DIR__ . "/../lib_autoload.php");
 require_once(__DIR__ . "/../lib/PHPMailer-6.1.7/src/Exception.php");
 require_once(__DIR__ . "/../lib/PHPMailer-6.1.7/src/PHPMailer.php");
 require_once(__DIR__ . "/../lib/PHPMailer-6.1.7/src/SMTP.php");
@@ -30,9 +30,10 @@ class ContactMessageMailer implements IMailer {
         $mail = new PHPMailer;
         $this->_mail = $mail;
         
-        \Twig_Autoloader::register();
-        $loader = new \Twig_Loader_Filesystem(__DIR__ . "/../templates");
-        $twig = new \Twig_Environment($loader, array());
+        $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/../templates");
+        $twig = new \Twig\Environment($loader, [
+            "cache" => __DIR__ . "/../../twig_compilation_cache",
+        ]);
         
         $host = \SiteConfigFactory::get()->get_site_config()->host();
         $db = \DBIF::get();
@@ -52,18 +53,20 @@ class ContactMessageMailer implements IMailer {
             }
         }
         
-
+        $html_tmpl = $twig->load($contactmsg->get_html_template_name());
+        $text_tmpl = $twig->load($contactmsg->get_text_template_name());
+        
         $mail->addReplyTo($contactmsg->get_reply_to_address(), $contactmsg->get_reply_to_name());
         // note that $mail->setFrom() does not really work (on PHPMailer 5.2 anyway)
         $mail->From = $contactmsg->get_sender_address();
         $mail->FromName = $contactmsg->get_sender_name();
         $mail->addAddress($contactmsg->get_recipient_address());
         $mail->isHTML(true);
-    
+        
         $mail->CharSet = PHPMailer::CHARSET_UTF8;
         $mail->Subject = $contactmsg->get_subject_line();
-        $mail->Body    = $twig->render($contactmsg->get_html_template_name(), [ "message" => $contactmsg->get_message_data() ]);
-        $mail->AltBody = $twig->render($contactmsg->get_text_template_name(), [ "message" => $contactmsg->get_message_data() ]);
+        $mail->Body    = $html_tmpl->render([ "message" => $contactmsg->get_message_data() ]);
+        $mail->AltBody = $text_tmpl->render([ "message" => $contactmsg->get_message_data() ]);
 
         if(!$mail->send()) {
             throw new \RuntimeException("Failed to send contact form e-mail.");

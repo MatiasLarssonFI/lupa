@@ -41,6 +41,22 @@ interface ISession {
     public function get_data($key);
     
     
+    /**
+     * Returns all data from session as an associative array.
+     *
+     * @return array
+     */
+    public function get_all_data();
+    
+    
+    /**
+     * Returns the session ID.
+     *
+     * @return string The session ID
+     */
+    public function get_session_id();
+    
+    
     /** 
      * Destroy the current session.
      */

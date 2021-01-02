@@ -1,10 +1,13 @@
 <?php
 
+require_once(__DIR__ . "/imanagement_interface_context.class.php");
 require_once(__DIR__ . "/work_item.class.php");
+require_once(__DIR__ . "/management_interface.class.php");
 require_once(__DIR__ . "/icontact_message.class.php");
+require_once(__DIR__ . "/imanagement_interface_context.class.php");
 
 
-class WorkItemFactory {
+class WorkItemFactory implements \IManagementInterfaceContext {
     private static $_inst;
     
     const STATE_NEW = "STATE_NEW";
@@ -34,14 +37,13 @@ class WorkItemFactory {
      * Create a work item out of a contact message.
      *
      * @param \IContactMessage $message
-     * @param int $contact_inbox_id
      * @return \WorkItem
      */
-    public function make_from_contact_message(IContactMessage $message, $contact_inbox_id) {
+    public function make_from_contact_message(IContactMessage $message) {
         $now = date("Y-m-d H:i:s");
         return new WorkItem(
               null
-            , date("Ymd") . "20{$contact_inbox_id}"
+            , ""
             , $message->get_name()
             , $message->get_email()
             , $message->get_subject()
@@ -69,19 +71,7 @@ class WorkItemFactory {
         $count = self::PAGE_SIZE;
         if ($this->is_valid_state($state_filter) && $this->is_valid_order_col($order_col) && $this->is_valid_order_direction($order_direction)) {
             return \DBIF::get()->yield_work_items($state_filter, $order_col, $order_direction, $offset, $count, function(array $row) {
-                return new WorkItem(
-                      (int)$row["id"]
-                    , $row["s_reference"]
-                    , $row["name"]
-                    , $row["email"]
-                    , $row["subject"]
-                    , $row["message"]
-                    , $row["notes"]
-                    , $row["state"]
-                    , (bool)$row["is_archived"]
-                    , $row["ts_created"]
-                    , $row["ts_state"]
-                );
+                return $this->make_work_item_from_db_row($row);
             });
         }
     }
@@ -106,6 +96,35 @@ class WorkItemFactory {
      */
     public function get_email_confirmable_item($id) {
         return $this->get_work_item($id);
+    }
+    
+    
+    public function make_work_item_from_db_row(array $row) {
+        $cols = [
+            "id", "s_reference", "name", "email", "subject",
+            "message", "notes", "state", "is_archived", "ts_created",
+            "ts_state"
+        ];
+        
+        foreach ($cols as $col) {
+            if (!array_key_exists($col, $row)) {
+                throw new \InvalidArgumentException("Missing column '{$col}'");
+            }
+        }
+        
+        return new WorkItem(
+              (int)$row["id"]
+            , $row["s_reference"]
+            , $row["name"]
+            , $row["email"]
+            , $row["subject"]
+            , $row["message"]
+            , $row["notes"]
+            , $row["state"]
+            , (bool)$row["is_archived"]
+            , $row["ts_created"]
+            , $row["ts_state"]
+        );
     }
     
     
@@ -152,6 +171,11 @@ class WorkItemFactory {
     }
     
     
+    public function mi() {
+        return $this->_management_interface;
+    }
+    
+    
     public static function state_actions() {
         return [
             [
@@ -174,5 +198,7 @@ class WorkItemFactory {
     }
     
     
-    private function __construct() {}
+    private function __construct() {
+        $this->_management_interface = new \ManagementInterface($this);
+    }
 }

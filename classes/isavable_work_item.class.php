@@ -1,9 +1,12 @@
 <?php
 
 interface ISavableWorkItem {
+    // Change-mask bits
     const CM_ARCHIVED      = 1 << 0;
     const CM_UNARCHIVED    = 1 << 1;
     const CM_STATE_CHANGED = 1 << 2;
+    const CM_HOUSEKEEPER   = 1 << 3;
+    const CM_FINISHED      = 1 << 4;
     
     
     /**
@@ -43,7 +46,16 @@ interface ISavableWorkItem {
     
     
     /**
-     * @return int 
+     * @return int Change-mask
      */
     public function get_change_mask();
+    
+    
+    /**
+     * Returns a stable subject reference for given id.
+     *
+     * @param int $id
+     * @return string
+     */
+    public function make_subject_reference($id);
 }

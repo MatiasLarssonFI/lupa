@@ -122,6 +122,16 @@ class ManagementSession implements ISession {
     }
     
     
+    public function get_all_data() {
+        return $this->get_user_data();
+    }
+    
+    
+    public function get_session_id() {
+        return $this->_started ? session_id() : "(none)";
+    }
+    
+    
     public function logout() {
         $this->invalidate();
     }
@@ -368,10 +378,15 @@ class ManagementSession implements ISession {
     
     
     protected function __construct() {
-        ini_set("session.gc_maxlifetime", self::SEC_UNTIL_EXPIRE);
-        
         if (PHP_VERSION_ID < 70100) {
             throw new \LogicException("PHP 7.1.0 or newer is required.");
+        }
+        
+        ini_set("session.gc_maxlifetime", self::SEC_UNTIL_EXPIRE);
+        
+        // This because of session_create_id().
+        foreach ($this->make_session_config(true) as $key => $value) {
+            ini_set("session.{$key}", $value);
         }
         
         $this->_session_storage = [];

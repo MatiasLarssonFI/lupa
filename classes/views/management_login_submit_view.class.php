@@ -7,6 +7,8 @@ require_once(__DIR__ . "/../session_var.class.php");
 require_once(__DIR__ . "/../ui_text_storage.class.php");
 require_once(__DIR__ . "/../management_session.class.php");
 require_once(__DIR__ . "/../session.class.php");
+require_once(__DIR__ . "/../counter_attack.class.php");
+require_once(__DIR__ . "/../hook/mediator.class.php");
 
 
 class ManagementLoginSubmitView extends AbstractView {
@@ -29,6 +31,7 @@ class ManagementLoginSubmitView extends AbstractView {
         $is_success = false;
         $text_storage = \UITextStorage::get();
         $errors = [];
+        $login_messages = [];
         if (strlen($params["url"]) === 0 && // url is actually a hidden captcha field, not to be filled
             $params["company"] === "company name oy") { // hidden captcha as well
             $errors = $this->get_form_errors($params, $text_storage);
@@ -39,10 +42,13 @@ class ManagementLoginSubmitView extends AbstractView {
                 $is_success = $ms->login();
                 if ($is_success) {
                     $ms->set_data(\SessionVar::MANAGEMENT_PERMISSION, 1);
+                    $login_messages = $this->make_login_messages();
                 } else {
                     $errors["generic"] = $text_storage->text("MANAGEMENT_LOGIN_GENERIC_ERROR");
                 }
             }
+        } else {
+            \CounterAttack::get()->handle(new \Attack\CaptchaFail("Login submit", $this->get_session(), $params));
         }
         
         return [
@@ -56,11 +62,26 @@ class ManagementLoginSubmitView extends AbstractView {
                 "table_view" => $text_storage->text("MANAGEMENT_WORK_LIST_TABLE_VIEW"),
                 "list_view" => $text_storage->text("MANAGEMENT_WORK_LIST_LIST_VIEW"),
             ],
+            "login_messages" => $login_messages,
             "prefill" => $params,
             "errors" => $errors,
             "is_ajax" => (bool)$params["is_ajax"],
             "is_success" => $is_success,
         ];
+    }
+    
+    
+    private function make_login_messages() {
+        $msgs = \Hook\Mediator::get()->notify("login.management.success")->get_messages();
+        $ret = [];
+        
+        foreach ($msgs as $msg) {
+            foreach (explode(PHP_EOL, $msg) as $line) {
+                $ret[] = $line;
+            }
+        }
+        
+        return $ret;
     }
     
     
@@ -74,8 +95,12 @@ class ManagementLoginSubmitView extends AbstractView {
         $retry_delay_s = 10;
         
         $validators = [
-            "__csrf_token" => function($token) use ($session, &$csrf_ok) {
-                return $csrf_ok = (strlen($token) > 16 && $token === $session->get_csrf_token());
+            "__csrf_token" => function($token) use ($session, &$csrf_ok, $form) {
+                $csrf_ok = (strlen($token) > 16 && $token === $session->get_csrf_token());
+                if (!$csrf_ok) {
+                    \CounterAttack::get()->handle(new \Attack\CSRF("Login submit", $session, $form));
+                }
+                return $csrf_ok;
             },
             "username" => function($str) use (&$user_ok, &$last_failed_ts, $retry_delay_s, &$csrf_ok) {
                 if (!$csrf_ok) return true;

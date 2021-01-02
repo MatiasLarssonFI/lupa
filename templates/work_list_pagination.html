@@ -9,7 +9,8 @@
             <span><span aria-hidden="true">&laquo;</span></span>
         {% endif %}
         </li>
-{% for pagenum in 1..page_count %}
+{% if page_count > 0 %}
+    {% for pagenum in 1..page_count %}
         <li class="{{ pagenum == page ? 'active' : '' }}">
             {% if pagenum == page %}
             <span><span>{{ pagenum }}</span><span class="sr-only">(current)</span></span>
@@ -17,7 +18,12 @@
             <a href="{{ base_url_lang_view }}/{{ state_filter }}/{{ order_col }}/{{ order_dir }}/{{ pagenum }}">{{ pagenum }}</a>
             {% endif %}
         </li>
-{% endfor %}
+    {% endfor %}
+{% else %}
+        <li class="active">
+            <span><span>1</span><span class="sr-only">(current)</span></span>
+        </li>
+{% endif %}
         <li class="{{ page >= page_count ? 'disabled' : '' }}">
         {% if page < page_count %}
             <a href="{{ base_url_lang_view }}/{{ state_filter }}/{{ order_col }}/{{ order_dir }}/{{ page + 1 }}" aria-label="Next">

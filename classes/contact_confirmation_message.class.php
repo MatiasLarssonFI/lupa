@@ -1,6 +1,7 @@
 <?php
 
 require_once(dirname(__FILE__) . "/iemail_message.class.php");
+require_once(dirname(__FILE__) . "/icontact_message.class.php");
 require_once(dirname(__FILE__) . "/site_config_factory.class.php");
 require_once(dirname(__FILE__) . "/ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/dbif.class.php");
@@ -14,6 +15,7 @@ class ContactConfirmationMessage implements IEmailMessage {
     private $_email;
     private $_subject;
     private $_subject_reference;
+    private $_contact_message;
     
     
     /**
@@ -23,12 +25,14 @@ class ContactConfirmationMessage implements IEmailMessage {
      * @param string $email
      * @param string $subject
      * @param string $subject_reference
+     * @param \IContactMessage $contact_message
      */
-    public function __construct($name, $email, $subject, $subject_reference) {
+    public function __construct($name, $email, $subject, $subject_reference, \IContactMessage $contact_message) {
         $this->_name = $name;
         $this->_email = $email;
         $this->_subject = $subject;
         $this->_subject_reference = $subject_reference;
+        $this->_contact_message = $contact_message;
     }
     
     
@@ -40,7 +44,7 @@ class ContactConfirmationMessage implements IEmailMessage {
     public function get_subject_line() {
         $host = \SiteConfigFactory::get()->get_site_config()->host();
         $ts = \UITextStorage::get();
-        return "[{$this->_subject_reference}] {$this->_subject} - {$host} {$ts->text("CONTACT_TITLE")}";
+        return "#{$this->_subject_reference} {$this->_subject}";
     }
     
     
@@ -51,6 +55,8 @@ class ContactConfirmationMessage implements IEmailMessage {
             "contact_company" => \UITextStorage::get()->text("CONTACT_TEXT_NAME"),
             "body" => \UITextStorage::get()->text("CONTACT_CONFIRMATION_BODY"),
             "greet" => \UITextStorage::get()->text("CONTACT_CONFIRMATION_GREET"),
+            "contact_message_label" => \UITextStorage::get()->text("CONTACT_CONFIRMATION_CONTACT_MESSAGE_LABEL"),
+            "contact_message" => $this->_contact_message,
             "br" => \UITextStorage::get()->text("CONTACT_CONFIRMATION_BR"),
             "subject_reference" => sprintf(\UITextStorage::get()->text("CONTACT_CONFIRMATION_SUBJECT_REFERENCE_TMPL"), $this->_subject_reference),
         ];
