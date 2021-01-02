@@ -12,7 +12,7 @@
     <div class="form-group {{ errors.username is defined ? 'has-error': '' }}">
         <label for="userInput" class="col-xs-12 col-sm-4">{{ strings.field_user }}</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="userInput" type="text" name="username" class="form-control" required>
+            <input id="userInput" type="text" name="username" class="form-control" required autofocus>
             {% if errors.username is defined %}
                 <span class="help-block">{{ errors.username }}<span>
             {% endif %}

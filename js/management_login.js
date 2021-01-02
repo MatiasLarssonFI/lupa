@@ -48,7 +48,7 @@ lupa.managementLogin = {
             $output.css("opacity", 0).html(html).animate({opacity : 1});
             $output = $("[data-form-content] [data-login-feedback]"); // re-evaluate the node
             $link = $output.find("a[data-login-success]").first();
-            if ($link.length > 0) {
+            if ($link.length > 0 && $output.find("[data-login-message]").length === 0) {
                 var s = 4;
                 var txt = $link.text();
                 $link.text(txt + " (" + s + " s)");
@@ -64,7 +64,7 @@ lupa.managementLogin = {
                     }
                 };
                 iv = setInterval(updateAutoNav, 1000);
-            } else {
+            } else if ($link.length === 0) {
                 self.initLoginForm();
             }
         });

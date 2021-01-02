@@ -2,15 +2,15 @@
 
 namespace Views;
 
-require_once(dirname(__FILE__) . "/iview.class.php");
-require_once(dirname(__FILE__) . "/../session.class.php");
-require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
-require_once(dirname(__FILE__) . "/../dbif.class.php");
-require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
-require_once(dirname(__FILE__) . "/../nav_link_factory.class.php");
-require_once(dirname(__FILE__) . "/../resource_config.class.php");
+require_once(__DIR__ . "/iview.class.php");
+require_once(__DIR__ . "/../session.class.php");
+require_once(__DIR__ . "/../site_config_factory.class.php");
+require_once(__DIR__ . "/../dbif.class.php");
+require_once(__DIR__ . "/../ui_text_storage.class.php");
+require_once(__DIR__ . "/../nav_link_factory.class.php");
+require_once(__DIR__ . "/../resource_config.class.php");
 
-require_once(dirname(__FILE__) . "/../../lib/Twig-1.24.0/Twig-1.24.0/lib/Twig/Autoloader.php");
+require_once(__DIR__ . "/../../lib_autoload.php");
 
 
 /**
@@ -35,9 +35,10 @@ abstract class AbstractView implements IView {
     
     
     public function render() {
-        \Twig_Autoloader::register();
-        $loader = new \Twig_Loader_Filesystem(dirname(__FILE__) . "/../../templates");
-        $twig = new \Twig_Environment($loader, array());
+        $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/../../templates");
+        $twig = new \Twig\Environment($loader, [
+            "cache" => __DIR__ . "/../../../twig_compilation_cache",
+        ]);
         $text_storage = \UITextStorage::get();
         
         $data = $this->get_view_data($this->_params);
@@ -111,7 +112,8 @@ abstract class AbstractView implements IView {
             header("Pragma: no-cache");
         }
         
-        echo $twig->render($this->get_template_name(), $data);
+        $tmpl = $twig->load($this->get_template_name());
+        echo $tmpl->render($data);
     }
     
     
