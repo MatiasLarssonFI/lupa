@@ -48,7 +48,9 @@ class ManagementLoginSubmitView extends AbstractView {
                 }
             }
         } else {
-            \CounterAttack::get()->handle(new \Attack\CaptchaFail("Login submit", $this->get_session(), $params));
+            $ms = \ManagementSession::get();
+            $session = $ms->has_data(\SessionVar::MANAGEMENT_PERMISSION) ? $ms : \Session::get();
+            \CounterAttack::get()->handle(new \Attack\CaptchaFail("Login submit", $session, $params));
         }
         
         return [
@@ -87,7 +89,8 @@ class ManagementLoginSubmitView extends AbstractView {
     
     private function get_form_errors(array $form, \UITextStorage $text_storage) {
         $errors = [];
-        $session = \Session::get();
+        $ms = \ManagementSession::get();
+        $session = $ms->has_data(\SessionVar::MANAGEMENT_PERMISSION) ? $ms : \Session::get();
         $user_ok = false;
         $csrf_ok = false;
         $user = $form["username"] ?? "";
