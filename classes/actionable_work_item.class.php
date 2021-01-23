@@ -92,4 +92,18 @@ trait ActionableWorkItem {
     public function set_notes($notes) {
         $this->_notes = $notes;
     }
+    
+    
+    /**
+     * Add a change to the record.
+     * @param int $mask \ISavableWorkItem::CM_*
+     */
+    abstract public function add_change(int $mask);
+    
+    
+    /**
+     * Set the previous state to the record.
+     * @param string $state
+     */
+    abstract public function set_previous_state(string $state);
 }
