@@ -78,9 +78,7 @@ class ManagementLoginSubmitView extends AbstractView {
         $ret = [];
         
         foreach ($msgs as $msg) {
-            foreach (explode(PHP_EOL, $msg) as $line) {
-                $ret[] = $line;
-            }
+            $ret = array_merge($ret, explode(PHP_EOL, $msg));
         }
         
         return $ret;
