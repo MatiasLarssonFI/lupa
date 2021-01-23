@@ -43,6 +43,11 @@ class DevelopmentSiteConfig implements ISiteConfig {
     }
     
     
+    public function twig_compilation_cache_path() {
+        return __DIR__ . "/../../twig_compilation_cache";
+    }
+    
+    
     public function tracking_enabled() {
         return false;
     }
