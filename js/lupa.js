@@ -1,5 +1,39 @@
+var CookieConsent = function() {
+    var self = this;
+    this._onConsentFns = [];
+    this._cookies = {
+        hasConsent : "lupaConsent"
+    };
+    this.$promptElement = $("[data-cookie-consent-prompt]");
+    this.$promptElement.find("[data-consent-btn]").on("click", function() {
+        self.onConsent();
+    });
+};
+
+CookieConsent.prototype.addConsentCb = function(fn) {
+    this._onConsentFns.push(fn);
+};
+
+CookieConsent.prototype.onConsent = function() {
+    this._cookieConsentFns.forEach(function(fn) { fn(); });
+}
+
+CookieConsent.prototype.hasConsent = function() {
+    return document.cookie.indexOf(this._cookies.hasConsent + "=1") !== -1;
+};
+
+CookieConsent.prototype.updateGui = function() {
+    if (!this.hasConsent()) {
+        this.$promptElement.show();
+    }
+};
+
+lupaCookieConsent = new CookieConsent();
+
 var lupa = {
     onLoad: function () {
+        lupaCookieConsent.updateGui();
+        
         var toggleNav = function() {
             var btn = $(this);
             var node = $(btn.data("target"));
@@ -67,7 +101,9 @@ var lupa = {
     
     antiCSRFToken: function() {
         return this._antiCSRFToken;
-    }
+    },
+    
+    _cookieConsent : undefined
 };
 
 
