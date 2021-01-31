@@ -5,9 +5,20 @@ var CookieConsent = function() {
         hasConsent : "lupaConsent"
     };
     this.$promptElement = $("[data-cookie-consent-prompt]");
-    this.$promptElement.find("[data-consent-btn]").on("click", function() {
-        self.onConsent();
+    this.$promptElement.find("[data-cookie-consent-btn]").on("click", function() {
+        if (!self.hasConsent()) {
+            self.onConsent();
+        }
+        self.saveConsent(true);
     });
+    this.$promptElement.find("[data-cookie-consent-deny-btn]").on("click", function() {
+        self.saveConsent(false);
+        location.reload();
+    });
+    $promptOpenBtn = $("[data-cookie-consent-prompt-open]");
+    if ($promptOpenBtn.length > 0) {
+        $promptOpenBtn.on("click", function() { self.prompt(); });
+    }
 };
 
 CookieConsent.prototype.addConsentCb = function(fn) {
@@ -18,13 +29,25 @@ CookieConsent.prototype.onConsent = function() {
     this._cookieConsentFns.forEach(function(fn) { fn(); });
 }
 
+CookieConsent.prototype.hasSelection = function() {
+    return document.cookie.indexOf(this._cookies.hasConsent + "=") !== -1;
+};
+
 CookieConsent.prototype.hasConsent = function() {
-    return document.cookie.indexOf(this._cookies.hasConsent + "=1") !== -1;
+    return document.cookie.indexOf(this._cookies.hasConsent + "=true") !== -1;
+};
+
+CookieConsent.prototype.saveConsent = function(haveConsent) {
+     document.cookie = this._cookies.hasConsent += "=" + (haveConsent ? "true" : "false") + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+};
+
+CookieConsent.prototype.prompt = function() {
+    this.$promptElement.show();
 };
 
 CookieConsent.prototype.updateGui = function() {
-    if (!this.hasConsent()) {
-        this.$promptElement.show();
+    if (!this.hasSelection()) {
+        this.prompt();
     }
 };
 
