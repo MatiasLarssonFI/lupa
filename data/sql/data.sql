@@ -745,6 +745,18 @@ UPDATE lupa_work_item_history
     SET change_mask = (change_mask | (1 << 4))
     where old_state != '(none)' and old_state != 'STATE_FINISHED' and new_state = 'STATE_FINISHED';
 
+-- 210131
+
+INSERT INTO `lupa_info_page` (`id`, `uri`, `time_edited`, `time_created`) VALUES (NULL, 'about-cookies', NULL, '2021-01-31 16:23:22'); 
+
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES (NULL, 'about-cookies', '1', '0', 'fi', 'Tietoa evästeistä', '', NULL, '', '', NULL, '2021-01-31 16:25:37');
+
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES (NULL, 'about-cookies', '2', '0', 'fi', 'Evästeiden käyttötarkoitus', 'Nämä verkkosivut käyttävät evästeitä. Eväste on tietoa, joka tallentuu selaimeesi ja se muun muassa tunnistaa, jos palaat sivuille uudelleen. Käytämme tällaista tietoa kun tutkimme kävijätilastoja: mitkä sivut ovat kiinnostavimpia ja miten kävijät löytävät sivustollemme, esimerkiksi Google-hausta tai suoraan URL-osoitteella.', NULL, '', '', NULL, '2021-01-31 16:43:02');
+
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES (NULL, 'about-cookies', '3', '0', 'fi', '', 'Tilastot, joita varten käytämme evästeitä ovat anonyymejä, yksittäistä käyttäjää ei niistä voi erottaa.', NULL, '', '', NULL, '2021-01-31 16:44:57');
+
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES (NULL, 'about-cookies', '4', '0', 'fi', 'Analytiikka', 'Käytämme Google Analytics -palvelua kävijätilastointiin. Anonymisoitu tieto käyttäjistä välitetään Googlelle ja tiedon avulla parannamme toimintaamme sekä sivuston toimivuutta. Yksittäistä käyttäjää ei ole mahdollista tunnistaa näiden evästeiden avulla. Analysoimme, mitkä sisältömme ovat suosittuja ja mitä voisimme parantaa.', NULL, '', '', NULL, '2021-01-31 16:46:02');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
