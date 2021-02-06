@@ -9,6 +9,7 @@ require_once(dirname(__FILE__) . "/contact_view.class.php");
 require_once(dirname(__FILE__) . "/contact_submit_view.class.php");
 require_once(dirname(__FILE__) . "/info_felling_view.class.php");
 require_once(dirname(__FILE__) . "/info_partners_view.class.php");
+require_once(dirname(__FILE__) . "/info_cookies_view.class.php");
 
 require_once(dirname(__FILE__) . "/management_login_view.class.php");
 require_once(dirname(__FILE__) . "/management_login_submit_view.class.php");
@@ -68,6 +69,10 @@ class ViewFactory {
         } else if ($action === "partners") {
             return new InfoPartnersView([
                 "uri" => "partners/{$this->optional_element(0, "", $params)}"
+            ], $nlf);
+        } else if ($action === "about_cookies") {
+            return new InfoCookiesView([
+                "uri" => "about_cookies/{$this->optional_element(0, "", $params)}"
             ], $nlf);
         } else if ($action === "work_list" || $action === "work_table") {
             return new WorkListView([

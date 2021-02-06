@@ -2,6 +2,7 @@
 
 require_once(__DIR__ . "/info_felling_content.class.php");
 require_once(__DIR__ . "/info_partners_content.class.php");
+require_once(__DIR__ . "/info_cookie_content.class.php");
 require_once(__DIR__ . "/video_factory.class.php");
 require_once(__DIR__ . "/inavigable_link.class.php");
 require_once(__DIR__ . "/nav_link.class.php");
@@ -57,25 +58,26 @@ class InfoPageContentFactory {
      * @return IInfoPageContent[]
      */
     public function get_felling_contents($uri) {
-        $ret = array();
-        $lang = UITextStorage::get()->get_language();
-        $vf = \VideoFactory::get();
-        
-        DBIF::get()->get_info_page_contents(function(array $row) use (&$ret, $vf) {
-            $video = ($row["video_id"] ? $vf->get_video((int)$row["video_id"]) : null);
-            $ret[] = new InfoFellingContent(
-                  $row["id"]
-                , $row["title"]
-                , $row["html_title"]
-                , $row["content"]
-                , $row["image_uri"]
-                , $row["image_description"]
-                , (bool)$row["is_html"]
+        return $this->get_info_page_contents($uri, function(  $id
+                                                            , $title
+                                                            , $html_title
+                                                            , $content
+                                                            , $image_uri
+                                                            , $image_description
+                                                            , $is_html
+                                                            , $video)
+        {
+            return new \InfoFellingContent(
+                  $id
+                , $title
+                , $html_title
+                , $content
+                , $image_uri
+                , $image_description
+                , $is_html
                 , $video
             );
-        }, $lang, $uri);
-        
-        return $ret;
+        });
     }
     
     
@@ -85,13 +87,71 @@ class InfoPageContentFactory {
      * @return IInfoPageContent[]
      */
     public function get_partners_contents($uri) {
-        $ret = array();
+        return $this->get_info_page_contents($uri, function(  $id
+                                                            , $title
+                                                            , $html_title
+                                                            , $content
+                                                            , $image_uri
+                                                            , $image_description
+                                                            , $is_html
+                                                            , $video)
+        {
+            return new \InfoPartnersContent(
+                  $id
+                , $title
+                , $html_title
+                , $content
+                , $image_uri
+                , $image_description
+                , $is_html
+                , $video
+            );
+        });
+    }
+    
+    
+    /**
+     * Returns the cookie page contents.
+     * 
+     * @return IInfoPageContent[]
+     */
+    public function get_cookie_contents($uri) {
+        return $this->get_info_page_contents($uri, function(  $id
+                                                            , $title
+                                                            , $html_title
+                                                            , $content
+                                                            , $image_uri
+                                                            , $image_description
+                                                            , $is_html
+                                                            , $video)
+        {
+            return new \InfoCookieContent(
+                  $id
+                , $title
+                , $html_title
+                , $content
+                , $image_uri
+                , $image_description
+                , $is_html
+                , $video
+            );
+        });
+    }
+    
+    
+    /**
+     * Returns the info page contents.
+     * 
+     * @return IInfoPageContent[]
+     */
+    private function get_info_page_contents(string $uri, callable $fnConstruct) {
+        $ret = [];
         $lang = UITextStorage::get()->get_language();
         $vf = \VideoFactory::get();
         
-        DBIF::get()->get_info_page_contents(function(array $row) use (&$ret, $vf) {
+        DBIF::get()->get_info_page_contents(function(array $row) use (&$ret, $vf, $fnConstruct) {
             $video = ($row["video_id"] ? $vf->get_video((int)$row["video_id"]) : null);
-            $ret[] = new InfoPartnersContent(
+            $ret[] = $fnConstruct(
                   $row["id"]
                 , $row["title"]
                 , $row["html_title"]

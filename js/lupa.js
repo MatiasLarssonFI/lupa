@@ -124,9 +124,7 @@ var lupa = {
     
     antiCSRFToken: function() {
         return this._antiCSRFToken;
-    },
-    
-    _cookieConsent : undefined
+    }
 };
 
 
