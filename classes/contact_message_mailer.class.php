@@ -33,9 +33,10 @@ class ContactMessageMailer implements IMailer {
         $sc = \SiteConfigFactory::get()->get_site_config();
         
         $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/../templates");
-        $twig = new \Twig\Environment($loader, [
-            "cache" => $sc->twig_compilation_cache_path(),
-        ]);
+        $twig_opt = $sc->twig_compilation_cache_path() !== null
+                ? [ "cache" => $sc->twig_compilation_cache_path(), ]
+                : [];
+        $twig = new \Twig\Environment($loader, $twig_opt);
         
         $host = $sc->host();
         $db = \DBIF::get();

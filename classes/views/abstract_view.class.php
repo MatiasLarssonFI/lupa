@@ -38,9 +38,10 @@ abstract class AbstractView implements IView {
         $site_cfg = \SiteConfigFactory::get()->get_site_config();
         
         $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/../../templates");
-        $twig = new \Twig\Environment($loader, [
-            "cache" => $site_cfg->twig_compilation_cache_path(),
-        ]);
+        $twig_opt = $site_cfg->twig_compilation_cache_path()
+                        ? [ "cache" => $site_cfg->twig_compilation_cache_path(), ]
+                        : [];
+        $twig = new \Twig\Environment($loader, $twig_opt);
         $text_storage = \UITextStorage::get();
         
         $data = $this->get_view_data($this->_params);
