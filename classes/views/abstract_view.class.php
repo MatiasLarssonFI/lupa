@@ -91,6 +91,12 @@ abstract class AbstractView implements IView {
             
             "news_title" => $text_storage->text("NEWS_TITLE"),
             "news_content" => $text_storage->text("NEWS_CONTENT"),
+            "cookie_consent_body" => [
+                "first" => $text_storage->text("COOKIE_CONSENT_PROMPT_BODY_1"),
+                "second" => $text_storage->text("COOKIE_CONSENT_PROMPT_BODY_2"),
+                "allow_btn" => $text_storage->text("COOKIE_CONSENT_PROMPT_BODY_BTN_ALLOW"),
+                "deny_btn" => $text_storage->text("COOKIE_CONSENT_PROMPT_BODY_BTN_DENY"),
+            ],
         ];
         if (!array_key_exists("prefill", $data)) {
             $data["prefill"] = [

@@ -769,6 +769,30 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'COOKIE_CONSENT_OPEN_LABEL', 'Ändra på dina val', NULL, '2021-02-06 12:00:00')
 ;
 
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'COOKIE_CONSENT_PROMPT_BODY_1', '<p>Käytämme evästeitä, jotta voimme seurata tilastoista, mitkä asiat sivuillamme kiinnostavat ja tietojen avulla kehittää toimintaamme. Tilastot ovat anonyymejä, sinun käyntiäsi emme sieltä voi erottaa. Onhan tämä sinulle ok?</p>', NULL, '2021-02-28 12:00:00')
+, ('en', 'COOKIE_CONSENT_PROMPT_BODY_1', '', NULL, '2021-02-28 12:00:00')
+, ('sv', 'COOKIE_CONSENT_PROMPT_BODY_1', '', NULL, '2021-02-28 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'COOKIE_CONSENT_PROMPT_BODY_2', '<p>Jos haluat nähdä, mitä evästeitä käytämme tai laittaa ne pois päältä, tarkista ne <a href="https://lu-pa.fi/fi/about_cookies">asetuksista</a>.</p>', NULL, '2021-02-28 12:00:00')
+, ('en', 'COOKIE_CONSENT_PROMPT_BODY_2', '', NULL, '2021-02-28 12:00:00')
+, ('sv', 'COOKIE_CONSENT_PROMPT_BODY_2', '', NULL, '2021-02-28 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'COOKIE_CONSENT_PROMPT_BODY_BTN_ALLOW', 'Kyllä', NULL, '2021-02-28 12:00:00')
+, ('en', 'COOKIE_CONSENT_PROMPT_BODY_BTN_ALLOW', 'Yes', NULL, '2021-02-28 12:00:00')
+, ('sv', 'COOKIE_CONSENT_PROMPT_BODY_BTN_ALLOW', 'Ja', NULL, '2021-02-28 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'COOKIE_CONSENT_PROMPT_BODY_BTN_DENY', 'Ei', NULL, '2021-02-28 12:00:00')
+, ('en', 'COOKIE_CONSENT_PROMPT_BODY_BTN_DENY', 'No', NULL, '2021-02-28 12:00:00')
+, ('sv', 'COOKIE_CONSENT_PROMPT_BODY_BTN_DENY', 'Nej', NULL, '2021-02-28 12:00:00')
+;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

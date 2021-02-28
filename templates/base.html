@@ -176,6 +176,8 @@
             </ul>
         </div>
         
+        {% include "cookie_consent_prompt.html" %}
+        
         <script src="{{ __base_uri }}/lib/jquery-2.2.4.min.js"></script>
         <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
         <script src="{{ __base_uri }}/js/lupa.{{ __js_src_mode }}.js?v={{ __js_src_version }}"></script>
