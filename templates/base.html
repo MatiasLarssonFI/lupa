@@ -178,7 +178,7 @@
         
         <script src="{{ __base_uri }}/lib/jquery-2.2.4.min.js"></script>
         <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-        <script src="{{ __base_uri }}/js/lupa.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
+        <script src="{{ __base_uri }}/js/lupa.{{ __js_src_mode }}.js?v={{ __js_src_version }}"></script>
         <script src="{{ __base_uri }}/js/contact.{{ __js_src_mode }}.js?v={{ __js_src_version }}" defer></script>
         <script>
             // all AJAX shall actually be asynchronous (duh)
@@ -221,6 +221,9 @@
         </script>
         {% else %}
         <!-- No Google Analytics -->
+        <script>
+            lupaCookieConsent.addConsentCb(function() { if (console && console.log) console.log("consent given"); });
+        </script>
         {% endif %}
         {% block js_link %}{% endblock %}
     </body>

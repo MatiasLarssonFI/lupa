@@ -1,3 +1,12 @@
+/**
+ * Cookie consent.
+ * 
+ * Usage:
+ * 
+ *   var cc = new CookieConsent();
+ *   cc.addConsentCb(() => { console.log("consent given"); });
+ *   cc.updateGui();
+ */
 var CookieConsent = function() {
     var self = this;
     this._onConsentFns = [];
@@ -5,28 +14,37 @@ var CookieConsent = function() {
         hasConsent : "lupaConsent"
     };
     this.$promptElement = $("[data-cookie-consent-prompt]");
-    this.$promptElement.find("[data-cookie-consent-btn]").on("click", function() {
+    this.$promptElement.find("[data-cookie-consent-allow-btn]").on("click", function() {
         if (!self.hasConsent()) {
             self.onConsent();
         }
         self.saveConsent(true);
+        self.$promptElement.addClass("hidden");
     });
     this.$promptElement.find("[data-cookie-consent-deny-btn]").on("click", function() {
         self.saveConsent(false);
-        location.reload();
+        self.$promptElement.addClass("hidden");
     });
+    this._onConsentFnsRun = false;
     $promptOpenBtn = $("[data-cookie-consent-prompt-open]");
     if ($promptOpenBtn.length > 0) {
-        $promptOpenBtn.on("click", function() { self.prompt(); });
+        $promptOpenBtn.on("click", function() {
+            self.prompt();
+            $promptOpenBtn.prop("disabled", true);
+        });
     }
 };
 
 CookieConsent.prototype.addConsentCb = function(fn) {
+    if (this._onConsentFnsRun && this.hasConsent()) {
+        fn();
+    }
     this._onConsentFns.push(fn);
 };
 
 CookieConsent.prototype.onConsent = function() {
-    this._cookieConsentFns.forEach(function(fn) { fn(); });
+    this._onConsentFns.forEach(function(fn) { fn(); });
+    this._onConsentFnsRun = true;
 }
 
 CookieConsent.prototype.hasSelection = function() {
@@ -38,16 +56,19 @@ CookieConsent.prototype.hasConsent = function() {
 };
 
 CookieConsent.prototype.saveConsent = function(haveConsent) {
-     document.cookie = this._cookies.hasConsent += "=" + (haveConsent ? "true" : "false") + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+     document.cookie = this._cookies.hasConsent += "=" + (haveConsent ? "true" : "false") + "; SameSite=Strict; Secure; Path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 };
 
 CookieConsent.prototype.prompt = function() {
-    this.$promptElement.show();
+    this.$promptElement.removeClass("hidden");
 };
 
 CookieConsent.prototype.updateGui = function() {
     if (!this.hasSelection()) {
         this.prompt();
+    }
+    else if (this.hasConsent()) {
+        this.onConsent();
     }
 };
 
