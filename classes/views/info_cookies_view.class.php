@@ -31,6 +31,7 @@ class InfoCookiesView extends AbstractView {
             "strings" => array(
                 "page_title" => $this->first_title_or($contents, $text_storage->text("INFO_COOKIES_PAGE_TITLE")),
                 "consent_open_btn" => $text_storage->text("COOKIE_CONSENT_OPEN_LABEL"),
+                "refresh_prompt" => $text_storage->text("COOKIE_CONSENT_REFRESH_PROMPT"),
             ),
             "contents" => $contents,
             "allow_hreflang" => false,

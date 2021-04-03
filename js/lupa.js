@@ -10,6 +10,7 @@
 var CookieConsent = function() {
     var self = this;
     this._onConsentFns = [];
+    this._onSelectionFns = [];
     this._cookies = {
         hasConsent : "lupaConsent"
     };
@@ -20,12 +21,15 @@ var CookieConsent = function() {
         }
         self.saveConsent(true);
         self.$promptElement.addClass("hidden");
+        self.onSelection(true);
     });
     this.$promptElement.find("[data-cookie-consent-deny-btn]").on("click", function() {
         self.saveConsent(false);
         self.$promptElement.addClass("hidden");
+        self.onSelection(false);
     });
     this._onConsentFnsRun = false;
+    this._onSelectionFnsRun = false;
     $promptOpenBtn = $("[data-cookie-consent-prompt-open]");
     if ($promptOpenBtn.length > 0) {
         $promptOpenBtn.on("click", function() {
@@ -42,9 +46,21 @@ CookieConsent.prototype.addConsentCb = function(fn) {
     this._onConsentFns.push(fn);
 };
 
+CookieConsent.prototype.addSelectionCb = function(fn) {
+    if (this._onSelectionFnsRun && this.hasSelection()) {
+        fn(this.hasConsent());
+    }
+    this._onSelectionFns.push(fn);
+};
+
 CookieConsent.prototype.onConsent = function() {
     this._onConsentFns.forEach(function(fn) { fn(); });
     this._onConsentFnsRun = true;
+}
+
+CookieConsent.prototype.onSelection = function(haveConsent) {
+    this._onSelectionFns.forEach(function(fn) { fn(haveConsent); });
+    this._onSelectionFnsRun = true;
 }
 
 CookieConsent.prototype.hasSelection = function() {

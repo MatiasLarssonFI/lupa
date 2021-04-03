@@ -84,6 +84,9 @@ h1.partners-content-entry-title {
     box-shadow: 0px 0px 15px 4px rgba(253, 129, 17,0.5);
 }
 
+.btn-primary:disabled:hover {
+    box-shadow: none;
+}
 
 .navbar-default .navbar-nav > li > a {
     color: #fff;
@@ -391,4 +394,10 @@ span.orange {
 
 .work-list-clickable {
     cursor: pointer;
+}
+
+
+.cookie-consent-prompt {
+    background: rgba(165, 227, 92, 0.9) !important;
+    color: #0c161f;
 }

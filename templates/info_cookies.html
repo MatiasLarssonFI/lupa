@@ -41,7 +41,20 @@
                     <button class="btn btn-primary" data-cookie-consent-prompt-open>{{ strings.consent_open_btn }}</button>
                 </div>
             </div>
+            <div class="row hidden" data-cookie-consent-refresh-prompt>
+                <div class="col-xs-12 pbm">
+                    <p>{{ strings.refresh_prompt }}</p>
+                </div>
+            </div>
         </div>
     </div>
 </main>
+{% endblock %}
+{% block js_link %}
+<script>
+    lupaCookieConsent.addSelectionCb(function() {
+        console.log("selection");
+        $("[data-cookie-consent-refresh-prompt]").removeClass("hidden");
+    });
+</script>
 {% endblock %}

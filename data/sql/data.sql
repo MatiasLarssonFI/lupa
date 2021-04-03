@@ -793,6 +793,12 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'COOKIE_CONSENT_PROMPT_BODY_BTN_DENY', 'Nej', NULL, '2021-02-28 12:00:00')
 ;
 
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'COOKIE_CONSENT_REFRESH_PROMPT', 'Valintasi on tallennettu. Muutokset tulevat voimaan, kun lataat sivun uudelleen.', NULL, '2021-04-03 12:00:00')
+, ('en', 'COOKIE_CONSENT_REFRESH_PROMPT', 'Dina val har sparats. Ändringarna träder i kraft när du laddar om sidan.', NULL, '2021-02-28 12:00:00')
+, ('sv', 'COOKIE_CONSENT_REFRESH_PROMPT', 'Your choices have been saved. The changes will take effect once you reload the page.', NULL, '2021-04-03 12:00:00')
+;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

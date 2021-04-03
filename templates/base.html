@@ -156,6 +156,7 @@
                             <img class="img-brand-sm" alt="{{ __contact_info.name }}" src="{{ __small_logo_uri }}">
                         </div>
                     </div>
+                    {% include "cookie_consent_prompt.html" %}
                 </div>
             </div>
         </div>
@@ -175,8 +176,6 @@
             {% endfor %}
             </ul>
         </div>
-        
-        {% include "cookie_consent_prompt.html" %}
         
         <script src="{{ __base_uri }}/lib/jquery-2.2.4.min.js"></script>
         <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
