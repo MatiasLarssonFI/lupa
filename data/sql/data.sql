@@ -799,6 +799,12 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'COOKIE_CONSENT_REFRESH_PROMPT', 'Your choices have been saved. The changes will take effect once you reload the page.', NULL, '2021-04-03 12:00:00')
 ;
 
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'NAV_ABOUT_COOKIES', 'Tietoa evästeistä', NULL, '2021-02-06 12:00:00')
+, ('en', 'NAV_ABOUT_COOKIES', 'About cookies', NULL, '2021-02-06 12:00:00')
+, ('sv', 'NAV_ABOUT_COOKIES', 'Om kakor', NULL, '2021-02-06 12:00:00')
+;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

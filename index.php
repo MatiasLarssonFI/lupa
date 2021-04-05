@@ -40,7 +40,8 @@ try {
         $ts = UITextStorage::get();
         $ts->try_change_language($request["language"]);
         $lang = $ts->get_language();
-        $nlf = new NavLinkFactory($request["action"], $request["params"], ActionFactory::get()->get_nav_actions(), $lang);
+        $af = ActionFactory::get();
+        $nlf = new NavLinkFactory($request["action"], $request["params"], $af->get_nav_actions(), $af->get_footer_nav_actions(), $lang);
         Views\ViewFactory::get()->get_view($request["action"], $request["params"], $lang, $nlf)->render();
     } catch (Exception $e) {
         $is_ajax = (isset($_REQUEST["is_ajax"]) ? $_REQUEST["is_ajax"] : false);

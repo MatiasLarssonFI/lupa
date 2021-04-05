@@ -117,6 +117,10 @@
                                                 {% set href = ( link.is_page ? [ __base_uri, __lang, link.get_action ]|join("/") : link.get_action ) %}
                                                 <li><a href='{{ href }}' title="{{ link.get_text }}">{{ link.get_text }}&nbsp;&raquo;</a></li>
                                             {% endfor %}
+                                            {% for link in __footer_only_nav_links %}
+                                                {% set href = ( link.is_page ? [ __base_uri, __lang, link.get_action ]|join("/") : link.get_action ) %}
+                                                <li><a href='{{ href }}' title="{{ link.get_text }}">{{ link.get_text }}&nbsp;&raquo;</a></li>
+                                            {% endfor %}
                                         </ul>
                                     </nav>
                                 </div>

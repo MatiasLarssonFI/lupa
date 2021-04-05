@@ -8,7 +8,8 @@ require_once(dirname(__FILE__) . "/ui_text_storage.class.php");
 class NavLinkFactory {
     private $_action;
     private $_params;
-    private $_all_actions;
+    private $_nav_actions;
+    private $_footer_only_actions;
     private $_lang;
     private $_sub_nav_fs;
     
@@ -19,14 +20,16 @@ class NavLinkFactory {
      * @param string $action Current action
      * @param string[] $params Params from HTTP GET
      * @param string[] $nav_actions Array of all navigation action names
+     * @param string[] $footer_actions Array of footer-only navigation action names
      * @param string $lang
      * @param string $base_uri
      * @param ISubNavLinkFactory[] $sub_nav_factories
      */
-    public function __construct($action, array $params, array $nav_actions, $lang, array $sub_nav_factories = []) {
+    public function __construct($action, array $params, array $nav_actions, array $footer_actions, $lang, array $sub_nav_factories = []) {
         $this->_action = $action;
         $this->_params = $params;
-        $this->_all_actions = $nav_actions;
+        $this->_nav_actions = $nav_actions;
+        $this->_footer_only_actions = $footer_actions;
         $this->_lang = $lang;
         $this->_sub_nav_fs = $sub_nav_factories;
     }
@@ -48,7 +51,7 @@ class NavLinkFactory {
                 $title = $texts->text("NAV_FRONT_PAGE");
             }
             return new NavLink($action, $title, $action === $current_action);
-        }, $this->_all_actions);
+        }, $this->_nav_actions);
     }
     
     
@@ -67,6 +70,22 @@ class NavLinkFactory {
         }
         
         return $ret;
+    }
+    
+    
+    /**
+     * Returns the main nav links.
+     * 
+     * @return NavLink[]
+     */
+    public function get_footer_only_nav_links() {
+        $texts = \UITextStorage::get();
+        $current_action = $this->_action;
+        
+        return array_map(function ($action) use ($texts, $current_action) {
+            $title = $texts->text("NAV_" . str_replace(["-", "#"], ["_", ""], strtoupper($action)));
+            return new NavLink($action, $title, $action === $current_action);
+        }, $this->_footer_only_actions);
     }
     
     

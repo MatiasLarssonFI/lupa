@@ -48,6 +48,18 @@ class ActionFactory {
     
     
     /**
+     * @return string[] The navigation actions
+     */
+    public function get_footer_nav_actions() {
+        $actions = [];
+        if (\UITextStorage::get()->get_language() === "fi") {
+            $actions[] = "about_cookies";
+        }
+        return $actions;
+    }
+    
+    
+    /**
      * Returns the primary action when accessing management site.
      * 
      * @return string
