@@ -30,8 +30,11 @@ var CookieConsent = function() {
     });
     this._onConsentFnsRun = false;
     this._onSelectionFnsRun = false;
+    
+    this.$promptOpenBtn = undefined;
     $promptOpenBtn = $("[data-cookie-consent-prompt-open]");
     if ($promptOpenBtn.length > 0) {
+        this.$promptOpenBtn = $promptOpenBtn;
         $promptOpenBtn.on("click", function() {
             self.prompt();
             $promptOpenBtn.prop("disabled", true);
@@ -77,6 +80,9 @@ CookieConsent.prototype.saveConsent = function(haveConsent) {
 
 CookieConsent.prototype.prompt = function() {
     this.$promptElement.removeClass("hidden");
+    if (this.$promptOpenBtn) {
+        this.$promptOpenBtn.prop("disabled", true);
+    }
 };
 
 CookieConsent.prototype.updateGui = function() {
