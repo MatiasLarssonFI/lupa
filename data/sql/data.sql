@@ -131,7 +131,7 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (45, 'en', 'CONTACT_SUBMIT', 'Send message', NULL, '2016-04-02 21:00:00'),
 (46, 'fi', 'CONTACT_SUBMIT_TEXT', 'Kiitos yhteydenotostasi. Olemme sinuun yhteydessä pian.', NULL, '2016-04-02 21:00:00'),
 (47, 'sv', 'CONTACT_SUBMIT_TEXT', 'Tack. Vi kommer att vara i kontakt med dig snart.', '2017-04-02 13:20:03', '2016-04-02 21:00:00'),
-(48, 'en', 'CONTACT_SUBMIT_TEXT', 'Thank you. We\'ll be in touch with you soon.', '2016-04-03 16:28:03', '2016-04-02 21:00:00'),
+(48, 'en', 'CONTACT_SUBMIT_TEXT', 'Thank you. We''ll be in touch with you soon.', '2016-04-03 16:28:03', '2016-04-02 21:00:00'),
 (49, 'fi', 'CONTACT_FIELD_ERROR_NAME', 'Nimi ei voi olla tyhjä eikä yli 255 merkkiä pitkä.', NULL, '2016-04-02 18:00:00'),
 (50, 'fi', 'CONTACT_FIELD_ERROR_EMAIL', 'Sähköpostiosoite on oltava oikea.', NULL, '2016-04-02 18:00:00'),
 (51, 'fi', 'CONTACT_FIELD_ERROR_SUBJECT', 'Aihe ei voi olla tyhjä eikä yli 255 merkkiä pitkä.', NULL, '2016-04-02 18:00:00'),
@@ -145,7 +145,7 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (59, 'sv', 'CONTACT_FIELD_ERROR_SUBJECT', 'Ämnet kan inte vara tom eller längre än 255 tecken.', '2017-04-02 13:20:03', '2016-04-02 15:00:00'),
 (60, 'sv', 'CONTACT_FIELD_ERROR_MESSAGE', 'Meddelandet måste vara längre än fyra tecken och kortare än 4000 tecken.', '2017-04-02 13:20:03', '0000-00-00 00:00:00'),
 (61, 'fi', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'Pahoittelumme, mutta lomake on vanhentunut. Ole hyvä ja yritä uudelleen.', '2016-04-15 19:59:42', '2016-04-13 21:00:00'),
-(62, 'en', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'We\'re sorry but the form has expired. Please try again.', '2016-04-15 19:58:48', '2016-04-13 21:00:00'),
+(62, 'en', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'We''re sorry but the form has expired. Please try again.', '2016-04-15 19:58:48', '2016-04-13 21:00:00'),
 (63, 'sv', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'Vi ber om ursäkt men formen har löpt ut. Var god försök igen.', '2017-04-02 13:20:03', '2016-04-13 21:00:00'),
 (64, 'fi', 'VIDEOS_PAGE_TITLE', 'Videoita', '2016-03-06 14:15:39', '2016-03-05 20:00:00'),
 (65, 'sv', 'VIDEOS_PAGE_TITLE', 'Videor', '2017-04-02 13:20:03', '2016-03-05 20:00:00'),
@@ -258,7 +258,7 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'GENRAL_ERROR_MESSAGE', 'Pahoittelemme, jokin meni vikaan. Voit ottaa meihin yhteyttä sähköpostilla: myynti@lu-pa.fi', NULL, '2019-03-30 19:00:00')
-, ('en', 'GENRAL_ERROR_MESSAGE', 'We\'re sorry, something went wrong. If you wish, you can contact us by email: myynti@lu-pa.fi', NULL, '2019-03-30 19:00:00')
+, ('en', 'GENRAL_ERROR_MESSAGE', 'We''re sorry, something went wrong. If you wish, you can contact us by email: myynti@lu-pa.fi', NULL, '2019-03-30 19:00:00')
 , ('sv', 'GENRAL_ERROR_MESSAGE', 'Vi ber om ursäkt, något gick fel. Du kan kontakta oss via e-post: myynti@lu-pa.fi', NULL, '2019-03-30 19:00:00')
 ;
 
@@ -636,7 +636,7 @@ INSERT INTO `lupa_config` (`key`, `value`, `time_edited`, `time_created`) VALUES
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'CONTACT_CONFIRMATION_BODY', 'Kiitos tarjouspyynnöstäsi. Jos sinulla on lisättävää tai kysymyksiä, ole hyvä ja vastaa tähän viestiin.', NULL, '2020-09-02 12:00:00')
-, ('en', 'CONTACT_CONFIRMATION_BODY', 'Thank you for your message. If you\'d like to add or ask something, please reply to this message.', NULL, '2020-09-02 12:00:00')
+, ('en', 'CONTACT_CONFIRMATION_BODY', 'Thank you for your message. If you''d like to add or ask something, please reply to this message.', NULL, '2020-09-02 12:00:00')
 , ('sv', 'CONTACT_CONFIRMATION_BODY', 'Tack för ditt meddelande. Vill du tillägga eller fråga någonting, var god och svara på det här meddelandet.', NULL, '2020-09-02 12:00:00')
 
 , ('fi', 'CONTACT_CONFIRMATION_GREET', 'Hei,', NULL, '2020-09-02 12:00:00')
@@ -721,7 +721,7 @@ UPDATE lupa_ui_text set `content` = 'Kiitos tarjouspyynnöstäsi. Jos sinulla on
 
 UPDATE lupa_ui_text set `content` = 'Tack för ditt meddelande. Vill du tillägga eller fråga någonting, var god och svara på det här meddelandet. När du skriver till oss, vänligen använd samma ämnesrad som i detta meddelande.' where `code` = 'CONTACT_CONFIRMATION_BODY' and `language` = "sv";
 
-UPDATE lupa_ui_text set `content` = 'Thank you for your message. If you\'d like to add or ask something, please reply to this message. When replying to this message, please keep the original subject line.' where `code` = 'CONTACT_CONFIRMATION_BODY' and `language` = "en";
+UPDATE lupa_ui_text set `content` = 'Thank you for your message. If you''d like to add or ask something, please reply to this message. When replying to this message, please keep the original subject line.' where `code` = 'CONTACT_CONFIRMATION_BODY' and `language` = "en";
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'CONTACT_CONFIRMATION_CONTACT_MESSAGE_LABEL', 'Alla näet tiedot, jotka lähetit meille.', NULL, '2020-11-21 12:00:00')
