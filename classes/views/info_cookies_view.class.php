@@ -34,7 +34,6 @@ class InfoCookiesView extends AbstractView {
                 "refresh_prompt" => $text_storage->text("COOKIE_CONSENT_REFRESH_PROMPT"),
             ),
             "contents" => $contents,
-            "allow_hreflang" => false,
         ];
     }
     

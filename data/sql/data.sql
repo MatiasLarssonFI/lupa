@@ -749,13 +749,29 @@ UPDATE lupa_work_item_history
 
 INSERT INTO `lupa_info_page` (`id`, `uri`, `time_edited`, `time_created`) VALUES (NULL, 'about_cookies/', NULL, '2021-01-31 16:23:22'); 
 
-INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES (NULL, 'about-cookies', '1', '0', 'fi', 'Tietoa evästeistä', '', NULL, '', '', NULL, '2021-01-31 16:25:37');
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES
+      (NULL, 'about_cookies/', '1', '0', 'fi', 'Tietoa evästeistä', '', NULL, '', '', NULL, '2021-01-31 16:25:37')
+    , (NULL, 'about_cookies/', '1', '0', 'sv', 'Om kakor', '', NULL, '', '', NULL, '2021-01-31 16:25:37')
+    , (NULL, 'about_cookies/', '1', '0', 'en', 'About cookies', '', NULL, '', '', NULL, '2021-01-31 16:25:37')
+;
 
-INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES (NULL, 'about-cookies', '2', '0', 'fi', 'Evästeiden käyttötarkoitus', 'Nämä verkkosivut käyttävät evästeitä. Eväste on tietoa, joka tallentuu selaimeesi ja se muun muassa tunnistaa, jos palaat sivuille uudelleen. Käytämme tällaista tietoa kun tutkimme kävijätilastoja: mitkä sivut ovat kiinnostavimpia ja miten kävijät löytävät sivustollemme, esimerkiksi Google-hausta tai suoraan URL-osoitteella.', NULL, '', '', NULL, '2021-01-31 16:43:02');
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES
+      (NULL, 'about_cookies/', '2', '0', 'fi', 'Evästeiden käyttötarkoitus', 'Nämä verkkosivut käyttävät evästeitä. Eväste on tietoa, joka tallentuu selaimeesi ja se muun muassa tunnistaa, jos palaat sivuille uudelleen. Käytämme tällaista tietoa kun tutkimme kävijätilastoja: mitkä sivut ovat kiinnostavimpia ja miten kävijät löytävät sivustollemme, esimerkiksi Google-hausta tai suoraan URL-osoitteella.', NULL, '', '', NULL, '2021-01-31 16:43:02')
+    , (NULL, 'about_cookies/', '2', '0', 'sv', 'Syftet med kakor', 'Denna webbplats använder cookies. Cookies är information som sparas i din webbläsare som bland annat upptäcker om du återvänder till webbplatsen. Vi använder denna typ av information när vi analyserar vår besökarstatistik: vilka sidor som är mest intressanta och hur besökare hittar vår webbplats, till exempel med Googles sökning eller direkt med en URL-adress.', NULL, '', '', NULL, '2021-01-31 16:43:02')
+    , (NULL, 'about_cookies/', '2', '0', 'en', 'Purpose of cookies', 'This website uses cookies. Cookies are information saved in your browser that, among other things, detects if you return to the website. We use this kind of information when we analyze our visitor statistics: which pages are the most interesting and how visitors find our website, for example by Google search or directly with a URL address.', NULL, '', '', NULL, '2021-01-31 16:43:02')
+;
 
-INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES (NULL, 'about-cookies', '3', '0', 'fi', '', 'Tilastot, joita varten käytämme evästeitä ovat anonyymejä, yksittäistä käyttäjää ei niistä voi erottaa.', NULL, '', '', NULL, '2021-01-31 16:44:57');
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES
+      (NULL, 'about_cookies/', '3', '0', 'fi', '', 'Tilastot, joita varten käytämme evästeitä ovat anonyymejä, yksittäistä käyttäjää ei niistä voi erottaa.', NULL, '', '', NULL, '2021-01-31 16:44:57')
+    , (NULL, 'about_cookies/', '3', '0', 'sv', '', 'Statistiken för vilken vi använder kakorna är anonym, vi kan inte identifiera eller särskilja en enskild besökare från denna statistik.', NULL, '', '', NULL, '2021-01-31 16:44:57')
+    , (NULL, 'about_cookies/', '3', '0', 'en', '', 'The statistics for which we use the cookies are anonymous, we can''t identify nor distinguish an individual visitor from these statistics.', NULL, '', '', NULL, '2021-01-31 16:44:57')
+;
 
-INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES (NULL, 'about-cookies', '4', '0', 'fi', 'Analytiikka', 'Käytämme Google Analytics -palvelua kävijätilastointiin. Anonymisoitu tieto käyttäjistä välitetään Googlelle ja tiedon avulla parannamme toimintaamme sekä sivuston toimivuutta. Yksittäistä käyttäjää ei ole mahdollista tunnistaa näiden evästeiden avulla. Analysoimme, mitkä sisältömme ovat suosittuja ja mitä voisimme parantaa.', NULL, '', '', NULL, '2021-01-31 16:46:02');
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES
+      (NULL, 'about_cookies/', '4', '0', 'fi', 'Analytiikka', 'Käytämme Google Analytics -palvelua kävijätilastointiin. Anonymisoitu tieto käyttäjistä välitetään Googlelle ja tiedon avulla parannamme toimintaamme sekä sivuston toimivuutta. Yksittäistä käyttäjää ei ole mahdollista tunnistaa näiden evästeiden avulla. Analysoimme, mitkä sisältömme ovat suosittuja ja mitä voisimme parantaa.', NULL, '', '', NULL, '2021-01-31 16:46:02')
+    , (NULL, 'about_cookies/', '4', '0', 'sv', 'Analys', 'Vi använder tjänsten Google Analytics för besökarstatistik. Anonymiserad besökarinformation vidarebefordras till Google och vi använder informationen för att förbättra vår verksamhet och webbplats. Enskilda besökare kan inte identifieras från denna information. Vi analyserar vilket innehåll som är populärt och vad vi kan förbättra.', NULL, '', '', NULL, '2021-01-31 16:46:02')
+    , (NULL, 'about_cookies/', '4', '0', 'en', 'Analytics', 'We use the Google Analytics service for visitor statistics. Anonymized visitor information is relayed to Google and we use the information to improve our operation and website. Individual visitors can''t be identified from this information. We analyze what content is popular and what we can improve.', NULL, '', '', NULL, '2021-01-31 16:46:02')
+;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'INFO_COOKIES_PAGE_TITLE', 'Tietoa evästeistä', NULL, '2021-02-06 12:00:00')
@@ -771,14 +787,14 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'COOKIE_CONSENT_PROMPT_BODY_1', '<p>Käytämme evästeitä, jotta voimme seurata tilastoista, mitkä asiat sivuillamme kiinnostavat ja tietojen avulla kehittää toimintaamme. Tilastot ovat anonyymejä, sinun käyntiäsi emme sieltä voi erottaa. Onhan tämä sinulle ok?</p>', NULL, '2021-02-28 12:00:00')
-, ('en', 'COOKIE_CONSENT_PROMPT_BODY_1', '', NULL, '2021-02-28 12:00:00')
-, ('sv', 'COOKIE_CONSENT_PROMPT_BODY_1', '', NULL, '2021-02-28 12:00:00')
+, ('en', 'COOKIE_CONSENT_PROMPT_BODY_1', '<p>We use cookies to statistically analyze what content on our website interests visitors and what we can improve. The statistics are anonymous, we can''t distinguish your visit from others. Is this OK for you?</p>', NULL, '2021-02-28 12:00:00')
+, ('sv', 'COOKIE_CONSENT_PROMPT_BODY_1', '<p>Vi använder cookies för att statistiskt analysera vilket innehåll på vår webbplats som intresserar besökare och vad vi kan förbättra. Statistiken är anonym, vi kan inte skilja ditt besök från andra. Är det OK för dig?</p>', NULL, '2021-02-28 12:00:00')
 ;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'COOKIE_CONSENT_PROMPT_BODY_2', '<p>Jos haluat nähdä, mitä evästeitä käytämme tai laittaa ne pois päältä, tarkista ne <a href="https://lu-pa.fi/fi/about_cookies">asetuksista</a>.</p>', NULL, '2021-02-28 12:00:00')
-, ('en', 'COOKIE_CONSENT_PROMPT_BODY_2', '', NULL, '2021-02-28 12:00:00')
-, ('sv', 'COOKIE_CONSENT_PROMPT_BODY_2', '', NULL, '2021-02-28 12:00:00')
+, ('en', 'COOKIE_CONSENT_PROMPT_BODY_2', '<p>If you''d like to see what cookies we use or disable them, see the <a href="https://lu-pa.fi/en/about_cookies">settings</a>.</p>', NULL, '2021-02-28 12:00:00')
+, ('sv', 'COOKIE_CONSENT_PROMPT_BODY_2', '<p>Om du vill se vilka cookies vi använder eller inaktiverar dem, se <a href="https://lu-pa.fi/sv/about_cookies">inställningarna</a>.</p>', NULL, '2021-02-28 12:00:00')
 ;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
@@ -795,8 +811,8 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'COOKIE_CONSENT_REFRESH_PROMPT', 'Valintasi on tallennettu. Muutokset tulevat voimaan, kun lataat sivun uudelleen.', NULL, '2021-04-03 12:00:00')
-, ('en', 'COOKIE_CONSENT_REFRESH_PROMPT', 'Dina val har sparats. Ändringarna träder i kraft när du laddar om sidan.', NULL, '2021-02-28 12:00:00')
-, ('sv', 'COOKIE_CONSENT_REFRESH_PROMPT', 'Your choices have been saved. The changes will take effect once you reload the page.', NULL, '2021-04-03 12:00:00')
+, ('sv', 'COOKIE_CONSENT_REFRESH_PROMPT', 'Dina val har sparats. Ändringarna träder i kraft när du laddar om sidan.', NULL, '2021-02-28 12:00:00')
+, ('en', 'COOKIE_CONSENT_REFRESH_PROMPT', 'Your choices have been saved. The changes will take effect once you reload the page.', NULL, '2021-04-03 12:00:00')
 ;
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
