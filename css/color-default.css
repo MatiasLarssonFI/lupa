@@ -400,3 +400,7 @@ span.orange {
 .cookie-consent-prompt {
     color: #0c161f;
 }
+
+.cookie-consent-prompt-pos-wrapper {
+    box-shadow: 0px 5px 10px 5px #000;
+}
