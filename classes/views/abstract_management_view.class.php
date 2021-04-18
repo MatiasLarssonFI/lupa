@@ -21,6 +21,11 @@ abstract class AbstractManagementView extends AbstractView {
     }
     
     
+    protected function cookie_prompt_enabled() {
+        return false;
+    }
+    
+    
     protected function get_session_redirect_uri() {
         return "/management_login";
     }
