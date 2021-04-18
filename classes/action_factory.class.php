@@ -84,5 +84,16 @@ class ActionFactory {
     }
     
     
+    /**
+     * Returns true if the action is enabled.
+     * @param  string $action
+     * @param  boolean $cookiePromptEnabled If cookie prompt is enabled.
+     * @return boolean
+     */
+    public function action_enabled($action, $cookie_prompt_enabled) {
+        return $action !== "about_cookies" || $cookie_prompt_enabled;
+    }
+    
+    
     protected function __construct() {}
 }

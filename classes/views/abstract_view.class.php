@@ -60,7 +60,7 @@ abstract class AbstractView implements IView {
         $data["__color_css_uri"] = "{$base_uri}{$dbif->get_color_css_uri()}?v={$src_conf->get_css_src_version()}";
         $data["__lang"] = $language;
         $data["__nav_links"] = $this->_nlf->get_nav_links();
-        $data["__footer_only_nav_links"] = $this->_nlf->get_footer_only_nav_links();
+        $data["__footer_only_nav_links"] = $this->_nlf->get_footer_only_nav_links($this->cookie_prompt_enabled());
         $data["__lang_links"] = $this->_nlf->get_lang_links();
         $data["__all_lang_links"] = $this->_nlf->get_all_lang_links();
         $data["__js_texts"] = $this->get_js_texts();
@@ -71,6 +71,7 @@ abstract class AbstractView implements IView {
         $data["__scale_mobile"] = $this->is_mobile_scale_enabled();
         $data["__facebook_page_url"] = \DBIF::get()->get_facebook_page_url();
         $data["__ga"] = $site_cfg->tracking_enabled() && $this->allow_tracking();
+        $data["__cookie_prompt_enabled"] = $this->cookie_prompt_enabled();
         
         $data["__strings"] = [
             "footer_promo" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
@@ -219,6 +220,14 @@ abstract class AbstractView implements IView {
      */
     protected function allow_cache() {
         return false;
+    }
+    
+    
+    /**
+     * @return boolean If cookie consent should be prompted for.
+     */
+    protected function cookie_prompt_enabled() {
+        return true;
     }
     
     

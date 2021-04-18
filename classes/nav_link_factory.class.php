@@ -3,6 +3,7 @@
 require_once(dirname(__FILE__) . "/nav_link.class.php");
 require_once(dirname(__FILE__) . "/lang_link.class.php");
 require_once(dirname(__FILE__) . "/ui_text_storage.class.php");
+require_once(dirname(__FILE__) . "/action_factory.class.php");
 
 
 class NavLinkFactory {
@@ -76,16 +77,19 @@ class NavLinkFactory {
     /**
      * Returns the main nav links.
      * 
+     * @param boolean $cookie_prompt_enabled
      * @return NavLink[]
      */
-    public function get_footer_only_nav_links() {
+    public function get_footer_only_nav_links($cookie_prompt_enabled) {
         $texts = \UITextStorage::get();
         $current_action = $this->_action;
         
-        return array_map(function ($action) use ($texts, $current_action) {
+        return array_filter(array_map(function ($action) use ($texts, $current_action) {
             $title = $texts->text("NAV_" . str_replace(["-", "#"], ["_", ""], strtoupper($action)));
             return new NavLink($action, $title, $action === $current_action);
-        }, $this->_footer_only_actions);
+        }, $this->_footer_only_actions), function(NavLink $nl) use ($cookie_prompt_enabled) {
+            return \ActionFactory::get()->action_enabled($nl->get_action(), $cookie_prompt_enabled);
+        });
     }
     
     

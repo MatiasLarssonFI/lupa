@@ -8,12 +8,19 @@
  *   cc.updateGui();
  */
 var CookieConsent = function() {
-    var self = this;
     this._onConsentFns = [];
     this._onSelectionFns = [];
     this._cookies = {
         hasConsent : "lupaConsent"
     };
+    this._onConsentFnsRun = false;
+    this._onSelectionFnsRun = false;
+    this.$promptOpenBtn = undefined;
+};
+
+CookieConsent.prototype.initDOM = function() {
+    var self = this;
+    
     this.$promptElement = $("[data-cookie-consent-prompt]");
     this.$promptElement.find("[data-cookie-consent-allow-btn]").on("click", function() {
         if (!self.hasConsent()) {
@@ -28,10 +35,7 @@ var CookieConsent = function() {
         self.$promptElement.addClass("hidden");
         self.onSelection(false);
     });
-    this._onConsentFnsRun = false;
-    this._onSelectionFnsRun = false;
-    
-    this.$promptOpenBtn = undefined;
+
     $promptOpenBtn = $("[data-cookie-consent-prompt-open]");
     if ($promptOpenBtn.length > 0) {
         this.$promptOpenBtn = $promptOpenBtn;
@@ -94,11 +98,14 @@ CookieConsent.prototype.updateGui = function() {
     }
 };
 
-lupaCookieConsent = new CookieConsent();
+var lupaCookieConsent = new CookieConsent();
 
 var lupa = {
     onLoad: function () {
-        lupaCookieConsent.updateGui();
+        if ($("[data-cookie-consent-prompt]").length > 0) {
+            lupaCookieConsent.initDOM();
+            lupaCookieConsent.updateGui();
+        }
         
         var toggleNav = function() {
             var btn = $(this);
