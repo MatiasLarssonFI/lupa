@@ -82,6 +82,7 @@ class WorkListView extends AbstractManagementView {
                 
                 "table_view" => $text_storage->text("MANAGEMENT_WORK_LIST_TABLE_VIEW"),
                 "list_view" => $text_storage->text("MANAGEMENT_WORK_LIST_LIST_VIEW"),
+                "csv_export_link" => $text_storage->text("MANAGEMENT_WORK_LIST_CSV_EXPORT_LINK"),
             ],
             "items" => $wif->yield_items($param_state_filter, $params["order_col"], $params["order_dir"], (int)$params["page"]),
             "state_filter" => $is_valid_state_filter ? $param_state_filter : "",

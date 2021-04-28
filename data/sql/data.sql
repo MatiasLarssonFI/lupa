@@ -821,6 +821,19 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 , ('sv', 'NAV_ABOUT_COOKIES', 'Om kakor', NULL, '2021-02-06 12:00:00')
 ;
 
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_CSV_EXPORT_LINK', 'Lataa CSV', NULL, '2021-04-28 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_CSV_EXPORT_LINK', 'Download CSV', NULL, '2021-04-28 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_CSV_EXPORT_LINK', 'Ladda ner CSV', NULL, '2021-04-28 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_STATE', 'Tila', NULL, '2021-04-28 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE', 'State', NULL, '2021-04-28 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE', 'Läge', NULL, '2021-04-28 12:00:00')
+;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
