@@ -227,7 +227,7 @@ abstract class AbstractView implements IView {
      * @return boolean If cookie consent should be prompted for.
      */
     protected function cookie_prompt_enabled() {
-        return true;
+        return false; // globally disabled for now
     }
     
     

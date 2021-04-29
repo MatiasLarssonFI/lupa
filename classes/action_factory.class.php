@@ -51,7 +51,7 @@ class ActionFactory {
      * @return string[] The footer navigation actions
      */
     public function get_footer_nav_actions() {
-        return [ "about_cookies" ];
+        return []; //[ "about_cookies" ];
     }
     
     

@@ -71,11 +71,11 @@ class ViewFactory {
             return new InfoPartnersView([
                 "uri" => "partners/{$this->optional_element(0, "", $params)}"
             ], $nlf);
-        } else if ($action === "about_cookies") {
+        } /*else if ($action === "about_cookies") {
             return new InfoCookiesView([
                 "uri" => "about_cookies/{$this->optional_element(0, "", $params)}"
             ], $nlf);
-        } else if ($action === "work_list" || $action === "work_table") {
+        }*/ else if ($action === "work_list" || $action === "work_table") {
             return new WorkListView([
                 "state_filter" => $this->optional_element(0, "STATE_NEW", $params),
                 "order_col" => $this->optional_element(1, "ts_created", $params),
