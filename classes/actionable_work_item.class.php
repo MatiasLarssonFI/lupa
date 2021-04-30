@@ -27,25 +27,25 @@ trait ActionableWorkItem {
     
     
     public function try_perform_state_action() {
-        $this->set_previous_state($this->_state);
+        $this->recordable()->set_previous_state($this->_state);
         switch ($this->_state) {
             case "STATE_NEW":
                 $this->_state = "STATE_IN_PROGRESS";
-                $this->add_change(\ISavableWorkItem::CM_STATE_CHANGED);
+                $this->recordable()->add_change(\ISavableWorkItem::CM_STATE_CHANGED);
                 break;
             case "STATE_IN_PROGRESS":
                 $this->_state = "STATE_FINISHED";
-                $this->add_change(\ISavableWorkItem::CM_STATE_CHANGED);
-                $this->add_change(\ISavableWorkItem::CM_FINISHED);
+                $this->recordable()->add_change(\ISavableWorkItem::CM_STATE_CHANGED);
+                $this->recordable()->add_change(\ISavableWorkItem::CM_FINISHED);
                 break;
             default:
                 return false;
         }
         if ($this->_is_archived) {
             $this->_is_archived = false;
-            $this->add_change(\ISavableWorkItem::CM_UNARCHIVED);
+            $this->recordable()->add_change(\ISavableWorkItem::CM_UNARCHIVED);
         }
-        \DBIF::get()->update_work_item($this, true);
+        \DBIF::get()->update_work_item($this->savable(), true);
         return true;
     }
     
@@ -53,8 +53,8 @@ trait ActionableWorkItem {
     public function try_perform_archive() {
         if ($this->is_archivable()) {
             $this->_is_archived = true;
-            $this->add_change(\ISavableWorkItem::CM_ARCHIVED);
-            \DBIF::get()->update_work_item($this, true);
+            $this->recordable()->add_change(\ISavableWorkItem::CM_ARCHIVED);
+            \DBIF::get()->update_work_item($this->savable(), true);
             return true;
         }
         return false;
@@ -62,17 +62,17 @@ trait ActionableWorkItem {
     
     
     public function try_perform_delete() {
-        \DBIF::get()->delete_work_item($this, true);
+        \DBIF::get()->delete_work_item($this->savable(), true);
         return true;
     }
     
     
     public function try_perform_halt() {
         if ($this->is_haltable()) {
-            $this->set_previous_state($this->_state);
+            $this->recordable()->set_previous_state($this->_state);
             $this->_state = "STATE_HALTED";
-            $this->add_change(\ISavableWorkItem::CM_STATE_CHANGED);
-            \DBIF::get()->update_work_item($this, true);
+            $this->recordable()->add_change(\ISavableWorkItem::CM_STATE_CHANGED);
+            \DBIF::get()->update_work_item($this->savable(), true);
             return true;
         }
         return false;
@@ -92,4 +92,16 @@ trait ActionableWorkItem {
     public function set_notes($notes) {
         $this->_notes = $notes;
     }
+    
+    
+    /**
+     * @return \IRecordableWorkItem
+     */
+    abstract public function recordable();
+    
+    
+    /**
+     * @return \ISavableWorkItem
+     */
+    abstract public function savable();
 }

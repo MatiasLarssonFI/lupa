@@ -2,25 +2,27 @@
 
 namespace Views;
 
-require_once(dirname(__FILE__) . "/front_page_view.class.php");
-require_once(dirname(__FILE__) . "/service_view.class.php");
-require_once(dirname(__FILE__) . "/faq_view.class.php");
-require_once(dirname(__FILE__) . "/contact_view.class.php");
-require_once(dirname(__FILE__) . "/contact_submit_view.class.php");
-require_once(dirname(__FILE__) . "/info_felling_view.class.php");
-require_once(dirname(__FILE__) . "/info_partners_view.class.php");
+require_once(__DIR__ . "/front_page_view.class.php");
+require_once(__DIR__ . "/service_view.class.php");
+require_once(__DIR__ . "/faq_view.class.php");
+require_once(__DIR__ . "/contact_view.class.php");
+require_once(__DIR__ . "/contact_submit_view.class.php");
+require_once(__DIR__ . "/info_felling_view.class.php");
+require_once(__DIR__ . "/info_partners_view.class.php");
+require_once(__DIR__ . "/info_cookies_view.class.php");
 
-require_once(dirname(__FILE__) . "/management_login_view.class.php");
-require_once(dirname(__FILE__) . "/management_login_submit_view.class.php");
-require_once(dirname(__FILE__) . "/management_logout_submit_view.class.php");
+require_once(__DIR__ . "/management_login_view.class.php");
+require_once(__DIR__ . "/management_login_submit_view.class.php");
+require_once(__DIR__ . "/management_logout_submit_view.class.php");
 
-require_once(dirname(__FILE__) . "/work_list_view.class.php");
-require_once(dirname(__FILE__) . "/work_item_submit_view.class.php");
-require_once(dirname(__FILE__) . "/work_item_mass_submit_view.class.php");
-require_once(dirname(__FILE__) . "/anti_csrf_token_view.class.php");
+require_once(__DIR__ . "/work_list_view.class.php");
+require_once(__DIR__ . "/work_item_submit_view.class.php");
+require_once(__DIR__ . "/work_item_mass_submit_view.class.php");
+require_once(__DIR__ . "/anti_csrf_token_view.class.php");
+require_once(__DIR__ . "/work_item_csv_export_view.class.php");
 
-require_once(dirname(__FILE__) . "/../nav_link_factory.class.php");
-require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
+require_once(__DIR__ . "/../nav_link_factory.class.php");
+require_once(__DIR__ . "/../site_config_factory.class.php");
 
 
 /**
@@ -69,7 +71,11 @@ class ViewFactory {
             return new InfoPartnersView([
                 "uri" => "partners/{$this->optional_element(0, "", $params)}"
             ], $nlf);
-        } else if ($action === "work_list" || $action === "work_table") {
+        } /*else if ($action === "about_cookies") {
+            return new InfoCookiesView([
+                "uri" => "about_cookies/{$this->optional_element(0, "", $params)}"
+            ], $nlf);
+        }*/ else if ($action === "work_list" || $action === "work_table") {
             return new WorkListView([
                 "state_filter" => $this->optional_element(0, "STATE_NEW", $params),
                 "order_col" => $this->optional_element(1, "ts_created", $params),
@@ -88,6 +94,8 @@ class ViewFactory {
             return new ManagementLogoutSubmitView($_POST, $nlf);
         } else if ($action === "anti_csrf_token") {
             return new AntiCSRFTokenView([], $nlf);
+        } else if ($action === "work_item_csv_export") {
+            return new WorkItemCSVExportView([], $nlf);
         }
         
         // Bad request: redirect to front page

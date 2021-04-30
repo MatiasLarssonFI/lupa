@@ -41,8 +41,10 @@ class Mediator implements IHookService {
      */
     public function notify(string $hook) {
         $res = new NotifyResult();
-        foreach ($this->_observers[$hook] as $obs) {
-            $res->add_callback_result($obs->notify());
+        if (array_key_exists($hook, $this->_observers)) {
+            foreach ($this->_observers[$hook] as $obs) {
+                $res->add_callback_result($obs->notify());
+            }
         }
         return $res;
     }

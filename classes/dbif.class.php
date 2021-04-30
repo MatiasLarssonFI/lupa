@@ -413,6 +413,37 @@ class DBIF {
     }
     
     
+    public function yield_all_work_items($cb_make_item) {
+        $sql =
+            "SELECT
+                 wi.id                  as id
+                ,wi.s_reference         as s_reference
+                ,c.name                 as name
+                ,c.email                as email
+                ,c.subject              as subject
+                ,c.message              as message
+                ,wi.notes               as notes
+                ,wi.state               as state
+                ,wi.is_archived         as is_archived
+                ,c.time_created         as ts_created
+                ,wi.time_state_changed  as ts_state
+
+            from {$this->_table_prefix}contact_inbox c
+            inner join {$this->_table_prefix}work_item wi
+                on wi.contact_inbox_id = c.id
+
+            order by ts_created desc
+            ";
+        
+        $stm = $this->_pdo->prepare($sql);
+        $stm->execute();
+        
+        while ($row = $stm->fetch()) {
+            yield $cb_make_item($row);
+        }
+    }
+    
+    
     public function yield_work_items($state_filter, $order_col, $order_direction, $offset, $count, $cb_make_item) {
         $offset_sql = (int)$offset;
         $count_sql = (int)$count;

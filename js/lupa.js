@@ -1,5 +1,112 @@
+/**
+ * Cookie consent.
+ * 
+ * Usage:
+ * 
+ *   var cc = new CookieConsent();
+ *   cc.addConsentCb(() => { console.log("consent given"); });
+ *   cc.updateGui();
+ */
+var CookieConsent = function() {
+    this._onConsentFns = [];
+    this._onSelectionFns = [];
+    this._cookies = {
+        hasConsent : "lupaConsent"
+    };
+    this._onConsentFnsRun = false;
+    this._onSelectionFnsRun = false;
+    this.$promptOpenBtn = undefined;
+};
+
+CookieConsent.prototype.initDOM = function() {
+    var self = this;
+    
+    this.$promptElement = $("[data-cookie-consent-prompt]");
+    this.$promptElement.find("[data-cookie-consent-allow-btn]").on("click", function() {
+        if (!self.hasConsent()) {
+            self.onConsent();
+        }
+        self.saveConsent(true);
+        self.$promptElement.addClass("hidden");
+        self.onSelection(true);
+    });
+    this.$promptElement.find("[data-cookie-consent-deny-btn]").on("click", function() {
+        self.saveConsent(false);
+        self.$promptElement.addClass("hidden");
+        self.onSelection(false);
+    });
+
+    $promptOpenBtn = $("[data-cookie-consent-prompt-open]");
+    if ($promptOpenBtn.length > 0) {
+        this.$promptOpenBtn = $promptOpenBtn;
+        $promptOpenBtn.on("click", function() {
+            self.prompt();
+            $promptOpenBtn.prop("disabled", true);
+        });
+    }
+};
+
+CookieConsent.prototype.addConsentCb = function(fn) {
+    if (this._onConsentFnsRun && this.hasConsent()) {
+        fn();
+    }
+    this._onConsentFns.push(fn);
+};
+
+CookieConsent.prototype.addSelectionCb = function(fn) {
+    if (this._onSelectionFnsRun && this.hasSelection()) {
+        fn(this.hasConsent());
+    }
+    this._onSelectionFns.push(fn);
+};
+
+CookieConsent.prototype.onConsent = function() {
+    this._onConsentFns.forEach(function(fn) { fn(); });
+    this._onConsentFnsRun = true;
+}
+
+CookieConsent.prototype.onSelection = function(haveConsent) {
+    this._onSelectionFns.forEach(function(fn) { fn(haveConsent); });
+    this._onSelectionFnsRun = true;
+}
+
+CookieConsent.prototype.hasSelection = function() {
+    return document.cookie.indexOf(this._cookies.hasConsent + "=") !== -1;
+};
+
+CookieConsent.prototype.hasConsent = function() {
+    return document.cookie.indexOf(this._cookies.hasConsent + "=true") !== -1;
+};
+
+CookieConsent.prototype.saveConsent = function(haveConsent) {
+     document.cookie = this._cookies.hasConsent += "=" + (haveConsent ? "true" : "false") + "; SameSite=Strict; Secure; Path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+};
+
+CookieConsent.prototype.prompt = function() {
+    this.$promptElement.removeClass("hidden");
+    if (this.$promptOpenBtn) {
+        this.$promptOpenBtn.prop("disabled", true);
+    }
+};
+
+CookieConsent.prototype.updateGui = function() {
+    if (!this.hasSelection()) {
+        this.prompt();
+    }
+    else if (this.hasConsent()) {
+        this.onConsent();
+    }
+};
+
+var lupaCookieConsent = new CookieConsent();
+
 var lupa = {
     onLoad: function () {
+        if ($("[data-cookie-consent-prompt]").length > 0) {
+            lupaCookieConsent.initDOM();
+            lupaCookieConsent.updateGui();
+        }
+        
         var toggleNav = function() {
             var btn = $(this);
             var node = $(btn.data("target"));

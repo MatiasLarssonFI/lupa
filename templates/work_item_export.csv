@@ -1,0 +1,2 @@
+{{ strings.subject_reference_short }},{{ strings.label_name }},{{ strings.label_email }},{{ strings.label_subject }},{{ strings.label_message }},{{ strings.label_notes }},{{ strings.label_state }},{{ strings.label_archived }},{{ strings.label_created }},{{ strings.label_changed }}
+{% for csv_row in rows %}{{ csv_row|raw }}{% endfor %}

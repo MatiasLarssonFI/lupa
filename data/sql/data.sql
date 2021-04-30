@@ -131,7 +131,7 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (45, 'en', 'CONTACT_SUBMIT', 'Send message', NULL, '2016-04-02 21:00:00'),
 (46, 'fi', 'CONTACT_SUBMIT_TEXT', 'Kiitos yhteydenotostasi. Olemme sinuun yhteydessä pian.', NULL, '2016-04-02 21:00:00'),
 (47, 'sv', 'CONTACT_SUBMIT_TEXT', 'Tack. Vi kommer att vara i kontakt med dig snart.', '2017-04-02 13:20:03', '2016-04-02 21:00:00'),
-(48, 'en', 'CONTACT_SUBMIT_TEXT', 'Thank you. We\'ll be in touch with you soon.', '2016-04-03 16:28:03', '2016-04-02 21:00:00'),
+(48, 'en', 'CONTACT_SUBMIT_TEXT', 'Thank you. We''ll be in touch with you soon.', '2016-04-03 16:28:03', '2016-04-02 21:00:00'),
 (49, 'fi', 'CONTACT_FIELD_ERROR_NAME', 'Nimi ei voi olla tyhjä eikä yli 255 merkkiä pitkä.', NULL, '2016-04-02 18:00:00'),
 (50, 'fi', 'CONTACT_FIELD_ERROR_EMAIL', 'Sähköpostiosoite on oltava oikea.', NULL, '2016-04-02 18:00:00'),
 (51, 'fi', 'CONTACT_FIELD_ERROR_SUBJECT', 'Aihe ei voi olla tyhjä eikä yli 255 merkkiä pitkä.', NULL, '2016-04-02 18:00:00'),
@@ -145,7 +145,7 @@ INSERT INTO `lupa_ui_text` (`id`, `language`, `code`, `content`, `time_edited`, 
 (59, 'sv', 'CONTACT_FIELD_ERROR_SUBJECT', 'Ämnet kan inte vara tom eller längre än 255 tecken.', '2017-04-02 13:20:03', '2016-04-02 15:00:00'),
 (60, 'sv', 'CONTACT_FIELD_ERROR_MESSAGE', 'Meddelandet måste vara längre än fyra tecken och kortare än 4000 tecken.', '2017-04-02 13:20:03', '0000-00-00 00:00:00'),
 (61, 'fi', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'Pahoittelumme, mutta lomake on vanhentunut. Ole hyvä ja yritä uudelleen.', '2016-04-15 19:59:42', '2016-04-13 21:00:00'),
-(62, 'en', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'We\'re sorry but the form has expired. Please try again.', '2016-04-15 19:58:48', '2016-04-13 21:00:00'),
+(62, 'en', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'We''re sorry but the form has expired. Please try again.', '2016-04-15 19:58:48', '2016-04-13 21:00:00'),
 (63, 'sv', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'Vi ber om ursäkt men formen har löpt ut. Var god försök igen.', '2017-04-02 13:20:03', '2016-04-13 21:00:00'),
 (64, 'fi', 'VIDEOS_PAGE_TITLE', 'Videoita', '2016-03-06 14:15:39', '2016-03-05 20:00:00'),
 (65, 'sv', 'VIDEOS_PAGE_TITLE', 'Videor', '2017-04-02 13:20:03', '2016-03-05 20:00:00'),
@@ -258,7 +258,7 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'GENRAL_ERROR_MESSAGE', 'Pahoittelemme, jokin meni vikaan. Voit ottaa meihin yhteyttä sähköpostilla: myynti@lu-pa.fi', NULL, '2019-03-30 19:00:00')
-, ('en', 'GENRAL_ERROR_MESSAGE', 'We\'re sorry, something went wrong. If you wish, you can contact us by email: myynti@lu-pa.fi', NULL, '2019-03-30 19:00:00')
+, ('en', 'GENRAL_ERROR_MESSAGE', 'We''re sorry, something went wrong. If you wish, you can contact us by email: myynti@lu-pa.fi', NULL, '2019-03-30 19:00:00')
 , ('sv', 'GENRAL_ERROR_MESSAGE', 'Vi ber om ursäkt, något gick fel. Du kan kontakta oss via e-post: myynti@lu-pa.fi', NULL, '2019-03-30 19:00:00')
 ;
 
@@ -636,7 +636,7 @@ INSERT INTO `lupa_config` (`key`, `value`, `time_edited`, `time_created`) VALUES
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'CONTACT_CONFIRMATION_BODY', 'Kiitos tarjouspyynnöstäsi. Jos sinulla on lisättävää tai kysymyksiä, ole hyvä ja vastaa tähän viestiin.', NULL, '2020-09-02 12:00:00')
-, ('en', 'CONTACT_CONFIRMATION_BODY', 'Thank you for your message. If you\'d like to add or ask something, please reply to this message.', NULL, '2020-09-02 12:00:00')
+, ('en', 'CONTACT_CONFIRMATION_BODY', 'Thank you for your message. If you''d like to add or ask something, please reply to this message.', NULL, '2020-09-02 12:00:00')
 , ('sv', 'CONTACT_CONFIRMATION_BODY', 'Tack för ditt meddelande. Vill du tillägga eller fråga någonting, var god och svara på det här meddelandet.', NULL, '2020-09-02 12:00:00')
 
 , ('fi', 'CONTACT_CONFIRMATION_GREET', 'Hei,', NULL, '2020-09-02 12:00:00')
@@ -721,7 +721,7 @@ UPDATE lupa_ui_text set `content` = 'Kiitos tarjouspyynnöstäsi. Jos sinulla on
 
 UPDATE lupa_ui_text set `content` = 'Tack för ditt meddelande. Vill du tillägga eller fråga någonting, var god och svara på det här meddelandet. När du skriver till oss, vänligen använd samma ämnesrad som i detta meddelande.' where `code` = 'CONTACT_CONFIRMATION_BODY' and `language` = "sv";
 
-UPDATE lupa_ui_text set `content` = 'Thank you for your message. If you\'d like to add or ask something, please reply to this message. When replying to this message, please keep the original subject line.' where `code` = 'CONTACT_CONFIRMATION_BODY' and `language` = "en";
+UPDATE lupa_ui_text set `content` = 'Thank you for your message. If you''d like to add or ask something, please reply to this message. When replying to this message, please keep the original subject line.' where `code` = 'CONTACT_CONFIRMATION_BODY' and `language` = "en";
 
 INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
   ('fi', 'CONTACT_CONFIRMATION_CONTACT_MESSAGE_LABEL', 'Alla näet tiedot, jotka lähetit meille.', NULL, '2020-11-21 12:00:00')
@@ -744,6 +744,95 @@ INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_
 UPDATE lupa_work_item_history
     SET change_mask = (change_mask | (1 << 4))
     where old_state != '(none)' and old_state != 'STATE_FINISHED' and new_state = 'STATE_FINISHED';
+
+-- 210131
+
+INSERT INTO `lupa_info_page` (`id`, `uri`, `time_edited`, `time_created`) VALUES (NULL, 'about_cookies/', NULL, '2021-01-31 16:23:22'); 
+
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES
+      (NULL, 'about_cookies/', '1', '0', 'fi', 'Tietoa evästeistä', '', NULL, '', '', NULL, '2021-01-31 16:25:37')
+    , (NULL, 'about_cookies/', '1', '0', 'sv', 'Om kakor', '', NULL, '', '', NULL, '2021-01-31 16:25:37')
+    , (NULL, 'about_cookies/', '1', '0', 'en', 'About cookies', '', NULL, '', '', NULL, '2021-01-31 16:25:37')
+;
+
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES
+      (NULL, 'about_cookies/', '2', '0', 'fi', 'Evästeiden käyttötarkoitus', 'Nämä verkkosivut käyttävät evästeitä. Eväste on tietoa, joka tallentuu selaimeesi ja se muun muassa tunnistaa, jos palaat sivuille uudelleen. Käytämme tällaista tietoa kun tutkimme kävijätilastoja: mitkä sivut ovat kiinnostavimpia ja miten kävijät löytävät sivustollemme, esimerkiksi Google-hausta tai suoraan URL-osoitteella.', NULL, '', '', NULL, '2021-01-31 16:43:02')
+    , (NULL, 'about_cookies/', '2', '0', 'sv', 'Syftet med kakor', 'Denna webbplats använder cookies. Cookies är information som sparas i din webbläsare som bland annat upptäcker om du återvänder till webbplatsen. Vi använder denna typ av information när vi analyserar vår besökarstatistik: vilka sidor som är mest intressanta och hur besökare hittar vår webbplats, till exempel med Googles sökning eller direkt med en URL-adress.', NULL, '', '', NULL, '2021-01-31 16:43:02')
+    , (NULL, 'about_cookies/', '2', '0', 'en', 'Purpose of cookies', 'This website uses cookies. Cookies are information saved in your browser that, among other things, detects if you return to the website. We use this kind of information when we analyze our visitor statistics: which pages are the most interesting and how visitors find our website, for example by Google search or directly with a URL address.', NULL, '', '', NULL, '2021-01-31 16:43:02')
+;
+
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES
+      (NULL, 'about_cookies/', '3', '0', 'fi', '', 'Tilastot, joita varten käytämme evästeitä ovat anonyymejä, yksittäistä käyttäjää ei niistä voi erottaa.', NULL, '', '', NULL, '2021-01-31 16:44:57')
+    , (NULL, 'about_cookies/', '3', '0', 'sv', '', 'Statistiken för vilken vi använder kakorna är anonym, vi kan inte identifiera eller särskilja en enskild besökare från denna statistik.', NULL, '', '', NULL, '2021-01-31 16:44:57')
+    , (NULL, 'about_cookies/', '3', '0', 'en', '', 'The statistics for which we use the cookies are anonymous, we can''t identify nor distinguish an individual visitor from these statistics.', NULL, '', '', NULL, '2021-01-31 16:44:57')
+;
+
+INSERT INTO `lupa_info_page_content` (`id`, `uri`, `position`, `is_html`, `language`, `title`, `content`, `video_id`, `image_uri`, `image_description`, `time_edited`, `time_created`) VALUES
+      (NULL, 'about_cookies/', '4', '0', 'fi', 'Analytiikka', 'Käytämme Google Analytics -palvelua kävijätilastointiin. Anonymisoitu tieto käyttäjistä välitetään Googlelle ja tiedon avulla parannamme toimintaamme sekä sivuston toimivuutta. Yksittäistä käyttäjää ei ole mahdollista tunnistaa näiden evästeiden avulla. Analysoimme, mitkä sisältömme ovat suosittuja ja mitä voisimme parantaa.', NULL, '', '', NULL, '2021-01-31 16:46:02')
+    , (NULL, 'about_cookies/', '4', '0', 'sv', 'Analys', 'Vi använder tjänsten Google Analytics för besökarstatistik. Anonymiserad besökarinformation vidarebefordras till Google och vi använder informationen för att förbättra vår verksamhet och webbplats. Enskilda besökare kan inte identifieras från denna information. Vi analyserar vilket innehåll som är populärt och vad vi kan förbättra.', NULL, '', '', NULL, '2021-01-31 16:46:02')
+    , (NULL, 'about_cookies/', '4', '0', 'en', 'Analytics', 'We use the Google Analytics service for visitor statistics. Anonymized visitor information is relayed to Google and we use the information to improve our operation and website. Individual visitors can''t be identified from this information. We analyze what content is popular and what we can improve.', NULL, '', '', NULL, '2021-01-31 16:46:02')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'INFO_COOKIES_PAGE_TITLE', 'Tietoa evästeistä', NULL, '2021-02-06 12:00:00')
+, ('en', 'INFO_COOKIES_PAGE_TITLE', 'About cookies', NULL, '2021-02-06 12:00:00')
+, ('sv', 'INFO_COOKIES_PAGE_TITLE', 'Om kakor', NULL, '2021-02-06 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'COOKIE_CONSENT_OPEN_LABEL', 'Muuta evästevalintaasi', NULL, '2021-02-06 12:00:00')
+, ('en', 'COOKIE_CONSENT_OPEN_LABEL', 'Change your cookie options', NULL, '2021-02-06 12:00:00')
+, ('sv', 'COOKIE_CONSENT_OPEN_LABEL', 'Ändra på dina val', NULL, '2021-02-06 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'COOKIE_CONSENT_PROMPT_BODY_1', '<p>Käytämme evästeitä, jotta voimme seurata tilastoista, mitkä asiat sivuillamme kiinnostavat ja tietojen avulla kehittää toimintaamme. Tilastot ovat anonyymejä, sinun käyntiäsi emme sieltä voi erottaa. Onhan tämä sinulle ok?</p>', NULL, '2021-02-28 12:00:00')
+, ('en', 'COOKIE_CONSENT_PROMPT_BODY_1', '<p>We use cookies to statistically analyze what content on our website interests visitors and what we can improve. The statistics are anonymous, we can''t distinguish your visit from others. Is this OK for you?</p>', NULL, '2021-02-28 12:00:00')
+, ('sv', 'COOKIE_CONSENT_PROMPT_BODY_1', '<p>Vi använder cookies för att statistiskt analysera vilket innehåll på vår webbplats som intresserar besökare och vad vi kan förbättra. Statistiken är anonym, vi kan inte skilja ditt besök från andra. Är det OK för dig?</p>', NULL, '2021-02-28 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'COOKIE_CONSENT_PROMPT_BODY_2', '<p>Jos haluat nähdä, mitä evästeitä käytämme tai laittaa ne pois päältä, tarkista ne <a href="https://lu-pa.fi/fi/about_cookies">asetuksista</a>.</p>', NULL, '2021-02-28 12:00:00')
+, ('en', 'COOKIE_CONSENT_PROMPT_BODY_2', '<p>If you''d like to see what cookies we use or disable them, see the <a href="https://lu-pa.fi/en/about_cookies">settings</a>.</p>', NULL, '2021-02-28 12:00:00')
+, ('sv', 'COOKIE_CONSENT_PROMPT_BODY_2', '<p>Om du vill se vilka cookies vi använder eller inaktiverar dem, se <a href="https://lu-pa.fi/sv/about_cookies">inställningarna</a>.</p>', NULL, '2021-02-28 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'COOKIE_CONSENT_PROMPT_BODY_BTN_ALLOW', 'Kyllä', NULL, '2021-02-28 12:00:00')
+, ('en', 'COOKIE_CONSENT_PROMPT_BODY_BTN_ALLOW', 'Yes', NULL, '2021-02-28 12:00:00')
+, ('sv', 'COOKIE_CONSENT_PROMPT_BODY_BTN_ALLOW', 'Ja', NULL, '2021-02-28 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'COOKIE_CONSENT_PROMPT_BODY_BTN_DENY', 'Ei', NULL, '2021-02-28 12:00:00')
+, ('en', 'COOKIE_CONSENT_PROMPT_BODY_BTN_DENY', 'No', NULL, '2021-02-28 12:00:00')
+, ('sv', 'COOKIE_CONSENT_PROMPT_BODY_BTN_DENY', 'Nej', NULL, '2021-02-28 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'COOKIE_CONSENT_REFRESH_PROMPT', 'Valintasi on tallennettu. Muutokset tulevat voimaan, kun lataat sivun uudelleen.', NULL, '2021-04-03 12:00:00')
+, ('sv', 'COOKIE_CONSENT_REFRESH_PROMPT', 'Dina val har sparats. Ändringarna träder i kraft när du laddar om sidan.', NULL, '2021-02-28 12:00:00')
+, ('en', 'COOKIE_CONSENT_REFRESH_PROMPT', 'Your choices have been saved. The changes will take effect once you reload the page.', NULL, '2021-04-03 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'NAV_ABOUT_COOKIES', 'Tietoa evästeistä', NULL, '2021-02-06 12:00:00')
+, ('en', 'NAV_ABOUT_COOKIES', 'About cookies', NULL, '2021-02-06 12:00:00')
+, ('sv', 'NAV_ABOUT_COOKIES', 'Om kakor', NULL, '2021-02-06 12:00:00')
+;
+
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_CSV_EXPORT_LINK', 'Lataa CSV', NULL, '2021-04-28 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_CSV_EXPORT_LINK', 'Download CSV', NULL, '2021-04-28 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_CSV_EXPORT_LINK', 'Ladda ner CSV', NULL, '2021-04-28 12:00:00')
+;
+
+INSERT INTO `lupa_ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+  ('fi', 'MANAGEMENT_WORK_LIST_STATE', 'Tila', NULL, '2021-04-28 12:00:00')
+, ('en', 'MANAGEMENT_WORK_LIST_STATE', 'State', NULL, '2021-04-28 12:00:00')
+, ('sv', 'MANAGEMENT_WORK_LIST_STATE', 'Läge', NULL, '2021-04-28 12:00:00')
+;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -8,4 +8,5 @@ interface ISiteConfig {
     public function db_login_params();
     public function db_table_prefix();
     public function tracking_enabled();
+    public function twig_compilation_cache_path();
 }

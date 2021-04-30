@@ -165,7 +165,7 @@ class ManagementSession implements ISession {
             $this->invalidate();
         }
         
-        if (!$this->_started) {
+        if (!$this->_started && ($new_session || array_key_exists(self::$_cookie_name, $_COOKIE))) {
             $this->_started = session_start($this->make_session_config(true));
         }
         

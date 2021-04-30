@@ -30,7 +30,7 @@ class ProductionSiteConfig implements ISiteConfig {
     
     
     public function db_login_params() {
-        $creds_fname = dirname(__FILE__) . "/../../../db_creds.json";
+        $creds_fname = __DIR__ . "/../../../db_creds.json";
         if (is_readable($creds_fname)) {
             $jso = json_decode(file_get_contents($creds_fname));
             return array(
@@ -45,7 +45,12 @@ class ProductionSiteConfig implements ISiteConfig {
     }
     
     
+    public function twig_compilation_cache_path() {
+        return __DIR__ . "/../../twig_compilation_cache";
+    }
+    
+    
     public function tracking_enabled() {
-        return true;
+        return false;
     }
 }

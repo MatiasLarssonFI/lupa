@@ -2,6 +2,8 @@
 
 require_once(__DIR__ . "/ilistable_work_item.class.php");
 require_once(__DIR__ . "/iactionable_work_item.class.php");
+require_once(__DIR__ . "/isavable_work_item.class.php");
+require_once(__DIR__ . "/irecordable_work_item.class.php");
 require_once(__DIR__ . "/iemail_confirmable.class.php");
 require_once(__DIR__ . "/imanagement_item.class.php");
 
@@ -10,7 +12,7 @@ require_once(__DIR__ . "/actionable_work_item.class.php");
 require_once(__DIR__ . "/recordable_work_item.class.php");
 require_once(__DIR__ . "/management_work_item.class.php");
 
-class WorkItem implements IListableWorkItem, IActionableWorkItem, ISavableWorkItem, IEmailConfirmable, IManagementItem {
+class WorkItem implements IListableWorkItem, IActionableWorkItem, ISavableWorkItem, IRecordableWorkItem, IEmailConfirmable, IManagementItem {
     use ReadableWorkItem;
     use ActionableWorkItem;
     use RecordableWorkItem;
@@ -59,5 +61,29 @@ class WorkItem implements IListableWorkItem, IActionableWorkItem, ISavableWorkIt
         }
         
         return $ret;
+    }
+    
+    
+    /**
+     * Returns the IRecordableWorkItem
+     * 
+     * This is intended to be used by the traits depending on the interface.
+     * 
+     * @return IRecordableWorkItem
+     */
+    public function recordable() {
+        return $this;
+    }
+    
+    
+    /**
+     * Returns the ISavableWorkItem
+     * 
+     * This is intended to be used by the traits depending on the interface.
+     * 
+     * @return ISavableWorkItem
+     */
+    public function savable() {
+        return $this;
     }
 }

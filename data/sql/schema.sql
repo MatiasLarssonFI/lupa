@@ -333,3 +333,12 @@ ALTER TABLE `lupa_work_item_history`
 
 ALTER TABLE `lupa_work_item_history`
   ADD CONSTRAINT `fk_work_item` FOREIGN KEY (`work_item_id`) REFERENCES `lupa_work_item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- 210123 index additions (already live)
+
+ALTER TABLE `lupa_work_item_history` ADD INDEX `created` (`created`);
+ALTER TABLE `lupa_work_item` ADD INDEX `is_archived` (`is_archived`);
+ALTER TABLE `lupa_contact_inbox` CHANGE `time_created` `time_created` DATETIME NOT NULL; 
+ALTER TABLE `lupa_contact_inbox` ADD INDEX `time_created` (`time_created`);
+
+-- 

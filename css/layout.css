@@ -596,6 +596,23 @@ li.lupa-nav-link {
 }
 
 
+.cookie-consent-prompt-pos-wrapper {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 1024px;
+    z-index: 9999;
+    margin-left: -15px;
+    margin-bottom: -15px;
+}
+
+
+.cookie-consent-prompt {
+    position: relative;
+    padding: 15px;
+}
+
+
 @media (max-width: 1170px) { 
     .lupa-slide-content {
         padding-top: 80px;

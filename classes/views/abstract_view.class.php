@@ -35,15 +35,17 @@ abstract class AbstractView implements IView {
     
     
     public function render() {
+        $site_cfg = \SiteConfigFactory::get()->get_site_config();
+        
         $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/../../templates");
-        $twig = new \Twig\Environment($loader, [
-            "cache" => __DIR__ . "/../../../twig_compilation_cache",
-        ]);
+        $twig_opt = $site_cfg->twig_compilation_cache_path()
+                        ? [ "cache" => $site_cfg->twig_compilation_cache_path(), ]
+                        : [];
+        $twig = new \Twig\Environment($loader, $twig_opt);
         $text_storage = \UITextStorage::get();
         
         $data = $this->get_view_data($this->_params);
         
-        $site_cfg = \SiteConfigFactory::get()->get_site_config();
         $base_uri = $site_cfg->base_uri();
         $language = $text_storage->get_language();
         $src_conf = \ResourceConfig::get();
@@ -58,6 +60,7 @@ abstract class AbstractView implements IView {
         $data["__color_css_uri"] = "{$base_uri}{$dbif->get_color_css_uri()}?v={$src_conf->get_css_src_version()}";
         $data["__lang"] = $language;
         $data["__nav_links"] = $this->_nlf->get_nav_links();
+        $data["__footer_only_nav_links"] = $this->_nlf->get_footer_only_nav_links($this->cookie_prompt_enabled());
         $data["__lang_links"] = $this->_nlf->get_lang_links();
         $data["__all_lang_links"] = $this->_nlf->get_all_lang_links();
         $data["__js_texts"] = $this->get_js_texts();
@@ -68,6 +71,7 @@ abstract class AbstractView implements IView {
         $data["__scale_mobile"] = $this->is_mobile_scale_enabled();
         $data["__facebook_page_url"] = \DBIF::get()->get_facebook_page_url();
         $data["__ga"] = $site_cfg->tracking_enabled() && $this->allow_tracking();
+        $data["__cookie_prompt_enabled"] = $this->cookie_prompt_enabled();
         
         $data["__strings"] = [
             "footer_promo" => $text_storage->text("FRONT_PAGE_SH_CAPTION_TEXT"),
@@ -89,6 +93,12 @@ abstract class AbstractView implements IView {
             
             "news_title" => $text_storage->text("NEWS_TITLE"),
             "news_content" => $text_storage->text("NEWS_CONTENT"),
+            "cookie_consent_body" => [
+                "first" => $text_storage->text("COOKIE_CONSENT_PROMPT_BODY_1"),
+                "second" => $text_storage->text("COOKIE_CONSENT_PROMPT_BODY_2"),
+                "allow_btn" => $text_storage->text("COOKIE_CONSENT_PROMPT_BODY_BTN_ALLOW"),
+                "deny_btn" => $text_storage->text("COOKIE_CONSENT_PROMPT_BODY_BTN_DENY"),
+            ],
         ];
         if (!array_key_exists("prefill", $data)) {
             $data["prefill"] = [
@@ -210,6 +220,14 @@ abstract class AbstractView implements IView {
      */
     protected function allow_cache() {
         return false;
+    }
+    
+    
+    /**
+     * @return boolean If cookie consent should be prompted for.
+     */
+    protected function cookie_prompt_enabled() {
+        return false; // globally disabled for now
     }
     
     

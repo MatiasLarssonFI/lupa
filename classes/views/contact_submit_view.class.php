@@ -45,7 +45,9 @@ class ContactSubmitView extends AbstractView {
                 $is_success = true;
             }
         } else {
-            \CounterAttack::get()->handle(new \Attack\CaptchaFail("Contact submit", $this->get_session(), $params));
+            //$ms = \ManagementSession::get();
+            //$session = $ms->has_data(\SessionVar::MANAGEMENT_PERMISSION) ? $ms : \Session::get();
+            //\CounterAttack::get()->handle(new \Attack\CaptchaFail("Contact submit", $session, $params));
         }
         
         return array(

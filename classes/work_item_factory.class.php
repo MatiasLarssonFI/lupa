@@ -78,6 +78,18 @@ class WorkItemFactory implements \IManagementInterfaceContext {
     
     
     /**
+     * Yields all the work items.
+     * 
+     * @return \IListableWorkItem[] or rather a Generator for those
+     */
+    public function yield_all_items() {
+        return \DBIF::get()->yield_all_work_items(function(array $row) {
+                                                      return $this->make_work_item_from_db_row($row);
+                                                  });
+    }
+    
+    
+    /**
      * Returns an actionable work item by ID.
      * 
      * @param int $id

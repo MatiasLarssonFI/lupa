@@ -48,6 +48,14 @@ class ActionFactory {
     
     
     /**
+     * @return string[] The footer navigation actions
+     */
+    public function get_footer_nav_actions() {
+        return []; //[ "about_cookies" ];
+    }
+    
+    
+    /**
      * Returns the primary action when accessing management site.
      * 
      * @return string
@@ -73,6 +81,17 @@ class ActionFactory {
      */
     public function get_management_logout_submit_action() {
         return "management_logout_submit";
+    }
+    
+    
+    /**
+     * Returns true if the action is enabled.
+     * @param  string $action
+     * @param  boolean $cookiePromptEnabled If cookie prompt is enabled.
+     * @return boolean
+     */
+    public function action_enabled($action, $cookie_prompt_enabled) {
+        return $action !== "about_cookies" || $cookie_prompt_enabled;
     }
     
     
